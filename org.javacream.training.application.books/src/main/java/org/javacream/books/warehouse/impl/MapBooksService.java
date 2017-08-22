@@ -11,6 +11,8 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author Dr. Rainer Sawitzki
@@ -18,7 +20,7 @@ import org.javacream.store.api.StoreService;
  * @mailto rainer.sawitzki@javacream.org
  * 
  */
-
+@Repository
 public class MapBooksService implements BooksService {
 
 	public MapBooksService(){
@@ -33,9 +35,10 @@ public class MapBooksService implements BooksService {
 	}
 
 
-	private IsbnGenerator isbnGenerator;
+	@Autowired private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
-	private StoreService storeService;
+	
+	@Autowired private StoreService storeService;
 	
 	{
 		books = new HashMap<String, Book>();
