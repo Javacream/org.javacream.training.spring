@@ -18,7 +18,7 @@ public class NetworkSimulatorAspect {
 	@Value ("${test.network.delay}")
 	private long delay;
 
-	@Around("execution(* *..*Service.*(..)) || execution(* org.javacream.books.isbngenerator.impl.*IsbnGenerator.next())")
+	@Around("execution(* org.javacream..*Service.*(..)) && !execution(* org.javacream..*RestService.*(..)) || execution(* org.javacream.books.isbngenerator.impl.*IsbnGenerator.next())")
 	public Object simulate(ProceedingJoinPoint pjp) throws Throwable {
 		MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
 		System.out.println("Simulating network on " + methodSignature.getName() +", delay=" + delay);
