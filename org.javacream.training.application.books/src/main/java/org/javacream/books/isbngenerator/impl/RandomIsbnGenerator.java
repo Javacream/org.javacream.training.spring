@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("random")
+@Profile({"dev","test"})
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")

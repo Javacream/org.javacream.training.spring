@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("sequence")
+@Profile("prod")
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")

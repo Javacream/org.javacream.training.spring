@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Scope("prototype")
 public class SimpleBusinessDelegate2 {
 
+	@SuppressWarnings("unused")
 	@Autowired  private SimpleBusiness4 sb4;
 	
 //	public SimpleBusinessDelegate2(@Autowired SimpleBusiness4 sb4) {

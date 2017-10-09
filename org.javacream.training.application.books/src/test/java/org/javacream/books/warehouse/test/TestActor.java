@@ -21,6 +21,7 @@ public class TestActor {
 			books = booksService.findAllBooks();
 			final int endSize = books.size();
 			assertTrue(endSize == startSize + 1);
+			System.out.println(isbn);
 			assertNotNull(isbn);
 			assertNotNull(booksService.findBookByIsbn(isbn));
 
