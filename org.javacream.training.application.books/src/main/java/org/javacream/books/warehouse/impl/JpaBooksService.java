@@ -1,18 +1,18 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
+import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.books.warehouse.jpa.BookRepository;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Dr. Rainer Sawitzki
@@ -21,30 +21,17 @@ import org.springframework.stereotype.Repository;
  * 
  */
 @Repository
-public class MapBooksService implements BooksService {
+@Transactional(propagation=Propagation.REQUIRES_NEW, rollbackFor=BookException.class)
+public class JpaBooksService implements BooksService {
 
-	public MapBooksService(){
-		this.books = new HashMap<String, Book>();
-	}
-	public MapBooksService(IsbnGenerator isbngenerator,
-			Map<String, Book> books, StoreService storeService) {
-		super();
-		this.isbnGenerator = isbngenerator;
-		this.books = books;
-		this.storeService = storeService;
-	}
+	@Autowired
+	private IsbnGenerator isbnGenerator;
+	@Autowired
+	private StoreService storeService;
 
+	@Autowired
+	private BookRepository bookRepository;
 
-	@Autowired private IsbnGenerator isbnGenerator;
-	private Map<String, Book> books;
-	
-	@Autowired private StoreService storeService;
-	
-	{
-		books = new HashMap<String, Book>();
-	}
-
-	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -58,43 +45,38 @@ public class MapBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		bookRepository.save(book);
 		return isbn;
 	}
 
 	public IsbnGenerator getIsbnGenerator() {
 		return isbnGenerator;
 	}
+
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
+		Book result = (Book) bookRepository.findOne(isbn);
 		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
-					isbn);
+			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
-		
-		return SerializationUtils.clone(result);
+
+		return result;
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue)); 
+		bookRepository.save(bookValue);
 		return bookValue;
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
-			throw new BookException(
-					BookException.BookExceptionType.NOT_DELETED, isbn);
+		try{
+		bookRepository.delete(isbn);
+		}catch(RuntimeException e){
+			throw new BookException(BookExceptionType.NOT_DELETED, e.getMessage());
 		}
 	}
 
-
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
+		return bookRepository.findAll();
 	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
-	
 }
