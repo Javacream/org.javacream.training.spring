@@ -15,11 +15,11 @@ import org.springframework.context.annotation.Scope;
 //@ComponentScan("org.javacream")
 @SpringBootApplication
 @Scope("singleton")
-@ImportResource("classpath:/javacream-application.xml")
+//@ImportResource("classpath:/javacream-application.xml")
 public class JavacreamApplication {
 
-	@Autowired SimpleBusinessDelegate sbd;
-	@Autowired SimpleBusiness2 sb2;
+//	@Autowired SimpleBusinessDelegate sbd;
+//	@Autowired SimpleBusiness2 sb2;
 	public static void main(String[] args) {
 		SpringApplication.run(JavacreamApplication.class, args);
 	}
@@ -29,14 +29,14 @@ public class JavacreamApplication {
 //		System.out.println("Initializing " + this);
 //	}
 	
-	@PostConstruct public void init() {
-		System.out.println("Init " + this);
-		
-	}
-	
-	@Bean @Scope("singleton") public SimpleBusiness2 createSimpleBusiness2() {
-		//SimpleBusiness2 sb2 = new SimpleBusiness2();
-		sb2.initTheSimpleBusiness2();
-		return sb2;
-	}
+//	@PostConstruct public void init() {
+//		System.out.println("Init " + this);
+//		
+//	}
+//	
+//	@Bean @Scope("singleton") public SimpleBusiness2 createSimpleBusiness2() {
+//		//SimpleBusiness2 sb2 = new SimpleBusiness2();
+//		sb2.initTheSimpleBusiness2();
+//		return sb2;
+//	}
 }
