@@ -20,6 +20,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @ActiveProfiles({ "test" })
@@ -36,7 +37,7 @@ public class OrderUnitTest {
 	private StoreService storeService;
 
 	@Test
-	public void testOrderService() throws Exception{
+	public void testOrderService() throws Exception {
 
 		given(booksService.findBookByIsbn(TEST_ISBN)).willReturn(new Book(TEST_ISBN, TEST_TITLE, TEST_PRICE, true));
 		given(storeService.getStock("books", TEST_ISBN)).willReturn(3);
