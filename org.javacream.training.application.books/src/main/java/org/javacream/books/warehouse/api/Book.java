@@ -8,6 +8,17 @@ public class Book implements Serializable {
 	//private Thread t = new Thread();
 	private String isbn;
 
+	public Book() {
+		
+	}
+	public Book(String isbn, String title, double price, boolean available) {
+		super();
+		this.isbn = isbn;
+		this.title = title;
+		this.price = price;
+		this.available = available;
+	}
+
 	private String title;
 
 	private double price;
