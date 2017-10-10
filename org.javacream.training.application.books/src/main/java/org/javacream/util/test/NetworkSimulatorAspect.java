@@ -13,8 +13,8 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 @Profile("networktest")
 @Order(Ordered.LOWEST_PRECEDENCE)
 public class NetworkSimulatorAspect {
