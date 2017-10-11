@@ -1,10 +1,18 @@
 package org.javacream.books.order.api;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name="OrderEntity")
 public class Order{
 
 	public Order() {
 		
 	}
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long orderId;
 	public Long getOrderId() {
 		return orderId;

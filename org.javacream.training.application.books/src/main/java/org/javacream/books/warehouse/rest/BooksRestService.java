@@ -32,4 +32,14 @@ public class BooksRestService {
 
 		return booksService.findAllBooks();
 	}
+	@RequestMapping(method = RequestMethod.GET, path = "/books/{isbn}")
+	public Book findByIsbn(@PathVariable("isbn") String isbn) {
+
+		try {
+			return booksService.findBookByIsbn(isbn);
+		} catch (BookException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 }

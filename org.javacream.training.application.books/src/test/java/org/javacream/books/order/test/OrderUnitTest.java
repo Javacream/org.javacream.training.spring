@@ -4,7 +4,7 @@ import static org.mockito.BDDMockito.given;
 
 import org.javacream.JavacreamApplication;
 import org.javacream.books.order.api.OrderService;
-import org.javacream.books.order.impl.SimpleOrderService;
+import org.javacream.books.order.impl.JpaOrderService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
@@ -49,7 +49,7 @@ public class OrderUnitTest {
 	public static class OrderTestConfiguration {
 		@Bean
 		OrderService orderService() {
-			return new SimpleOrderService();
+			return new JpaOrderService();
 		}
 	}
 }
