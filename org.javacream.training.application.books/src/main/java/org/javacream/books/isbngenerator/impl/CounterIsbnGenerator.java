@@ -14,10 +14,13 @@ import org.springframework.jdbc.core.StatementCallback;
 import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Profile("prod")
 @ManagedResource(objectName = "org.javacream:type=IsbnGenerator")
+@Transactional(propagation=Propagation.REQUIRED)
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")
