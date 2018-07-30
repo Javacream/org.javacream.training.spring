@@ -32,6 +32,10 @@ public class MapBooksService implements BooksService {
 		this.storeService = storeService;
 	}
 
+	public void initTheMapBooksService() {
+		System.out.println("Initializing " + this + ", isbnGenerator = " + this.isbnGenerator);
+
+	}
 
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;

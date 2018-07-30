@@ -16,6 +16,7 @@ public class BooksServiceTest {
 
 	@Test
 	public void testBusinessObjects() {
+		//MapBooksService mapBooksService = new MapBooksService();
 		MapBooksService mapBooksService = new MapBooksService();
 		RandomIsbnGenerator randomIsbnGenerator = new RandomIsbnGenerator();
 		randomIsbnGenerator.setCountryCode("-de");
