@@ -4,4 +4,7 @@ public interface IsbnGenerator {
 
 	public abstract String next();
 
+	enum Algorithms{
+		random, sequence;
+	}
 }

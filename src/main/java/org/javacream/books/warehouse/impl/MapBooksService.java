@@ -5,12 +5,16 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author Dr. Rainer Sawitzki
@@ -19,6 +23,7 @@ import org.javacream.store.api.StoreService;
  * 
  */
 
+//@Repository
 public class MapBooksService implements BooksService {
 
 	public MapBooksService(){
@@ -36,9 +41,14 @@ public class MapBooksService implements BooksService {
 		System.out.println("Initializing " + this + ", isbnGenerator = " + this.isbnGenerator);
 
 	}
-
+	
+	//@Resource(name="randomIsbnGenerator")
+	//@Autowired
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
+
+	//@Resource(name="simpleStoreService")
+	//@Autowired
 	private StoreService storeService;
 	
 	{

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	<bean class="org.javacream.store.impl.SimpleStoreService" id="simpleStoreService">
-		<property name="stock" value="${stock}"></property>
+	<bean class="org.javacream.store.decorators.AuditingStoreServiceDecorator"
+		id="auditingStoreServiceDecorator">
+		<property name="storeService" ref="responseTimeCheckingStoreService"></property>
 	</bean>
-	
-	<context:property-placeholder location="application.properties"/>
+	<bean class="org.javacream.store.decorators.ResponseTimeCheckingStoreService"
+		id="responseTimeCheckingStoreService">
+		<property name="storeService" ref="simpleStoreService"></property>
+	</bean>
+
+	<bean class="org.javacream.store.impl.SimpleStoreService" id="simpleStoreService">
+		<property name="stock" value="42"></property>
+	</bean>
+	<alias name="auditingStoreServiceDecorator" alias="storeService" />
+
 </beans>
