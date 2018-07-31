@@ -1,9 +1,14 @@
 package org.javacream.books.warehouse.test;
 
-import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
-import org.javacream.books.warehouse.impl.MapBooksService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.books.warehouse.api.BooksService;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * 
@@ -12,22 +17,25 @@ import org.junit.Test;
  * @mailto training@rainer-sawitzki.de
  * 
  */
-public class BooksServiceTest {
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
+public class BooksServiceTest {
+	@Autowired 
+	private BooksService booksService;
+	
 	@Test
 	public void testBusinessObjects() {
-		MapBooksService mapBooksService = new MapBooksService();
-		RandomIsbnGenerator randomIsbnGenerator = new RandomIsbnGenerator();
-		randomIsbnGenerator.setCountryCode("-de");
-		mapBooksService.setIsbnGenerator(randomIsbnGenerator);
-		mapBooksService.setStoreService(new SimpleStoreService());
-		randomIsbnGenerator.setPrefix("TEST:");
-		
-		TestActor.doTest(mapBooksService);
+		TestActor.doTest(booksService);
 		
 	
 	}
 
 	
-
+	@Configuration
+	@ComponentScan(basePackages="org.javacream")
+	@PropertySource("app.properties")
+	public static class BooksWarehouseConfiguration{
+		
+	}
 }

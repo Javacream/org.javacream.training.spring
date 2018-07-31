@@ -2,11 +2,18 @@ package org.javacream.books.isbngenerator.impl;
 
 import java.util.Random;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-public class RandomIsbnGenerator implements IsbnGenerator {
+@Service
+@Qualifier(IsbnGeneratorService.Algorithms.RANDOM)
+public class RandomIsbnGeneratorService implements IsbnGeneratorService {
 
+	@Value("${isbngenerator.prefix}")
 	private String prefix;
+	@Value("${isbngenerator.countryCode}")
 	private String countryCode;
 	public String getCountryCode() {
 		return countryCode;
