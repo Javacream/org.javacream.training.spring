@@ -5,7 +5,6 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -39,9 +38,9 @@ public class BooksServiceSpringTest {
 //	}
 	
 	
-	@Test public void untypicalSpringTest() {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application_xml.xml");
-		BooksService bs = context.getBean(BooksService.class);
-		TestActor.doTest(bs);
-	}
+//	@Test public void untypicalSpringTest() {
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+//		BooksService bs = context.getBean(BooksService.class);
+//		TestActor.doTest(bs);
+//	}
 }

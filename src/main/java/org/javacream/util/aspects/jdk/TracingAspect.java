@@ -1,4 +1,4 @@
-package org.javacream.util.aspects;
+package org.javacream.util.aspects.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

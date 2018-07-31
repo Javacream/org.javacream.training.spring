@@ -6,4 +6,9 @@
 	<context:property-placeholder location="application.properties" />
 	<import resource="booksService.xml"/>
 	<import resource="storeService.xml"/>
+	<import resource="aop.xml"/>
+	
+	<alias name="proxyStoreService" alias="storeService" />
+	<alias name="proxyBooksService" alias="booksService" />
+	
 </beans>

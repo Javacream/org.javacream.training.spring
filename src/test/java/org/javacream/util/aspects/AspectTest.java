@@ -7,6 +7,7 @@ import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.util.aspects.jdk.TracingAspect;
 import org.junit.Test;
 
 public class AspectTest {

@@ -15,6 +15,5 @@
 	<bean class="org.javacream.store.impl.SimpleStoreService" id="simpleStoreService">
 		<property name="stock" value="42"></property>
 	</bean>
-	<alias name="auditingStoreServiceDecorator" alias="storeService" />
 
 </beans>
