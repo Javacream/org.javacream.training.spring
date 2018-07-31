@@ -6,9 +6,9 @@
 	<context:property-placeholder location="application.properties" />
 	<import resource="booksService.xml"/>
 	<import resource="storeService.xml"/>
-	<import resource="aop.xml"/>
+	<import resource="aop-aspectj.xml"/>
 	
-	<alias name="proxyStoreService" alias="storeService" />
-	<alias name="proxyBooksService" alias="booksService" />
+	<alias name="simpleStoreService" alias="storeService" />
+	<alias name="mapBooksService" alias="booksService" />
 	
 </beans>

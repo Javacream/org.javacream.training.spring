@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
+import org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.impl.SimpleStoreService;
 import org.javacream.util.aspects.jdk.TracingAspect;
@@ -18,7 +18,7 @@ public class AspectTest {
 		System.out.println(storeService.getStock("Eg", "al"));
 	}
 	@Test public void testIsbnGenerator() {
-		IsbnGenerator isbnGenerator = new  RandomIsbnGenerator();
+		IsbnGenerator isbnGenerator = new  RandomIsbnGeneratorService();
 		isbnGenerator = TracingAspect.createProxy(isbnGenerator);
 		System.out.println(isbnGenerator.next());
 	}

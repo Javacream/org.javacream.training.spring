@@ -9,7 +9,7 @@
 		<property name="isbnGenerator" ref="randomIsbnGenerator"></property>
 		<property name="storeService" ref="simpleStoreService"></property>
 	</bean>
-	<bean class="org.javacream.books.isbngenerator.impl.RandomIsbnGenerator"
+	<bean class="org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService"
 		id="randomIsbnGenerator" scope="singleton">
 		<property name="countryCode" value="${isbn.countryCode}"></property>
 		<property name="prefix" value="${isbn.prefix}"></property>

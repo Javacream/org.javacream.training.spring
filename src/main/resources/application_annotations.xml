@@ -7,7 +7,7 @@
 	<context:component-scan base-package="org.javacream"></context:component-scan>
 	<context:annotation-config></context:annotation-config>
 	
-	<bean class="org.javacream.books.isbngenerator.impl.RandomIsbnGenerator" id="randomIsbnGenerator">
+	<bean class="org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService" id="randomIsbnGenerator">
 	<!--  ... -->
 	<property name="countryCode" value="-dk"></property>
 	</bean>
