@@ -8,7 +8,6 @@
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 		<config>src/main/resources/application_annotations.xml</config>
-		<config>src/main/resources/application_xml.xml</config>
 		<config>src/main/resources/application.xml</config>
 		<config>src/main/resources/books.warehouse.xml</config>
 		<config>src/main/resources/booksService.xml</config>

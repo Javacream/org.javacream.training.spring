@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:/application_xml.xml")
+@ContextConfiguration("classpath:/application.xml")
 //@ContextConfiguration(classes= {MapBooksService.class, RandomIsbnGenerator.class, SimpleStoreService.class})
 //@ContextConfiguration
 public class BooksServiceSpringTest {
