@@ -18,11 +18,11 @@
 	</bean>
 
 
-	<bean class="org.springframework.aop.framework.ProxyFactoryBean"
+	<bean 
 		id="proxyStoreService" parent="parentProxyFactoryBean">
 		<property name="target" ref="simpleStoreService"></property>
 	</bean>
-	<bean class="org.springframework.aop.framework.ProxyFactoryBean"
+	<bean 
 		id="proxyBooksService" parent="parentProxyFactoryBean">
 		<property name="target" ref="mapBooksService"></property>
 	</bean>
