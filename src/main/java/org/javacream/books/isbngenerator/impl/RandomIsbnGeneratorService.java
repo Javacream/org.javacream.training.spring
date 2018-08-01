@@ -15,6 +15,8 @@ public class RandomIsbnGeneratorService implements IsbnGeneratorService {
 	private String prefix;
 	@Value("${isbngenerator.countryCode}")
 	private String countryCode;
+	
+	
 	public String getCountryCode() {
 		return countryCode;
 	}
@@ -29,6 +31,7 @@ public class RandomIsbnGeneratorService implements IsbnGeneratorService {
 	}
 	
 	public String next(){
+		
 		return prefix + random.nextInt() + countryCode;
 	}
 

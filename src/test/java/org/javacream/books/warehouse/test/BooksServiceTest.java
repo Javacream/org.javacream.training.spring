@@ -1,13 +1,10 @@
 package org.javacream.books.warehouse.test;
 
+import org.javacream.ApplicationConfiguration;
 import org.javacream.books.warehouse.api.BooksService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+@ContextConfiguration(classes=ApplicationConfiguration.class)
 public class BooksServiceTest {
 	@Autowired 
 	private BooksService booksService;
@@ -33,11 +30,4 @@ public class BooksServiceTest {
 	}
 
 	
-	@Configuration
-	@ComponentScan(basePackages="org.javacream")
-	@PropertySource("app.properties")
-	@EnableAspectJAutoProxy(proxyTargetClass=true)
-	public static class BooksWarehouseConfiguration{
-		
-	}
 }
