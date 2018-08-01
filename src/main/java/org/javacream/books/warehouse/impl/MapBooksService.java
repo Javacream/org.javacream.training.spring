@@ -28,7 +28,7 @@ public class MapBooksService implements BooksService {
 	public MapBooksService(){
 		this.books = new HashMap<String, Book>();
 	}
-	@Autowired @Qualifier(IsbnGeneratorService.Algorithms.RANDOM)
+	@Autowired @Qualifier(IsbnGeneratorService.Algorithms.SEQUENCE)
 	private IsbnGeneratorService isbnGenerator;
 	private Map<String, Book> books;
 	@Autowired
@@ -37,8 +37,6 @@ public class MapBooksService implements BooksService {
 	{
 		books = new HashMap<String, Book>();
 	}
-
-	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
