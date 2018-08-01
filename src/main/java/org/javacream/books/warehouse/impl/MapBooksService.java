@@ -37,13 +37,6 @@ public class MapBooksService implements BooksService {
 	{
 		books = new HashMap<String, Book>();
 	}
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
-	}
-
-	public void setIsbnGenerator(IsbnGeneratorService isbnGenerator) {
-		this.isbnGenerator = isbnGenerator;
-	}
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();

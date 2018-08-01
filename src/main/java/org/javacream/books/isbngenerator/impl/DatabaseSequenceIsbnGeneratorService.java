@@ -1,17 +1,15 @@
 package org.javacream.books.isbngenerator.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.StatementCallback;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Qualifier(IsbnGeneratorService.Algorithms.SEQUENCE)
@@ -23,8 +21,9 @@ public class DatabaseSequenceIsbnGeneratorService implements IsbnGeneratorServic
 	private String countryCode;
 
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	private EntityManager entityManager;
 
+	@Autowired private DatabaseSequenceIsbnGeneratorService delegate;
 	public String getCountryCode() {
 		return countryCode;
 	}
@@ -33,8 +32,9 @@ public class DatabaseSequenceIsbnGeneratorService implements IsbnGeneratorServic
 		this.countryCode = suffix;
 	}
 
+	//@Transactional(isolation=Isolation.READ_COMMITTED)
 	public String next() {
-		return prefix + nextKey() + countryCode;
+		return prefix + delegate.nextKey() + countryCode;
 	}
 
 	public String getPrefix() {
@@ -45,18 +45,13 @@ public class DatabaseSequenceIsbnGeneratorService implements IsbnGeneratorServic
 		this.prefix = prefix;
 	}
 
-	private int nextKey() {
-		return jdbcTemplate.execute(new StatementCallback<Integer>() {
-
-			@Override
-			public Integer doInStatement(Statement stmt) throws SQLException, DataAccessException {
-				ResultSet rs = stmt.executeQuery("select col_key from keys");
-				rs.next();
-				int key = rs.getInt(1);
-				key++;
-				stmt.executeUpdate("update keys set col_key=" + key);
-				return key;
-			}
-		});
+	@Transactional(isolation=Isolation.SERIALIZABLE)
+	public int nextKey() {
+		Integer key = (Integer) entityManager.createNativeQuery("select col_key from keys").getSingleResult();
+		key++;
+		Query query = entityManager.createNativeQuery("update keys set col_key= :key");
+		query.setParameter("key", key);
+		query.executeUpdate();
+		return key;
 	}
 }
