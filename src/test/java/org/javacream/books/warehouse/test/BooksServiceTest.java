@@ -5,13 +5,7 @@ import org.javacream.books.warehouse.impl.MapBooksService;
 import org.javacream.store.impl.SimpleStoreService;
 import org.junit.Test;
 
-/**
- * 
- * @author Dr. Rainer Sawitzki
- * @company Javacream
- * @mailto training@rainer-sawitzki.de
- * 
- */
+
 public class BooksServiceTest {
 
 	@Test

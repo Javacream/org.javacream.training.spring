@@ -12,26 +12,9 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 
-/**
- * @author Dr. Rainer Sawitzki
- * @company Javacream
- * @mailto rainer.sawitzki@javacream.org
- * 
- */
+
 
 public class MapBooksService implements BooksService {
-
-	public MapBooksService(){
-		this.books = new HashMap<String, Book>();
-	}
-	public MapBooksService(IsbnGenerator isbngenerator,
-			Map<String, Book> books, StoreService storeService) {
-		super();
-		this.isbnGenerator = isbngenerator;
-		this.books = books;
-		this.storeService = storeService;
-	}
-
 
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
