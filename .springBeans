@@ -7,6 +7,13 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+		<config>src/main/resources/application_annotations.xml</config>
+		<config>src/main/resources/application.xml</config>
+		<config>src/main/resources/books.warehouse.xml</config>
+		<config>src/main/resources/booksService.xml</config>
+		<config>src/main/resources/storeService.xml</config>
+		<config>src/main/resources/aop-aspectj.xml</config>
+		<config>src/main/resources/bookswarehouse.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
@@ -16,6 +23,7 @@
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>
+				<config>src/main/resources/aop-aspectj.xml</config>
 			</configs>
 			<profiles>
 			</profiles>

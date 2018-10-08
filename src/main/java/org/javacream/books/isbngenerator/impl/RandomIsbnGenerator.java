@@ -31,4 +31,20 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
+	
+	{
+		System.out.println("constructor initializing " + this);
+	}
+	
+	public void initGenerator() {
+		System.out.println("initializing " + this);
+	}
+	public void destroyGenerator() {
+		System.out.println("destroying " + this);
+	}
+
+	@Override
+	public String toString() {
+		return "RandomIsbnGenerator [prefix=" + prefix + ", countryCode=" + countryCode + ", random=" + random + "]";
+	}
 }

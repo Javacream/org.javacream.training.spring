@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean class="org.javacream.books.warehouse.impl.MapBooksService"
+		id="mapBooksService" scope="singleton">
+		<property name="isbnGenerator" ref="randomIsbnGenerator" />
+		<property name="storeService" ref="simpleStoreService" />
+	</bean>
+	<bean class="org.javacream.books.isbngenerator.impl.RandomIsbnGenerator"
+		id="randomIsbnGenerator" scope="singleton" init-method="initGenerator"
+		destroy-method="destroyGenerator">
+		<property name="prefix" value="${isbngenerator.prefix}" />
+		<property name="countryCode" value="${isbngenerator.countryCode}" />
+	</bean>
+	<bean class="org.javacream.store.impl.SimpleStoreService" scope="singleton"
+		id="simpleStoreService" p:stock="${storeService.stock}" />
+	<context:property-placeholder location="bookswarehouse.properties" />
+
+</beans>
