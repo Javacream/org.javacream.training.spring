@@ -4,8 +4,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<bean class="org.javacream.books.isbngenerator.impl.RandomIsbnGenerator"
+		id="isbnGenerator" scope="singleton" init-method="initGenerator"
+		destroy-method="destroyGenerator">
+		<property name="prefix" value="${isbngenerator.prefix}" />
+		<property name="countryCode" value="${isbngenerator.countryCode}" />
+	</bean>
 
 	<context:property-placeholder location="bookswarehouse.properties" />
-	<context:annotation-config />
-	<context:component-scan base-package="org.javacream" />
 </beans>
