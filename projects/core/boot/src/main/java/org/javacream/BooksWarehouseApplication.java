@@ -7,8 +7,10 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
+@ImportResource("classpath:booksService.xml")
 public class BooksWarehouseApplication {
 
 	@Autowired private BooksService booksService;
