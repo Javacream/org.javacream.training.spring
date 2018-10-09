@@ -2,7 +2,7 @@ package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 
-public class CounterIsbnGenerator implements IsbnGenerator {
+public class CounterIsbnGeneratorService implements IsbnGenerator {
 
 	private String prefix;
 	

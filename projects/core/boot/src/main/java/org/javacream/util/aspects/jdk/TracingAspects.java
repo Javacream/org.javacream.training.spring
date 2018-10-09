@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class TracingAspect implements InvocationHandler{
+public class TracingAspects implements InvocationHandler{
 
 	private Object delegate;
 
@@ -32,9 +32,9 @@ public class TracingAspect implements InvocationHandler{
 	}
 	
 	public static <T> T decorate(T delegate) {
-		TracingAspect tracingAspect = new TracingAspect();
+		TracingAspects tracingAspect = new TracingAspects();
 		tracingAspect.setDelegate(delegate);
-		ClassLoader classLoader = TracingAspect.class.getClassLoader();
+		ClassLoader classLoader = TracingAspects.class.getClassLoader();
 		Class<?>[] interfacesToImplement = delegate.getClass().getInterfaces();
 		return (T)Proxy.newProxyInstance(classLoader, interfacesToImplement, tracingAspect);
 	}

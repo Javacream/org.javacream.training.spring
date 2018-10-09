@@ -3,23 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean class="org.javacream.util.aspects.aopalliance.TracingAspect"
+	<!-- <import resource="aop.xml"/>  -->
+	<bean class="org.javacream.util.aspects.aopalliance.TracingAspects"
 		id="tracingAspect"></bean>
 
-	<bean class="org.springframework.aop.framework.ProxyFactoryBean"
-		>
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="aopParent" abstract="true">
 		<property name="autodetectInterfaces" value="true" />
-		<property name="target" ref="serializingBooksService" />
 		<property name="interceptorNames">
 			<list>
 				<value>tracingAspect</value>
 			</list>
 		</property>
-
 	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" parent="aopParent">
+		<property name="target" ref="serializingBooksService" />
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" parent="aopParent">
+		<property name="target" ref="simpleStoreService" />
+	</bean>
+
+	<bean class="org.javacream.store.impl.SimpleStoreService" id="simpleStoreService" autowire-candidate="false"></bean>
 	<bean
 		class="org.javacream.books.warehouse.decorators.SerializingBooksService"
-		id="serializingBooksService" primary="true">
+		id="serializingBooksService"  primary="true">
 		<property name="booksService">
 			<bean class="org.javacream.books.warehouse.impl.MapBooksService"></bean>
 		</property>

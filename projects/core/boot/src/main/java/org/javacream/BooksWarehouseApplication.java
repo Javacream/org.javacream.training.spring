@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource("classpath:booksService.xml")
+@ImportResource({"classpath:booksService.xml"})
 public class BooksWarehouseApplication {
 
 	@Autowired private BooksService booksService;

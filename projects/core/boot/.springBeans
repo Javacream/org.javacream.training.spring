@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/main/resources/booksService.xml</config>
+		<config>src/main/resources/aop.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>java:org.javacream.BooksWarehouseApplication</config>

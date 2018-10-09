@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.assertj.core.util.Arrays;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
+import org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.impl.SimpleStoreService;
-import org.javacream.util.aspects.jdk.TracingAspect;
+import org.javacream.util.aspects.jdk.TracingAspects;
 import org.junit.Test;
 
 public class TracingAspectTest {
@@ -20,7 +20,7 @@ public class TracingAspectTest {
 		StoreService storeService = new SimpleStoreService();
 		System.out.println(storeService.getClass().getName());
 		System.out.println(Arrays.asList(storeService.getClass().getInterfaces()));
-		storeService = TracingAspect.decorate(storeService);
+		storeService = TracingAspects.decorate(storeService);
 		System.out.println(storeService.getStock("dies", "das"));
 		System.out.println(storeService.getClass().getName());
 		System.out.println(Arrays.asList(storeService.getClass().getInterfaces()));
@@ -28,15 +28,15 @@ public class TracingAspectTest {
 
 	//@Test 
 	public void testIsbnGeneratorDecoration() {
-		IsbnGenerator isbnGenerator = new RandomIsbnGenerator();
-		isbnGenerator = TracingAspect.decorate(isbnGenerator);
+		IsbnGenerator isbnGenerator = new RandomIsbnGeneratorService();
+		isbnGenerator = TracingAspects.decorate(isbnGenerator);
 		System.out.println(isbnGenerator.next());
 		
 	}
 	
 	@Test public void testList() {
 		List<String> names = new ArrayList<>();
-		names = TracingAspect.decorate(names);
+		names = TracingAspects.decorate(names);
 		names.add("Hugo");
 		names.add("Emil");
 		names.add("Fritz");

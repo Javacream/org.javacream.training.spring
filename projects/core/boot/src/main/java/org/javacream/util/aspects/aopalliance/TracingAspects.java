@@ -3,7 +3,7 @@ package org.javacream.util.aspects.aopalliance;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
-public class TracingAspect implements MethodInterceptor {
+public class TracingAspects implements MethodInterceptor {
 
 	@Override
 	public Object invoke(MethodInvocation methodInvocation) throws Throwable {

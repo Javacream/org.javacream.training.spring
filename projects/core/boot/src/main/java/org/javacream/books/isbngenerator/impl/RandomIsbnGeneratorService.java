@@ -7,7 +7,7 @@ import javax.annotation.PreDestroy;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 
-public class RandomIsbnGenerator implements IsbnGenerator {
+public class RandomIsbnGeneratorService implements IsbnGenerator {
 
 	
 	private String prefix;
