@@ -10,13 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class IsbnGeneratorConfiguration {
 
-	@Bean @Qualifier(IsbnGenerator.RANDOM) IsbnGenerator randomIsbnGenerator(@Value("isbngenerator.prefix") String prefix, @Value("isbngenerator.countryCode") String countryCode){
+	@Bean @Qualifier(IsbnGenerator.RANDOM) IsbnGenerator randomIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode){
 		RandomIsbnGeneratorService isbnGenerator = new RandomIsbnGeneratorService();
 		isbnGenerator.setPrefix(prefix);
 		isbnGenerator.setCountryCode(countryCode);
 		return isbnGenerator;
 	}
-	@Bean @Qualifier(IsbnGenerator.SEQUENCE) IsbnGenerator sequenceIsbnGenerator(@Value("isbngenerator.prefix") String prefix, @Value("isbngenerator.countryCode") String countryCode){
+	@Bean @Qualifier(IsbnGenerator.SEQUENCE) IsbnGenerator sequenceIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode){
 		DatabaseSequenceIsbnGeneratorService isbnGenerator = new DatabaseSequenceIsbnGeneratorService();
 		isbnGenerator.setPrefix(prefix);
 		isbnGenerator.setCountryCode(countryCode);

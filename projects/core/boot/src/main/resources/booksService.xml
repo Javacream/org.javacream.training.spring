@@ -30,7 +30,7 @@
 		class="org.javacream.books.warehouse.decorators.SerializingBooksService"
 		id="serializingBooksService"  primary="true">
 		<property name="booksService">
-			<bean class="org.javacream.books.warehouse.impl.MapBooksService"></bean>
+			<bean class="org.javacream.books.warehouse.impl.JpaBooksService"></bean>
 		</property>
 	</bean>
 </beans>
