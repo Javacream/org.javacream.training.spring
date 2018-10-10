@@ -1,10 +1,10 @@
 package org.javacream.store.decorators;
 
-import java.util.Date;
-
 import javax.annotation.Resource;
 
 import org.javacream.store.api.StoreService;
+import org.javacream.util.audit.api.AuditService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service;
 @Primary
 public class AuditingStoreService implements StoreService {
 
-	@Resource(name="simpleStoreService") private StoreService delegate;
-
+	@Resource(name="storeService") private StoreService delegate;
+	@Autowired protected AuditService auditService;
+		
 	public int getStock(String category, String item) {
-		System.out.println("Auditing StoreService, called getStock: category=" + category + ", item=" + item + " at " + new Date());
+		auditService.log("Auditing StoreService, called getStock: category=" + category + ", item=" + item);
 		return delegate.getStock(category, item);
 	}
 }

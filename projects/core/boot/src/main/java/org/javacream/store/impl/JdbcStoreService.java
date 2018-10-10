@@ -11,10 +11,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.StatementCallback;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("storeService")
 public class JdbcStoreService implements StoreService {
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	protected JdbcTemplate jdbcTemplate;
 
 	@Override
 	public int getStock(String category, String item) {
