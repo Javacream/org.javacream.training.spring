@@ -2,15 +2,26 @@ package org.javacream.books.warehouse.api;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="BOOKS")
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private String isbn;
 
+	@Column(name="BOOKTITLE")
 	private String title;
 
 	private double price;
 
+	@Transient
 	private boolean available;
 
 	public String getIsbn() {
@@ -45,8 +56,7 @@ public class Book implements Serializable {
 				return false;
 		} else if (!isbn.equals(other.isbn))
 			return false;
-		if (Double.doubleToLongBits(price) != Double
-				.doubleToLongBits(other.price))
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -75,12 +85,9 @@ public class Book implements Serializable {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return (new StringBuffer("BookValue: isbn=").append(isbn).append(
-				", title=").append(title).append(", price=").append(price)
-				.append(
-						", available=").append(available)).toString();
+		return (new StringBuffer("BookValue: isbn=").append(isbn).append(", title=").append(title).append(", price=")
+				.append(price).append(", available=").append(available)).toString();
 	}
-
 
 	public double getPrice() {
 		return price;
@@ -97,6 +104,5 @@ public class Book implements Serializable {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
-	
 
 }
