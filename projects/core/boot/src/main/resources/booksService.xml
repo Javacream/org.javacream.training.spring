@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- <import resource="aop.xml"/>  -->
+	<!-- 
 	<bean class="org.javacream.util.aspects.aopalliance.TracingAspects"
 		id="tracingAspect"></bean>
 
@@ -23,8 +24,8 @@
 	<bean class="org.springframework.aop.framework.ProxyFactoryBean" parent="aopParent">
 		<property name="target" ref="simpleStoreService" />
 	</bean>
-
-	<bean class="org.javacream.store.impl.JdbcStoreService" id="simpleStoreService" autowire-candidate="false"></bean>
+ 	-->
+	<bean class="org.javacream.store.impl.JdbcStoreService" id="simpleStoreService" autowire-candidate="true"></bean>
 	<bean
 		class="org.javacream.books.warehouse.decorators.SerializingBooksService"
 		id="serializingBooksService"  primary="true">

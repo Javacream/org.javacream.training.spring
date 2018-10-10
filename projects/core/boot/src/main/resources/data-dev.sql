@@ -1,5 +1,2 @@
 insert into STORE (category, item, stock) values('book', 'ISBN1', 42)
-insert into STORE (category, item, stock) values('book', 'ISBN2', 4)
-insert into STORE (category, item, stock) values('book', 'ISBN3', 32)
-insert into STORE (category, item, stock) values('book', 'ISBN4', 1222)
-insert into STORE (category, item, stock) values('book', 'ISBN5', 2)
+insert into ISBNCOUNTER values(1)

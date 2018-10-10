@@ -1,6 +1,6 @@
 package org.javacream.books.isbngenerator.api;
 
-import org.javacream.books.isbngenerator.impl.CounterIsbnGeneratorService;
+import org.javacream.books.isbngenerator.impl.DatabaseSequenceIsbnGeneratorService;
 import org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +17,7 @@ public class IsbnGeneratorConfiguration {
 		return isbnGenerator;
 	}
 	@Bean @Qualifier(IsbnGenerator.SEQUENCE) IsbnGenerator sequenceIsbnGenerator(@Value("isbngenerator.prefix") String prefix, @Value("isbngenerator.countryCode") String countryCode){
-		CounterIsbnGeneratorService isbnGenerator = new CounterIsbnGeneratorService();
+		DatabaseSequenceIsbnGeneratorService isbnGenerator = new DatabaseSequenceIsbnGeneratorService();
 		isbnGenerator.setPrefix(prefix);
 		isbnGenerator.setCountryCode(countryCode);
 		return isbnGenerator;

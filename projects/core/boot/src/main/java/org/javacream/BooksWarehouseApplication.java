@@ -2,6 +2,7 @@ package org.javacream;
 
 import javax.annotation.PostConstruct;
 
+import org.javacream.audit.api.AuditService;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.ImportResource;
 public class BooksWarehouseApplication {
 
 	@Autowired private BooksService booksService;
+	@Autowired private AuditService auditService;
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(BooksWarehouseApplication.class);
 		springApplication.setAdditionalProfiles("prod");
@@ -28,5 +30,6 @@ public class BooksWarehouseApplication {
 		} catch (BookException e) {
 			e.printStackTrace();
 		}
+		auditService.writeAudit("From Application");
 	}
 }
