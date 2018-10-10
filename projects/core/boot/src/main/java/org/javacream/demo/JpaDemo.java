@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.javacream.books.warehouse.api.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +16,7 @@ public class JpaDemo {
 	@PersistenceContext
 	private EntityManager entityManager;
 	@Autowired JpaDemo2 demo2;
-	@Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.READ_UNCOMMITTED)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void doDemo() {
 		final String ISBN = "ISBN";
 		Book book = new Book();

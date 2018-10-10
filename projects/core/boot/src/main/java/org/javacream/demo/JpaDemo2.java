@@ -13,7 +13,7 @@ public class JpaDemo2 {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void doSomething() {
 		System.out.println("Starting demo");
 		Book b = entityManager.find(Book.class, "ISBN");
