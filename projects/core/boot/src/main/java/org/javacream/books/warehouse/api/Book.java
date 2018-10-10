@@ -7,12 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @Entity
 @Table(name="BOOKS")
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@Version private long version;
 	@Id
 	private String isbn;
 

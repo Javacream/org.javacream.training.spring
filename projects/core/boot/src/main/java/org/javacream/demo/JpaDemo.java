@@ -37,10 +37,20 @@ public class JpaDemo {
 		searchResult2.setTitle("CHANGED AGAIN");
 		System.out.println(book.getPrice());
 		System.out.println("IDENTITY: " + (book == searchResult1));
-		entityManager.flush();
+		//entityManager.flush();
 		//entityManager.detach(book);
 		demo2.doSomething();		
 		System.out.println("***************" + book.getPrice());
+		entityManager.detach(book);
+		book.setPrice(0.99);
+		//UPDATE -> merge
+		Book attachedBook = entityManager.merge(book);
+		attachedBook.setTitle("CHANGED AGAIN AND AGAIN");
+		entityManager.clear();
+		//DELETE -> remove
+		Book toDelete = entityManager.getReference(Book.class, ISBN);
+		entityManager.remove(toDelete);
+		
 		
 	}//commit: entityManager synchronisiert sich mit der Datenbank
 
