@@ -32,7 +32,7 @@ public class JpaDemo {
 		Book searchResult1 = entityManager.find(Book.class, ISBN);
 		Book searchResult2 = entityManager.createQuery("select b from Book as b", Book.class).getResultList().get(0);
 		List<String> titleList = (List<String>) entityManager.createQuery("select b.title from Book as b").getResultList();
-		
+		System.out.println(titleList);
 		searchResult1.setPrice(99.99);
 		searchResult2.setTitle("CHANGED AGAIN");
 		System.out.println(book.getPrice());
