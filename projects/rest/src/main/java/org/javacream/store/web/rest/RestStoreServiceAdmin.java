@@ -18,7 +18,7 @@ public class RestStoreServiceAdmin {
 		return storeService.getStock(category, item);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/admin/store/{category}/{item}/{stock}")
+	@RequestMapping(method = RequestMethod.PUT, path = "/admin/store/{category}/{item}/{stock}")
 	public void setStock(@PathVariable(name = "category") String category, @PathVariable(name = "item") String item,
 			@PathVariable("stock") Integer stock) {
 		storeService.setStock(category, item, stock);
