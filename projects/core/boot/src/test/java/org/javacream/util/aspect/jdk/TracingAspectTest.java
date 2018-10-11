@@ -9,7 +9,7 @@ import org.assertj.core.util.Arrays;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService;
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.JdbcStoreService;
+import org.javacream.store.impl.SimpleStoreService;
 import org.javacream.util.aspects.jdk.TracingAspects;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class TracingAspectTest {
 
 	//@Test 
 	public void testStoreServiceDecoration() {
-		StoreService storeService = new JdbcStoreService();
+		StoreService storeService = new SimpleStoreService();
 		System.out.println(storeService.getClass().getName());
 		System.out.println(Arrays.asList(storeService.getClass().getInterfaces()));
 		storeService = TracingAspects.decorate(storeService);

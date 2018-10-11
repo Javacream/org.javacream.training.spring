@@ -25,7 +25,7 @@
 		<property name="target" ref="simpleStoreService" />
 	</bean>
  	-->
-	<bean class="org.javacream.store.impl.JdbcStoreService" id="simpleStoreService" autowire-candidate="true"></bean>
+	<bean class="org.javacream.store.impl.SimpleStoreService" id="simpleStoreService" autowire-candidate="true"></bean>
 	<bean
 		class="org.javacream.books.warehouse.decorators.SerializingBooksService"
 		id="serializingBooksService"  primary="true">

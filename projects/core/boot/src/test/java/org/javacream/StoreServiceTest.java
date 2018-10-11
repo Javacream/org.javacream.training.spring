@@ -17,7 +17,7 @@ public class StoreServiceTest {
 		int stock = storeService.getStock("book", "ISBN1");
 		Assert.assertTrue(stock == 42);
 		int dvdStock = storeService.getStock("dvd", "ISBN1");
-		Assert.assertTrue(dvdStock == 0);
+		Assert.assertTrue(dvdStock == 42);
 		
 	}
 }

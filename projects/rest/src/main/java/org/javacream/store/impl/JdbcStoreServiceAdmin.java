@@ -56,21 +56,5 @@ public class JdbcStoreServiceAdmin implements StoreServiceAdmin {
 			}
 
 		});
-		try {
-			this.required();
-		} catch (RuntimeException e) {
-			//OK
-		}
 	}
-	//WAHRSCHEINLICH EIN GROBER FEHLER
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void requiresNew() {
-		throw new RuntimeException("TEST-ONLY!");
-	}
-
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void required() {
-		throw new RuntimeException("TEST-ONLY!");
-	}
-
 }
