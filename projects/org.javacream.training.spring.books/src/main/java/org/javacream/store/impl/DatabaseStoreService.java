@@ -6,8 +6,10 @@ import javax.persistence.Query;
 
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public final class DatabaseStoreService implements StoreService {
+@Component
+public class DatabaseStoreService implements StoreService {
 	
 	@Autowired private EntityManager entityManager;
 	@Override

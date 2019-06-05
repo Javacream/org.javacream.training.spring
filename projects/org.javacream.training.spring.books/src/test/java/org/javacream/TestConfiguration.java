@@ -24,8 +24,7 @@ public class TestConfiguration {
 	}
 
 	@Bean
-	public StoreService storeService() {
-		DatabaseStoreService service = new DatabaseStoreService();
+	public StoreService storeService(DatabaseStoreService service) {
 		AuditingDecorator auditingDecorator = new AuditingDecorator();
 		auditingDecorator.setStoreService(service);
 		return auditingDecorator;
