@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ActiveProfiles("test") 
 public class DatabaseTest {
 
-	@Autowired DatabaseDemo demo;;
+	@Autowired DatabaseDemo demo;
 	@Test public void contextLoads() {
 		
 	}

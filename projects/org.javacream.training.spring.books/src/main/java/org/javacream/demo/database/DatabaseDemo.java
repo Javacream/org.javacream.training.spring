@@ -2,7 +2,6 @@ package org.javacream.demo.database;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.sql.DataSource;

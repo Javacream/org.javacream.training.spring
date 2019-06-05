@@ -1,6 +1,5 @@
 package org.javacream.store.impl;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -8,7 +7,7 @@ import javax.persistence.Query;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class DatabaseStoreService implements StoreService {
+public final class DatabaseStoreService implements StoreService {
 	
 	@Autowired private EntityManager entityManager;
 	@Override
