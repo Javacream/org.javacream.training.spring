@@ -1,7 +1,7 @@
 package org.javacream;
 
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Profile;
 public class ApplicationConfiguration {
 	
 	@Bean public StoreService storeService() {
-		SimpleStoreService service = new SimpleStoreService();
-		service.setStock(42);
+		DatabaseStoreService service = new DatabaseStoreService();
 		return service;
 	}
 }
