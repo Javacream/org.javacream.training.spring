@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("test")
+//@EntityScan("org.javacream")
 public class TestConfiguration {
 
 	@Autowired
