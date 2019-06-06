@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ApplicationTest {
 
 	@Autowired BooksService booksService;
-	//@Autowired IsbnGenerator isbnGenerator;
 	@Test public void contextLoads() {
 		
 	}

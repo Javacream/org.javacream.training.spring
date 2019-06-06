@@ -52,6 +52,7 @@ public class CatService {
 		Cat searchResult4 = entityManager.merge(cat);
 		System.out.println(searchResult3.getFurColor());
 		cat.setFurColor("yellow");
+		System.out.println(searchResult4);
 
 	}// commit: Alle attached objects werden mit der db synchronisiert
 
