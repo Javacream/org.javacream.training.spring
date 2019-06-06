@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,6 +23,10 @@ public class BooksRepositoryTest {
 		book.setTitle("Spring Data in Action");
 		book.setPrice(39.99);
 		booksRepository.save(book);
+		
 		System.out.println(booksRepository.findByTitle("Spring Data in Action"));
+		Book example = new Book();
+		example.setPrice(39.99);
+		System.out.println(booksRepository.findAll(Example.of(example)));
 	}
 }

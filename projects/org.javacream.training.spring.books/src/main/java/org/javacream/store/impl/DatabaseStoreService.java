@@ -18,7 +18,7 @@ public class DatabaseStoreService implements StoreService {
 		query.setParameter("cat", category);
 		query.setParameter("item", item);
 		try {
-			Object result = query.getFirstResult();
+			Object result = query.getSingleResult();
 			return (int)result;
 		}
 		catch(NoResultException e) {

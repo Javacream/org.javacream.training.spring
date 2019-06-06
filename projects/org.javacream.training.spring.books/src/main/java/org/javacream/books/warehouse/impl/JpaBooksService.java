@@ -2,6 +2,7 @@ package org.javacream.books.warehouse.impl;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
@@ -67,7 +68,7 @@ public class JpaBooksService implements BooksService {
 	}
 
 	public Collection<Book> findAllBooks() {
-		return booksRepository.findAll();
+		return booksRepository.findAll().stream().map((Book b) -> {b.setAvailable(storeService.getStock("books", b.getIsbn()) > 0); return b;}).collect(Collectors.toList());
 	}
 
 
