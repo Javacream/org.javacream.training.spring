@@ -6,9 +6,8 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.impl.MapBooksService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class BooksApplication {
 
 	@Autowired private MapBooksService mapBooksService;
