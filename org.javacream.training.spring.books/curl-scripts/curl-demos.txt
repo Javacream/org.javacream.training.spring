@@ -1,0 +1,2 @@
+s:\curl -X POST -H "Accept: text/plain" http://localhost:8080/isbngenerator
+s:\curl -X GET -H "Accept: text/plain" http://localhost:8080/store/books/isbn1
