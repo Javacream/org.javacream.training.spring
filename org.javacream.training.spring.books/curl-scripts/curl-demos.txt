@@ -1,2 +1,7 @@
 s:\curl -X POST -H "Accept: text/plain" http://localhost:8080/isbngenerator
 s:\curl -X GET -H "Accept: text/plain" http://localhost:8080/store/books/isbn1
+
+s:\curl -X GET http://localhost:8080/books/ISBN1
+s:\curl -X DELETE http://localhost:8080/books/ISBN1
+s:\curl -X PUT -H "Content-Type: application/json" -d @updateBook.json http://localhost:8080/books
+s:\curl -X POST http://localhost:8080/books?title=Spring
