@@ -1,11 +1,12 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.commons.lang3.SerializationUtils;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
@@ -14,25 +15,17 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class MapBooksService implements BooksService {
+public class DatabaseBooksService implements BooksService {
 
 	@Autowired
-	//@Qualifier("sequence")
-	//@Resource(name = "cig")
 	@SequenceStrategy
 	private IsbnGenerator isbnGenerator;
-	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
-	
-	{
-		books = new HashMap<String, Book>();
-	}
 
-	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -41,48 +34,57 @@ public class MapBooksService implements BooksService {
 		this.isbnGenerator = isbnGenerator;
 	}
 
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Transactional
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		entityManager.persist(book);
 		return isbn;
 	}
 
 	public IsbnGenerator getIsbnGenerator() {
 		return isbnGenerator;
 	}
+
+	@Transactional
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
-		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
-					isbn);
+		try {
+			Book result = entityManager.find(Book.class, isbn);
+			result.setAvailable(storeService.getStock("books", isbn) > 0);
+			return result;
+		} catch (NoResultException nre) {
+			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
-		result.setAvailable(storeService.getStock("books", isbn) > 0);
-		
-		return SerializationUtils.clone(result);
 	}
 
+	@Transactional
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue)); 
-		return bookValue;
-	}
-
-	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
-			throw new BookException(
-					BookException.BookExceptionType.NOT_DELETED, isbn);
+		try {
+			entityManager.merge(bookValue);
+			return bookValue;
+		} catch (Exception nre) {
+			throw new BookException(BookException.BookExceptionType.NOT_FOUND, bookValue.getIsbn());
 		}
 	}
 
+	@Transactional
+	public void deleteBookByIsbn(String isbn) throws BookException {
+		try {
+			Book toDelete = entityManager.getReference(Book.class, isbn);
+			entityManager.remove(toDelete);
+		} catch (Exception nre) {
+			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
+		}
+	}
 
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
+		TypedQuery<Book> query = entityManager.createQuery("select b from Book as b", Book.class);
+		return query.getResultList();
 	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
-	
+
 }

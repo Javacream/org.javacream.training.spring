@@ -25,7 +25,7 @@ public class DatabaseStoreService implements StoreService {
 			Integer result = (Integer) query.getSingleResult();
 			return result;
 		} catch (Exception e) {
-			return 0;
+			return 0; 
 		}
 	}
 

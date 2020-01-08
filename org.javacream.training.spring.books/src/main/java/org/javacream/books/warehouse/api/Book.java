@@ -2,21 +2,27 @@ package org.javacream.books.warehouse.api;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Entity
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private String isbn;
 
 	private String title;
 
 	private double price;
 
+	@Transient
 	private boolean available;
 
 	public String getIsbn() {

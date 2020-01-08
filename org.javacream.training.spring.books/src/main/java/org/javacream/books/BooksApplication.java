@@ -4,13 +4,13 @@ import javax.annotation.PostConstruct;
 
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
-import org.javacream.books.warehouse.impl.MapBooksService;
+import org.javacream.books.warehouse.impl.DatabaseBooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 //@Component
 public class BooksApplication {
 
-	@Autowired private MapBooksService mapBooksService;
+	@Autowired private DatabaseBooksService mapBooksService;
 	@PostConstruct
 	public void doBooksApplication() {
 		System.out.println("Starting Books-App");
