@@ -3,7 +3,6 @@ package org.javacream.books.warehouse.impl;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -57,7 +56,7 @@ public class DatabaseBooksService implements BooksService {
 			Book result = entityManager.find(Book.class, isbn);
 			result.setAvailable(storeService.getStock("books", isbn) > 0);
 			return result;
-		} catch (NoResultException nre) {
+		} catch (NullPointerException e) {
 			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 	}
@@ -74,12 +73,12 @@ public class DatabaseBooksService implements BooksService {
 
 	@Transactional
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		try {
-			Book toDelete = entityManager.getReference(Book.class, isbn);
+			Book toDelete = entityManager.find(Book.class, isbn);
+			if (toDelete == null){
+				throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
+				
+			}
 			entityManager.remove(toDelete);
-		} catch (Exception nre) {
-			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
-		}
 	}
 
 	public Collection<Book> findAllBooks() {
