@@ -1,1 +1,0 @@
-java -jar s:\h2.jar -tcpAllowOthers -webAllowOthers
