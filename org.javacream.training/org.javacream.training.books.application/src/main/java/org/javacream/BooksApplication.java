@@ -15,7 +15,9 @@ public class BooksApplication {
 	@Autowired private BooksService booksService;
 	public static void main(String[] args) {
 		System.out.println("starting BooksApplication...");
-		SpringApplication.run(BooksApplication.class, args);
+		SpringApplication application = new SpringApplication(BooksApplication.class);
+		application.setAdditionalProfiles("prod");
+		application.run(args);
 		System.out.println("finished BooksApplication");
 	}
 	

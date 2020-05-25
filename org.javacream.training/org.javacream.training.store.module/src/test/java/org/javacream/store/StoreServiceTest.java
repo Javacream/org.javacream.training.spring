@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-//@ActiveProfiles("test")
+@ActiveProfiles("test")
 public class StoreServiceTest {
 
 	@Autowired private StoreService storeService;
@@ -20,6 +20,6 @@ public class StoreServiceTest {
 		Assert.assertNotNull(storeService);
 	}
 	@Test public void configurationOk() {
-		Assert.assertEquals(42, storeService.getStock("cat", "item"));
+		Assert.assertEquals(0, storeService.getStock("cat", "item"));
 	}
 }

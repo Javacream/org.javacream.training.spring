@@ -2,9 +2,11 @@ package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("prod")
 public class SimpleStoreService implements StoreService {
 
 	@Value("${store.defaultStock}")
@@ -12,6 +14,7 @@ public class SimpleStoreService implements StoreService {
 	
 	@Override
 	public int getStock(String category, String item) {
+		System.out.println(this);
 		return stock;
 	}
 
