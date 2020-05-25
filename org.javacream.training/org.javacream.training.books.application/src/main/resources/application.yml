@@ -1,0 +1,5 @@
+isbngenerator:
+  prefix: TEST-ISBN
+  countryCode: -dk
+store:
+  defaultStock: 42

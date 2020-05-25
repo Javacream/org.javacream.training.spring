@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimpleStoreService implements StoreService {
 
-	@Value("${defaultStock}")
+	@Value("${store.defaultStock}")
 	private int stock;
 	
 	@Override
