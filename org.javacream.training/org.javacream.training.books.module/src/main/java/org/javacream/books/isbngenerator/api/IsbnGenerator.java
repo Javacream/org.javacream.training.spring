@@ -1,12 +1,26 @@
 package org.javacream.books.isbngenerator.api;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public interface IsbnGenerator {
 
 	public abstract String next();
 	
-	interface Strategy{
-		public static final String RANDOM = "random";
-		public static final String SEQUENCE = "sequence";
-	}
 
-}
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
+	@Qualifier
+	public @interface RandomStrategy{
+		
+	}
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
+	@Qualifier
+	public @interface SequenceStrategy{
+		
+	}}
