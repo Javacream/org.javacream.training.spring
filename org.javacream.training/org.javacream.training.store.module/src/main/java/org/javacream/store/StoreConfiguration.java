@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
 @SpringBootApplication
 public class StoreConfiguration {
 
-	@Bean @Profile("java_config") StoreService storeService(DataSource dataSource, EntityManager entityManager) {
+	@Bean @Profile({"test", "java_config"}) StoreService storeService(DataSource dataSource, EntityManager entityManager) {
 		return new TestStoreServicePlain(dataSource, entityManager);
 	}
 }

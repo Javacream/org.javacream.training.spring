@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("autowired attribute")
+@Profile({"test", "autowired attribute"})
 public class TestStoreService implements StoreService {
 
 	@Autowired private DataSource dataSource;

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("constructor")
+@Profile({"test", "constructor"})
 public class TestStoreServiceWithConstructorInjection implements StoreService {
 
 	private DataSource dataSource;

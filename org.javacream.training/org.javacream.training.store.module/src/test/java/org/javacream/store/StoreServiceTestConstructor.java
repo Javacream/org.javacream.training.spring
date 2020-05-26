@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@ActiveProfiles("constructor")
+@ActiveProfiles({"test", "constructor"})
 public class StoreServiceTestConstructor {
 
 	@Autowired private StoreService storeService;
