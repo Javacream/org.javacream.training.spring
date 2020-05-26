@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@ActiveProfiles("autowired attribute")
-public class StoreServiceTest {
+@ActiveProfiles("java_config")
+public class StoreServiceTestPlain {
 
 	@Autowired private StoreService storeService;
 	
