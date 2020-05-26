@@ -9,16 +9,16 @@ import javax.persistence.PersistenceContext;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
-import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.books.warehouse.api.BookException.BookExceptionType;
+import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
-@Transactional(propagation = Propagation.REQUIRED, rollbackFor = BookException.class)
+@Repository
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = {BookException.class} )
 public class JpaBooksService implements BooksService {
 
 	@PersistenceContext
@@ -78,6 +78,7 @@ public class JpaBooksService implements BooksService {
 			entityManager.remove(toDelete);
 		} catch (EntityNotFoundException e) {
 			throw new BookException(BookExceptionType.NOT_DELETED, e.getMessage());
+			//throw new RuntimeException(e.getMessage());
 		}
 	}
 
