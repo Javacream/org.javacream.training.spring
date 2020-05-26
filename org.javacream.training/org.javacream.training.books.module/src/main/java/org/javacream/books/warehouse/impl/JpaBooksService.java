@@ -1,11 +1,10 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.commons.lang3.SerializationUtils;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
@@ -13,19 +12,19 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class MapBooksService implements BooksService {
+@Transactional(propagation = Propagation.REQUIRED)
+public class JpaBooksService implements BooksService {
 
+	@PersistenceContext private EntityManager entityManager;
+	
 	@Autowired @IsbnGenerator.RandomStrategy
 	private IsbnGenerator isbnGenerator;
-	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
-
-	{
-		books = new HashMap<String, Book>();
-	}
 
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
@@ -40,7 +39,7 @@ public class MapBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		entityManager.persist(book);
 		return isbn;
 	}
 
@@ -49,33 +48,37 @@ public class MapBooksService implements BooksService {
 	}
 
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
+		Book result = entityManager.find(Book.class, isbn);
 		if (result == null) {
 			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
 
-		return SerializationUtils.clone(result);
+		return result;
 	}
 
-	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue));
-		return bookValue;
+	public Book updateBook(Book book) throws BookException {
+		entityManager.merge(book);
+		return book;
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
+		//Book toDelete = entityManager.find(Book.class, isbn); -> falsch: Buch zum Löschen komplett laden???
+		Book toDelete = entityManager.getReference(Book.class, isbn); //So ists richtig
+		if (toDelete== null) {
 			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
 		}
+//		//Alternativ: Native Query
+//		Query query = entityManager.createNativeQuery("delete from BOOK_TABLE where isbn=:isbn");
+//		query.setParameter("isbn", isbn);
+//		query.executeUpdate();
+		entityManager.remove(toDelete);
 	}
 
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
+		String jpaQuery = "select b from BookEntity as book";
+		return entityManager.createQuery(jpaQuery, Book.class).getResultList();
 	}
 
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
 
 }
