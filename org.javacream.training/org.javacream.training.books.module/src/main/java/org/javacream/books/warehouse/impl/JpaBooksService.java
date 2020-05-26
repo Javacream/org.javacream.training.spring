@@ -76,7 +76,7 @@ public class JpaBooksService implements BooksService {
 	}
 
 	public Collection<Book> findAllBooks() {
-		String jpaQuery = "select b from BookEntity as book";
+		String jpaQuery = "select book from BookEntity as book";
 		return entityManager.createQuery(jpaQuery, Book.class).getResultList();
 	}
 
