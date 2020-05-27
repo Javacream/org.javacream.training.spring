@@ -25,7 +25,7 @@ public class JpaBooksService implements BooksService {
 	private EntityManager entityManager;
 
 	@Autowired
-	@IsbnGenerator.RandomStrategy
+	@IsbnGenerator.SequenceStrategy
 	private IsbnGenerator isbnGenerator;
 	@Autowired
 	private StoreService storeService;
