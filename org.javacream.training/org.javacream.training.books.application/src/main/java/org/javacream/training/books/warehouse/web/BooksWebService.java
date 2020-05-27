@@ -22,37 +22,37 @@ public class BooksWebService {
 	private BooksService booksService;
 
 	@PostMapping(path = "books")
-	public String newBook(@RequestParam("title") String title) throws BookException {
+	public String newBook(@RequestParam("title") String title){
 		try {
 			return booksService.newBook(title);
-		} catch (Exception be) {
+		} catch (BookException be) {
 			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 	}
 
 	@GetMapping(path = "books/{isbn}", produces = "application/json")
-	public Book findBookByIsbn(@PathVariable("isbn") String isbn) throws BookException {
+	public Book findBookByIsbn(@PathVariable("isbn") String isbn){
 		try {
 			return booksService.findBookByIsbn(isbn);
-		} catch (Exception be) {
+		} catch (BookException be) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@PutMapping(path = "books", consumes = "application/json")
-	public Book updateBook(@RequestBody Book book) throws BookException {
+	public Book updateBook(@RequestBody Book book) {
 		try {
 			return booksService.updateBook(book);
-		} catch (Exception be) {
+		} catch (BookException be) {
 			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 	}
 
 	@DeleteMapping(path = "books/{isbn}")
-	public void deleteBookByIsbn(@PathVariable("isbn") String isbn) throws BookException {
+	public void deleteBookByIsbn(@PathVariable("isbn") String isbn) {
 		try {
 			booksService.deleteBookByIsbn(isbn);
-		} catch (Exception be) {
+		} catch (BookException be) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT);
 		}
 	}
