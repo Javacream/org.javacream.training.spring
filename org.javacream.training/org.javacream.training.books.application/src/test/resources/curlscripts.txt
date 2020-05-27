@@ -1,0 +1,5 @@
+#IsbnGenerator
+curl -verbose://localhost:8080/isbn
+
+#StoreService
+curl -verbose -X GET http://localhost:8080/store/books/ISBN1
