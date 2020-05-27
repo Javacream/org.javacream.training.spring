@@ -34,7 +34,7 @@ public class ContentApplication {
 			}
 		}
 		try {
-			return new String(Files.readAllBytes(Paths.get("/home/rainer/content/" + id)));
+			return new String(Files.readAllBytes(Paths.get(dir + id)));
 		} catch (IOException e) {
 			return "NOT FOUND";
 		}
