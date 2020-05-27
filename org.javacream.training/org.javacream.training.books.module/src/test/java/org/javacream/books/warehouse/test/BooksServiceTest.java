@@ -1,6 +1,7 @@
 package org.javacream.books.warehouse.test;
 
 import org.javacream.books.warehouse.api.BooksService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class BooksServiceTest {
 
 	@Autowired private BooksService booksService;
+
 	@Test
-	
 	public void testBusinessObjects() {
 		TestActor.doTest(booksService);
-		
-	
 	}
 
-	
+	@Test public void testISBN1HasContent() {
+		String content = booksService.getContentForIsbn("ISBN1");
+		Assert.assertNotNull(content);
+		System.out.println(content);
+	}
 
 }

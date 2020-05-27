@@ -13,4 +13,6 @@ public interface BooksService{
 	void deleteBookByIsbn(String isbn) throws BookException;
 	
 	Collection<Book> findAllBooks();
+	
+	String getContentForIsbn(String isbn);
 }

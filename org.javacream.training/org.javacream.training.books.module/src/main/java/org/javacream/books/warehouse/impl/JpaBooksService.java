@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 
+import org.javacream.books.content.impl.ContentReader;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
@@ -29,7 +30,8 @@ public class JpaBooksService implements BooksService {
 	private IsbnGenerator isbnGenerator;
 	@Autowired
 	private StoreService storeService;
-
+	@Autowired ContentReader contentReader;
+	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -85,6 +87,11 @@ public class JpaBooksService implements BooksService {
 	public Collection<Book> findAllBooks() {
 		String jpaQuery = "select book from BookEntity as book";
 		return entityManager.createQuery(jpaQuery, Book.class).getResultList();
+	}
+
+	@Override
+	public String getContentForIsbn(String isbn) {
+		return contentReader.readFromContentService(isbn);
 	}
 
 }
