@@ -22,5 +22,9 @@ public class TestStoreServicePlain implements StoreService {
 		System.out.println("PLAIN: DataSource=" + this.dataSource + ", EntityManager=" + this.entityManager);
 		return 0;
 	}
+	@Override
+	public void updateStock(String string, String isbn, int i) {
+		
+	}
 
 }

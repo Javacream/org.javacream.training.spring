@@ -30,4 +30,9 @@ public class TestStoreService implements StoreService {
 		this.entityManager = entityManager;
 	}
 
+	@Override
+	public void updateStock(String string, String isbn, int i) {
+		
+	}
+
 }

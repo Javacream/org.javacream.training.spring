@@ -27,5 +27,9 @@ public class TestStoreServiceWithConstructorInjection implements StoreService {
 		System.out.println("CONSTRUCTOR: DataSource=" + this.dataSource + ", EntityManager=" + this.entityManager);
 		return 0;
 	}
+	@Override
+	public void updateStock(String string, String isbn, int i) {
+		
+	}
 
 }
