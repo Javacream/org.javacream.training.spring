@@ -2,19 +2,19 @@
 curl -verbose://localhost:8080/isbn
 
 #StoreService
-curl -verbose -X GET http://localhost:8080/store/books/ISBN1
+curl -verbose -X GET http://localhost:8088/store/books/ISBN1
 
 #BooksService
 
 # Create
-curl -verbose http://localhost:8080/books?title=Spring
+curl -verbose -X POST http://localhost:8088/books?title=Spring
 
 #Read
-curl -verbose http://localhost:8080/books/TEST-ISBN0-dk
+curl -verbose -X GET http://localhost:8088/books/TEST-ISBN0-dk
 
 
 # UPDATE
-curl -X PUT -H "Content-Type: application/json" -d @updateBook.json http://localhost:8080/books
+curl -X PUT -H "Content-Type: application/json" -d @updateBook.json http://localhost:8088/books
 
 # DELETE
-curl -X DELETE http://localhost:8080/books/TEST-ISBN0-dk
+curl -X DELETE http://localhost:8088/books/TEST-ISBN0-dk

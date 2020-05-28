@@ -3,7 +3,7 @@ package org.javacream.books.warehouse.test;
 import java.util.Optional;
 
 import org.javacream.books.warehouse.api.Book;
-import org.javacream.books.warehouse.api.BookRepository;
+import org.javacream.books.warehouse.api.BooksRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @ActiveProfiles("test")
 public class BookRepositoryTest {
-	@Autowired private BookRepository bookRepository;
+	@Autowired private BooksRepository bookRepository;
 	
 	@Test public void contextLoads() {
 	}

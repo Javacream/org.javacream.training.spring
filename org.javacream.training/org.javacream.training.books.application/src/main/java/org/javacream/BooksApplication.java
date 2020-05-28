@@ -11,6 +11,6 @@ public class BooksApplication {
 		SpringApplication application = new SpringApplication(BooksApplication.class);
 		application.setAdditionalProfiles("prod");
 		application.run(args);
-		System.out.println("finished BooksApplication");
+		System.out.println("BooksApplication ready");
 	}
 }

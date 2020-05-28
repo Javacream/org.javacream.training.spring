@@ -5,6 +5,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @Profile("prod")
 @Transactional(propagation = Propagation.REQUIRED)
+@EnableBinding(Sink.class)
 public class DatabaseStoreService implements StoreService {
 
 	@PersistenceContext
@@ -33,6 +37,17 @@ public class DatabaseStoreService implements StoreService {
 			result = 0;
 		}
 		return result;
+	}
+	
+	@StreamListener(Sink.INPUT)
+	public void updateStock(String isbn) {
+		System.out.println("I S B N " + isbn);
+		String sql = "insert into store (category, item, stock) values ('books', :isbn, 10)";
+		Query query = entityManager.createNativeQuery(sql);
+		query.setParameter("isbn", isbn);
+		query.executeUpdate();
+		
+		
 	}
 
 }

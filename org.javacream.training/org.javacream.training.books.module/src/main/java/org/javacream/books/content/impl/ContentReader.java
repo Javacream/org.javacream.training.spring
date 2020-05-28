@@ -19,7 +19,7 @@ public class ContentReader {
 	private RestTemplate restTemplate;
 
 	public String readFromContentService(String id) {
-		Supplier<String> supplier = () -> restTemplate.getForObject(contentServiceEndpointUrl + id + "?delay=3000", String.class);
+		Supplier<String> supplier = () -> restTemplate.getForObject(contentServiceEndpointUrl + id + "?delay=100", String.class);
 		return circuitBreakerFactory.create("contentCircuitBreaker").run(supplier);
 	}
 }
