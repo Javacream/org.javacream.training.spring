@@ -1,4 +1,4 @@
-package org.javacream.books.content.impl;
+package org.javacream.demo.eventconsumer;
 
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
