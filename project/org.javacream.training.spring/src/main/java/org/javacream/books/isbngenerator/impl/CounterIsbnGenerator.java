@@ -1,12 +1,11 @@
 package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("sequence")
+@IsbnGenerator.SequenceStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 	@Value("${isbngenerator.prefix}")
 	private String prefix;
