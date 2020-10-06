@@ -1,33 +1,21 @@
 package org.javacream.store;
 
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.SimpleStoreService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
 
-//@SpringBootTest(classes=StoreServiceTest.InnerStoreServiceTestConfiguration.class)
-@SpringBootTest
+@SpringBootTest(classes = {StoreServiceConfiguration.class})
 
-//@SpringBootTest(classes=OuterStoreServiceTestConfiguration.class)
 public class StoreServiceTest {
 
-	@Autowired private StoreService storeService;
-	//@Autowired @IsbnGenerator.SequenceStrategy private IsbnGenerator isbnGenerator;
-	
-	@Test public void testStoreService() {
-		System.out.println(storeService.getStock("", ""));
+	@Autowired @Qualifier("actor1") private StoreService storeServiceForActor1;
+	@Autowired @Qualifier("actor2") private StoreService storeServiceForActor2;
+	@Test public void testStoreServiceForActor1() {
+		System.out.println("Actor 1: " + storeServiceForActor1.getStock("", ""));
 	}
-	//@SpringBootConfiguration
-	public static class InnerStoreServiceTestConfiguration{
-		@Value("${defaultStock}") private int stock;
-		
-		@Bean public StoreService storeService() {
-			SimpleStoreService simpleStoreService = new SimpleStoreService();
-			simpleStoreService.setStock(stock);
-			return simpleStoreService;
-		}
+	@Test public void testStoreServiceForActor2() {
+		System.out.println("Actor 2: " + storeServiceForActor2.getStock("", ""));
 	}
 }
