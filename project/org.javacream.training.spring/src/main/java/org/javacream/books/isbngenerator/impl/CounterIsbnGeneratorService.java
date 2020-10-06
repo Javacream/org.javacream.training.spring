@@ -1,12 +1,12 @@
 package org.javacream.books.isbngenerator.impl;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-@IsbnGenerator.SequenceStrategy
-public class CounterIsbnGenerator implements IsbnGenerator {
+@IsbnGeneratorService.SequenceStrategy
+public class CounterIsbnGeneratorService implements IsbnGeneratorService {
 	@Value("${isbngenerator.prefix}")
 	private String prefix;
 	@Value("${isbngenerator.countryCode}")

@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(classes = {StoreServiceConfiguration.class})
-
+@EnableAspectJAutoProxy(proxyTargetClass = true)
+@ActiveProfiles("test")
 public class StoreServiceTest {
 
 	@Autowired @Qualifier("actor1") private StoreService storeServiceForActor1;

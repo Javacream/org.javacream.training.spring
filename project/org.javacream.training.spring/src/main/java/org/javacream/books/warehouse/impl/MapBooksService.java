@@ -5,9 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.SerializationUtils;
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
@@ -21,7 +20,7 @@ import org.springframework.stereotype.Repository;
 public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy
-	private IsbnGenerator isbnGenerator;
+	private IsbnGeneratorService isbnGenerator;
 	private Map<String, Book> books;
 	@Autowired @Qualifier("actor2")
 	private StoreService storeService;
@@ -35,7 +34,7 @@ public class MapBooksService implements BooksService {
 		this.storeService = storeService;
 	}
 
-	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
+	public void setIsbnGenerator(IsbnGeneratorService isbnGenerator) {
 		this.isbnGenerator = isbnGenerator;
 	}
 
@@ -48,7 +47,7 @@ public class MapBooksService implements BooksService {
 		return isbn;
 	}
 
-	public IsbnGenerator getIsbnGenerator() {
+	public IsbnGeneratorService getIsbnGenerator() {
 		return isbnGenerator;
 	}
 	public Book findBookByIsbn(String isbn) throws BookException {
@@ -59,11 +58,11 @@ public class MapBooksService implements BooksService {
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
 		
-		return SerializationUtils.clone(result);
+		return result;
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue)); 
+		books.put(bookValue.getIsbn(), bookValue); 
 		return bookValue;
 	}
 
@@ -77,7 +76,7 @@ public class MapBooksService implements BooksService {
 
 
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
+		return new ArrayList<Book>(books.values());
 	}
 	public void setBooks(Map<String, Book> books) {
 		this.books = books;

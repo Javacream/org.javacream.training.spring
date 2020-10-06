@@ -1,11 +1,12 @@
 package org.javacream;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.impl.SimpleStoreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -13,10 +14,10 @@ public class ApplicationTest {
 
 	@Autowired
 	private SimpleStoreService simpleStoreService;
-	@Autowired
+	@Autowired @Qualifier("actor1")
 	private StoreService storeService;
-	@Autowired @IsbnGenerator.RandomStrategy
-	private IsbnGenerator isbnGenerator;
+	@Autowired @IsbnGeneratorService.RandomStrategy
+	private IsbnGeneratorService isbnGenerator;
 
 	@Test
 	void storeService() {
