@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan(basePackages = "org.javacream.store")
+@ComponentScan(basePackages = {"org.javacream.store", "org.javacream.util"})
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class StoreServiceConfiguration {
 	@Bean @Qualifier("actor1") public StoreService forActor1(SimpleStoreService simpleStoreService) {
 		return simpleStoreService;

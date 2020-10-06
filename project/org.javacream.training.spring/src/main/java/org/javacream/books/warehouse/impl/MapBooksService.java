@@ -23,7 +23,7 @@ public class MapBooksService implements BooksService {
 	@Autowired @SequenceStrategy
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
-	@Autowired
+	@Autowired @Qualifier("actor2")
 	private StoreService storeService;
 	
 	{
