@@ -2,7 +2,7 @@ package org.javacream;
 
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ApplicationTest {
 
 	@Autowired
-	private SimpleStoreService simpleStoreService;
+	private DatabaseStoreService simpleStoreService;
 	@Autowired @Qualifier("actor1")
 	private StoreService storeService;
 	@Autowired @IsbnGeneratorService.RandomStrategy
