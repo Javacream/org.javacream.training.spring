@@ -21,7 +21,7 @@ public class ApplicationTest {
 
 	@Test
 	void storeService() {
-		int result = storeService.getStock("book", "ISBN");
+		int result = storeService.getStock("books", "ISBN1");
 		Assertions.assertEquals(42, result);
 	}
 
@@ -35,6 +35,5 @@ public class ApplicationTest {
 	void contextLoads() {
 		Assertions.assertNotNull(simpleStoreService);
 		Assertions.assertNotNull(storeService);
-		Assertions.assertTrue(simpleStoreService == storeService);
 	}
 }
