@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class MapBooksService implements BooksService {
+public class JpaBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy
 	private IsbnGeneratorService isbnGenerator;
