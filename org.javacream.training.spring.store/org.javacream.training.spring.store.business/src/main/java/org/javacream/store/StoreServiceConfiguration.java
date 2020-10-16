@@ -4,11 +4,12 @@ import org.javacream.store.api.StoreService;
 import org.javacream.store.impl.DatabaseStoreService;
 import org.javacream.store.impl.decorator.AuditingStoreService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@SpringBootApplication
 @ComponentScan(basePackages = {"org.javacream.store", "org.javacream.util"})
 public class StoreServiceConfiguration {
 	@Bean @Qualifier("actor1") public StoreService forActor1(DatabaseStoreService simpleStoreService) {
