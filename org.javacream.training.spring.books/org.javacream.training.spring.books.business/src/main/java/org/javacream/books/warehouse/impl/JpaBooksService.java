@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 @Repository
 @Transactional
@@ -92,4 +93,13 @@ public class JpaBooksService implements BooksService {
 		return entityManager.createQuery("select b from Book b", Book.class).getResultList();
 	}
 
+	@Autowired
+	@Qualifier("store")
+	private RestTemplate restTemplate;
+
+	@Override
+	public String getContentForIsbn(String isbn) {
+		return restTemplate.getForObject("http://localhost:8183/api/content/" + isbn, String.class);
+
+	}
 }

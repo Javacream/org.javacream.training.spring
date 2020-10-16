@@ -36,5 +36,10 @@ public class CallByValueBooksService implements BooksService{
 		public Collection<Book> findAllBooks() {
 			return SerializationUtils.clone(new ArrayList<Book>(booksService.findAllBooks()));
 		}
+
+		@Override
+		public String getContentForIsbn(String isbn) {
+			return SerializationUtils.clone(booksService.getContentForIsbn(isbn));
+		}
 		
 }
