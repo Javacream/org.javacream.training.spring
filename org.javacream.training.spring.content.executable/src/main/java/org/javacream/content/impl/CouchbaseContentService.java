@@ -28,7 +28,7 @@ public class CouchbaseContentService implements ContentService {
 		if (tag == null) {
 			throw new IllegalArgumentException("tag was null");
 		}
-		return contentRepository.findByTags(tag).stream().filter(content -> content.getTags().contains(tag)).map(content -> content.getId()).collect(Collectors.toList());
+		return contentRepository.findByTags(tag).stream().map(content -> content.getData()).collect(Collectors.toList());
 	}
 
 }

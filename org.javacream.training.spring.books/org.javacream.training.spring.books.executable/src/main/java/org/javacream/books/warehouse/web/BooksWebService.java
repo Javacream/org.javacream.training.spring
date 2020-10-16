@@ -63,5 +63,9 @@ public class BooksWebService {
 	public Collection<String> findAllIsbns() {
 		return booksService.findAllBooks().stream().map((book ) -> book.getIsbn()).collect(Collectors.toList());
 	}
+	@GetMapping(path = "api/books/content/{isbn}")
+	public String content(@PathVariable("isbn") String isbn){
+		return booksService.getContentForIsbn(isbn);
+	}
 
 }
