@@ -18,6 +18,11 @@
 			<artifactId>org.javacream.training.spring.books.business</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<version>2.2.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
