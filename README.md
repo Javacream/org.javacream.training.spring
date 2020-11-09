@@ -3,16 +3,16 @@
 ## Spring Training Project
 
 
-## Durchführung des Seminars vom 5.-6. und 15.-16.10.2020
+## Durchführung des Seminars vom 12.-13. und 26.-27.11.2020
 
 * Referent: Rainer Sawitzki, eMail: training@rainer-sawitzki.de
 
 * Beispiele
   * https://github.com/Javacream/org.javacream.training.spring
-    *  Branch arvato_5.10.2020
+    *  Branch arvato_12.11.2020
     
 * Digitales Flipchart
-  * https://docs.google.com/presentation/d/1qlh1OQ0K9ZoXz5v111nqea3ByC5To1D7MGC4PD7lncw/edit?usp=sharing
+  * https://docs.google.com/presentation/d/1gzoG2ZT1vBZ5m1ySFEBnU25lVXi8eC1wis5RE_oQXoI/edit?usp=sharing
 
 * Seminarzeiten
   * 16 Unterrichtseinheiten mit jeweils 90 Minuten
