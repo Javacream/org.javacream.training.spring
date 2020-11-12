@@ -3,8 +3,7 @@
 ## Spring Training Project
 
 
-## Durchführung des Seminars vom 5.-6. und 15.-16.10.2020
-
+## Durchführung des Seminars vom 12.-13. und 26.-27.11.2020
 * Referent: Rainer Sawitzki, eMail: training@rainer-sawitzki.de
 
 * Beispiele
