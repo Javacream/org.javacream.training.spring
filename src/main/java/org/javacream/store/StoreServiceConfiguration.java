@@ -12,12 +12,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = "org.javacream.store")
 public class StoreServiceConfiguration {
-	@Bean @Qualifier("forTest") public StoreService forBooksService(SimpleStoreService simpleStoreService, CountingStoreService countingStoreService) {
+	@Bean @Qualifier("forBooksService") public StoreService forBooksService(SimpleStoreService simpleStoreService, CountingStoreService countingStoreService) {
 		countingStoreService.setStoreService(simpleStoreService);
 		return countingStoreService;
 
 	}
-	@Bean @Qualifier("forBooksService") public StoreService storeService(SimpleStoreService simpleStoreService, AuditingStoreService auditingStoreService) {
+	@Bean @Qualifier("forTest") public StoreService storeService(SimpleStoreService simpleStoreService, AuditingStoreService auditingStoreService) {
 		auditingStoreService.setStoreService(simpleStoreService);
 		return auditingStoreService;
 
