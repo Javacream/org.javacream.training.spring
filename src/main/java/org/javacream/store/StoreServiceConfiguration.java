@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "org.javacream.store")
+@ComponentScan(basePackages = {"org.javacream.store", "org.javacream.util"})
 public class StoreServiceConfiguration {
 	@Bean @Qualifier("forBooksService") public StoreService forBooksService(SimpleStoreService simpleStoreService, CountingStoreService countingStoreService) {
 		countingStoreService.setStoreService(simpleStoreService);
