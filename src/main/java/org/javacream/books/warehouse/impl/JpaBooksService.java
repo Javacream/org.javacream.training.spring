@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
@@ -18,17 +21,14 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class MapBooksService implements BooksService {
+public class JpaBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy
 	private IsbnGeneratorService isbnGenerator;
-	private Map<String, Book> books;
 	@Autowired @Qualifier("forBooksService")
 	private StoreService storeService;
 	
-	{
-		books = new HashMap<String, Book>();
-	}
+	@PersistenceContext private EntityManager entityManager;
 
 	
 	public void setStoreService(StoreService storeService) {
@@ -78,9 +78,6 @@ public class MapBooksService implements BooksService {
 
 	public Collection<Book> findAllBooks() {
 		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
-	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
 	}
 	
 }

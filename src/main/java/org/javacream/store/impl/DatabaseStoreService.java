@@ -11,12 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DatabaseStoreService implements StoreService {
-	@PersistenceContext private EntityManager entityManager;
+	//@Autowired EntityManagerFactory entityManagerFactory;//Singleton
+	@PersistenceContext private EntityManager entityManager;//Request Scoped/Transaction Scoped
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public int getStock(String category, String item) {
-		
 		Query query = entityManager.createNativeQuery("select stock from store where category = :cat and item = :item");
 		query.setParameter("cat",  category);
 		query.setParameter("item",  item);
