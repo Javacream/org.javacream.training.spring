@@ -1,36 +1,35 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 
-import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
-import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
+import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { BookException.class })
 public class JpaBooksService implements BooksService {
 
-	@Autowired @SequenceStrategy
-	private IsbnGeneratorService isbnGenerator;
-	@Autowired @Qualifier("forBooksService")
-	private StoreService storeService;
-	
-	@PersistenceContext private EntityManager entityManager;
+	@PersistenceContext
+	private EntityManager entityManager;
 
-	
+	@Autowired
+	@IsbnGeneratorService.SequenceStrategy
+	private IsbnGeneratorService isbnGenerator;
+	@Autowired
+	private StoreService storeService;
+
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -44,40 +43,45 @@ public class JpaBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		entityManager.persist(book);
 		return isbn;
 	}
 
 	public IsbnGeneratorService getIsbnGenerator() {
 		return isbnGenerator;
 	}
+
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
+		Book result = entityManager.find(Book.class, isbn);
 		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
-					isbn);
+			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
-		
-		return SerializationUtils.clone(result);
+
+		return result;
 	}
 
-	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue)); 
-		return bookValue;
+	public Book updateBook(Book book) throws BookException {
+		entityManager.merge(book);
+		return book;
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
-			throw new BookException(
-					BookException.BookExceptionType.NOT_DELETED, isbn);
+		Book toDelete = entityManager.getReference(Book.class, isbn); // So ists richtig
+//		//Alternativ: Native Query
+//		Query query = entityManager.createNativeQuery("delete from BOOK where isbn=:isbn");
+//		query.setParameter("isbn", isbn);
+//		query.executeUpdate();
+		try {
+			entityManager.remove(toDelete);
+		} catch (EntityNotFoundException e) {
+			throw new BookException(BookExceptionType.NOT_DELETED, e.getMessage());
 		}
 	}
 
-
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
+		String jpaQuery = "select book from Book as book";
+		return entityManager.createQuery(jpaQuery, Book.class).getResultList();
 	}
-	
+
 }

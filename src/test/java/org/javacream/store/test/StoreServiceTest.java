@@ -5,7 +5,7 @@ import org.javacream.store.api.StoreService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -24,7 +24,7 @@ public class StoreServiceTest {
 		System.out.println(storeService.getStock("this", "that"));
 	}
 
-	@SpringBootConfiguration
+	@SpringBootApplication
 	@EnableAspectJAutoProxy(proxyTargetClass = true)
 	@ComponentScan("org.javacream.store")
 	public static class StoreServiceTestConfiguration {

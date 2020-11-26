@@ -3,10 +3,10 @@ package org.javacream.books.warehouse.test;
 import org.javacream.books.warehouse.api.BooksService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
@@ -19,9 +19,9 @@ public class BooksServiceSpringTest {
 		TestActor.doTest(booksService);
 	}
 	
-	@SpringBootConfiguration 
-	@EnableAspectJAutoProxy(proxyTargetClass = true)
+	@SpringBootApplication
 	@ComponentScan(basePackages= {"org.javacream.books", "org.javacream.store", "org.javacream.util.aspects"})
+	@EntityScan(basePackages = "org.javacream")
 	public static class BooksServiceTestConfiguration{
 		
 	}
