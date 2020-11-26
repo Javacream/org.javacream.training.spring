@@ -1,0 +1,1 @@
+create table demo (col_demo varchar(255))

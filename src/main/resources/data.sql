@@ -1,0 +1,1 @@
+insert into demo values ('Hello Database!')
