@@ -16,8 +16,8 @@ public class StoreWebService {
 
 	// localhost:8080/api/store/books/ISBN1
 	@GetMapping(path = "api/store/{category}/{item}")
-	public String getStockPath(@PathVariable("category") String category, @PathVariable("item") String item) {
-		return "STOCK: " + storeService.getStock(category, item);
+	public int getStockPath(@PathVariable("category") String category, @PathVariable("item") String item) {
+		return storeService.getStock(category, item);
 	}
 	/*
 	 * //localhost:8080/api/store?category=books&item=ISBN1

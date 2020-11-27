@@ -7,11 +7,11 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.javacream.books.store.StoreWebServiceReader;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
-import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -28,11 +28,8 @@ public class JpaBooksService implements BooksService {
 	@IsbnGeneratorService.SequenceStrategy
 	private IsbnGeneratorService isbnGenerator;
 	@Autowired
-	private StoreService storeService;
+	private StoreWebServiceReader storeService;
 
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
-	}
 
 	public void setIsbnGenerator(IsbnGeneratorService isbnGenerator) {
 		this.isbnGenerator = isbnGenerator;

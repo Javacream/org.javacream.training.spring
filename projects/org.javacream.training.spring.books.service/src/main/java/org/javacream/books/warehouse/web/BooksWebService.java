@@ -3,6 +3,7 @@ package org.javacream.books.warehouse.web;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.javacream.books.content.ContentWebServiceReader;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
@@ -23,6 +24,8 @@ public class BooksWebService {
 
 	@Autowired
 	private BooksService booksService;
+	@Autowired
+	private ContentWebServiceReader contentWebServiceReader;
 
 	@PostMapping(path = "api/books/{title}")
 	public String newBook(@PathVariable("title") String title) {
@@ -38,6 +41,14 @@ public class BooksWebService {
 		try {
 			return booksService.findBookByIsbn(isbn);
 		}catch(BookException e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+	}
+	@GetMapping(path = "api/books/content/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getContentForIsbn(@PathVariable ("isbn") String isbn){
+		try {
+			return contentWebServiceReader.getContentForIsbn(isbn);
+		}catch(Exception e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 	}
