@@ -19,7 +19,7 @@ import com.couchbase.client.java.query.N1qlQuery;
 
 @SpringBootApplication
 @RestController
-public class ContentApplication {
+public class ContentWebServiceApplication {
 
 		@Autowired ContentService contentService;
 		@Autowired
@@ -39,7 +39,7 @@ public class ContentApplication {
 		}
 		
 		public static void main(String[] args) {
-			SpringApplication.run(ContentApplication.class, args);
+			SpringApplication.run(ContentWebServiceApplication.class, args);
 		}
 		
 		@GetMapping (path = "api/content/{id}", produces = MediaType.APPLICATION_JSON_VALUE) public Content findById(@PathVariable("id") String id) {
