@@ -12,6 +12,7 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 
@@ -22,14 +23,12 @@ public class MapBooksService implements BooksService {
 	@Autowired
 	@IsbnGenerator.SequenceStrategy
 	private IsbnGenerator isbnGenerator;
+
+	@Autowired @Qualifier("testData")
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
 	
-	{
-		books = new HashMap<String, Book>();
-	}
-
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
