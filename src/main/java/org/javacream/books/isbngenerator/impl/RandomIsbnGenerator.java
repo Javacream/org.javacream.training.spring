@@ -4,9 +4,11 @@ import java.util.Random;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
+//@Qualifier("RandomStrategy")
+@IsbnGenerator.RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")

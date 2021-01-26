@@ -9,7 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class IsbnGeneratorTest {
-    @Autowired private IsbnGenerator isbnGenerator;
+    @Autowired @IsbnGenerator.RandomStrategy
+    private IsbnGenerator isbnGenerator;
     @Value("${isbngenerator.prefix}") private String expectedPrefix;
     @Value("${isbngenerator.countryCode}") private String expectedCountrycode;
 
