@@ -24,7 +24,7 @@ public class MapBooksService implements BooksService {
 	@IsbnGenerator.SequenceStrategy
 	private IsbnGenerator isbnGenerator;
 
-	@Autowired @Qualifier("testData")
+	@Autowired
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
