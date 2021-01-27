@@ -12,7 +12,7 @@ import java.util.Map;
 @Configuration
 @Profile("test")
 public class BooksTestConfiguration {
-    @Bean @Qualifier("testData")
+    @Bean
     Map<String, Book> testData(){
        Map<String, Book> data = new HashMap<>();
        Book b = new Book();

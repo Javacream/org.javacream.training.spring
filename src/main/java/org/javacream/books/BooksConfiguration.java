@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class BookConfiguration {
+@Profile("prod")
+public class BooksConfiguration {
         @Bean
         Map<String, Book> data(){
             Map<String, Book> data = new HashMap<>();
