@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6aefb6c-132c-4d47-87ee-a874d433e6ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/util/util/aspects/JdkTracingAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/util/aspects/TracingAspect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/store/StoreServiceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/store/StoreServiceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/store/test/StoreServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/store/test/StoreServiceTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,33 +28,35 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="java" value="68" />
+          <entry key="java" value="73" />
           <entry key="properties" value="4" />
-          <entry key="xml" value="1" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="68" />
+          <entry key="JAVA" value="73" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="4" />
-          <entry key="XML" value="1" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="13" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="3754" />
+          <entry key="java" value="4179" />
           <entry key="properties" value="149" />
-          <entry key="txt" value="248" />
+          <entry key="txt" value="261" />
+          <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3754" />
-          <entry key="PLAIN_TEXT" value="269" />
+          <entry key="JAVA" value="4179" />
+          <entry key="PLAIN_TEXT" value="282" />
           <entry key="Properties" value="149" />
+          <entry key="XML" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -59,23 +64,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/MapBooksService.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="66" column="44" lean-forward="true" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1784#1785#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/BooksConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="14" />
+            <state relative-caret-position="293">
+              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,10 +76,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/BooksDecoratorsConfiguration.java">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="18" column="30" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="338">
+              <caret line="26" column="47" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/util/aspects/TracingAspect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="35" column="140" selection-start-line="35" selection-start-column="140" selection-end-line="35" selection-end-column="140" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,22 +109,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/impl/SimpleOrderService.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/store/test/StoreServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/books/order/OrderServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="40" column="85" selection-start-line="40" selection-start-column="85" selection-end-line="40" selection-end-column="85" />
+            <state relative-caret-position="360">
+              <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,62 +123,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/store/StoreServiceConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="180">
+              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/decorator/SerializingBooksService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="60" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1165#1166#0" expanded="true" />
-                <element signature="e#1205#1206#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/util/util/aspects/JdkTracingAspect.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="23" column="77" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#226#227#0" expanded="true" />
-                <element signature="e#266#267#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/store/decorators/AuditingStoreService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-              <folding>
-                <element signature="e#238#239#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -227,13 +176,10 @@
         <option value="$PROJECT_DIR$/src/test/java/org/javacream/books/BooksTestConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/BooksConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/BooksApplication.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/javacream/store/test/StoreServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/javacream/books/isbngenerator/test/IsbnGeneratorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/javacream/books/order/OrderServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/store/decorators/AuditingServiceService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/store/decorators/AuditingStoreService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/javacream/store/StoreServiceConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/MapBooksService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/decorator/SerializingBooksService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/order/impl/SimpleOrderService.java" />
@@ -241,6 +187,12 @@
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/BooksDecoratorsConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/util/util/aspects/JdkTracingAspect.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/javacream/store/StoreServiceConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/javacream/store/test/StoreServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/javacream/util/util/aspects/TracingAspect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/javacream/util/aspects/TracingAspect.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java" />
       </list>
     </option>
   </component>
@@ -299,7 +251,66 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+              <item name="warehouse" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+              <item name="warehouse" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
               <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="aspects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
@@ -321,6 +332,25 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="javacream" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
@@ -348,13 +378,16 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611756655537" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/javacream/books" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611758244128" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/javacream/util" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.javacream.books" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.javacream.util.util.aspects" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.javacream.books.order" />
@@ -372,7 +405,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.JdkAspectTest">
+  <component name="RunManager" selected="JUnit.BooksServiceTest">
     <configuration name="All in org.javacream.training.spring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="org.javacream.training.spring" />
       <option name="PACKAGE_NAME" value="" />
@@ -446,10 +479,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BooksServiceTest" />
+        <item itemvalue="JUnit.StoreServiceTest" />
         <item itemvalue="JUnit.JdkAspectTest" />
         <item itemvalue="JUnit.All in org.javacream.training.spring" />
-        <item itemvalue="JUnit.StoreServiceTest" />
-        <item itemvalue="JUnit.BooksServiceTest" />
         <item itemvalue="JUnit.OrderServiceTest" />
       </list>
     </recent_temporary>
@@ -542,46 +575,52 @@
       <option name="project" value="LOCAL" />
       <updated>1611753345686</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="start aspects">
+      <created>1611756687733</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1611756687733</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_org_javacream_training_spring - 2021.01.27 at 12h 12m 17s.xml">
-      <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_org_javacream_training_spring - 2021.01.27 at 12h 14m 24s.xml">
-      <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StoreServiceTest - 2021.01.27 at 13h 52m 53s.xml">
-      <configuration name="StoreServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StoreServiceTest - 2021.01.27 at 13h 59m 46s.xml">
-      <configuration name="StoreServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StoreServiceTest - 2021.01.27 at 14h 01m 49s.xml">
-      <configuration name="StoreServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StoreServiceTest - 2021.01.27 at 14h 02m 05s.xml">
-      <configuration name="StoreServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_org_javacream_training_spring - 2021.01.27 at 14h 13m 49s.xml">
-      <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_org_javacream_training_spring - 2021.01.27 at 14h 15m 04s.xml">
-      <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_org_javacream_training_spring - 2021.01.27 at 14h 15m 33s.xml">
       <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
     </history-entry>
     <history-entry file="JdkAspectTest - 2021.01.27 at 15h 08m 37s.xml">
       <configuration name="JdkAspectTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="JdkAspectTest - 2021.01.27 at 15h 09m 24s.xml">
+      <configuration name="JdkAspectTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JdkAspectTest - 2021.01.27 at 15h 10m 58s.xml">
+      <configuration name="JdkAspectTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 25m 53s.xml">
+      <configuration name="StoreServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 26m 51s.xml">
+      <configuration name="StoreServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 29m 09s.xml">
+      <configuration name="StoreServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 30m 51s.xml">
+      <configuration name="StoreServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 31m 33s.xml">
+      <configuration name="StoreServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 33m 47s.xml">
+      <configuration name="StoreServiceTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="25" width="1877" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18405244" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18405244" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -590,7 +629,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5102703" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5102703" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -624,7 +663,8 @@
     <MESSAGE value="add configuration classes to SpringBootTests" />
     <MESSAGE value="start with decorators" />
     <MESSAGE value="finish decorators" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish decorators" />
+    <MESSAGE value="start aspects" />
+    <option name="LAST_COMMIT_MESSAGE" value="start aspects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -639,9 +679,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -788,30 +825,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="12" column="106" selection-start-line="12" selection-start-column="106" selection-end-line="12" selection-end-column="106" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/store/decorators.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/store/test/StoreServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -833,16 +850,6 @@
           <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
           <folding>
             <element signature="e#238#239#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/store/StoreServiceConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -924,8 +931,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        <state relative-caret-position="293">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/store/StoreServiceConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/store/test/StoreServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/util/aspects/TracingAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="35" column="140" selection-start-line="35" selection-start-column="140" selection-end-line="35" selection-end-column="140" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StoreServiceConfiguration {
 
-    @Bean
+    //@Bean
     public StoreService storeService(SimpleStoreService simpleStoreService){
         AuditingStoreService auditingStoreService = new AuditingStoreService();
         auditingStoreService.setDelegate(simpleStoreService);

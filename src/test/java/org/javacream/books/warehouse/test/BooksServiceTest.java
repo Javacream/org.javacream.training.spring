@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(classes= {BooksServiceTest.BooksTestConfiguration.class, BooksTestDataConfiguration.class})
@@ -32,7 +33,8 @@ public class BooksServiceTest {
     }
 
     @Configuration
-    @ComponentScan({"org.javacream.books.warehouse", "org.javacream.books.isbngenerator", "org.javacream.store"})
+    @ComponentScan({"org.javacream.books.warehouse", "org.javacream.books.isbngenerator", "org.javacream.store", "org.javacream.util.aspects"})
+    @EnableAspectJAutoProxy(proxyTargetClass = true)
     public static class BooksTestConfiguration{
 
     }
