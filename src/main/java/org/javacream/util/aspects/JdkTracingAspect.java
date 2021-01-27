@@ -1,4 +1,4 @@
-package org.javacream.util.util.aspects;
+package org.javacream.util.aspects;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
