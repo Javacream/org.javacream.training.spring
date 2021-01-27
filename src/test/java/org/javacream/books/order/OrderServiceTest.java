@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
@@ -32,6 +34,12 @@ public class OrderServiceTest {
         Order order = orderService.order("&!%TEST-ISBN", NUMBER);
         Assertions.assertTrue(order.getStatus() == OrderStatus.UNAVAILABLE);
         Assertions.assertEquals(0, order.getTotalPrice(), 1e-9);
+
+    }
+
+    @Configuration
+    @ComponentScan({"org.javacream.books", "org.javacream.store", "org.javacream.util"})
+    public static class OrderTestConfiguration{
 
     }
 }

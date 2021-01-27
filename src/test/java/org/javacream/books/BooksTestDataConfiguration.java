@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Configuration
 @Profile("test")
-public class BooksTestConfiguration {
+public class BooksTestDataConfiguration {
     @Bean
     Map<String, Book> testData(){
        Map<String, Book> data = new HashMap<>();

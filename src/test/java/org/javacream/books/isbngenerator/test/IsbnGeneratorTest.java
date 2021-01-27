@@ -1,6 +1,7 @@
 package org.javacream.books.isbngenerator.test;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
+@SpringBootTest(classes=RandomIsbnGenerator.class)
 @ActiveProfiles("test")
 public class IsbnGeneratorTest {
     @Autowired @IsbnGenerator.RandomStrategy

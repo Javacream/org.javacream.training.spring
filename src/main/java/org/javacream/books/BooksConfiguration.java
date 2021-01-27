@@ -1,7 +1,6 @@
 package org.javacream.books;
 
 import org.javacream.books.warehouse.api.Book;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
