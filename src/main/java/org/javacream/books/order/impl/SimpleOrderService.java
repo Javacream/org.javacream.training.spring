@@ -9,12 +9,13 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SimpleOrderService implements OrderService {
     @Autowired private IdGenerator idGenerator;
-    @Autowired private BooksService booksService;
+    @Autowired @Qualifier("forOrderActor") private BooksService booksService;
     @Autowired private StoreService storeService;
     @Override
     public Order order(String isbn, int number) {
