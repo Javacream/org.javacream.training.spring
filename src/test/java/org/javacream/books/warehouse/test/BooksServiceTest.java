@@ -33,7 +33,7 @@ public class BooksServiceTest {
     }
 
     @Configuration
-    @ComponentScan({"org.javacream.books.warehouse", "org.javacream.books.isbngenerator", "org.javacream.store", "org.javacream.util.aspects"})
+    @ComponentScan({"org.javacream.books.warehouse.decorators", "org.javacream.books.warehouse.impl", "org.javacream.books.isbngenerator", "org.javacream.store", "org.javacream.util.aspects"})
     @EnableAspectJAutoProxy(proxyTargetClass = true)
     public static class BooksTestConfiguration{
 
