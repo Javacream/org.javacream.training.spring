@@ -62,6 +62,7 @@ public class BooksWebService {
     @DeleteMapping(path="api/books/{isbn}")
     public void deleteBookByIsbn(@PathVariable("isbn") String isbn){
         try {
+            System.out.println("Hello");
             booksService.deleteBookByIsbn(isbn);
         } catch (BookException e) {
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
