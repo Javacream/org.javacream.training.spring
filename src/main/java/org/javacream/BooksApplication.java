@@ -13,12 +13,12 @@ public class BooksApplication {
     @Autowired
 	private BooksService booksService;
 	public static void main(String[] args) {
-		SpringApplication.run(BooksApplication.class, args);
+		SpringApplication app = new SpringApplication(BooksApplication.class);
+		//Alternativ: -Dspring.profiles.active=prod
+		app.setAdditionalProfiles("prod");
+		app.run(args);
 		System.out.println("Books Application running!");
 
 	}
 
-	@PostConstruct public void init() throws Exception{
-		System.out.println(booksService.newBook("Spring"));
-	}
 }
