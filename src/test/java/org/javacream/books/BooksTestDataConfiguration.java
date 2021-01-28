@@ -18,7 +18,7 @@ public class BooksTestDataConfiguration {
        Book b = new Book();
        b.setIsbn("TEST-ISBN");
        b.setTitle("TEST");
-       b.setPrice(9.99);
+       b.setPrice(9.98);
        data.put("TEST-ISBN", b);
        return data;
     }
