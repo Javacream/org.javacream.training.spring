@@ -19,5 +19,8 @@ public class StoreWebService {
     @GetMapping(path="api/store/ISBN{id}", produces = MediaType.TEXT_PLAIN_VALUE) public String getStock(@PathVariable("id") String id){
         return Integer.toString(storeService.getStock("books", "ISBN" + id));
     }
+    @GetMapping(path="api/store/ISBN{id}", produces = MediaType.TEXT_HTML_VALUE) public String getStockAsStock(@PathVariable("id") String id){
+        return "<p>" + storeService.getStock("books", "ISBN" + id) + "</p>";
+    }
 
 }

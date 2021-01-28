@@ -1,15 +1,21 @@
 package org.javacream.books.order.api;
 
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Order implements Serializable {
+    @XmlAttribute
     private long orderId;
     private String isbn;
     private int number;
     private double totalPrice;
+    @XmlTransient
     private OrderStatus status;
 
+    public Order(){}
     public Order(long orderId, String isbn, int number, double totalPrice, OrderStatus status) {
         this.orderId = orderId;
         this.isbn = isbn;
