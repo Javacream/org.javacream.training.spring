@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6aefb6c-132c-4d47-87ee-a874d433e6ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/CreateOrderParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/web/IsbnGeneratorWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/web/IsbnGeneratorWebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/books/order/api/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/order/api/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/store/web/StoreWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/store/web/StoreWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,14 +27,14 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="java" value="91" />
+          <entry key="java" value="92" />
           <entry key="properties" value="6" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="91" />
+          <entry key="JAVA" value="92" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="6" />
           <entry key="XML" value="4" />
@@ -46,16 +44,16 @@
         <counts>
           <entry key="dummy" value="20" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="5437" />
+          <entry key="java" value="5711" />
           <entry key="properties" value="169" />
-          <entry key="txt" value="391" />
+          <entry key="txt" value="425" />
           <entry key="xml" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5437" />
-          <entry key="PLAIN_TEXT" value="419" />
+          <entry key="JAVA" value="5711" />
+          <entry key="PLAIN_TEXT" value="453" />
           <entry key="Properties" value="169" />
           <entry key="XML" value="7" />
         </counts>
@@ -108,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="308">
+              <caret line="34" column="93" selection-start-line="34" selection-start-column="93" selection-end-line="34" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,7 +118,28 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/CreateOrderParams.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <folding>
+                <element signature="e#497#498#0" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+                <element signature="e#151#152#0" expanded="true" />
+                <element signature="e#178#179#0" expanded="true" />
+                <element signature="e#218#219#0" expanded="true" />
+                <element signature="e#250#251#0" expanded="true" />
+                <element signature="e#280#281#0" expanded="true" />
+                <element signature="e#309#310#0" expanded="true" />
+                <element signature="e#350#351#0" expanded="true" />
+                <element signature="e#386#387#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/api/Order.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="278">
@@ -209,8 +228,9 @@
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/demo/web/EchoWebService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/web/IsbnGeneratorWebService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/store/web/StoreWebService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/order/api/Order.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/CreateOrderParams.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java" />
       </list>
     </option>
   </component>
@@ -333,7 +353,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611836306872" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611837320576" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/javacream/util" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -586,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611831220437</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="start implementing OrderWebService">
+      <created>1611836454417</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1611836454417</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -676,7 +703,8 @@
     <MESSAGE value="introduce simple EchoWebService" />
     <MESSAGE value="introduce StoreWebService" />
     <MESSAGE value="introduce IsbnGeneratorWebService" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce IsbnGeneratorWebService" />
+    <MESSAGE value="start implementing OrderWebService" />
+    <option name="LAST_COMMIT_MESSAGE" value="start implementing OrderWebService" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -976,20 +1004,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/api/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="278">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/api/Order.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/CreateOrderParams.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        <state relative-caret-position="90">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#151#152#0" expanded="true" />
+            <element signature="e#178#179#0" expanded="true" />
+            <element signature="e#218#219#0" expanded="true" />
+            <element signature="e#250#251#0" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/order/web/OrderWebService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="34" column="93" selection-start-line="34" selection-start-column="93" selection-end-line="34" selection-end-column="93" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
