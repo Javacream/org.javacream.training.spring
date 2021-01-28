@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SimpleOrderService implements OrderService {
     @Autowired private IdGenerator idGenerator;
-    @Autowired  private BooksService booksService;
+    @Autowired @Qualifier("forOrderActor") private BooksService booksService;
     @Autowired private StoreService storeService;
     @Override
     public Order order(String isbn, int number) {
