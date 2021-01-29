@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6aefb6c-132c-4d47-87ee-a874d433e6ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/repository/BooksRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/web/BooksDataWebService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/DatabaseSequenceIsbnGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/DatabaseSequenceIsbnGeneratorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/JpaBooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/JpaBooksService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +27,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="java" value="118" />
+          <entry key="java" value="122" />
           <entry key="properties" value="10" />
           <entry key="sql" value="4" />
           <entry key="xml" value="11" />
@@ -35,7 +35,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="118" />
+          <entry key="JAVA" value="122" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="10" />
           <entry key="SQL" value="4" />
@@ -46,17 +46,17 @@
         <counts>
           <entry key="dummy" value="51" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="8228" />
+          <entry key="java" value="8459" />
           <entry key="properties" value="410" />
           <entry key="sql" value="133" />
-          <entry key="txt" value="800" />
+          <entry key="txt" value="850" />
           <entry key="xml" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8228" />
-          <entry key="PLAIN_TEXT" value="859" />
+          <entry key="JAVA" value="8459" />
+          <entry key="PLAIN_TEXT" value="909" />
           <entry key="Properties" value="410" />
           <entry key="SQL" value="133" />
           <entry key="XML" value="91" />
@@ -81,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/JpaBooksService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
+            <state relative-caret-position="470">
               <caret line="43" column="8" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -92,11 +92,59 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/DatabaseSequenceIsbnGeneratorService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="470">
               <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="13" column="42" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/repository/BooksRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/web/BooksDataWebService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,8 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/RandomStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/api/IsbnGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/RandomIsbnGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/order/OrderStatus.java" />
@@ -183,6 +229,8 @@
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/MapBooksService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/JpaBooksService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/DatabaseSequenceIsbnGeneratorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/repository/BooksRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/web/BooksDataWebService.java" />
       </list>
     </option>
   </component>
@@ -273,27 +321,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="javacream" type="462c0819:PsiDirectoryNode" />
               <item name="books" type="462c0819:PsiDirectoryNode" />
-              <item name="isbngenerator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="javacream" type="462c0819:PsiDirectoryNode" />
-              <item name="books" type="462c0819:PsiDirectoryNode" />
-              <item name="isbngenerator" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="javacream" type="462c0819:PsiDirectoryNode" />
-              <item name="books" type="462c0819:PsiDirectoryNode" />
               <item name="warehouse" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -306,6 +333,77 @@
               <item name="books" type="462c0819:PsiDirectoryNode" />
               <item name="warehouse" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+              <item name="warehouse" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+              <item name="warehouse" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="books" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.javacream.training.spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.javacream.training.spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javacream" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -316,7 +414,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611927045390" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611930340350" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/javacream/util" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -347,7 +445,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.BooksApplication">
+  <component name="RunManager" selected="JUnit.JdkAspectTest">
     <configuration name="BooksApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.javacream.BooksApplication" />
       <module name="org.javacream.training.spring" />
@@ -383,13 +481,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="[engine:junit-jupiter]/[class:org.javacream.books.warehouse.test.BooksServiceTest]" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JdkAspectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="org.javacream.training.spring" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="uniqueId" />
-      <uniqueIds>
-        <uniqueId value="[engine:junit-jupiter]/[class:org.javacream.books.warehouse.test.BooksServiceTest]" />
-      </uniqueIds>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javacream.util.aspects.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.javacream.util.aspects.test" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.util.aspects.test.JdkAspectTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -422,17 +523,17 @@
     <list>
       <item itemvalue="JUnit.All in org.javacream.training.spring" />
       <item itemvalue="Application.BooksApplication" />
-      <item itemvalue="JUnit.[engine:junit-jupiter]/[class:org.javacream.books.warehouse.test.BooksServiceTest]" />
       <item itemvalue="Maven.org.javacream.training.spring [install]" />
       <item itemvalue="JUnit.EnvironmentTest" />
+      <item itemvalue="JUnit.JdkAspectTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.JdkAspectTest" />
         <item itemvalue="Application.BooksApplication" />
         <item itemvalue="JUnit.All in org.javacream.training.spring" />
         <item itemvalue="JUnit.EnvironmentTest" />
         <item itemvalue="Maven.org.javacream.training.spring [install]" />
-        <item itemvalue="JUnit.[engine:junit-jupiter]/[class:org.javacream.books.warehouse.test.BooksServiceTest]" />
       </list>
     </recent_temporary>
   </component>
@@ -671,13 +772,17 @@
       <option name="project" value="LOCAL" />
       <updated>1611924785786</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="present Transactional REQUIRED versus REQUIRES_NEW">
+      <created>1611927074440</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1611927074440</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_org_javacream_training_spring - 2021.01.28 at 09h 43m 56s.xml">
-      <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_org_javacream_training_spring - 2021.01.28 at 10h 21m 22s.xml">
       <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
     </history-entry>
@@ -705,10 +810,12 @@
     <history-entry file="All_in_org_javacream_training_spring - 2021.01.29 at 13h 51m 07s.xml">
       <configuration name="All in org.javacream.training.spring" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="JdkAspectTest - 2021.01.29 at 15h 26m 51s.xml">
+      <configuration name="JdkAspectTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="25" width="1877" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23484434" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -719,8 +826,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25405404" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25297296" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -745,7 +852,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finish profiles" />
     <MESSAGE value="add configuration classes to SpringBootTests" />
     <MESSAGE value="start with decorators" />
     <MESSAGE value="finish decorators" />
@@ -770,7 +876,8 @@
     <MESSAGE value="implement DatabaseStoreService and DatabaseSequenceIsbnGeneratorService" />
     <MESSAGE value="implement JpaOrderService" />
     <MESSAGE value="implement JpaBooksService" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement JpaBooksService" />
+    <MESSAGE value="present Transactional REQUIRED versus REQUIRES_NEW" />
+    <option name="LAST_COMMIT_MESSAGE" value="present Transactional REQUIRED versus REQUIRES_NEW" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -780,6 +887,12 @@
           <line>12</line>
           <properties />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java</url>
+          <line>13</line>
+          <properties />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -870,16 +983,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1165#1166#0" expanded="true" />
             <element signature="e#1205#1206#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -976,16 +1079,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="35" column="61" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1140,6 +1233,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/DatabaseSequenceIsbnGeneratorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/books/warehouse/test/BooksServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/web/BooksWebService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1152,7 +1265,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/impl/JpaBooksService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
+        <state relative-caret-position="470">
           <caret line="43" column="8" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1162,10 +1275,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/isbngenerator/impl/DatabaseSequenceIsbnGeneratorService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/repository/BooksRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        <state relative-caret-position="75">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/javacream/books/warehouse/web/BooksDataWebService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/util/aspects/test/JdkAspectTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
