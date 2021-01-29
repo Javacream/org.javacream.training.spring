@@ -1,18 +1,25 @@
 package org.javacream.books.order.api;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Entity
+@Table(name = "ORDERS")
 public class Order implements Serializable {
     @XmlAttribute
+    @Id
     private long orderId;
     private String isbn;
+
+    @Column(name = "amount")
     private int number;
     private double totalPrice;
     @XmlTransient
+    @Transient
     private OrderStatus status;
 
     public Order(){}

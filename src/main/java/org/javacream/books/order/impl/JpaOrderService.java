@@ -11,14 +11,21 @@ import org.javacream.util.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Service
-public class SimpleOrderService implements OrderService {
+@Transactional
+public class JpaOrderService implements OrderService {
     @Autowired private IdGenerator idGenerator;
     @Autowired @Qualifier("forOrderActor") private BooksService booksService;
     @Autowired private StoreService storeService;
+    @PersistenceContext private EntityManager entityManager;
     @Override
     public Order order(String isbn, int number) {
+        Order order;
         try{
             Book book = booksService.findBookByIsbn(isbn);
             double totalPrice = book.getPrice() * number;
@@ -29,9 +36,12 @@ public class SimpleOrderService implements OrderService {
             }else{
                 status = OrderStatus.OK;
             }
-            return new Order(idGenerator.id(), isbn, number, totalPrice, status);
+            order =  new Order(idGenerator.id(), isbn, number, totalPrice, status);
         }catch(BookException be){
-            return new Order(idGenerator.id(), isbn, number, 0, OrderStatus.UNAVAILABLE);
+            order = new Order(idGenerator.id(), isbn, number, 0, OrderStatus.UNAVAILABLE);
         }
+
+        entityManager.persist(order);
+        return order;
     }
 }
