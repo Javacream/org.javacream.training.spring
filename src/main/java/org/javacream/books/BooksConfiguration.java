@@ -11,10 +11,6 @@ import java.util.Map;
 @Configuration
 @Profile("prod")
 public class BooksConfiguration {
-        @Bean
-        Map<String, Book> data(){
-            Map<String, Book> data = new HashMap<>();
-            return data;
-        }
+
 
 }

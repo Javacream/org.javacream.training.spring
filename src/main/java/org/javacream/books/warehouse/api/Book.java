@@ -1,16 +1,22 @@
 package org.javacream.books.warehouse.api;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
+@Entity
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private String isbn;
 
 	private String title;
 
 	private double price;
 
+	@Transient
 	private boolean available;
 
 	public String getIsbn() {
