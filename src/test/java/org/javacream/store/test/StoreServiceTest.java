@@ -11,20 +11,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest(classes = {StoreServiceTest.StoreServiceTestConfiguration.class})
+@SpringBootTest()
 @ActiveProfiles("test")
 public class StoreServiceTest {
     @Autowired private StoreService storeService;
-    @Value("${storeService.defaultStock}") private int expectedStock;
     @Test public void testStoreService(){
-        Assertions.assertEquals(expectedStock, storeService.getStock("this", "that"));
+        Assertions.assertEquals(42, storeService.getStock("books", "ISBN1"));
     }
 
+    /*
     @Configuration
     @ComponentScan({"org.javacream.store", "org.javacream.util.aspects"})
     @EnableAspectJAutoProxy(proxyTargetClass = true)
     public static class StoreServiceTestConfiguration{
 
     }
+    */
 }
 

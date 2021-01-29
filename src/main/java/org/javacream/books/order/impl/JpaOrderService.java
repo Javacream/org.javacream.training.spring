@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @Transactional
 public class JpaOrderService implements OrderService {
     @Autowired private IdGenerator idGenerator;
-    @Autowired @Qualifier("forOrderActor") private BooksService booksService;
+    @Autowired private BooksService booksService;
     @Autowired private StoreService storeService;
     @PersistenceContext private EntityManager entityManager;
     @Override

@@ -16,7 +16,7 @@ import javax.persistence.EntityManager;
 
 
 @Repository
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = BookException.class)
 public class JpaBooksService implements BooksService {
 
 	@Autowired

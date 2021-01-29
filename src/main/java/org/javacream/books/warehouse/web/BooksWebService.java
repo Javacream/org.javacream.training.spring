@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 public class BooksWebService {
-    @Autowired @Qualifier("forApplication")private BooksService booksService;
+    @Autowired private BooksService booksService;
 
     //curl -X POST -verbose http://localhost:9090/api/books/Spring
     @PostMapping(path="api/books/{title}")

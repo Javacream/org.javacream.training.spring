@@ -17,14 +17,14 @@ public class OrderServiceTest {
     @Autowired private OrderService orderService;
     @Test public void testOrderOk(){
         final int NUMBER = 40;
-        Order order = orderService.order("TEST-ISBN", NUMBER);
+        Order order = orderService.order("ISBN1", NUMBER);
         Assertions.assertTrue(order.getStatus() == OrderStatus.OK);
         Assertions.assertEquals(NUMBER*9.99, order.getTotalPrice(), 1e-9);
 
     }
     @Test public void testOrderPending(){
         final int NUMBER = 50;
-        Order order = orderService.order("TEST-ISBN", NUMBER);
+        Order order = orderService.order("ISBN1", NUMBER);
         Assertions.assertTrue(order.getStatus() == OrderStatus.PENDING);
         Assertions.assertEquals(NUMBER*9.99, order.getTotalPrice(), 1e-9);
 
@@ -36,10 +36,11 @@ public class OrderServiceTest {
         Assertions.assertEquals(0, order.getTotalPrice(), 1e-9);
 
     }
-
+/*
     @Configuration
     @ComponentScan({"org.javacream.books", "org.javacream.store", "org.javacream.util"})
     public static class OrderTestConfiguration{
 
     }
+    */
 }
