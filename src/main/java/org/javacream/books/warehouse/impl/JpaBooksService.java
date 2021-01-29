@@ -9,13 +9,14 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
 
 @Repository
-@Transactional
+@Transactional(propagation = Propagation.REQUIRED)
 public class JpaBooksService implements BooksService {
 
 	@Autowired
@@ -29,11 +30,18 @@ public class JpaBooksService implements BooksService {
 	
 
 	public String newBook(String title) throws BookException {
-		String isbn = isbnGenerator.next();
+		String isbn;
+		try {
+			isbn = isbnGenerator.next();
+		}
+		catch(RuntimeException re){
+			isbn = "EXCEPTION_ISBN";
+		}
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
 		entityManager.persist(book);
+		//throw new RuntimeException("TRANSACTION DEMO ONLY");
 		return isbn;
 	}
 
