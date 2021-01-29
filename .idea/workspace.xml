@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6aefb6c-132c-4d47-87ee-a874d433e6ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/javacream/demo/database/EnvironmentTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/demo/database/EnvironmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/demo/database/EnvironmentTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +28,7 @@
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="java" value="103" />
-          <entry key="properties" value="8" />
+          <entry key="properties" value="9" />
           <entry key="sql" value="2" />
           <entry key="xml" value="11" />
         </counts>
@@ -40,7 +37,7 @@
         <counts>
           <entry key="JAVA" value="103" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Properties" value="8" />
+          <entry key="Properties" value="9" />
           <entry key="SQL" value="2" />
           <entry key="XML" value="11" />
         </counts>
@@ -49,18 +46,18 @@
         <counts>
           <entry key="dummy" value="20" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="7018" />
-          <entry key="properties" value="283" />
+          <entry key="java" value="7078" />
+          <entry key="properties" value="410" />
           <entry key="sql" value="91" />
-          <entry key="txt" value="645" />
+          <entry key="txt" value="666" />
           <entry key="xml" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7018" />
-          <entry key="PLAIN_TEXT" value="673" />
-          <entry key="Properties" value="283" />
+          <entry key="JAVA" value="7078" />
+          <entry key="PLAIN_TEXT" value="694" />
+          <entry key="Properties" value="410" />
           <entry key="SQL" value="91" />
           <entry key="XML" value="91" />
         </counts>
@@ -70,19 +67,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/demo/database/EnvironmentTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="25" column="88" selection-start-line="25" selection-start-column="88" selection-end-line="25" selection-end-column="88" />
+            <state relative-caret-position="458">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,29 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/schema.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="43" selection-start-column="43" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/data.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="45" selection-start-column="45" selection-end-column="45" />
+            <state relative-caret-position="105">
+              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -191,10 +161,10 @@
         <option value="$PROJECT_DIR$/src/test/java/org/javacream/books/BooksTestDataConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/javacream/BooksApplication.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/schema.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/data.sql" />
         <option value="$PROJECT_DIR$/src/test/java/org/javacream/demo/database/EnvironmentTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -299,7 +269,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611910873876" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1611911434546" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/javacream/util" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -330,7 +300,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EnvironmentTest">
+  <component name="RunManager" selected="Application.BooksApplication">
     <configuration name="BooksApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.javacream.BooksApplication" />
       <module name="org.javacream.training.spring" />
@@ -411,8 +381,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EnvironmentTest" />
         <item itemvalue="Application.BooksApplication" />
+        <item itemvalue="JUnit.EnvironmentTest" />
         <item itemvalue="Maven.org.javacream.training.spring [install]" />
         <item itemvalue="JUnit.[engine:junit-jupiter]/[class:org.javacream.books.warehouse.test.BooksServiceTest]" />
         <item itemvalue="JUnit.All in org.javacream.training.spring" />
@@ -619,19 +589,17 @@
       <option name="project" value="LOCAL" />
       <updated>1611847225789</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="start database access">
+      <created>1611910977533</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1611910977533</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 30m 51s.xml">
-      <configuration name="StoreServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 31m 33s.xml">
-      <configuration name="StoreServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StoreServiceTest - 2021.01.27 at 15h 33m 47s.xml">
-      <configuration name="StoreServiceTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="BooksServiceTest - 2021.01.27 at 15h 35m 02s.xml">
       <configuration name="BooksServiceTest" configurationId="JUnit" />
     </history-entry>
@@ -653,12 +621,21 @@
     <history-entry file="EnvironmentTest - 2021.01.29 at 09h 52m 35s.xml">
       <configuration name="EnvironmentTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="EnvironmentTest - 2021.01.29 at 10h 04m 40s.xml">
+      <configuration name="EnvironmentTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EnvironmentTest - 2021.01.29 at 10h 05m 10s.xml">
+      <configuration name="EnvironmentTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EnvironmentTest - 2021.01.29 at 10h 06m 45s.xml">
+      <configuration name="EnvironmentTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="25" width="1877" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23484434" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23484434" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -667,7 +644,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3318919" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3318919" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -693,7 +670,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add qualifier annotations" />
     <MESSAGE value="add configuration class" />
     <MESSAGE value="implement OrderService" />
     <MESSAGE value="fix CounterIsbnGenerator, add missing Value Annotations" />
@@ -718,7 +694,8 @@
     <MESSAGE value="introduce actuator and jolokia" />
     <MESSAGE value="fix BooksServiceTest, exclude BooksWebService" />
     <MESSAGE value="add OpenAPI/Swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="add OpenAPI/Swagger" />
+    <MESSAGE value="start database access" />
+    <option name="LAST_COMMIT_MESSAGE" value="start database access" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1081,13 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1104,11 +1074,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/javacream/demo/database/EnvironmentTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="25" column="88" selection-start-line="25" selection-start-column="88" selection-end-line="25" selection-end-column="88" />
+        <state relative-caret-position="458">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
         </state>
       </provider>
     </entry>

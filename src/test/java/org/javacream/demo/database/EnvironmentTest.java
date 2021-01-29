@@ -24,12 +24,14 @@ public class EnvironmentTest {
 
     @Test public void jdbcTemplateIsWorking(){
         List<String> result = jdbcTemplate.queryForObject("select * from messages", List.class);
+        System.out.println(result);
         //...
 
     }
 
     @Test public void entityManagerIsWorking(){
         List<String> result = entityManager.createNativeQuery("select * from messages").getResultList();
+        System.out.println(result);
         //...
 
     }
