@@ -1,7 +1,7 @@
 package org.javacream.util.aspects.test;
 
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.javacream.util.aspects.JdkTracingAspect;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class JdkAspectTest {
 
     @Test public void testStoreServiceWithAspect(){
-        StoreService sss = new SimpleStoreService();
+        StoreService sss = new DatabaseStoreService();
         sss = JdkTracingAspect.wrap(sss);
         sss.getStock("irgend", "was");
     }

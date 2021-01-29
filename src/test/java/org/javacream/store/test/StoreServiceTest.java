@@ -1,7 +1,6 @@
 package org.javacream.store.test;
 
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.SimpleStoreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
