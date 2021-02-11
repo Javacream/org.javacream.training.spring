@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.api.IsbnGenerator.RandomStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MapBooksService implements BooksService {
 
-	@Autowired
+	@Autowired @RandomStrategy
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
 	@Autowired
@@ -26,15 +27,6 @@ public class MapBooksService implements BooksService {
 	
 	{
 		books = new HashMap<String, Book>();
-	}
-
-	
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
-	}
-
-	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
-		this.isbnGenerator = isbnGenerator;
 	}
 
 	public String newBook(String title) throws BookException {
