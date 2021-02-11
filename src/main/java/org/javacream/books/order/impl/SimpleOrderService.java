@@ -1,5 +1,7 @@
 package org.javacream.books.order.impl;
 
+import java.util.Random;
+
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.OrderService;
 import org.javacream.books.order.api.OrderStatus;
@@ -8,12 +10,10 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import java.util.Random();
 @Service
 public class SimpleOrderService implements OrderService {
-    private Random random = new Random(System.currentTimeMillis())
+    private Random random = new Random(System.currentTimeMillis());
     @Autowired private BooksService booksService;
     @Autowired private StoreService storeService;
     @Override
@@ -25,7 +25,7 @@ public class SimpleOrderService implements OrderService {
             double totalPrice = book.getPrice() * amount;
             int stock = storeService.getStock("books", isbn);
             OrderStatus status;
-            if (stock < number){
+            if (stock < amount){
                 status = OrderStatus.PENDING;
             }else{
                 status = OrderStatus.OK;
