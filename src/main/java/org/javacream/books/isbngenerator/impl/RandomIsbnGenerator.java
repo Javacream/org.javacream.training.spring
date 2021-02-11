@@ -3,12 +3,14 @@ package org.javacream.books.isbngenerator.impl;
 import java.util.Random;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RandomIsbnGenerator implements IsbnGenerator {
-
+	@Value("${prefix}")
 	private String prefix;
+	@Value("${countryCode}")
 	private String countryCode;
 	public String getCountryCode() {
 		return countryCode;
