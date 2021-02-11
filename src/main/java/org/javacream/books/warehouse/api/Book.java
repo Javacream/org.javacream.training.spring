@@ -23,6 +23,7 @@ public class Book implements Serializable {
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+		
 	}
 
 	public void setTitle(String title) {
