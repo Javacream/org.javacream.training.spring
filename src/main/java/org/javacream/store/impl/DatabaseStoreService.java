@@ -5,8 +5,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 @Transactional
@@ -24,5 +27,6 @@ public class DatabaseStoreService implements StoreService{
 			return 0;
 		}
 	}
+
 
 }
