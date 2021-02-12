@@ -1,21 +1,29 @@
 package org.javacream.books.warehouse.web;
 
+import java.util.Collection;
+
+import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class BooksWebService {
-	@Autowired private BooksService booksService;
+	@Autowired
+	private BooksService booksService;
 
-	@PostMapping(path="books/{title}", produces=MediaType.TEXT_PLAIN_VALUE)
-	public String newBook(@PathVariable("title") String title){
+	@PostMapping(path = "books/{title}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public String newBook(@PathVariable("title") String title) {
 		try {
 			return booksService.newBook(title);
 		} catch (BookException e) {
@@ -23,6 +31,42 @@ public class BooksWebService {
 			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 	}
-	
-	
+
+	@PutMapping(path = "books/{isbn}/price")
+	public void updatePriceBook(@PathVariable("isbn") String isbn, @RequestHeader("price") double price) {
+		try {
+			Book book = booksService.findBookByIsbn(isbn);
+			book.setPrice(price);
+			booksService.updateBook(book);
+		} catch (BookException e) {
+			System.out.println(e.getMessage());
+			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+		}
+	}
+
+	@GetMapping(path = "books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Book findBookByIsbn(@PathVariable("isbn") String isbn) throws BookException {
+		try {
+			return booksService.findBookByIsbn(isbn);
+		} catch (BookException e) {
+			System.out.println(e.getMessage());
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@DeleteMapping(path = "books/{isbn}")
+	public void deleteBookByIsbn(String isbn) throws BookException {
+		try {
+			booksService.deleteBookByIsbn(isbn);
+		} catch (BookException e) {
+			System.out.println(e.getMessage());
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@GetMapping(path = "books", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Collection<Book> findAllBooks() {
+		return booksService.findAllBooks();
+	}
+
 }
