@@ -3,6 +3,10 @@ package org.javacream.books.order.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -10,13 +14,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Entity
+@Table(name="ORDERS")
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@XmlAttribute
+	@Id
 	private long orderId;
     private String isbn;
 
     private int number;
+    @Column(name = "sum")
     private double totalPrice;
     private OrderStatus status;
 
