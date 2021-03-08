@@ -20,6 +20,7 @@ public class MapBooksService implements BooksService {
 
 	@Autowired
 	private IsbnGenerator isbnGenerator;
+	@Autowired
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
