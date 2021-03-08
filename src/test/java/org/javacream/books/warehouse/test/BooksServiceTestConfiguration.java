@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.javacream.books.warehouse.api.Book;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("org.javacream")
 public class BooksServiceTestConfiguration {
 
-	@Bean Map<String, Book> testBooksMap(){
+	@Bean @Qualifier("booksMap") Map<String, Book>  books(){
 		HashMap<String, Book> testData = new HashMap<>();
 		Book b1 = new Book();
 		b1.setIsbn("ISBN1");
