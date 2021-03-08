@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
@@ -24,7 +23,7 @@ public class MapBooksService implements BooksService {
 	private IsbnGenerator isbnGenerator;
 	@Autowired @Qualifier("booksMap")
 	private Map<String, Book> books;
-	@Autowired
+	@Autowired @Qualifier("withAuditing")
 	private StoreService storeService;
 	
 	{
@@ -60,11 +59,11 @@ public class MapBooksService implements BooksService {
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
 		
-		return SerializationUtils.clone(result);
+		return result;
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue)); 
+		books.put(bookValue.getIsbn(), bookValue); 
 		return bookValue;
 	}
 
@@ -78,7 +77,7 @@ public class MapBooksService implements BooksService {
 
 
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
+		return new ArrayList<Book>(books.values());
 	}
 	public void setBooks(Map<String, Book> books) {
 		this.books = books;
