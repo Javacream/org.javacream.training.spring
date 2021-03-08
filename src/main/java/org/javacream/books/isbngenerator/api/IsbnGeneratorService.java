@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
-public interface IsbnGenerator {
+public interface IsbnGeneratorService {
 
 	public abstract String next();
 

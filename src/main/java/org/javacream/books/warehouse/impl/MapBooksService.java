@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Repository;
 public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy
-	private IsbnGenerator isbnGenerator;
+	private IsbnGeneratorService isbnGenerator;
 	@Autowired @Qualifier("booksMap")
 	private Map<String, Book> books;
 	@Autowired @Qualifier("withAuditing")
@@ -35,7 +35,7 @@ public class MapBooksService implements BooksService {
 		this.storeService = storeService;
 	}
 
-	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
+	public void setIsbnGenerator(IsbnGeneratorService isbnGenerator) {
 		this.isbnGenerator = isbnGenerator;
 	}
 
@@ -48,7 +48,7 @@ public class MapBooksService implements BooksService {
 		return isbn;
 	}
 
-	public IsbnGenerator getIsbnGenerator() {
+	public IsbnGeneratorService getIsbnGenerator() {
 		return isbnGenerator;
 	}
 	public Book findBookByIsbn(String isbn) throws BookException {

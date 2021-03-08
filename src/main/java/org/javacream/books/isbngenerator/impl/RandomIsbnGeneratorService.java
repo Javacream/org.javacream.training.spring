@@ -1,14 +1,15 @@
 package org.javacream.books.isbngenerator.impl;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
+import java.util.Random;
+
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService.RandomStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-//@Service("sequenceIsbnGenerator")
 @Service
-@SequenceStrategy
-public class CounterIsbnGenerator implements IsbnGenerator {
+@RandomStrategy
+public class RandomIsbnGeneratorService implements IsbnGeneratorService {
 
 	@Value("${isbn.prefix}")
 	private String prefix;
@@ -21,9 +22,14 @@ public class CounterIsbnGenerator implements IsbnGenerator {
 	public void setCountryCode(String suffix) {
 		this.countryCode = suffix;
 	}
-	private int counter;
+	private Random random;
+	
+	{
+		random = new Random(this.hashCode() + System.currentTimeMillis());
+	}
+	
 	public String next(){
-		return prefix + counter++ + countryCode;
+		return prefix + random.nextInt() + countryCode;
 	}
 
 	public String getPrefix(){
