@@ -4,6 +4,7 @@ import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DatabaseStoreService implements StoreService {
@@ -12,6 +13,7 @@ public class DatabaseStoreService implements StoreService {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
+	@Transactional
 	public int getStock(String category, String item) {
 		try {
 			// JdbcTemplate uses PreparedStatement internally
