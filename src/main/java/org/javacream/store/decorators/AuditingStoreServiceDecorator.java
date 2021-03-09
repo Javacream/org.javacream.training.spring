@@ -17,7 +17,7 @@ public class AuditingStoreServiceDecorator implements StoreService{
 	}
 
 	public int getStock(String category, String item) {
-		System.out.println("retrieving stock for category=" + category + " and item=" + item + " at " + new Date());
+		logService.log("retrieving stock for category=" + category + " and item=" + item + " at " + new Date());
 		return delegate.getStock(category, item);
 	}
 	
