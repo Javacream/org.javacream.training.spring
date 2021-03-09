@@ -18,7 +18,7 @@ public class Book implements Serializable {
 
 	private String title;
 
-	@Column(name="booksPrice")
+	@Column(name="books_price")
 	private double price;
 
 	@Transient
