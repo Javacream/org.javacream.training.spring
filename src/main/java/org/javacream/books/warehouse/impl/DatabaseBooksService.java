@@ -1,9 +1,6 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,23 +9,27 @@ import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
+import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional(rollbackFor = BookException.class)
 public class DatabaseBooksService implements BooksService {
 
-	@PersistenceContext private EntityManager entityManager;
-	@Autowired @SequenceStrategy
+	@PersistenceContext
+	private EntityManager entityManager;
+	@Autowired
+	@SequenceStrategy
 	private IsbnGeneratorService isbnGenerator;
-	@Autowired @Qualifier("withAuditing")
+	@Autowired
+	@Qualifier("withAuditing")
 	private StoreService storeService;
-	
-	
+
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -42,43 +43,42 @@ public class DatabaseBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		entityManager.persist(book);
 		return isbn;
 	}
 
 	public IsbnGeneratorService getIsbnGenerator() {
 		return isbnGenerator;
 	}
+
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
+		Book result = entityManager.find(Book.class, isbn);
 		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
-					isbn);
+			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
-		
+
 		return result;
 	}
 
-	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), bookValue); 
-		return bookValue;
-	}
-
-	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
-			throw new BookException(
-					BookException.BookExceptionType.NOT_DELETED, isbn);
+	public Book updateBook(Book book) throws BookException {
+		try {
+			return entityManager.merge(book);
+		} catch (RuntimeException e) {
+			throw new BookException(BookExceptionType.NOT_FOUND, book.getIsbn());
 		}
 	}
 
+	public void deleteBookByIsbn(String isbn) throws BookException {
+		try {
+			entityManager.remove(entityManager.getReference(Book.class, isbn));
+		} catch (RuntimeException e) {
+			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
+		}
+	}
 
 	public Collection<Book> findAllBooks() {
-		return new ArrayList<Book>(books.values());
+		return entityManager.createQuery("select b from Book as b", Book.class).getResultList();
 	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
-	
+
 }
