@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StoreServiceConfiguration {
 
-	@Bean @Qualifier("withAuditing")  StoreService storeServiceWithAuditing(StoreService simpleStoreService) {
+	@Bean @Qualifier("withAuditing")  StoreService storeServiceWithAuditing(StoreService databaseStoreService) {
 		AuditingStoreServiceDecorator auditingStoreServiceDecorator = new AuditingStoreServiceDecorator();
-		auditingStoreServiceDecorator.setDelegate(simpleStoreService);
+		auditingStoreServiceDecorator.setDelegate(databaseStoreService);
 		return auditingStoreServiceDecorator;
 	}
-	@Bean @Qualifier("plain")  StoreService storeService(StoreService simpleStoreService) {
-		return simpleStoreService;
+	@Bean @Qualifier("plain")  StoreService storeService(StoreService databaseStoreService) {
+		return databaseStoreService;
 	}
 }

@@ -1,0 +1,1 @@
+create table STORE (category varchar(128), item varchar(128), stock integer, primary key (category, item))
