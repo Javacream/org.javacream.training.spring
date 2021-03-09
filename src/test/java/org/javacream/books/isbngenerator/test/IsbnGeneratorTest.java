@@ -6,8 +6,8 @@ import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrate
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
@@ -31,6 +31,7 @@ public class IsbnGeneratorTest {
 	}
 
 	@SpringBootConfiguration
+	@EnableAutoConfiguration
 	@ComponentScan("org.javacream.books.isbngenerator")
 	public static class IsbnGeneratorTestConfiguration{
 		
