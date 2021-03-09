@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
@@ -17,19 +20,14 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class MapBooksService implements BooksService {
+public class DatabaseBooksService implements BooksService {
 
+	@PersistenceContext private EntityManager entityManager;
 	@Autowired @SequenceStrategy
 	private IsbnGeneratorService isbnGenerator;
-	@Autowired @Qualifier("booksMap")
-	private Map<String, Book> books;
 	@Autowired @Qualifier("withAuditing")
 	private StoreService storeService;
 	
-	{
-		books = new HashMap<String, Book>();
-	}
-
 	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
