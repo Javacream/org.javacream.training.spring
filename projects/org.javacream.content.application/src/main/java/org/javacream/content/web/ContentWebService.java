@@ -12,7 +12,7 @@ public class ContentWebService {
 
 	@Autowired private ContentService contentService;
 
-	@GetMapping(path = "api/content/{id}}", produces = MediaType.TEXT_PLAIN_VALUE)
+	@GetMapping(path = "api/content/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String getContent(@PathVariable("id") String resourceId) {
 		return contentService.retrieveContent(resourceId);
 	}

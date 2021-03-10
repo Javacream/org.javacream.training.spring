@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 @Repository
 @Transactional(rollbackFor = BookException.class)
@@ -29,6 +30,8 @@ public class DatabaseBooksService implements BooksService {
 	@Autowired
 	@Qualifier("withAuditing")
 	private StoreService storeService;
+	@Autowired @Qualifier("forContent")
+	private RestTemplate restTemplate;
 
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
@@ -57,7 +60,7 @@ public class DatabaseBooksService implements BooksService {
 			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
-
+		result.setContent(restTemplate.getForObject("http://localhost:9002/api/content/" + isbn , String.class));
 		return result;
 	}
 

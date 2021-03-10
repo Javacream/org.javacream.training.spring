@@ -24,6 +24,17 @@ public class Book implements Serializable {
 	@Transient
 	private boolean available;
 
+	@Transient
+	private String content;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public String getIsbn() {
 		return isbn;
 	}
@@ -51,13 +62,17 @@ public class Book implements Serializable {
 		Book other = (Book) obj;
 		if (available != other.available)
 			return false;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
 		if (isbn == null) {
 			if (other.isbn != null)
 				return false;
 		} else if (!isbn.equals(other.isbn))
 			return false;
-		if (Double.doubleToLongBits(price) != Double
-				.doubleToLongBits(other.price))
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -72,6 +87,7 @@ public class Book implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (available ? 1231 : 1237);
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
@@ -80,16 +96,10 @@ public class Book implements Serializable {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
+	@Override
 	public String toString() {
-		return (new StringBuffer("BookValue: isbn=").append(isbn).append(
-				", title=").append(title).append(", price=").append(price)
-				.append(
-						", available=").append(available)).toString();
+		return "Book [isbn=" + isbn + ", title=" + title + ", price=" + price + ", available=" + available
+				+ ", content=" + content + "]";
 	}
 
 
