@@ -1,0 +1,13 @@
+create table STORE (category varchar(128), item varchar(128), stock integer, primary key (category, item))
+create table ISBNS (isbn integer)
+create table LOGS (log varchar(512))
+insert into STORE (category, item, stock) values('books', 'ISBN1', 42)
+insert into STORE (category, item, stock) values('books', 'ISBN2', 2)
+insert into STORE (category, item, stock) values('books', 'ISBN3', 4)
+insert into STORE (category, item, stock) values('dvd', 'Star Trek', 5)
+insert into STORE (category, item, stock) values('cd', 'Sergeant Pepper', 12)
+insert into ISBNS values (0)
+
+insert into BOOKS (isbn, title, books_price) values('ISBN1', 'Title1', 19.99)
+insert into BOOKS (isbn, title, books_price) values('ISBN2', 'Title2', 9.99)
+insert into BOOKS (isbn, title, books_price) values('ISBN3', 'Title3', 29.99)
