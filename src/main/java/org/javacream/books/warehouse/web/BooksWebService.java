@@ -67,4 +67,17 @@ public class BooksWebService {
 		return books.stream().map(b -> b.getIsbn()).collect(Collectors.toList());
 	}
 
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, path = "api/books", consumes=MediaType.APPLICATION_JSON_VALUE)
+	public List<Book> findAllBooksByIsbns(@RequestBody List<String> isbns) {
+		ArrayList<Book> books = new ArrayList<>();
+		isbns.forEach(isbn -> {
+			try {
+				books.add(booksService.findBookByIsbn(isbn));
+			} catch (BookException e) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			}
+		});
+		return books;
+	}
+
 }
