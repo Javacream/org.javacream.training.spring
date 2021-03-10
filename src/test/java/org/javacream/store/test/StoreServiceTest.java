@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -53,6 +54,7 @@ public class StoreServiceTest {
 	@Configuration
 	@ComponentScan({ "org.javacream.store", "org.javacream.util.log" })
 	@EnableAutoConfiguration
+	@EntityScan("org.javacream")
 	public static class StoreServiceTestConfiguration {
 
 	}

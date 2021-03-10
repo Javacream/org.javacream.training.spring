@@ -1,5 +1,0 @@
-create table STORE (category varchar(128), item varchar(128), stock integer, primary key (category, item))
-create table ISBNS (isbn integer)
-create table LOGS (log varchar(512))
-create table BOOKS (isbn varchar(128), title varchar(256), books_price double, primary key (isbn))
-create table ORDERS (id long, isbn varchar(128), number int, total_price double, status varchar(128), primary key (id))

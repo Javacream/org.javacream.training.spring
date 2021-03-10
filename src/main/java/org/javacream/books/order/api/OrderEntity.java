@@ -1,10 +1,10 @@
 package org.javacream.books.order.api;
 
-import java.util.Random;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class OrderEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String isbn;
 	private int number;
@@ -25,11 +26,9 @@ public class OrderEntity {
 		this.number = number;
 		this.totalPrice = totalPrice;
 		this.status = status;
-		this.id = new Random(this.hashCode() + System.currentTimeMillis()).nextLong();
 	}
 	public OrderEntity() {
 		super();
-		this.id = new Random(this.hashCode() + System.currentTimeMillis()).nextLong();
 	}
 	@Override
 	public String toString() {
