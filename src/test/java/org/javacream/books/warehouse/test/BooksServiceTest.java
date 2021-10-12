@@ -18,9 +18,8 @@ public class BooksServiceTest {
 		randomIsbnGenerator.setPrefix("TEST:");
 		
 		TestActor.doTest(mapBooksService);
-		
-	
 	}
+	
 
 	
 
