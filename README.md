@@ -10,6 +10,8 @@
 * Beispiele
   * https://github.com/Javacream/org.javacream.training.spring
     *  Branch Coba_27.10.2021
+* Digitales Flipchart
+  * https://docs.google.com/presentation/d/1vDI33rK4jUYUQ506t20lo34A4DaPKxXZ8_3c3cwZi6Y/edit?usp=sharing 
 
 ## Zur Seminarvorbereitung
 
