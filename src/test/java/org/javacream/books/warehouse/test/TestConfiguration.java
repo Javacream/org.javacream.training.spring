@@ -1,4 +1,4 @@
-package org.javacream;
+package org.javacream.books.warehouse.test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Profile;
  * Eine Configuration macht Dependency Outjection (kein Standard Begriff)
  */
 @Configuration
-@Profile("prod")
-public class ApplicationConfiguration {
+@Profile("test")
+public class TestConfiguration {
 
 //	@Bean public Book book() {
 //		Book book = new Book();
@@ -23,6 +23,7 @@ public class ApplicationConfiguration {
 //	}
 	
 	@Bean public Map<String, Book> books(){
+		//ToDo: Test-Daten hinzufügen
 		return new HashMap<>();
 	}
 	
