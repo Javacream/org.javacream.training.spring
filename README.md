@@ -13,16 +13,14 @@
 * Digitales Flipchart
   * https://docs.google.com/presentation/d/1vDI33rK4jUYUQ506t20lo34A4DaPKxXZ8_3c3cwZi6Y/edit?usp=sharing 
 
-## Zur Seminarvorbereitung
+## Zeitplan
 
-* Kopieren des Projektstandes z.B. durch Download der ZIP-Datei
-* Importieren des Projekts in eine Entwicklungsumgebung
-* Verifizieren, dass der Test läuft
-* Übung: Erstellen Sie ein Klassendiagramm der Anwendung!
-* Diskussion: 
-  * Welche Argumente könnten zum gewählten Anwendungsdesign, insbesondere der Unterscheidung api - impl geführt haben?
-  * Welche Klassen sind Kandidaten für Spring?
-* Stellen Sie die Anwendung auf Spring um!
-  * Annotieren Sie hierzu die identfizierten Klassen
-  * Stellen Sie den vorhandenen Testfall, der ja alle Fachobjekte selbst instanziert, auf einen Spring-Test um
-  * Hinweis: Im pom des Maven-Projektes sind die notwendigen Abhängigkeiten bereits über Spring Boot eingetragen
+* Mittwoch
+  * 12:30 - 17:00
+  * 2 kurze Pausen, jeweils etwa 10 Minuten
+* Donnerstag (5 Einheiten)
+  * 8:30 - 17:00
+  * 2 kurze Pausen Vormittag / Nchmittag, Mittagspause von 12:15-13:00
+* Freitag
+  * 8:30 - 15:00
+  * 1 kurze Pause Vormittag, Mittagspause von 12:15-13:00
