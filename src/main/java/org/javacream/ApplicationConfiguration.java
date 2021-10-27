@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.javacream.books.warehouse.api.Book;
+import org.javacream.util.profiles.Prod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 /*
  * Eine Configuration macht Dependency Outjection (kein Standard Begriff)
  */
 @Configuration
-@Profile("prod")
+@Prod
 public class ApplicationConfiguration {
 
 //	@Bean public Book book() {
