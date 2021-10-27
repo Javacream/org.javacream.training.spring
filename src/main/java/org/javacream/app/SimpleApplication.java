@@ -13,10 +13,12 @@ public class SimpleApplication {
 	@Autowired
 	private BooksService booksService;
 
-	@Autowired private Book book;
+	//@Autowired 
+	private Book book;
 	@PostConstruct
 	public void execute() {
 		try {
+			System.out.println(booksService.findAllBooks());
 			String isbn = booksService.newBook("Hugo");
 			Book book = booksService.findBookByIsbn(isbn);
 			System.out.println(book);
