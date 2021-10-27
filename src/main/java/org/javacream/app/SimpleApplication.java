@@ -13,12 +13,14 @@ public class SimpleApplication {
 	@Autowired
 	private BooksService booksService;
 
+	@Autowired private Book book;
 	@PostConstruct
 	public void execute() {
 		try {
 			String isbn = booksService.newBook("Hugo");
 			Book book = booksService.findBookByIsbn(isbn);
 			System.out.println(book);
+			System.out.println(this.book);
 		} catch (BookException bookException) {
 			bookException.printStackTrace();
 		}

@@ -1,13 +1,20 @@
 package org.javacream;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.javacream.books.warehouse.api.Book;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication//Aggregat-Annotation, die z.B. ComponentScan, PropertySource ("application.properties")
+/*
+ * Eine Configuration macht Dependency Outjection (kein Standard Begriff)
+ */
+@Configuration
 public class ApplicationConfiguration {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ApplicationConfiguration.class, args);
-		System.out.println("main application is running!");
+	@Bean public Book book() {
+		Book book = new Book();
+		book.setIsbn("ISBN-OUT");
+		book.setTitle(("Outjected"));
+		return book;
 	}
+	
 }
