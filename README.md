@@ -22,5 +22,5 @@
   * 8:30 - 17:00
   * 2 kurze Pausen Vormittag / Nchmittag, Mittagspause von 12:15-13:00
 * Freitag
-  * 8:30 - 15:00
-  * 1 kurze Pause Vormittag, Mittagspause von 12:15-13:00
+  * 10:00 - 15:00
+  * Mittagspause von 12:15-13:00
