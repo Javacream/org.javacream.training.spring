@@ -24,7 +24,16 @@ public class TestConfiguration {
 	
 	@Bean public Map<String, Book> books(){
 		//ToDo: Test-Daten hinzufügen
-		return new HashMap<>();
+		HashMap<String, Book> data = new HashMap<>();
+		Book b1 = new Book();
+		b1.setIsbn("TEST-ISBN1");
+		b1.setTitle("TEST-TITLE1");
+		Book b2 = new Book();
+		b2.setIsbn("TEST-ISBN2");
+		b2.setTitle("TEST-TITLE2");
+		data.put(b1.getIsbn(), b1);
+		data.put(b2.getIsbn(), b2);
+		return data;
 	}
 	
 }
