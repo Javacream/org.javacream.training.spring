@@ -19,6 +19,15 @@ public interface IsbnGenerator {
 	public @interface RandomStrategy {
 
 	}
+
+	@Retention(RUNTIME)
+	@Target({ TYPE, ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD })
+	@Qualifier
+	public @interface SimpleRandomStrategy {
+
+	}
+
+	
 	@Retention(RUNTIME)
 	@Target({ TYPE, ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD })
 	@Qualifier
