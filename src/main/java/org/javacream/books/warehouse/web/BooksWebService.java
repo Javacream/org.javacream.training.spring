@@ -23,7 +23,7 @@ public class BooksWebService {
 	@Autowired
 	private BooksService booksService;
 
-	@PostMapping(path = "api/books/{title}")
+	@PostMapping(path = "api/books/{title}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String newBook(@PathVariable("title") String title) {
 		try {
 			return booksService.newBook(title);
@@ -32,7 +32,7 @@ public class BooksWebService {
 		}
 	}
 
-	@GetMapping(path = "api/books/{isbn}")
+	@GetMapping(path = "api/books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE )
 	public Book findBookByIsbn(@PathVariable("isbn") String isbn) {
 		try {
 			return booksService.findBookByIsbn(isbn);
@@ -59,7 +59,7 @@ public class BooksWebService {
 		}
 	}
 
-	@GetMapping(path = "api/books")
+	@GetMapping(path = "api/books", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Collection<Book> findAllBooks() {
 		return booksService.findAllBooks();
 	}
