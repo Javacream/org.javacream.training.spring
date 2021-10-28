@@ -45,6 +45,7 @@ public class MapBooksService implements BooksService {
 	public IsbnGeneratorService getIsbnGenerator() {
 		return isbnGenerator;
 	}
+	@Traced
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = (Book) books.get(isbn);
 		if (result == null) {
@@ -56,11 +57,13 @@ public class MapBooksService implements BooksService {
 		return result;
 	}
 
+	@Traced
 	public Book updateBook(Book bookValue) throws BookException {
 		books.put(bookValue.getIsbn(), bookValue); 
 		return bookValue;
 	}
 
+	@Traced
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		Object result = books.remove(isbn);
 		if (result == null) {
