@@ -10,6 +10,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.javacream.util.aspects.Traced;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +32,7 @@ public class MapBooksService implements BooksService {
 		this.isbnGenerator = isbnGenerator;
 	}
 
+	@Traced
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
 		Book book = new Book();

@@ -15,7 +15,8 @@ public class TracingAspect {
 //	@Around("execution(public int org.javacream.store.impl.SimpleStoreService.getStock(String, String))")
 	// * beliebiger Rückgabewert oder beliebige Zeichenkette, (..) beliebige
 	// Parameterliste, .. beliebige TZichenkette mit beginnendem und endendem Punkt
-	@Around("execution(* org.javacream..impl.*Service.*(..))")
+	//@Around("execution(* org.javacream..impl.*Service.*(..))")
+	@Around("@annotation(org.javacream.util.aspects.Traced)")
 	public Object trace(ProceedingJoinPoint pjp) throws Throwable{
 		MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
 		String methodName = methodSignature.getName();
