@@ -7,6 +7,9 @@ import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SimpleRandomStrategy;
 import org.javacream.books.isbngenerator.impl.MathRandomIsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
+import org.javacream.store.api.StoreService;
+import org.javacream.store.decorators.AuditingStoreService;
+import org.javacream.store.impl.SimpleStoreService;
 import org.javacream.util.profiles.Prod;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -20,11 +23,10 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfiguration {
 
 	/*
-	@Value("${isbngenerator.prefix}")
-	private String prefix;
-	@Value("${isbngenerator.countryCode}")
-	private String countryCode;
-	*/
+	 * @Value("${isbngenerator.prefix}") private String prefix;
+	 * 
+	 * @Value("${isbngenerator.countryCode}") private String countryCode;
+	 */
 //	@Bean public Book book() {
 //		Book book = new Book();
 //		book.setIsbn("ISBN-OUT");
@@ -49,4 +51,12 @@ public class ApplicationConfiguration {
 		return isbnGenerator;
 	}
 
+	
+	@Bean StoreService storeService(@Value("${storeService.defaultStock}") int stock) {
+		SimpleStoreService simpleStoreService = new SimpleStoreService();
+		simpleStoreService.setStock(stock);
+		AuditingStoreService auditingStoreService = new AuditingStoreService();
+		auditingStoreService.setDelegate(simpleStoreService);
+		return auditingStoreService;
+	}
 }
