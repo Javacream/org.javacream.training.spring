@@ -52,11 +52,4 @@ public class ApplicationConfiguration {
 	}
 
 	
-	@Bean StoreService storeService(@Value("${storeService.defaultStock}") int stock) {
-		SimpleStoreService simpleStoreService = new SimpleStoreService();
-		simpleStoreService.setStock(stock);
-		AuditingStoreService auditingStoreService = new AuditingStoreService();
-		auditingStoreService.setDelegate(simpleStoreService);
-		return auditingStoreService;
-	}
 }
