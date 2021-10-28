@@ -3,9 +3,9 @@ package org.javacream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.javacream.books.isbngenerator.api.IsbnGenerator.SimpleRandomStrategy;
-import org.javacream.books.isbngenerator.impl.MathRandomIsbnGenerator;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SimpleRandomStrategy;
+import org.javacream.books.isbngenerator.impl.MathRandomIsbnGeneratorService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.decorators.AuditingStoreService;
@@ -41,11 +41,11 @@ public class ApplicationConfiguration {
 
 	@Bean
 	@SimpleRandomStrategy
-	public IsbnGenerator simpleIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix,
+	public IsbnGeneratorService simpleIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix,
 			@Value("${isbngenerator.countryCode}") String countryCode
 
 	) {
-		MathRandomIsbnGenerator isbnGenerator = new MathRandomIsbnGenerator();
+		MathRandomIsbnGeneratorService isbnGenerator = new MathRandomIsbnGeneratorService();
 		isbnGenerator.setPrefix(prefix);
 		isbnGenerator.setCountryCode(countryCode);
 		return isbnGenerator;
