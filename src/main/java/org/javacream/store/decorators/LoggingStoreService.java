@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AuditingStoreService implements StoreService {
+public class LoggingStoreService implements StoreService {
 
 	@Autowired
 	private StoreService delegate;
@@ -18,7 +18,7 @@ public class AuditingStoreService implements StoreService {
 
 	@Override
 	public int getStock(String category, String item) {
-		System.out.println("Auditing: calling gestStock...");
+		System.out.println("Logging: calling gestStock...");
 		int stock = delegate.getStock(category, item);
 		return stock;
 	}

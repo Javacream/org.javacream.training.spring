@@ -33,7 +33,7 @@ public class CloningBooksService implements BooksService{
 	}
 
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList(delegate.findAllBooks()));
+		return SerializationUtils.clone(new ArrayList<>(delegate.findAllBooks()));
 	}
 
 }
