@@ -2,9 +2,11 @@ package org.javacream.store.decorators;
 
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class AuditingStoreService implements StoreService {
 
 	@Autowired
