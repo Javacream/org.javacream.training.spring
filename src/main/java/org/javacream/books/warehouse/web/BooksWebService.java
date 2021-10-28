@@ -5,6 +5,8 @@ import java.util.Collection;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.books.warehouse.api.BooksService.EntityManagerStrategy;
+import org.javacream.books.warehouse.api.BooksService.RepositoryStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,10 +24,24 @@ import org.springframework.web.server.ResponseStatusException;
 public class BooksWebService {
 
 	@Autowired
-	private BooksService booksService;
+	@EntityManagerStrategy
+	private BooksService entityManagerBooksService;
+	@Autowired
+	@RepositoryStrategy
+	private BooksService repositoryBooksService;
+
+	private BooksService forStrategy(String strategy) {
+		if ("entityManager".equals(strategy)) {
+			return entityManagerBooksService;
+		} else {
+			return repositoryBooksService;
+		}
+	}
 
 	@PostMapping(path = "api/books/{title}", produces = MediaType.TEXT_PLAIN_VALUE)
-	public String newBook(@PathVariable("title") String title) {
+	public String newBook(@PathVariable("title") String title,
+			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+		BooksService booksService = forStrategy(strategy);
 		try {
 			return booksService.newBook(title);
 		} catch (BookException e) {
@@ -32,8 +49,10 @@ public class BooksWebService {
 		}
 	}
 
-	@GetMapping(path = "api/books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE )
-	public Book findBookByIsbn(@PathVariable("isbn") String isbn) {
+	@GetMapping(path = "api/books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Book findBookByIsbn(@PathVariable("isbn") String isbn,
+			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+		BooksService booksService = forStrategy(strategy);
 		try {
 			return booksService.findBookByIsbn(isbn);
 		} catch (BookException e) {
@@ -42,7 +61,9 @@ public class BooksWebService {
 	}
 
 	@PutMapping(path = "api/books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Book updateBook(@PathVariable("isbn") String isbn, @RequestBody Book book) {
+	public Book updateBook(@PathVariable("isbn") String isbn, @RequestBody Book book,
+			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+		BooksService booksService = forStrategy(strategy);
 		try {
 			return booksService.updateBook(book);
 		} catch (BookException e) {
@@ -51,7 +72,9 @@ public class BooksWebService {
 	}
 
 	@DeleteMapping(path = "api/books/{isbn}")
-	public void deleteBookByIsbn(@PathVariable("isbn")  String isbn) {
+	public void deleteBookByIsbn(@PathVariable("isbn") String isbn,
+			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+		BooksService booksService = forStrategy(strategy);
 		try {
 			booksService.deleteBookByIsbn(isbn);
 		} catch (BookException e) {
@@ -60,7 +83,9 @@ public class BooksWebService {
 	}
 
 	@GetMapping(path = "api/books", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Collection<Book> findAllBooks() {
+	public Collection<Book> findAllBooks(
+			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+		BooksService booksService = forStrategy(strategy);
 		return booksService.findAllBooks();
 	}
 }
