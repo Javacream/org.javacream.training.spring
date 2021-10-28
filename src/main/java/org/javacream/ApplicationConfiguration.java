@@ -9,7 +9,7 @@ import org.javacream.books.isbngenerator.impl.MathRandomIsbnGeneratorService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.decorators.AuditingStoreService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.javacream.util.profiles.Prod;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
