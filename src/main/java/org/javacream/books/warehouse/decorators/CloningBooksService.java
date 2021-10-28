@@ -7,9 +7,14 @@ import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
+@Component
+@Primary
 public class CloningBooksService implements BooksService{
-	private BooksService delegate;
+	@Autowired private BooksService delegate;
 
 	public String newBook(String title) throws BookException {
 		return delegate.newBook(title);
@@ -28,7 +33,7 @@ public class CloningBooksService implements BooksService{
 	}
 
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList(findAllBooks()));
+		return SerializationUtils.clone(new ArrayList(delegate.findAllBooks()));
 	}
 
 }
