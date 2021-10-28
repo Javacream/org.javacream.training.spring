@@ -3,12 +3,17 @@ package org.javacream.books.warehouse.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.books.warehouse.repository.BooksRepository;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.aspects.Traced;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +21,13 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class MapBooksService implements BooksService {
+public class DatabaseBooksService implements BooksService {
 
+	@PersistenceContext private EntityManager entityManager;
+	@Autowired private BooksRepository booksRepository;
+	
 	@Autowired @SequenceStrategy private IsbnGeneratorService isbnGenerator;
 
-	@Autowired private Map<String, Book> books;
-	
 	@Autowired private StoreService storeService;
 	
 	public void setStoreService(StoreService storeService) {
@@ -38,7 +44,7 @@ public class MapBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		entityManager.persist(book);
 		return isbn;
 	}
 
@@ -47,11 +53,8 @@ public class MapBooksService implements BooksService {
 	}
 	@Traced
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
-		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
-					isbn);
-		}
+		//Book result = entityManager.find(Book.class, isbn);
+		Optional<Book> result = booksRepository.findById(isbn);
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
 		
 		return result;
@@ -74,10 +77,8 @@ public class MapBooksService implements BooksService {
 
 
 	public Collection<Book> findAllBooks() {
-		return new ArrayList<Book>(books.values());
-	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
+//		return entityManager.createQuery("select b from Book as b", Book.class).getResultList();
+		return booksRepository.findAll();
 	}
 	
 }
