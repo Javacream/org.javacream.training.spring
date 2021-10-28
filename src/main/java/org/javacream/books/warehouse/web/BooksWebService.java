@@ -20,24 +20,29 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class BooksWebService {
 
-	@Autowired private BooksService booksService;
-
+	@Autowired
+	private BooksService booksService;
 
 	@PostMapping(path = "api/books/{title}")
-	//UNPROCESSABLE_ENTITY
-	public String newBook(String title) throws BookException {
-		return booksService.newBook(title);
+	public String newBook(@PathVariable("title") String title) {
+		try {
+			return booksService.newBook(title);
+		} catch (BookException e) {
+			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, e.getMessage());
+		}
 	}
 
 	@GetMapping(path = "api/books/{isbn}")
-	//NOT_FOUND
-
-	public Book findBookByIsbn(String isbn) throws BookException {
-		return booksService.findBookByIsbn(isbn);
+	public Book findBookByIsbn(@PathVariable("isbn") String isbn) {
+		try {
+			return booksService.findBookByIsbn(isbn);
+		} catch (BookException e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+		}
 	}
 
 	@PutMapping(path = "api/books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Book updateBook(@PathVariable("isbn") String isbn, @RequestBody Book book){
+	public Book updateBook(@PathVariable("isbn") String isbn, @RequestBody Book book) {
 		try {
 			return booksService.updateBook(book);
 		} catch (BookException e) {
@@ -45,11 +50,13 @@ public class BooksWebService {
 		}
 	}
 
-	
 	@DeleteMapping(path = "api/books/{isbn}")
-	//Conflict
-	public void deleteBookByIsbn(String isbn) throws BookException {
-		booksService.deleteBookByIsbn(isbn);
+	public void deleteBookByIsbn(@PathVariable("isbn")  String isbn) {
+		try {
+			booksService.deleteBookByIsbn(isbn);
+		} catch (BookException e) {
+			throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+		}
 	}
 
 	@GetMapping(path = "api/books")
