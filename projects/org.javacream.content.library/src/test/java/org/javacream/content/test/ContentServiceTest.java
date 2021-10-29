@@ -14,6 +14,6 @@ public class ContentServiceTest {
 	@Autowired private ContentRepository contentRepository;
 	@Test public void testContentService() {
 		Assertions.assertNotNull(contentRepository.findById("ISBN1"));
-		System.out.println(contentRepository.findById("ISBN4"));
+		System.out.println(contentRepository.findById("ISBN2"));
 	}
 }
