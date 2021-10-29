@@ -67,10 +67,10 @@ public class MixedBooksService implements BooksService {
 		Book result2 = booksRepository.findById(isbn).get();
 		Book result3 = entityManager.createQuery("select b from Book as b", Book.class).getResultList().get(0);
 		Book result4 = (Book) entityManager.createNativeQuery("select * from BOOK where isbn = '" + isbn + "'", Book.class).getSingleResult();
-		result.setPrice(6.66);
 		result4.setTitle("C H A N G E D");
 		System.out.println(result2);
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
+		System.out.println(result2);
 		return result;
 	}
 
