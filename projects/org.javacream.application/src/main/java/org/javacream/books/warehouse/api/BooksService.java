@@ -34,4 +34,10 @@ public interface BooksService{
 	public @interface RepositoryStrategy {
 
 	}
+	@Retention(RUNTIME)
+	@Target({ TYPE, ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD })
+	@Qualifier
+	public @interface MixedStrategy {
+
+	}
 }

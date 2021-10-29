@@ -6,6 +6,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.books.warehouse.api.BooksService.EntityManagerStrategy;
+import org.javacream.books.warehouse.api.BooksService.MixedStrategy;
 import org.javacream.books.warehouse.api.BooksService.RepositoryStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,17 +31,22 @@ public class BooksWebService {
 	@RepositoryStrategy
 	private BooksService repositoryBooksService;
 
+	@Autowired
+	@MixedStrategy
+	private BooksService mixedBooksService;
+
 	private BooksService forStrategy(String strategy) {
 		if ("entityManager".equals(strategy)) {
 			return entityManagerBooksService;
-		} else {
+		} else if ("mixed".equals(strategy)) {
+			return mixedBooksService;
+		} else
 			return repositoryBooksService;
-		}
 	}
 
 	@PostMapping(path = "api/books/{title}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String newBook(@PathVariable("title") String title,
-			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+			@RequestHeader(value = "strategy", defaultValue = "mixed") String strategy) {
 		BooksService booksService = forStrategy(strategy);
 		try {
 			return booksService.newBook(title);
@@ -51,7 +57,7 @@ public class BooksWebService {
 
 	@GetMapping(path = "api/books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Book findBookByIsbn(@PathVariable("isbn") String isbn,
-			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+			@RequestHeader(value = "strategy", defaultValue = "mixed") String strategy) {
 		BooksService booksService = forStrategy(strategy);
 		try {
 			return booksService.findBookByIsbn(isbn);
@@ -62,7 +68,7 @@ public class BooksWebService {
 
 	@PutMapping(path = "api/books/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Book updateBook(@PathVariable("isbn") String isbn, @RequestBody Book book,
-			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+			@RequestHeader(value = "strategy", defaultValue = "mixed") String strategy) {
 		BooksService booksService = forStrategy(strategy);
 		try {
 			return booksService.updateBook(book);
@@ -73,7 +79,7 @@ public class BooksWebService {
 
 	@DeleteMapping(path = "api/books/{isbn}")
 	public void deleteBookByIsbn(@PathVariable("isbn") String isbn,
-			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+			@RequestHeader(value = "strategy", defaultValue = "mixed") String strategy) {
 		BooksService booksService = forStrategy(strategy);
 		try {
 			booksService.deleteBookByIsbn(isbn);
@@ -84,7 +90,7 @@ public class BooksWebService {
 
 	@GetMapping(path = "api/books", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Collection<Book> findAllBooks(
-			@RequestHeader(value = "strategy", defaultValue = "entityManager") String strategy) {
+			@RequestHeader(value = "strategy", defaultValue = "mixed") String strategy) {
 		BooksService booksService = forStrategy(strategy);
 		return booksService.findAllBooks();
 	}

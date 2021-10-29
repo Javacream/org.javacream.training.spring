@@ -12,6 +12,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.books.warehouse.api.BooksService.MixedStrategy;
 import org.javacream.books.warehouse.repository.BooksRepository;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.aspects.Traced;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
+@MixedStrategy
 public class MixedBooksService implements BooksService {
 
 	@Autowired
@@ -62,6 +64,12 @@ public class MixedBooksService implements BooksService {
 	public Book findBookByIsbn(String isbn) throws BookException {
 
 		Book result = entityManager.find(Book.class, isbn);
+		Book result2 = booksRepository.findById(isbn).get();
+		Book result3 = entityManager.createQuery("select b from Book as b", Book.class).getResultList().get(0);
+		Book result4 = (Book) entityManager.createNativeQuery("select * from BOOK where isbn = '" + isbn + "'", Book.class).getSingleResult();
+		result.setPrice(6.66);
+		result4.setTitle("C H A N G E D");
+		System.out.println(result2);
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
 		return result;
 	}
