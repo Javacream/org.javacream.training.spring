@@ -6,8 +6,10 @@ import javax.persistence.Query;
 
 import org.javacream.store.api.StoreService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class DatabaseStoreService implements StoreService {
 
 	@PersistenceContext

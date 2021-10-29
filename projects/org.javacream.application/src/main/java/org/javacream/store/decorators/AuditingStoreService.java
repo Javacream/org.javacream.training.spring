@@ -9,6 +9,7 @@ import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
@@ -32,9 +33,6 @@ public class AuditingStoreService implements StoreService {
 		Query query = entityManager.createNativeQuery("insert into messages values(:message)");
 		query.setParameter("message", "calling getStock, category=" + category +", item" + item +", stock=" + stock);
 		query.executeUpdate();
-		Book book = entityManager.find(Book.class, item);
-		book.setPrice(6.66);
-		System.out.println(book);
 		return stock;
 	}
 
