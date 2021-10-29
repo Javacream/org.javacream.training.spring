@@ -14,6 +14,7 @@ import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.books.warehouse.api.BooksService.MixedStrategy;
 import org.javacream.books.warehouse.repository.BooksRepository;
+import org.javacream.logger.LogService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.aspects.Traced;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class MixedBooksService implements BooksService {
 	@SequenceStrategy
 	private IsbnGeneratorService isbnGenerator;
 
+	@Autowired private LogService logService;
 	@Autowired
 	private StoreService storeService;
 
@@ -53,6 +55,7 @@ public class MixedBooksService implements BooksService {
 		book.setIsbn(isbn);
 		book.setTitle(title);
 		booksRepository.save(book);
+		logService.log("created book " + isbn);
 		return isbn;
 	}
 
