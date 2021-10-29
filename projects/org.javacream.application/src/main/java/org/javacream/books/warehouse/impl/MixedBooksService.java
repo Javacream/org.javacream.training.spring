@@ -36,7 +36,8 @@ public class MixedBooksService implements BooksService {
 	@SequenceStrategy
 	private IsbnGeneratorService isbnGenerator;
 
-	@Autowired private LogService logService;
+	@Autowired
+	private LogService logService;
 	@Autowired
 	private StoreService storeService;
 
@@ -55,7 +56,11 @@ public class MixedBooksService implements BooksService {
 		book.setIsbn(isbn);
 		book.setTitle(title);
 		booksRepository.save(book);
-		logService.log("created book " + isbn);
+		try {
+			logService.log("created book " + isbn);
+		} catch (RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
 		return isbn;
 	}
 
