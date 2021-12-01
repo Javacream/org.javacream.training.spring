@@ -1,8 +1,5 @@
 package org.javacream.content;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.couchbase.config.AbstractCouchbaseConfiguration;
 import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepositories;
@@ -24,7 +21,7 @@ public class ContentServiceConfiguration extends AbstractCouchbaseConfiguration{
 
 		@Override
 		public String getConnectionString() {
-			return "h2908727.stratoserver.net";
+			return "localhost";
 		}
 
 		@Override
