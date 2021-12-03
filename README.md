@@ -8,11 +8,12 @@
 * Referent: Rainer Sawitzki, eMail: training@rainer-sawitzki.de
 
 * Beispiele
+
   * https://github.com/Javacream/org.javacream.training.spring
-    *  
+    *  Barmenia_6.12.2021
 * Digitales Flipchart
 
-  * 
+  * https://docs.google.com/presentation/d/16_sHDT3sC1bqrejgQ9kPMs6uRpCyWQllMNaFbD8SLbs/edit?usp=sharing
 
 ## Zeitplan
 
