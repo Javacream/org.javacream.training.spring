@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService;
 import org.javacream.books.warehouse.impl.MapBooksService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.junit.jupiter.api.Test;
 
 
@@ -16,7 +16,7 @@ public class BooksServiceTest {
 		RandomIsbnGeneratorService randomIsbnGenerator = new RandomIsbnGeneratorService();
 		randomIsbnGenerator.setCountryCode("-de");
 		mapBooksService.setIsbnGenerator(randomIsbnGenerator);
-		mapBooksService.setStoreService(new SimpleStoreService());
+		mapBooksService.setStoreService(new DatabaseStoreService());
 		randomIsbnGenerator.setPrefix("TEST:");
 		mapBooksService.setBooks(new HashMap<>());
 		TestActor.doTest(mapBooksService);
