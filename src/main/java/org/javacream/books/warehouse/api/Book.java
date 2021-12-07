@@ -1,14 +1,32 @@
 package org.javacream.books.warehouse.api;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import org.javacream.books.order.api.Order;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
+
+	@OneToMany(mappedBy = "book")
+	@JsonIgnore
+	private Set<Order> orders;
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
 
 	@Id
 	private String isbn;
