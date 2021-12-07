@@ -22,10 +22,11 @@ public class OrderWebService {
 	private BooksRepository booksRepository;
 
 	@PostMapping(path = "api/order/{isbn}/{number}", produces = MediaType.TEXT_PLAIN_VALUE)
-	public String newOrder(@PathVariable("isbn") String isbn, @PathVariable("number") String number) {
+	public String newOrder(@PathVariable("isbn") String isbn, @PathVariable("number") int number) {
 		try {
 			Order order = new Order();
 			order.setBook(booksRepository.findById(isbn).get());
+			order.setNumber(number);
 			orderRepository.save(order);
 			return "ID: " + order.getOrderId();
 		} catch (Exception e) {
