@@ -1,9 +1,8 @@
 package org.javacream.books.warehouse.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService.SequenceStrategy;
@@ -76,7 +75,7 @@ public class JpaBooksService implements BooksService {
 	}
 
 	public Collection<Book> findAllBooks() {
-		return StreamSupport.stream(booksRepository.findAll().spliterator(), false).collect(Collectors.toList()) ;
+		return new ArrayList<>(booksRepository.findAll());
 	}
 
 
