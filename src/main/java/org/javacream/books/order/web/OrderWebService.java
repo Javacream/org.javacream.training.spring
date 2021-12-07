@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.repository.OrderRepository;
+import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.repository.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,13 @@ public class OrderWebService {
 	@GetMapping(path = "api/order", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Order> showAll() {
 		return orderRepository.findAll();
+	}
+
+	@GetMapping(path = "api/order/demo", produces = MediaType.TEXT_PLAIN_VALUE)
+	public String doDemo() {
+		Book bookByOrder = orderRepository.findById(1l).get().getBook();
+		Book bookByBook = booksRepository.findById("ISBN1").get();
+		return "Identity: " + (bookByOrder == bookByBook); 
 	}
 
 }
