@@ -3,7 +3,7 @@ package org.javacream.content.web;
 import java.util.Optional;
 
 import org.javacream.content.api.Content;
-import org.javacream.content.api.ContentRepository;
+import org.javacream.content.repository.ContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
