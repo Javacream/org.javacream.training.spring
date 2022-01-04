@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Person extends Object{
     private String lastname;
     private String firstname;
-
+    public static final Integer NUMBER_OF_EYES = 2;
     public Address getAddress() {
         return address;
     }

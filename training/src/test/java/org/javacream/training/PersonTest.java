@@ -46,8 +46,14 @@ public class PersonTest {
     @Test public void testInheritance(){
         Person p = new Person("meier", "hans");
         Student s = new Student("Einstein", "Albert", "LMU");
-        Worker w = new Worker("Schufter", "Hans". "Integrata");
+        Worker w = new Worker("Schufter", "Hans", "Integrata");
         Student s2 = new Student("Curie", "Albert", "LMU");
 
     }
+
+    @Test public void testStatic(){
+        System.out.println(Person.NUMBER_OF_EYES);
+
+    }
+
 }
