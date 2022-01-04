@@ -3,6 +3,10 @@ package org.javacream.training;
 import java.util.Objects;
 
 public class Address {
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     private String city;
     private String street;
 
