@@ -10,4 +10,8 @@ public class Student extends Person {
     public void study(){
         System.out.println(this.info() + " is studying at " + this.university);
     }
+
+    public String info(){
+        return super.info() + " is studying at " + this.university;
+    }
 }

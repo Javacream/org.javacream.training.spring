@@ -48,7 +48,8 @@ public class PersonTest {
         Student s = new Student("Einstein", "Albert", "LMU");
         Worker w = new Worker("Schufter", "Hans", "Integrata");
         Student s2 = new Student("Curie", "Albert", "LMU");
-
+        System.out.println(s.info());
+        System.out.println(w.info());
     }
 
     @Test public void testStatic(){
