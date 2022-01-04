@@ -2,7 +2,7 @@ package org.javacream.training;
 
 import java.util.Objects;
 
-public class Person {
+public class Person extends Object{
     private String lastname;
     private String firstname;
 

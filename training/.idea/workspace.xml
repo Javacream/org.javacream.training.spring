@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="add Address">
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="play with references">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Worker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Address.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +43,14 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.javacream.training" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.javacream.training" />
+    </key>
   </component>
   <component name="RunManager" selected="JUnit.PersonTest.types">
     <configuration name="PersonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -122,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641300982500</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="play with references">
+      <created>1641302927401</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641302927401</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,7 +156,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="switch to Java 8" />
     <MESSAGE value="add Address" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Address" />
+    <MESSAGE value="play with references" />
+    <option name="LAST_COMMIT_MESSAGE" value="play with references" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -152,7 +169,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java</url>
-          <line>34</line>
+          <line>35</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
