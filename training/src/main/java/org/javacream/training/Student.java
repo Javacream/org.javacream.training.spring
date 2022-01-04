@@ -11,6 +11,7 @@ public class Student extends Person {
         System.out.println(this.info() + " is studying at " + this.university);
     }
 
+    @Override
     public String info(){
         return super.info() + " is studying at " + this.university;
     }
