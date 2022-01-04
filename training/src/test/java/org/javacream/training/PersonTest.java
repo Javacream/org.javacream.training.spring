@@ -10,9 +10,20 @@ public class PersonTest {
         String lastname = "Sawitzki";
         String firstname = "Rainer";
         Person person = new Person(lastname, firstname);
-        //System.out.println(person.info());
         Assertions.assertEquals(lastname, person.getLastname());
         Assertions.assertEquals(firstname, person.getFirstname());
+    }
+
+    @Test
+    public void personTestWithAddress(){
+        String lastname = "Sawitzki";
+        String firstname = "Rainer";
+        Person person = new Person(lastname, firstname);
+        Assertions.assertNull(person.getAddress());
+        Address address = new Address("München", "Marienplatz");
+        person.setAddress(address);
+        Assertions.assertEquals(address, person.getAddress());
 
     }
+
 }

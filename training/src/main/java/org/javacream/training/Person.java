@@ -5,6 +5,16 @@ import java.util.Objects;
 public class Person {
     private String lastname;
     private String firstname;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    private Address address;
     public String info(){
         return "Person: lastname=" + this.lastname + ", firstname=" + this.firstname;
     }
