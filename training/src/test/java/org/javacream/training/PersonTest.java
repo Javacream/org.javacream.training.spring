@@ -48,10 +48,27 @@ public class PersonTest {
         Student s = new Student("Einstein", "Albert", "LMU");
         Worker w = new Worker("Schufter", "Hans", "Integrata");
         Student s2 = new Student("Curie", "Albert", "LMU");
-        System.out.println(s.info());
-        System.out.println(w.info());
+//        System.out.println(s.info());
+//        System.out.println(w.info());
+        print(p);
+        Person p2 = s;
+        Object o = s;
+//        print(p2);
+        print(s);
+        print(w);
+        printObject(s);
     }
 
+    private void print(Person person){
+        System.out.println(person.info());
+    }
+    private void printObject(Object o){
+        //Möglich, aber schlimm ...
+        if (o instanceof Person){
+            Person p = (Person)o;//Kann zu einem Runtime-Fehler führen
+            System.out.println(p.info());
+        }
+    }
     @Test public void testStatic(){
         System.out.println(Person.NUMBER_OF_EYES);
 

@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="introduce static">
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="introduce override">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641306476254</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="introduce override">
+      <created>1641306824424</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1641306824424</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,7 +195,8 @@
     <MESSAGE value="play with references" />
     <MESSAGE value="play with inheritance" />
     <MESSAGE value="introduce static" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce static" />
+    <MESSAGE value="introduce override" />
+    <option name="LAST_COMMIT_MESSAGE" value="introduce override" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
