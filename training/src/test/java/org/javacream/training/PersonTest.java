@@ -7,9 +7,9 @@ public class PersonTest {
 
     @Test
     public void personTest(){
-        var lastname = "Sawitzki";
-        var firstname = "Rainer";
-        var person = new Person(lastname, firstname);
+        String lastname = "Sawitzki";
+        String firstname = "Rainer";
+        Person person = new Person(lastname, firstname);
         //System.out.println(person.info());
         Assertions.assertEquals(lastname, person.getLastname());
         Assertions.assertEquals(firstname, person.getFirstname());
