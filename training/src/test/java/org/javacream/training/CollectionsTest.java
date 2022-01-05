@@ -58,6 +58,9 @@ public class CollectionsTest {
         names.forEach(printer);
         */
         names.forEach((s) -> System.out.println(s));
+        names.forEach(System.out::println);
+        names.forEach(Hotel::egal);
     }
+
 
 }

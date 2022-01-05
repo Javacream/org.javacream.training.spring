@@ -6,7 +6,9 @@ import java.util.Set;
 
 public class Hotel implements Addressable{
     private String name;
-
+    public static void egal(String s){
+        //...
+    }
     public Set<Person> getCheckedIn() {
         return checkedIn;
     }
