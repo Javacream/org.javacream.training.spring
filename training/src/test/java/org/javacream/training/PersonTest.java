@@ -93,10 +93,10 @@ public class PersonTest {
         Assertions.assertTrue(hotel.checkOut(sawitzki));
         Assertions.assertFalse(hotel.checkOut(sawitzki));
         Assertions.assertTrue(hotel.checkIn(schneider));
-        for (Person p: hotel.getCheckedIn()){
+        /*for (Person p: hotel.getCheckedIn()){
             System.out.println(p.info());
-        }
-
+        }*/
+        hotel.getCheckedIn().forEach((p) -> System.out.println(p.info()));
 
 
 

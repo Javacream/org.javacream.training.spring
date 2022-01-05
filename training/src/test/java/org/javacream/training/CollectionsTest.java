@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CollectionsTest {
     @Test public void testList(){
@@ -60,7 +62,28 @@ public class CollectionsTest {
         names.forEach((s) -> System.out.println(s));
         names.forEach(System.out::println);
         names.forEach(Hotel::egal);
+
     }
 
+    @Test public void testStreaming(){
+        Set<String> names = new HashSet<>();
+        names.add("Hugo");
+        names.add("Emil");
+        names.add("Fritzi");
+        names.add("Eduard");
+        names.add("Felix");
+        names.add("Hannah");
+        //Stream<String> namesStream = names.stream();
+        //Stream<String> filteredNames = namesStream.filter((name) -> {return name.startsWith("F");});
+        //filteredNames.forEach(System.out::println);
+        //names.stream().filter((name) -> {return name.startsWith("F");}).forEach(System.out::println);
+       // names.stream().filter(name -> name.startsWith("F")).forEach(System.out::println);
+        //names.stream().map(name -> name.length()).forEach(System.out::println);
+        //names.stream().filter(name -> name.startsWith("F")).map(name -> name.length()).forEach(System.out::println);
+        List<Integer> result = names.stream().filter(name -> name.startsWith("F")).map(name -> name.length()).collect(Collectors.toList());
+        Assertions.assertEquals(2, result.size());
+        Assertions.assertTrue(result.contains(5));
+        Assertions.assertTrue(result.contains(6));
+    }
 
 }
