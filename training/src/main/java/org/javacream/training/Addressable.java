@@ -1,7 +1,8 @@
 package org.javacream.training;
 
 
-public interface Addressable {
+
+@FunctionalInterface public interface Addressable {
 /* das wäre eigentlich ganz schön gewesen...
     private Address address;
     public Address getAddress() {

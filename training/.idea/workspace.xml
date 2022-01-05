@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="play with Collections">
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="add checkIn / checkOut">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/TopLevelAddressable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/CollectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/CollectionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641384741831</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add checkIn / checkOut">
+      <created>1641386092078</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1641386092078</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,7 +297,8 @@
     <MESSAGE value="add Hotel" />
     <MESSAGE value="add Addressable" />
     <MESSAGE value="play with Collections" />
-    <option name="LAST_COMMIT_MESSAGE" value="play with Collections" />
+    <MESSAGE value="add checkIn / checkOut" />
+    <option name="LAST_COMMIT_MESSAGE" value="add checkIn / checkOut" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
