@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="introduce override">
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="introduce marry and divorce example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
       <recent name="org.javacream.training" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PersonTest">
+  <component name="RunManager" selected="JUnit.PersonTest.testMariageAndDivorce">
     <configuration name="PersonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
@@ -66,22 +67,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PersonTest.personTestWithAddress" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="training" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.javacream.training.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.javacream.training" />
-      <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
-      <option name="METHOD_NAME" value="personTestWithAddress" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PersonTest.testInheritance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
@@ -93,6 +78,38 @@
       <option name="PACKAGE_NAME" value="org.javacream.training" />
       <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
       <option name="METHOD_NAME" value="testInheritance" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonTest.testMariageAndDivorce" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="training" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javacream.training.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.javacream.training" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
+      <option name="METHOD_NAME" value="testMariageAndDivorce" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonTest.testMariageAnddivorce" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="training" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javacream.training.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.javacream.training" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
+      <option name="METHOD_NAME" value="testMariageAnddivorce" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -116,10 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PersonTest.testMariageAndDivorce" />
+        <item itemvalue="JUnit.PersonTest.testMariageAnddivorce" />
         <item itemvalue="JUnit.PersonTest" />
         <item itemvalue="JUnit.PersonTest.testInheritance" />
         <item itemvalue="JUnit.PersonTest.types" />
-        <item itemvalue="JUnit.PersonTest.personTestWithAddress" />
       </list>
     </recent_temporary>
   </component>
@@ -188,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641308399367</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="play around with static">
+      <created>1641371178132</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1641371178132</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -210,7 +235,9 @@
     <MESSAGE value="play with inheritance" />
     <MESSAGE value="introduce static" />
     <MESSAGE value="introduce override" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce override" />
+    <MESSAGE value="play around with static" />
+    <MESSAGE value="introduce marry and divorce example" />
+    <option name="LAST_COMMIT_MESSAGE" value="introduce marry and divorce example" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -219,11 +246,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java</url>
           <line>19</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

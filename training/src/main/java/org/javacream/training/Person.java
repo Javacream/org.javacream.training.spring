@@ -2,10 +2,45 @@ package org.javacream.training;
 
 import java.util.Objects;
 
-public class Person extends Object{
+public class Person{
     private String lastname;
     private String firstname;
     public static final Integer NUMBER_OF_EYES = 2;
+
+    public Person getPartner() {
+        return partner;
+    }
+
+    private Person partner;
+    public Boolean marry(Person partner){
+        if (partner == null){
+            System.out.println("cannot marry null!");
+            return false;
+        }
+        if (partner == this){
+            System.out.println("cannot marry myself!");
+            return false;
+        }
+        if (partner.partner != null){
+            System.out.println("cannot marry, partner is married!");
+            return false;
+        }
+
+        this.partner = partner;
+        partner.partner = this;
+        return true;
+    }
+
+    public Boolean divorce(){
+        if (this.partner == null){
+            System.out.println("cannot divorce, have no partner!");
+            return false;
+        }
+        this.partner.partner = null;
+        this.partner = null;
+        return true;
+    }
+
     public static Integer getNumberOfEyes(){
         //this.lastname;
         return NUMBER_OF_EYES;
