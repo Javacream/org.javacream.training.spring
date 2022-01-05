@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="add Hotel">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hugo.java" afterDir="false" />
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="add Addressable">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/CollectionsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,8 +51,8 @@
       <recent name="org.javacream.training" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PersonTest.testInterfaces">
-    <configuration name="PersonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CollectionsTest">
+    <configuration name="CollectionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
         <pattern>
@@ -65,13 +61,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.javacream.training" />
-      <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.CollectionsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PersonTest.testInheritance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CollectionsTest.testList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
         <pattern>
@@ -80,8 +76,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.javacream.training" />
-      <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
-      <option name="METHOD_NAME" value="testInheritance" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.CollectionsTest" />
+      <option name="METHOD_NAME" value="testList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -137,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CollectionsTest" />
+        <item itemvalue="JUnit.CollectionsTest.testList" />
         <item itemvalue="JUnit.PersonTest.testInterfaces" />
         <item itemvalue="JUnit.PersonTest.testMariageAndDivorce" />
         <item itemvalue="JUnit.PersonTest.testMariageAnddivorce" />
-        <item itemvalue="JUnit.PersonTest" />
-        <item itemvalue="JUnit.PersonTest.testInheritance" />
       </list>
     </recent_temporary>
   </component>
@@ -252,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641375066780</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add Addressable">
+      <created>1641377678056</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1641377678056</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -277,7 +280,8 @@
     <MESSAGE value="play around with static" />
     <MESSAGE value="introduce marry and divorce example" />
     <MESSAGE value="add Hotel" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Hotel" />
+    <MESSAGE value="add Addressable" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Addressable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
