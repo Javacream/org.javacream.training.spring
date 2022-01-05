@@ -80,4 +80,25 @@ public class PersonTest {
     private void printAddress(Addressable addressable){
         System.out.println(addressable.getAddress());
     }
+
+    @Test public void testHotel(){
+        Person sawitzki = new Person("Sawitzki", "Rainer");
+        Person meier = new Person("Meier", "Jamie");
+        Person schneider = new Person("schneider", "Nicola");
+        Hotel hotel = new Hotel("Ibis", 2, new Address("Berlin", "Alexanderplatz"));
+        Assertions.assertTrue(hotel.checkIn(sawitzki));
+        Assertions.assertFalse(hotel.checkIn(sawitzki));
+        Assertions.assertTrue(hotel.checkIn(meier));
+        Assertions.assertFalse(hotel.checkIn(schneider));
+        Assertions.assertTrue(hotel.checkOut(sawitzki));
+        Assertions.assertFalse(hotel.checkOut(sawitzki));
+        Assertions.assertTrue(hotel.checkIn(schneider));
+        for (Person p: hotel.getCheckedIn()){
+            System.out.println(p.info());
+        }
+
+
+
+
+    }
 }

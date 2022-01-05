@@ -1,13 +1,44 @@
 package org.javacream.training;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Hotel implements Addressable{
     private String name;
 
+    public Set<Person> getCheckedIn() {
+        return checkedIn;
+    }
+
+    private Set<Person> checkedIn = new HashSet<>();
+    public Boolean checkIn(Person guest){
+        if (checkedIn.contains(guest)){
+            return false;
+        }else{
+            if (checkedIn.size() == roomCount){
+                return false;
+            }else{
+                checkedIn.add(guest);
+                return true;
+            }
+        }
+
+    }
+
+    public boolean checkOut(Person guest){
+        if (!checkedIn.contains(guest)){
+            return false;
+        }else{
+            checkedIn.remove(guest);
+            return true;
+        }
+    }
     public String getName() {
         return name;
     }
+
+
 
     public Integer getRoomCount() {
         return roomCount;

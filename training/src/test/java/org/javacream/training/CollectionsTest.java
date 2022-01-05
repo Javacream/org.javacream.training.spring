@@ -41,6 +41,7 @@ public class CollectionsTest {
         Assertions.assertTrue(postalCodesToCity.containsValue("Berlin"));
         postalCodesToCity.clear();
         Assertions.assertEquals(0, postalCodesToCity.size());
+        Map<Integer, Set<String>> postalCodesToCityextended = new HashMap<>();
 
     }
 }
