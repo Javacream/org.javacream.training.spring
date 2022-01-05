@@ -6,6 +6,10 @@ public class Person extends Object{
     private String lastname;
     private String firstname;
     public static final Integer NUMBER_OF_EYES = 2;
+    public static Integer getNumberOfEyes(){
+        //this.lastname;
+        return NUMBER_OF_EYES;
+    }
     public Address getAddress() {
         return address;
     }
