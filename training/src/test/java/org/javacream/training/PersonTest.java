@@ -56,11 +56,11 @@ public class PersonTest {
         Assertions.assertFalse(schneider.marry(null));
         Assertions.assertFalse(schneider.marry(schneider));
         Assertions.assertFalse(schneider.marry(sawitzki));
-        Assertions.assertSame(true, sawitzki.getPartner() == meier);
-        Assertions.assertSame(true, meier.getPartner() == sawitzki);
-        Assertions.assertSame(true, sawitzki.divorce());
+        Assertions.assertSame(meier, sawitzki.getPartner());
+        Assertions.assertSame(sawitzki, meier.getPartner());
+        Assertions.assertTrue(sawitzki.divorce());
         Assertions.assertFalse(schneider.divorce());
-        Assertions.assertSame(true, sawitzki.getPartner() == null);
-        Assertions.assertSame(true, meier.getPartner() == null);
+        Assertions.assertSame(null, sawitzki.getPartner());
+        Assertions.assertSame(null, meier.getPartner());
     }
 }
