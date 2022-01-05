@@ -2,7 +2,7 @@ package org.javacream.training;
 
 import java.util.Objects;
 
-public class Person{
+public class Person implements Addressable{
     private String lastname;
     private String firstname;
     public static final Integer NUMBER_OF_EYES = 2;

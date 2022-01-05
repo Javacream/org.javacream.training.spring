@@ -2,7 +2,7 @@ package org.javacream.training;
 
 import java.util.Objects;
 
-public class Hotel {
+public class Hotel implements Addressable{
     private String name;
 
     public String getName() {
@@ -13,6 +13,7 @@ public class Hotel {
         return roomCount;
     }
 
+    @Override
     public Address getAddress() {
         return address;
     }

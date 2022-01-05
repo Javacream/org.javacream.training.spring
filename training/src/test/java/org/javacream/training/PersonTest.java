@@ -64,4 +64,20 @@ public class PersonTest {
         Assertions.assertSame(null, sawitzki.getPartner());
         Assertions.assertSame(null, meier.getPartner());
     }
+
+    @Test public void testInterfaces(){
+        Person sawitzki = new Person("Sawitzki", "Rainer");
+        Address sawitzkiAdress = new Address("München", "Marienplatz");
+        sawitzki.setAddress(sawitzkiAdress);
+        Hotel hotel = new Hotel("Ibis", 200, new Address("Berlin", "Alexanderplatz"));
+//        System.out.println(sawitzki.getAddress());
+//        System.out.println(hotel.getAddress());
+        printAddress(sawitzki);
+        printAddress(hotel);
+
+    }
+
+    private void printAddress(Addressable addressable){
+        System.out.println(addressable.getAddress());
+    }
 }
