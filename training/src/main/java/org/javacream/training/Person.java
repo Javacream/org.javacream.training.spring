@@ -12,22 +12,22 @@ public class Person{
     }
 
     private Person partner;
-    public Boolean marry(Person partner){
-        if (partner == null){
+    public Boolean marry(Person bride){
+        if (bride == null){
             System.out.println("cannot marry null!");
             return false;
         }
-        if (partner == this){
+        if (bride == this){
             System.out.println("cannot marry myself!");
             return false;
         }
-        if (partner.partner != null){
+        if (bride.partner != null){
             System.out.println("cannot marry, partner is married!");
             return false;
         }
 
-        this.partner = partner;
-        partner.partner = this;
+        this.partner = bride;
+        bride.partner = this;
         return true;
     }
 
