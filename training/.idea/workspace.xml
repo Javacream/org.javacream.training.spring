@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="add checkIn / checkOut">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/TopLevelAddressable.java" afterDir="false" />
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="introduce lambdas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/CollectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/CollectionsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,7 @@
       <recent name="org.javacream.training" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PersonTest.testHotel">
+  <component name="RunManager" selected="JUnit.CollectionsTest.testIteration">
     <configuration name="CollectionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
@@ -64,6 +63,22 @@
       <option name="PACKAGE_NAME" value="org.javacream.training" />
       <option name="MAIN_CLASS_NAME" value="org.javacream.training.CollectionsTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CollectionsTest.testIteration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="training" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javacream.training.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.javacream.training" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.CollectionsTest" />
+      <option name="METHOD_NAME" value="testIteration" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,29 +131,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PersonTest.testMariageAndDivorce" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="training" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.javacream.training.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.javacream.training" />
-      <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
-      <option name="METHOD_NAME" value="testMariageAndDivorce" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CollectionsTest.testIteration" />
         <item itemvalue="JUnit.PersonTest.testHotel" />
         <item itemvalue="JUnit.CollectionsTest" />
         <item itemvalue="JUnit.CollectionsTest.testList" />
         <item itemvalue="JUnit.PersonTest.testInterfaces" />
-        <item itemvalue="JUnit.PersonTest.testMariageAndDivorce" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641386092078</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="introduce lambdas">
+      <created>1641388151533</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1641388151533</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,7 +304,8 @@
     <MESSAGE value="add Addressable" />
     <MESSAGE value="play with Collections" />
     <MESSAGE value="add checkIn / checkOut" />
-    <option name="LAST_COMMIT_MESSAGE" value="add checkIn / checkOut" />
+    <MESSAGE value="introduce lambdas" />
+    <option name="LAST_COMMIT_MESSAGE" value="introduce lambdas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

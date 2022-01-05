@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class CollectionsTest {
     @Test public void testList(){
@@ -44,4 +45,19 @@ public class CollectionsTest {
         Map<Integer, Set<String>> postalCodesToCityextended = new HashMap<>();
 
     }
+
+    @Test public void testIteration(){
+        Set<String> names = new HashSet<>();
+        names.add("Hugo");
+        names.add("Emil");
+        names.add("Fritz");
+    /*
+        Consumer<String> printer = (String s) -> {
+                System.out.println(s);
+        };
+        names.forEach(printer);
+        */
+        names.forEach((s) -> System.out.println(s));
+    }
+
 }
