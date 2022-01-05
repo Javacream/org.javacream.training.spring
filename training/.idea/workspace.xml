@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="introduce marry and divorce example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +219,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641373275387</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="introduce marry and divorce example">
+      <created>1641374346935</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1641374346935</updated>
+    </task>
+    <task id="LOCAL-00012" summary="introduce marry and divorce example">
+      <created>1641374507126</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1641374507126</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

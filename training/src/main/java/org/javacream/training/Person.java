@@ -13,6 +13,10 @@ public class Person{
 
     private Person partner;
     public Boolean marry(Person bride){
+        if (this.partner != null){
+            System.out.println("cannot marry, already married!");
+            return false;
+        }
         if (bride == null){
             System.out.println("cannot marry null!");
             return false;

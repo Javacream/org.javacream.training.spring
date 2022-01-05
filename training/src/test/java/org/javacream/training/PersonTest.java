@@ -53,6 +53,7 @@ public class PersonTest {
         Person schneider = new Person("schneider", "Nicola");
         Assertions.assertNull(sawitzki.getPartner());
         Assertions.assertSame(true, sawitzki.marry(meier));
+        Assertions.assertFalse(sawitzki.marry(schneider));
         Assertions.assertFalse(schneider.marry(null));
         Assertions.assertFalse(schneider.marry(schneider));
         Assertions.assertFalse(schneider.marry(sawitzki));
