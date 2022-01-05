@@ -1,8 +1,10 @@
 package org.javacream.training;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Hotel implements Addressable{
     private String name;
@@ -82,4 +84,14 @@ public class Hotel implements Addressable{
 
     private Integer roomCount;
     private Address address;
+
+    public List<String> getGuestList(){
+        return checkedIn.stream().map(p -> p.getFirstname() + " " + p.getLastname()).collect(Collectors.toList());
+    }
+    public List<String> getSortedByLastnameGuestList(){
+        return checkedIn.stream().sorted(((p1, p2) -> p1.getLastname().compareTo(p2.getLastname()))).map(p -> p.getFirstname() + " " + p.getLastname()).collect(Collectors.toList());
+    }
+    public List<String> getStudentGuestList(){
+        return checkedIn.stream().filter(p -> p instanceof Student).map(p -> p.getFirstname() + " " + p.getLastname()).collect(Collectors.toList());
+    }
 }

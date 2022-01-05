@@ -84,7 +84,8 @@ public class PersonTest {
     @Test public void testHotel(){
         Person sawitzki = new Person("Sawitzki", "Rainer");
         Person meier = new Person("Meier", "Jamie");
-        Person schneider = new Person("schneider", "Nicola");
+        Person schneider = new Person("Schneider", "Nicola");
+        Student einstein = new Student("Einstein", "Albert", "LMU");
         Hotel hotel = new Hotel("Ibis", 2, new Address("Berlin", "Alexanderplatz"));
         Assertions.assertTrue(hotel.checkIn(sawitzki));
         Assertions.assertFalse(hotel.checkIn(sawitzki));
@@ -96,8 +97,12 @@ public class PersonTest {
         /*for (Person p: hotel.getCheckedIn()){
             System.out.println(p.info());
         }*/
+        hotel.checkOut(meier);
+        hotel.checkIn(einstein);
         hotel.getCheckedIn().forEach((p) -> System.out.println(p.info()));
-
+        hotel.getGuestList().forEach(System.out::println);
+        hotel.getSortedByLastnameGuestList().forEach(System.out::println);
+        hotel.getStudentGuestList().forEach(System.out::println);
 
 
     }

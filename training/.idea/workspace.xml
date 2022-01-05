@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="introduce forEach">
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="play with streams">
+      <change afterPath="$PROJECT_DIR$/people.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/FileReaderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/CollectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/CollectionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,22 +54,7 @@
       <recent name="org.javacream.training" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CollectionsTest.testStreaming">
-    <configuration name="CollectionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="training" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.javacream.training.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.javacream.training" />
-      <option name="MAIN_CLASS_NAME" value="org.javacream.training.CollectionsTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.FileReaderTest">
     <configuration name="CollectionsTest.testIteration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
@@ -85,22 +71,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CollectionsTest.testList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="training" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.javacream.training.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.javacream.training" />
-      <option name="MAIN_CLASS_NAME" value="org.javacream.training.CollectionsTest" />
-      <option name="METHOD_NAME" value="testList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CollectionsTest.testStreaming" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
@@ -112,6 +82,37 @@
       <option name="PACKAGE_NAME" value="org.javacream.training" />
       <option name="MAIN_CLASS_NAME" value="org.javacream.training.CollectionsTest" />
       <option name="METHOD_NAME" value="testStreaming" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileReaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="training" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javacream.training.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.javacream.training" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.FileReaderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileReaderTest.readFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="training" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javacream.training.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.javacream.training" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.FileReaderTest" />
+      <option name="METHOD_NAME" value="readFile" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -135,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FileReaderTest" />
+        <item itemvalue="JUnit.FileReaderTest.readFile" />
+        <item itemvalue="JUnit.PersonTest.testHotel" />
         <item itemvalue="JUnit.CollectionsTest.testStreaming" />
         <item itemvalue="JUnit.CollectionsTest.testIteration" />
-        <item itemvalue="JUnit.PersonTest.testHotel" />
-        <item itemvalue="JUnit.CollectionsTest" />
-        <item itemvalue="JUnit.CollectionsTest.testList" />
       </list>
     </recent_temporary>
   </component>
@@ -292,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641389488299</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="play with streams">
+      <created>1641392810495</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1641392810495</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -322,7 +330,8 @@
     <MESSAGE value="add checkIn / checkOut" />
     <MESSAGE value="introduce lambdas" />
     <MESSAGE value="introduce forEach" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce forEach" />
+    <MESSAGE value="play with streams" />
+    <option name="LAST_COMMIT_MESSAGE" value="play with streams" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
