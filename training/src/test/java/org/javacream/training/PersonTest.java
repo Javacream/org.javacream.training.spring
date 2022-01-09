@@ -22,9 +22,9 @@ public class PersonTest {
         Assertions.assertNull(person.getAddress());
         Address sawitzkiAdress = new Address("München", "Marienplatz");
         person.setAddress(sawitzkiAdress);
-        Assertions.assertEquals(sawitzkiAdress, person.getAddress());
+        Assertions.assertEquals(sawitzkiAdress, person.getAddress().get());
         sawitzkiAdress.setCity("Berlin");
-        Assertions.assertEquals("Berlin", person.getAddress().getCity());
+        Assertions.assertEquals("Berlin", person.getAddress().get().getCity());
 
 
     }
@@ -47,20 +47,20 @@ public class PersonTest {
 
     }
 
-    @Test public void testMariageAndDivorce(){
+    @Test public void testMariageAndDivorce() throws PersonException{
         Person sawitzki = new Person("Sawitzki", "Rainer");
         Person meier = new Person("Meier", "Jamie");
         Person schneider = new Person("schneider", "Nicola");
         Assertions.assertNull(sawitzki.getPartner());
-        Assertions.assertSame(true, sawitzki.marry(meier));
-        Assertions.assertFalse(sawitzki.marry(schneider));
-        Assertions.assertFalse(schneider.marry(null));
-        Assertions.assertFalse(schneider.marry(schneider));
-        Assertions.assertFalse(schneider.marry(sawitzki));
+        sawitzki.marry(meier);
+        Assertions.assertThrows(PersonException.class, () -> sawitzki.marry(schneider));
+        Assertions.assertThrows(PersonException.class, () -> schneider.marry(null));
+        Assertions.assertThrows(PersonException.class, () -> schneider.marry(schneider));
+        Assertions.assertThrows(PersonException.class, () -> schneider.marry(sawitzki));
         Assertions.assertSame(meier, sawitzki.getPartner());
         Assertions.assertSame(sawitzki, meier.getPartner());
-        Assertions.assertTrue(sawitzki.divorce());
-        Assertions.assertFalse(schneider.divorce());
+        sawitzki.divorce();
+        Assertions.assertThrows(PersonException.class, () -> schneider.divorce());
         Assertions.assertSame(null, sawitzki.getPartner());
         Assertions.assertSame(null, meier.getPartner());
     }

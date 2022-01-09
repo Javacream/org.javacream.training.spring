@@ -1,10 +1,22 @@
 package org.javacream.training;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class Person implements Addressable{
     private String lastname;
     private String firstname;
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    private Gender gender;
+
     public static final Integer NUMBER_OF_EYES = 2;
 
     public Person getPartner() {
@@ -12,52 +24,45 @@ public class Person implements Addressable{
     }
 
     private Person partner;
-    public Boolean marry(Person bride){
+    public void marry(Person bride) throws PersonException{
         if (this.partner != null){
-            System.out.println("cannot marry, already married!");
-            return false;
+            throw new PersonException("cannot marry, already married!");
         }
         if (bride == null){
-            System.out.println("cannot marry null!");
-            return false;
+            throw new PersonException("cannot marry null!");
         }
         if (bride == this){
-            System.out.println("cannot marry myself!");
-            return false;
+            throw new PersonException("cannot marry myself!");
         }
         if (bride.partner != null){
-            System.out.println("cannot marry, partner is married!");
-            return false;
+            throw new PersonException("cannot marry, partner is married!");
         }
 
         this.partner = bride;
         bride.partner = this;
-        return true;
     }
 
-    public Boolean divorce(){
+    public void divorce() throws PersonException{
         if (this.partner == null){
-            System.out.println("cannot divorce, have no partner!");
-            return false;
+            throw new PersonException("cannot divorce, have no partner!");
         }
         this.partner.partner = null;
         this.partner = null;
-        return true;
     }
 
     public static Integer getNumberOfEyes(){
         //this.lastname;
         return NUMBER_OF_EYES;
     }
-    public Address getAddress() {
+    public Optional<Address> getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
-        this.address = address;
+        this.address = Optional.of(address);
     }
 
-    private Address address;
+    private Optional<Address> address;
     public String info(){
         return "Person: lastname=" + this.lastname + ", firstname=" + this.firstname;
     }

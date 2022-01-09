@@ -1,9 +1,6 @@
 package org.javacream.training;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Hotel implements Addressable{
@@ -49,8 +46,9 @@ public class Hotel implements Addressable{
     }
 
     @Override
-    public Address getAddress() {
-        return address;
+    public Optional<Address>
+    getAddress() {
+        return Optional.of(address);
     }
 
     @Override
