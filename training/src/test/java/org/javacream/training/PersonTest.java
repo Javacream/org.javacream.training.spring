@@ -47,19 +47,29 @@ public class PersonTest {
 
     }
 
-    @Test public void testMariageAndDivorce() throws PersonException{
+    @Test public void testMariageAndDivorce(){
         Person sawitzki = new Person("Sawitzki", "Rainer");
         Person meier = new Person("Meier", "Jamie");
         Person schneider = new Person("schneider", "Nicola");
         Assertions.assertNull(sawitzki.getPartner());
-        sawitzki.marry(meier);
+        try {
+            sawitzki.marry(meier);
+        }
+        catch(PersonException pe){
+            //...
+        }
+
         Assertions.assertThrows(PersonException.class, () -> sawitzki.marry(schneider));
         Assertions.assertThrows(PersonException.class, () -> schneider.marry(null));
         Assertions.assertThrows(PersonException.class, () -> schneider.marry(schneider));
         Assertions.assertThrows(PersonException.class, () -> schneider.marry(sawitzki));
         Assertions.assertSame(meier, sawitzki.getPartner());
         Assertions.assertSame(sawitzki, meier.getPartner());
-        sawitzki.divorce();
+        try {
+            sawitzki.divorce();
+        } catch (PersonException e) {
+            e.printStackTrace();
+        }
         Assertions.assertThrows(PersonException.class, () -> schneider.divorce());
         Assertions.assertSame(null, sawitzki.getPartner());
         Assertions.assertSame(null, meier.getPartner());

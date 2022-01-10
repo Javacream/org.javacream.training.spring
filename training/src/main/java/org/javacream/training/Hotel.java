@@ -27,7 +27,7 @@ public class Hotel implements Addressable{
 
     }
 
-    public boolean checkOut(Person guest){
+    public Boolean checkOut(Person guest){
         if (!checkedIn.contains(guest)){
             return false;
         }else{

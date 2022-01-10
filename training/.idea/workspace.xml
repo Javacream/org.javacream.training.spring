@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="play with streams">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/PersonException.java" afterDir="false" />
+    <list default="true" id="7758b792-eb8d-425a-b3da-cc6001d58574" name="Changes" comment="implement homework">
+      <change afterPath="$PROJECT_DIR$/../books/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../books/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../books/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../books/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../books/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/NullTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Addressable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/javacream/training/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/javacream/training/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/javacream/training/PersonTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +60,7 @@
       <recent name="org.javacream.training" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in training">
+  <component name="RunManager" selected="JUnit.NullTests">
     <configuration name="All in training" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <option name="PACKAGE_NAME" value="" />
@@ -97,6 +100,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NullTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="training" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javacream.training.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.javacream.training" />
+      <option name="MAIN_CLASS_NAME" value="org.javacream.training.NullTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PersonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="training" />
       <extension name="coverage">
@@ -112,29 +130,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PersonTest.testHotel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="training" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.javacream.training.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.javacream.training" />
-      <option name="MAIN_CLASS_NAME" value="org.javacream.training.PersonTest" />
-      <option name="METHOD_NAME" value="testHotel" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NullTests" />
         <item itemvalue="JUnit.All in training" />
         <item itemvalue="JUnit.PersonTest" />
         <item itemvalue="JUnit.FileReaderTest" />
         <item itemvalue="JUnit.FileReaderTest.readFile" />
-        <item itemvalue="JUnit.PersonTest.testHotel" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641394730850</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="implement homework">
+      <created>1641757601170</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1641757601170</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,7 +341,8 @@
     <MESSAGE value="introduce lambdas" />
     <MESSAGE value="introduce forEach" />
     <MESSAGE value="play with streams" />
-    <option name="LAST_COMMIT_MESSAGE" value="play with streams" />
+    <MESSAGE value="implement homework" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement homework" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
