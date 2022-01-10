@@ -1,11 +1,12 @@
 package org.javacream.training.books.warehouse;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class BooksService {
-    private Map<String, Book> books;
+    private Map<String, Book> books = new HashMap<>();
     public void newBook(Book newBook) throws BookException{
         if (newBook == null){
             throw new BookException(BookException.BookExceptionType.NOT_CREATED, "cannot create null book");
