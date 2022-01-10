@@ -1,9 +1,7 @@
 package org.javacream.training.books.warehouse;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BooksService {
     private Map<String, Book> books = new HashMap<>();
@@ -57,6 +55,34 @@ public class BooksService {
             throw new BookException(BookException.BookExceptionType.NOT_FOUND, "isbn " + isbn + " not found");
         }
 
+    }
+
+    public List<Book> findByTitle(String title) throws BookException{
+        if (title == null){
+            throw new BookException(BookException.BookExceptionType.NOT_FOUND, "cannot search by null title");
+        }
+        return books.values().stream().filter(book -> book.getTitle().equals(title)).collect(Collectors.toList());
+    }
+
+    public List<String> findAllIsbns(){
+        return books.values().stream().map(book -> book.getIsbn()).collect(Collectors.toList());
+    }
+
+    public List<Book> findByTag(String tag){
+        return books.values().stream().filter(book -> book.getTags().contains(tag)).collect(Collectors.toList());
+    }
+    public List<Book> findByMaxPrice(Double maxPrice){
+        return books.values().stream().filter(book -> book.getPrice() <= maxPrice).collect(Collectors.toList());
+    }
+    public List<Book> findByMinPrice(Double minPrice){
+        return books.values().stream().filter(book -> book.getPrice() >= minPrice).collect(Collectors.toList());
+    }
+    public List<Book> findByPriceRange(Double minPrice, Double maxPrice){
+        return books.values().stream().filter(book -> (book.getPrice() >= minPrice)&&(book.getPrice() <= maxPrice)).collect(Collectors.toList());
+    }
+
+    public List<Book> findAvailable(){
+        return books.values().stream().filter(book -> (book.getAvailable())).collect(Collectors.toList());
     }
 
 }

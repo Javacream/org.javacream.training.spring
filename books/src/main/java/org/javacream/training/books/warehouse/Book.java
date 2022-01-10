@@ -1,6 +1,9 @@
 package org.javacream.training.books.warehouse;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Book {
     private String isbn;
@@ -8,13 +11,26 @@ public class Book {
     private Integer pages;
     private Double price;
     private Boolean available;
-
+    private Set<String> tags;
     public Book(String isbn, String title, Integer pages, Double price, Boolean available) {
         this.isbn = isbn;
         this.title = title;
         this.pages = pages;
         this.price = price;
         this.available = available;
+        tags = new HashSet<>();
+    }
+
+    public void addTags(String... tags){
+        this.tags.addAll(Arrays.asList(tags));
+    }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void removeTags(String... tags){
+        this.tags.removeAll(Arrays.asList(tags));
     }
 
     public String getIsbn() {
