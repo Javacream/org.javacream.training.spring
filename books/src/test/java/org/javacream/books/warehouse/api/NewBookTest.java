@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 public class NewBookTest {
     private BooksService booksService;
 
@@ -14,6 +16,10 @@ public class NewBookTest {
         //TODO: Das ist noch nicht schön -> Spring
         MapBooksService mapBooksService = new MapBooksService();
         SequenceIsbnGeneratorService isbnGeneratorService = new SequenceIsbnGeneratorService();
+        HashMap<String, Book> books = new HashMap<>();
+        isbnGeneratorService.setPrefix("Isbn:");
+        isbnGeneratorService.setCountryCode("-is");
+        mapBooksService.setBooks(books);
         mapBooksService.setIsbnGeneratorService(isbnGeneratorService);
         booksService = mapBooksService;
     }

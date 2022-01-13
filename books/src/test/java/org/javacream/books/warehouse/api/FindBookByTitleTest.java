@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 public class FindBookByTitleTest {
     private BooksService booksService;
     private Book book;
@@ -15,6 +17,10 @@ public class FindBookByTitleTest {
         MapBooksService mapBooksService = new MapBooksService();
         RandomIsbnGeneratorService isbnGeneratorService = new RandomIsbnGeneratorService();
         SimpleStoreService storeService = new SimpleStoreService();
+        HashMap<String, Book> books = new HashMap<>();
+        isbnGeneratorService.setPrefix("Isbn:");
+        isbnGeneratorService.setCountryCode("-is");
+        mapBooksService.setBooks(books);
         mapBooksService.setStoreService(storeService);
         mapBooksService.setIsbnGeneratorService(isbnGeneratorService);
         booksService = mapBooksService;

@@ -7,9 +7,13 @@ import org.junit.jupiter.api.Test;
 
 public class RandomNextTest {
     private IsbnGeneratorService isbngeneratorService;
-
+    private final String PREFIX = "Isbn:";
+    private final String COUNTRY_CODE = "-dk";
     @BeforeEach public void setUp(){
-        isbngeneratorService = new RandomIsbnGeneratorService();
+        RandomIsbnGeneratorService randomIsbnGeneratorService = new RandomIsbnGeneratorService();
+        randomIsbnGeneratorService.setPrefix(PREFIX);
+        randomIsbnGeneratorService.setCountryCode(COUNTRY_CODE);
+        isbngeneratorService = randomIsbnGeneratorService;
     }
 
     @Test public void isbngeneratorGeneratesIsbn(){
@@ -20,5 +24,10 @@ public class RandomNextTest {
         String isbn1 = isbngeneratorService.next();
         String isbn2 = isbngeneratorService.next();
         Assertions.assertNotEquals(isbn1, isbn2);
+    }
+    @Test public void generatedIsbnStartsWithPrefix(){
+        String isbn = isbngeneratorService.next();
+        Assertions.assertTrue(isbn.startsWith(PREFIX));
+        Assertions.assertTrue(isbn.endsWith(COUNTRY_CODE));
     }
 }

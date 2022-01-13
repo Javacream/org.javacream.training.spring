@@ -12,7 +12,11 @@ import java.util.stream.Collectors;
 
 public class MapBooksService implements BooksService
 {
-    private Map<String, Book> books = new HashMap<>();
+    private Map<String, Book> books;
+
+    public void setBooks(Map<String, Book> books) {
+        this.books = books;
+    }
 
     public void setStoreService(StoreService storeService) {
         this.storeService = storeService;
