@@ -1,5 +1,6 @@
-package org.javacream.training.books.warehouse;
+package org.javacream.training.books.warehouse.api;
 
+import org.javacream.training.books.warehouse.impl.MapBooksService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ public class FindBookByTitleTest {
     private Book book;
 
     @BeforeEach public void init() throws BookException{
-        booksService = new BooksService();
+        booksService = new MapBooksService();
         book = new Book("ISBN1", "Title1", 200, 19.99, true);
         booksService.newBook(book);
     }
