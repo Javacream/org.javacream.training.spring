@@ -4,6 +4,7 @@ import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.store.api.StoreService;
 
 import java.io.IOException;
 import java.util.*;
@@ -13,25 +14,19 @@ public class MapBooksService implements BooksService
 {
     private Map<String, Book> books = new HashMap<>();
 
+    public void setStoreService(StoreService storeService) {
+        this.storeService = storeService;
+    }
+
+    private StoreService storeService;
+
+
     private IsbnGeneratorService isbnGeneratorService;
 
     public void setIsbnGeneratorService(IsbnGeneratorService isbnGeneratorService) {
         this.isbnGeneratorService = isbnGeneratorService;
     }
-
-    private Properties store;
-
-    public MapBooksService() {
-        store = new Properties();
-        try {
-            store.load(this.getClass().getResourceAsStream("/store.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-    }
-
-    @Override
+   @Override
     public void newBook(Book newBook) throws BookException {
         if (newBook == null){
             throw new BookException(BookException.BookExceptionType.NOT_CREATED, "cannot create null book");
@@ -161,13 +156,6 @@ public class MapBooksService implements BooksService
     }
 
     private Boolean isAvailable(String isbn){
-        try {
-            String stockString = store.get(isbn).toString();
-            Integer stock = Integer.parseInt(stockString);
-            return stock > 0;
-        }
-        catch(NullPointerException npe){
-                return false;
-        }
+        return storeService.getStock("books", isbn) > 0;
     }
 }

@@ -1,6 +1,8 @@
 package org.javacream.books.warehouse.api;
 
+import org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService;
 import org.javacream.books.warehouse.impl.MapBooksService;
+import org.javacream.store.impl.SimpleStoreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +12,13 @@ public class FindBookByTitleTest {
     private Book book;
 
     @BeforeEach public void init() throws BookException{
-        booksService = new MapBooksService();
+        MapBooksService mapBooksService = new MapBooksService();
+        RandomIsbnGeneratorService isbnGeneratorService = new RandomIsbnGeneratorService();
+        SimpleStoreService storeService = new SimpleStoreService();
+        mapBooksService.setStoreService(storeService);
+        mapBooksService.setIsbnGeneratorService(isbnGeneratorService);
+        booksService = mapBooksService;
+
         book = new Book("ISBN1", "Title1", 200, 19.99, true);
         booksService.newBook(book);
     }
