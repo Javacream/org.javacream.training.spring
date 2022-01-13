@@ -5,13 +5,15 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MapBooksService implements BooksService
-{
+@Service
+public class MapBooksService implements BooksService {
+    @Autowired
     private Map<String, Book> books;
 
     public void setBooks(Map<String, Book> books) {
@@ -22,9 +24,11 @@ public class MapBooksService implements BooksService
         this.storeService = storeService;
     }
 
+    @Autowired
     private StoreService storeService;
 
 
+    @Autowired
     private IsbnGeneratorService isbnGeneratorService;
 
     public void setIsbnGeneratorService(IsbnGeneratorService isbnGeneratorService) {

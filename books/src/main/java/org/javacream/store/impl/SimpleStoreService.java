@@ -1,10 +1,12 @@
 package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Properties;
 
+@Service
 public class SimpleStoreService implements StoreService {
 
     private Properties store;

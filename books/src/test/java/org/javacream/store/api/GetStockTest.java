@@ -4,13 +4,13 @@ import org.javacream.store.impl.SimpleStoreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class GetStockTest {
+    @Autowired
     private StoreService storeService;
-    @BeforeEach public void setUp(){
-        storeService = new SimpleStoreService();
-    }
-
     @Test public void storeServiceWorks(){
         Integer stock = storeService.getStock("ASDF", "ASDFGHJ");
         Assertions.assertEquals(0, stock);
