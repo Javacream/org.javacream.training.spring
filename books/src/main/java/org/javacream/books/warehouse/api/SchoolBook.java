@@ -1,4 +1,4 @@
-package org.javacream.training.books.warehouse.api;
+package org.javacream.books.warehouse.api;
 
 public class SchoolBook extends Book {
     private Integer year;

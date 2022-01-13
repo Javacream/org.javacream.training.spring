@@ -1,4 +1,4 @@
-package org.javacream.training.books.warehouse.api;
+package org.javacream.books.warehouse.api;
 
 public class SpecialistBook extends Book {
     private String subject;

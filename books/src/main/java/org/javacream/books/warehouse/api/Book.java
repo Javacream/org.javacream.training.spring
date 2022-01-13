@@ -1,4 +1,4 @@
-package org.javacream.training.books.warehouse.api;
+package org.javacream.books.warehouse.api;
 
 import java.util.Arrays;
 import java.util.HashSet;

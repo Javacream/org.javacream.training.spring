@@ -1,11 +1,11 @@
-package org.javacream.training.books.warehouse.api;
+package org.javacream.books.warehouse.api;
 
-import org.javacream.training.books.warehouse.impl.MapBooksService;
+import org.javacream.books.warehouse.impl.MapBooksService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class FindByMinPriceTest {
+public class FindByMaxPriceTest {
     private BooksService booksService;
 
     @BeforeEach
@@ -20,11 +20,11 @@ public class FindByMinPriceTest {
     }
 
     @Test
-    public void testFindByMinPrice20Finds1Book() throws BookException {
-        Assertions.assertEquals(1, booksService.findByMinPrice(20d).size());
+    public void testFindByMaxPrice20Finds2Books() throws BookException {
+        Assertions.assertEquals(2, booksService.findByMaxPrice(20d).size());
     }
     @Test
-    public void testFindByMinPrice10Finds2Books() throws BookException {
-        Assertions.assertEquals(2, booksService.findByMinPrice(10d).size());
+    public void testFindByMaxPrice10Finds1Book() throws BookException {
+        Assertions.assertEquals(1, booksService.findByMaxPrice(10d).size());
     }
 }

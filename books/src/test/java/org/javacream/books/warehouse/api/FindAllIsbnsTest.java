@@ -1,6 +1,6 @@
-package org.javacream.training.books.warehouse.api;
+package org.javacream.books.warehouse.api;
 
-import org.javacream.training.books.warehouse.impl.MapBooksService;
+import org.javacream.books.warehouse.impl.MapBooksService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

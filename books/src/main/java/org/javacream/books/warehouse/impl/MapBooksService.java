@@ -1,8 +1,9 @@
-package org.javacream.training.books.warehouse.impl;
+package org.javacream.books.warehouse.impl;
 
-import org.javacream.training.books.warehouse.api.Book;
-import org.javacream.training.books.warehouse.api.BookException;
-import org.javacream.training.books.warehouse.api.BooksService;
+import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.javacream.books.warehouse.api.Book;
+import org.javacream.books.warehouse.api.BookException;
+import org.javacream.books.warehouse.api.BooksService;
 
 import java.io.IOException;
 import java.util.*;
@@ -11,6 +12,13 @@ import java.util.stream.Collectors;
 public class MapBooksService implements BooksService
 {
     private Map<String, Book> books = new HashMap<>();
+
+    private IsbnGeneratorService isbnGeneratorService;
+
+    public void setIsbnGeneratorService(IsbnGeneratorService isbnGeneratorService) {
+        this.isbnGeneratorService = isbnGeneratorService;
+    }
+
     private Properties store;
 
     public MapBooksService() {
@@ -92,7 +100,6 @@ public class MapBooksService implements BooksService
         setAvailability(result);
         return result;
     }
-    private Random random = new Random();
     @Override
     public String newBook(String title, Double price, Integer pages){
         if (pages == null){
@@ -102,7 +109,7 @@ public class MapBooksService implements BooksService
             price = 0d;
         }
 
-        String isbn = "Isbn:" + random.nextInt();
+        String isbn = isbnGeneratorService.next();
         Book book = new Book(isbn, title, pages, price, false);
         books.put(isbn, book);
         return isbn;
