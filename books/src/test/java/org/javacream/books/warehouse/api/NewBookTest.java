@@ -15,18 +15,6 @@ public class NewBookTest {
     @Autowired
     private BooksService booksService;
 
-    //@BeforeEach
-    public void init() throws BookException {
-        //TODO: Das ist noch nicht schön -> Spring
-        MapBooksService mapBooksService = new MapBooksService();
-        SequenceIsbnGeneratorService isbnGeneratorService = new SequenceIsbnGeneratorService();
-        HashMap<String, Book> books = new HashMap<>();
-        isbnGeneratorService.setPrefix("Isbn:");
-        isbnGeneratorService.setCountryCode("-is");
-        mapBooksService.setBooks(books);
-        mapBooksService.setIsbnGeneratorService(isbnGeneratorService);
-        booksService = mapBooksService;
-    }
 
     @Test
     public void testNewBookWorks() throws BookException {

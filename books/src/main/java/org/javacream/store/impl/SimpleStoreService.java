@@ -1,13 +1,17 @@
 package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Properties;
 
 @Service
 public class SimpleStoreService implements StoreService {
+    @Value("${store.filename}")
+    private String fileName;
 
     private Properties store;
     @Override
@@ -22,10 +26,11 @@ public class SimpleStoreService implements StoreService {
         }
     }
 
-    public SimpleStoreService() {
+    @PostConstruct
+    public void initSimpleStoreService() {
         store = new Properties();
         try {
-            store.load(this.getClass().getResourceAsStream("/store.txt"));
+            store.load(this.getClass().getResourceAsStream(fileName));
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);

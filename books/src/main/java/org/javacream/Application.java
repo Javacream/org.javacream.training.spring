@@ -9,7 +9,8 @@ import java.util.Map;
 
 @SpringBootApplication
 public class Application {
-    @Bean public Map<String, Book> books(){
+    @Bean
+    public Map<String, Book> books(){
         HashMap<String, Book> books = new HashMap<>();
         Book book1 = new Book("Isbn1", "Title1", 200, 19.99, true);
         Book book2 = new Book("Isbn2", "Title2", 200, 9.99, false);
