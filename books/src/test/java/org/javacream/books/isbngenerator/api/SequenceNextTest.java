@@ -12,12 +12,6 @@ public class SequenceNextTest {
     private final String PREFIX = "ISBN:";
     private final String COUNTRY_CODE = "-dk";
     @Autowired  private IsbnGeneratorService sequenceIsbnGeneratorService;
-    @BeforeEach public void setUp(){
-        RandomIsbnGeneratorService randomIsbnGeneratorService = new RandomIsbnGeneratorService();
-        randomIsbnGeneratorService.setPrefix(PREFIX);
-        randomIsbnGeneratorService.setCountryCode(COUNTRY_CODE);
-        sequenceIsbnGeneratorService = randomIsbnGeneratorService;
-    }
 
     @Test public void isbngeneratorGeneratesIsbn(){
         String isbn = sequenceIsbnGeneratorService.next();
