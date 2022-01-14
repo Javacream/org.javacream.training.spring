@@ -29,7 +29,7 @@ public class MapBooksService implements BooksService {
     private StoreService storeService;
 
 
-    @Autowired @Qualifier("random")
+    @Autowired @IsbnGeneratorService.RandomStrategy
     private IsbnGeneratorService isbnGeneratorService;
 
     public void setIsbnGeneratorService(IsbnGeneratorService isbnGeneratorService) {
