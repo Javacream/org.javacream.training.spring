@@ -25,7 +25,7 @@ public class SimpleOrderService implements OrderService {
     @Override
     public Order order(String isbn, Integer number, String customer) {
         Order.OrderStatus orderStatus;
-        double totalPrice = 0d;
+        Double totalPrice = null;
 
         try{
             Book book = booksService.findBookByIsbn(isbn);
