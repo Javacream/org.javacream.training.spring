@@ -4,10 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles("test")
+@DirtiesContext
 public class NewBookTest {
     @Autowired
     private BooksService booksService;
@@ -17,6 +19,6 @@ public class NewBookTest {
         String generatedIsbn = booksService.newBook("TEST", 19.99, 100);
         System.out.println(generatedIsbn);
         Assertions.assertNotNull(generatedIsbn);
-        booksService.deleteBookByIsbn(generatedIsbn);
+//        booksService.deleteBookByIsbn(generatedIsbn);
     }
 }
