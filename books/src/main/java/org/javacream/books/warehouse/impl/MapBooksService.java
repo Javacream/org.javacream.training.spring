@@ -31,7 +31,7 @@ public class MapBooksService implements BooksService {
     private StoreService storeService;
 
 
-    @Autowired @IsbnGeneratorService.RandomStrategy
+    @Autowired @IsbnGeneratorService.SequenceStrategy
     private IsbnGeneratorService isbnGeneratorService;
 
     public void setIsbnGeneratorService(IsbnGeneratorService isbnGeneratorService) {

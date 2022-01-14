@@ -6,6 +6,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.javacream.util.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class SimpleOrderService implements OrderService {
     @Autowired @Qualifier("orders") private Map<Long, Order> orders;
     @Autowired private BooksService booksService;
     @Autowired private StoreService storeService;
-    @Autowired private OrderIdGenerator idGenerator;
+    @Autowired private IdGenerator idGenerator;
     @Override
     public Order order(String isbn, Integer number, String customer) {
         Order.OrderStatus orderStatus;
@@ -39,7 +40,7 @@ public class SimpleOrderService implements OrderService {
         catch(BookException e){
             orderStatus = Order.OrderStatus.UNAVAILABLE;
         }
-        Order order = new Order(idGenerator.nextOrderId(), isbn, number, totalPrice, customer, orderStatus);
+        Order order = new Order(idGenerator.nextId(), isbn, number, totalPrice, customer, orderStatus);
         orders.put(order.getOrderId(), order);
         return order;
     }

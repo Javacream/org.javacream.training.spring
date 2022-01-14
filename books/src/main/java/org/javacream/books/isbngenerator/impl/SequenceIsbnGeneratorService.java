@@ -1,15 +1,16 @@
 package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGeneratorService;
+import org.javacream.util.IdGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @IsbnGeneratorService.SequenceStrategy
 public class SequenceIsbnGeneratorService extends BaseIsbnGeneratorService {
-    private Integer counter = 0;
+    @Autowired private IdGenerator idGenerator;
     @Override
     public String createId() {
-        counter++;
-        return Integer.toString(counter);
+        return Long.toString(idGenerator.nextId());
     }
 }
