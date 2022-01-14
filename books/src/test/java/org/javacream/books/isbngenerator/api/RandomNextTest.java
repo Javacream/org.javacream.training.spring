@@ -4,11 +4,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test")
+
 public class RandomNextTest {
     @Autowired private IsbnGeneratorService randomIsbnGeneratorService;
-    private final String PREFIX = "ISBN:";
+    private final String PREFIX = "TEST-ISBN:";
     private final String COUNTRY_CODE = "-dk";
 
     @Test public void isbngeneratorGeneratesIsbn(){
