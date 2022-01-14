@@ -6,10 +6,12 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -121,7 +123,7 @@ public class MapBooksService implements BooksService {
     }
     @Override
     public List<String> findAllIsbns(){
-        return books.values().stream().map(book -> book.getIsbn()).collect(Collectors.toList());
+        return books.values().stream().map(Book::getIsbn).collect(Collectors.toList());
     }
 
     @Override
@@ -157,7 +159,7 @@ public class MapBooksService implements BooksService {
     }
 
     private void setAvailability(Collection<Book> books){
-        books.stream().forEach(book -> setAvailability(book));
+        books.forEach(this::setAvailability);
     }
     private void setAvailability(Book book){
             book.setAvailable(isAvailable(book.getIsbn()));

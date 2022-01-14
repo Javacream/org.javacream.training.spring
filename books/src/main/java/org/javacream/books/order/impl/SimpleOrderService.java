@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -26,7 +25,7 @@ public class SimpleOrderService implements OrderService {
     @Override
     public Order order(String isbn, Integer number, String customer) {
         Order.OrderStatus orderStatus;
-        Double totalPrice = 0d;
+        double totalPrice = 0d;
 
         try{
             Book book = booksService.findBookByIsbn(isbn);
