@@ -2,21 +2,16 @@
 
 ## Spring Training Project
 
+### Ablauf
 
-## Durchführung des Seminars
+  - 8 Unterrichtseinheiten mit jeweils 90 Minuten
+  - Aufteilung
+    - Rekapitulation Spring/Spring Boot
+    - Datenbankzugriffe und Einführung von Spring Data
+    - Eine erste Anwendung
+    - Spring Data und Spring Data JPA, Kurzeinführung JPA
+    - Transaktionsmanagement im Detail
+    - Spring Data JPA Repositories im Detail
+    - Zugriff auf eine NoSql-Datenbank, Beispiel Couchbase
+    - Ausblick: Spring Data und Microservices-Architekturen
 
-* Referent: Rainer Sawitzki, eMail: training@rainer-sawitzki.de
-
-* Beispiele
-
-  * https://github.com/Javacream/org.javacream.training.spring
-    *  Barmenia_6.12.2021
-* Digitales Flipchart
-
-  * https://docs.google.com/presentation/d/16_sHDT3sC1bqrejgQ9kPMs6uRpCyWQllMNaFbD8SLbs/edit?usp=sharing
-
-## Zeitplan
-
-* 9:00 - 16:15
-* Kaffeepausen 10:30 - 10:45 und 14:30 - 14:45
-* Mittagspause 12:15 - 13:00
