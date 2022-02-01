@@ -47,7 +47,7 @@ public class BooksWebService {
         }
     }
     @PutMapping(path = "api/books/{isbn}/page/{page}")
-    public void updatePrice(@PathVariable("isbn") String isbn, @PathVariable("page") Integer newPages) {
+    public void updatePage(@PathVariable("isbn") String isbn, @PathVariable("page") Integer newPages) {
         try {
             Book b = booksService.findBookByIsbn(isbn);
             b.setPages(newPages);
