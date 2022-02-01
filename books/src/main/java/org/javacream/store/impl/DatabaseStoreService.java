@@ -1,12 +1,15 @@
 package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
+import org.javacream.util.log.api.LogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.Date;
 import java.util.List;
 
 
@@ -14,6 +17,7 @@ import java.util.List;
 @Transactional
 public class DatabaseStoreService implements StoreService {
     @PersistenceContext private EntityManager entityManager;
+    @Autowired private LogService logService;
     @Override
     public Integer getStock(String category, String itemId) {
         try{
@@ -39,6 +43,7 @@ public class DatabaseStoreService implements StoreService {
             updateQuery.setParameter("item", itemId);
             updateQuery.setParameter("stock", stock);
             updateQuery.executeUpdate();
+            logService.log("changed Store at " + new Date());
 
     }
 
