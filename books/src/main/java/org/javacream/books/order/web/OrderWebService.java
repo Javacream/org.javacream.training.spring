@@ -3,11 +3,13 @@ package org.javacream.books.order.web;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -25,7 +27,12 @@ public class OrderWebService {
 
     @GetMapping(path = "api/order/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Order findOrderById(@PathVariable("id") Long id) {
-        return orderService.findOrderById(id);
+        Order order = orderService.findOrderById(id);
+        if(order == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }else{
+            return order;
+        }
     }
 
     @GetMapping(path = "api/order/isbn/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)

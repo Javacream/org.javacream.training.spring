@@ -14,13 +14,4 @@ public class StoreWebService{
     public String getStock(@PathVariable("cat") String category, @PathVariable("item") String itemId) {
         return "Stock: " + storeService.getStock(category, itemId);
     }
-    @GetMapping(path = "api/store", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String getStockWithHeader(@RequestHeader("cat") String category, @RequestHeader("item") String itemId) {
-        return "Stock: " + storeService.getStock(category, itemId);
-    }
-    @GetMapping(path = "api/store/query", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String getStockWithQuery(@RequestParam("cat") String category, @RequestParam("item") String itemId) {
-        return "Stock: " + storeService.getStock(category, itemId);
-    }
-
 }
