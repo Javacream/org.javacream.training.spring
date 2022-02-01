@@ -1,3 +1,0 @@
-Isbn1=42
-Isbn2=4
-Isbn4=2
