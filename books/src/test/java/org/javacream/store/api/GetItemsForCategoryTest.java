@@ -9,15 +9,13 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("test")
 
-public class GetStockTest {
+public class GetItemsForCategoryTest {
     @Autowired
     private StoreService storeService;
-    @Test public void storeServiceWorks(){
-        Integer stock = storeService.getStock("ASDF", "ASDFGHJ");
-        Assertions.assertEquals(0, stock);
+    @Test public void fourItemsForCategoryBooks(){
+        Assertions.assertEquals(4, storeService.getItemIdsForCategory("books").size());
     }
-    @Test public void getStockWithCategoryBooksAndItemIdIsbn1Returns42(){
-        Integer stock = storeService.getStock("books", "Isbn1");
-        Assertions.assertEquals(42, stock);
+    @Test public void noItemsForCategoryDvd(){
+        Assertions.assertEquals(0, storeService.getItemIdsForCategory("dvd").size());
     }
 }
