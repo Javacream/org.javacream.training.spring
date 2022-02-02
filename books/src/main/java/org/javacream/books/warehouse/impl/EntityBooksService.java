@@ -7,26 +7,21 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class MapBooksService implements BooksService {
-    @Autowired
-    private Map<String, Book> books;
+@Transactional
+public class EntityBooksService implements BooksService {
 
-    public void setBooks(Map<String, Book> books) {
-        this.books = books;
-    }
-
-    public void setStoreService(StoreService storeService) {
-        this.storeService = storeService;
-    }
-
+    @PersistenceContext private EntityManager entityManager;
     @Autowired
     private StoreService storeService;
 
@@ -34,9 +29,6 @@ public class MapBooksService implements BooksService {
     @Autowired @IsbnGeneratorService.SequenceStrategy
     private IsbnGeneratorService isbnGeneratorService;
 
-    public void setIsbnGeneratorService(IsbnGeneratorService isbnGeneratorService) {
-        this.isbnGeneratorService = isbnGeneratorService;
-    }
    @Override
     public void newBook(Book newBook) throws BookException {
         if (newBook == null){
@@ -44,11 +36,7 @@ public class MapBooksService implements BooksService {
 
         }
         String isbn = newBook.getIsbn();
-        if (books.containsKey(isbn)){
-            throw new BookException(BookException.BookExceptionType.NOT_CREATED, "isbn " + isbn + " exists");
-
-        }
-        books.put(newBook.getIsbn(), newBook);
+        entityManager.persist(newBook);
     }
     @Override
     public Book findBookByIsbn(String isbn) throws BookException{
@@ -56,7 +44,7 @@ public class MapBooksService implements BooksService {
             throw new BookException(BookException.BookExceptionType.NOT_FOUND, "cannot search using null isbn");
 
         }
-        Book result = books.get(isbn);
+        Book result = entityManager.find(Book.class, isbn);
         if (result == null){
             throw new BookException(BookException.BookExceptionType.NOT_FOUND, "isbn " + isbn + " not found");
         }
@@ -66,7 +54,7 @@ public class MapBooksService implements BooksService {
 
     @Override
     public List<Book> findAll(){
-        List<Book> result =  new ArrayList<>(books.values());
+        List<Book> result =  entityManager.createQuery("select b from Book as b", Book.class).getResultList();
         setAvailability(result);
         return result;
 
@@ -77,12 +65,7 @@ public class MapBooksService implements BooksService {
             throw new BookException(BookException.BookExceptionType.NOT_UPDATED, "cannot update null book");
 
         }
-        String isbn = book.getIsbn();
-        if (!books.containsKey(isbn)){
-            throw new BookException(BookException.BookExceptionType.NOT_FOUND, "isbn " + isbn + " not found");
-        }
-        books.put(book.getIsbn(), book);
-
+        entityManager.merge(book);
     }
     @Override
     public void deleteBookByIsbn(String isbn) throws BookException{
@@ -90,10 +73,7 @@ public class MapBooksService implements BooksService {
             throw new BookException(BookException.BookExceptionType.NOT_DELETED, "cannot delete using null isbn");
 
         }
-        Book deleted = books.remove(isbn);
-        if (deleted == null){
-            throw new BookException(BookException.BookExceptionType.NOT_FOUND, "isbn " + isbn + " not found");
-        }
+        entityManager.remove(entityManager.getReference(Book.class, isbn));
 
     }
 
@@ -102,7 +82,9 @@ public class MapBooksService implements BooksService {
         if (title == null){
             throw new BookException(BookException.BookExceptionType.NOT_FOUND, "cannot search by null title");
         }
-        List<Book> result =  books.values().stream().filter(book -> book.getTitle().equals(title)).collect(Collectors.toList());
+        TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.title = :title", Book.class);
+        query.setParameter("title", title);
+        List<Book> result =  query.getResultList();
         setAvailability(result);
         return result;
     }
@@ -117,43 +99,55 @@ public class MapBooksService implements BooksService {
 
         String isbn = isbnGeneratorService.next();
         Book book = new Book(isbn, title, pages, price, false);
-        books.put(isbn, book);
+        entityManager.persist(book);
         return isbn;
 
     }
     @Override
     public List<String> findAllIsbns(){
-        return books.values().stream().map(Book::getIsbn).collect(Collectors.toList());
+        Query query = entityManager.createQuery("select b.isbn from Book as b");
+        List<String> result =  query.getResultList();
+        return result;
+
     }
 
     @Override
     public List<Book> findByTag(String tag){
-        List<Book> result =  books.values().stream().filter(book -> book.getTags().contains(tag)).collect(Collectors.toList());
+        TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.tags = :tag", Book.class);
+        query.setParameter("tag", tag);
+        List<Book> result =  query.getResultList();
         setAvailability(result);
         return result;
     }
     @Override
     public List<Book> findByMaxPrice(Double maxPrice){
-        List<Book> result =  books.values().stream().filter(book -> book.getPrice() <= maxPrice).collect(Collectors.toList());
+        TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.price < :maxPrice", Book.class);
+        query.setParameter("maxPrice", maxPrice);
+        List<Book> result =  query.getResultList();
         setAvailability(result);
         return result;
     }
     @Override
     public List<Book> findByMinPrice(Double minPrice){
-        List<Book> result =  books.values().stream().filter(book -> book.getPrice() >= minPrice).collect(Collectors.toList());
+        TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.price > :minPrice", Book.class);
+        query.setParameter("minPrice", minPrice);
+        List<Book> result =  query.getResultList();
         setAvailability(result);
         return result;
     }
     @Override
     public List<Book> findByPriceRange(Double minPrice, Double maxPrice){
-        List<Book> result =  books.values().stream().filter(book -> (book.getPrice() >= minPrice)&&(book.getPrice() <= maxPrice)).collect(Collectors.toList());
+        TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.price < :maxPrice and b.price > :minPrice", Book.class);
+        query.setParameter("maxPrice", maxPrice);
+        query.setParameter("minPrice", minPrice);
+        List<Book> result =  query.getResultList();
         setAvailability(result);
         return result;
     }
 
     @Override
     public List<Book> findAvailable(){
-        List<Book> result = books.values().stream().filter(book -> (isAvailable(book.getIsbn()))).collect(Collectors.toList());
+        List<Book> result = findAll().stream().filter(book -> (isAvailable(book.getIsbn()))).collect(Collectors.toList());
         setAvailability(result);
         return result;
     }

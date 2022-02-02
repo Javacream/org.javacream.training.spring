@@ -1,16 +1,25 @@
 package org.javacream.books.warehouse.api;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
 public class Book {
+    @Id
     private String isbn;
+    private Book(){}
     private String title;
     private Integer pages;
     private Double price;
+    @Transient
     private Boolean available;
+    @ElementCollection
     private Set<String> tags;
     public Book(String isbn, String title, Integer pages, Double price, Boolean available) {
         this.isbn = isbn;
