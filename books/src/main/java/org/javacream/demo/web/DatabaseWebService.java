@@ -18,7 +18,8 @@ public class DatabaseWebService {
         return "OK, entityManager=" + entityManager;
     }
     @GetMapping(path="demo/cat") public String testJpa(){
-        catManager.doCatSequence();
+        catManager.createThommyTheCat();
+        catManager.findThommyTheCat();
         return "OK";
     }
 }

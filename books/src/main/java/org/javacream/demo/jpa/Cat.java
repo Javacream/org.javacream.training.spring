@@ -3,7 +3,8 @@ package org.javacream.demo.jpa;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
+@Entity(name="CatEntity")
+@Table(name="CATS")
 //@Entity(name="Dog") //Im Standard: Der Klassenname ohne package, also hier: Cat
 //@Table(name="CATS") //Im Standard: Die Tabelle heißt wie die Entity
 public class Cat {
@@ -43,6 +44,7 @@ public class Cat {
     }
 
     //@Column(name="Hugo") //Standard: Name des Attributs
+    @Column(name="CAT_NAME")
     private String name;
     //@Column(Tabellendefinition inklusive Typ und Constraints) ??? Das sind doch nur Informationen die zum Erstellen der Tabelle genutzt werden
     private double weight;
