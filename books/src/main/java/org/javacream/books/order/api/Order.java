@@ -1,14 +1,20 @@
 package org.javacream.books.order.api;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
-
+@Entity(name="orderEntity")
 public class Order {
+    @Id
     private Long orderId;
+
+    private Order(){}
     private String isbn;
     private Integer number;
     private Double totalPrice;
     private String customer;
     private OrderStatus status;
+
 
     public Order(Long orderId, String isbn, Integer number, Double totalPrice, String customer, OrderStatus status) {
         this.orderId = orderId;
