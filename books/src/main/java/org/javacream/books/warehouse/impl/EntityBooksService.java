@@ -5,8 +5,10 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.javacream.util.log.api.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -18,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
+@Transactional(rollbackFor = {BookException.class})
 public class EntityBooksService implements BooksService {
 
     @PersistenceContext private EntityManager entityManager;
@@ -73,7 +75,12 @@ public class EntityBooksService implements BooksService {
             throw new BookException(BookException.BookExceptionType.NOT_DELETED, "cannot delete using null isbn");
 
         }
-        entityManager.remove(entityManager.getReference(Book.class, isbn));
+        try {
+            entityManager.remove(entityManager.getReference(Book.class, isbn));
+        }
+        catch(RuntimeException e){
+            throw new BookException(BookException.BookExceptionType.NOT_DELETED, e.getMessage());
+        }
 
     }
 
@@ -100,9 +107,13 @@ public class EntityBooksService implements BooksService {
         String isbn = isbnGeneratorService.next();
         Book book = new Book(isbn, title, pages, price, false);
         entityManager.persist(book);
+        logService.log("created book, isbn=" + isbn);
+        //throw new RuntimeException("******************** TEST-ONLY");
         return isbn;
 
     }
+
+    @Autowired private LogService logService;
     @Override
     public List<String> findAllIsbns(){
         Query query = entityManager.createQuery("select b.isbn from Book as b");

@@ -13,7 +13,7 @@ import java.util.Set;
 public class Book {
     @Id
     private String isbn;
-    private Book(){}
+    Book(){}
     private String title;
     private Integer pages;
     private Double price;
