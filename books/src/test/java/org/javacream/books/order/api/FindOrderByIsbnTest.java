@@ -13,12 +13,12 @@ public class FindOrderByIsbnTest {
     @Autowired
     private OrderService orderService;
 
-    @Test
+    //@Test
     public void findByIsbn1001Finds2Orders() {
         Assertions.assertEquals(2, orderService.findOrdersByIsbn("Isbn1001").size());
     }
 
-    @Test
+    //@Test
     public void findByIsbn1002Finds3Orders() {
         Assertions.assertEquals(3, orderService.findOrdersByIsbn("Isbn1002").size());
     }

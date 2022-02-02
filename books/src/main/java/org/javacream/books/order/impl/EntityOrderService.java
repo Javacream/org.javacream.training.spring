@@ -8,22 +8,18 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
+import javax.persistence.TypedQuery;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class EntityOrderService implements OrderService {
 
-    @Autowired @Qualifier("orders") private Map<Long, Order> orders;
     @Autowired private BooksService booksService;
     @Autowired private StoreService storeService;
     @Autowired private IdGenerator idGenerator;
@@ -47,28 +43,31 @@ public class EntityOrderService implements OrderService {
             orderStatus = Order.OrderStatus.UNAVAILABLE;
         }
         Order order = new Order(idGenerator.nextId(), isbn, number, totalPrice, customer, orderStatus);
-        orders.put(order.getOrderId(), order);
         entityManager.persist(order);
         return order;
     }
 
     @Override
     public List<Order> allOrders() {
-        return new ArrayList<>(orders.values());
+        return entityManager.createQuery("select o from OrderEntity as o", Order.class).getResultList();
     }
 
     @Override
     public Order findOrderById(Long id) {
-        return orders.get(id);
+        return entityManager.find(Order.class, id);
     }
 
     @Override
     public List<Order> findOrdersByIsbn(String isbn) {
-        return orders.values().stream().filter(order -> order.getIsbn().equals(isbn)).collect(Collectors.toList());
+        TypedQuery<Order> query = entityManager.createQuery("select o from OrderEntity as o where o.isbn = : isbn", Order.class);
+        query.setParameter("isbn", isbn);
+        return query.getResultList();
     }
 
     @Override
     public List<Order> findOrdersByCustomer(String customer) {
-        return orders.values().stream().filter(order -> order.getCustomer().equals(customer)).collect(Collectors.toList());
+        TypedQuery<Order> query = entityManager.createQuery("select o from OrderEntity as o where o.customer = : customer", Order.class);
+        query.setParameter("customer", customer);
+        return query.getResultList();
     }
 }

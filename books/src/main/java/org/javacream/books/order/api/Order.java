@@ -3,7 +3,7 @@ package org.javacream.books.order.api;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
-@Entity(name="orderEntity")
+@Entity(name="OrderEntity")
 public class Order {
     @Id
     private Long orderId;

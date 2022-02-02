@@ -12,11 +12,4 @@ import java.util.Map;
 @Configuration
 @Profile("prod")
 public class OrderConfiguration {
-    @Bean
-    @Qualifier("orders")
-    public Map<Long, Order> orders(){
-        Map<Long, Order> orders = new HashMap<>();
-        return orders;
-    }
-
 }

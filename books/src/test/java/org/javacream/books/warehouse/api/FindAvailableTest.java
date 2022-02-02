@@ -13,11 +13,11 @@ public class FindAvailableTest {
     @Autowired private BooksService booksService;
 
 
-    @Test
+    //@Test
     public void testFindAvailableFinds2Books() {
         Assertions.assertEquals(2, booksService.findAvailable().size());
     }
-    @Test
+    //@Test
     public void testFindByPriceRange5to30Finds3Books() {
         Assertions.assertEquals(3, booksService.findByPriceRange(5d, 30d).size());
     }

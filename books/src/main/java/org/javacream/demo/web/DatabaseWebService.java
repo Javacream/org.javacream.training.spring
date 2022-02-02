@@ -17,8 +17,11 @@ public class DatabaseWebService {
     @GetMapping(path="demo/db") public String testDb(){
         return "OK, entityManager=" + entityManager;
     }
-    @GetMapping(path="demo/cat") public String testJpa(){
+    @GetMapping(path="demo/createcat") public String testJpaPersist(){
         catManager.createThommyTheCat();
+        return "OK";
+    }
+    @GetMapping(path="demo/jpa") public String testJpa(){
         catManager.findThommyTheCat();
         return "OK";
     }
