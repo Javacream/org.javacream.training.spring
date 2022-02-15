@@ -30,5 +30,10 @@ public class Delivery {
     })
     private Address shippingAddress;
     @ElementCollection private List<String> items;
+
+    @ManyToMany(cascade = CascadeType.ALL) private List<Item> itemsAsRelation;
+
+
+
     private DeliveryStatus deliveryStatus;
 }
