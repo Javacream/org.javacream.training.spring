@@ -3,14 +3,15 @@
 ## Spring Training Project
 
 
-## Durchführung des Seminars* Referent: Rainer Sawitzki, eMail: training@rainer-sawitzki.de
+## Durchführung des Seminars
+* Referent: Rainer Sawitzki, eMail: training@rainer-sawitzki.de
 
 * Beispiele
   * https://github.com/Javacream/org.javacream.training.spring
-    *  
+    *  Branch deutsche_post_3.3.2022
     
 * Digitales Flipchart
-  * 
+  * https://docs.google.com/presentation/d/1WJltKsgGWvDpL5cS3YjW_mS8exX9nITS9umRfx0kaGY/edit?usp=sharing
   
 * Seminarzeiten
   * 16 Unterrichtseinheiten mit jeweils 90 Minuten
