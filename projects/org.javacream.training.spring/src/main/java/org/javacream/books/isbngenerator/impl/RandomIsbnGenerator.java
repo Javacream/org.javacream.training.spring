@@ -4,9 +4,12 @@ import java.util.Random;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
+@Primary
+
 //@Scope("singleton")
 //@Scope("prototype")
 public class RandomIsbnGenerator implements IsbnGenerator {
