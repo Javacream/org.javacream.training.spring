@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 @Service //-> das Object heißt: Klassenname mit erstem Buchstaben klein, also randomIsbnGenerator  
 //@Scope("singleton")
 //@Scope("prototype")
-@Qualifier("random")
+//@Qualifier("random")
+@RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")  String prefix;
