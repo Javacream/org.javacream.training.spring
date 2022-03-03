@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
+//@Scope("singleton")
+//@Scope("prototype")
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")  String prefix;
