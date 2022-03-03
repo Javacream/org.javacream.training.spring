@@ -19,11 +19,4 @@ public class ApplicationConfiguration {
 		return data;
 	}
 	
-	@Bean @Qualifier("countryCode") public String countryCode() {
-		return "-is";
-	}
-	@Bean @Qualifier("prefix") public String prefix() {
-		return "Config:";
-	}
-	
 }
