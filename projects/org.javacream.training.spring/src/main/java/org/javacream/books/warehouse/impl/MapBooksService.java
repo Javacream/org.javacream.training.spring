@@ -2,7 +2,6 @@ package org.javacream.books.warehouse.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -23,11 +22,11 @@ import org.springframework.stereotype.Repository;
 public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator;
-	private Map<String, Book> books;
+	@Autowired private Map<String, Book> books;
 	@Autowired private StoreService storeService;
 	
 	{
-		books = new HashMap<String, Book>();
+		//books = new HashMap<String, Book>();
 		System.out.println("###################################### constructing " + this);
 	}
 
