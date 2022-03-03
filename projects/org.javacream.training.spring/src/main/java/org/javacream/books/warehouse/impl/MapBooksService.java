@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
@@ -32,7 +33,7 @@ public class MapBooksService implements BooksService {
 		System.out.println("###################################### postconstructing " + this);
 		
 	}
-	@PostConstruct public void destroyMbs() {
+	@PreDestroy public void destroyMbs() {
 		System.out.println("###################################### predestroying " + this);
 		
 	}
