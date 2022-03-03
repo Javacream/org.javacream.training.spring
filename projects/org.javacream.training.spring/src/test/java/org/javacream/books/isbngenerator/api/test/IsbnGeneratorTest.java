@@ -1,6 +1,6 @@
 package org.javacream.books.isbngenerator.api.test;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ public class IsbnGeneratorTest {
 
 	@Value("${isbngenerator.prefix}") String configuredPrefix;
 	@Value("${isbngenerator.countryCode}") String configuredCountryCode;
-	@Autowired IsbnGenerator isbnGenerator;
+	@Autowired RandomIsbnGenerator isbnGenerator;
 	
 	@Test public void isbngeneratorCreatesIsbn() {
 		Assertions.assertNotNull(isbnGenerator.next());

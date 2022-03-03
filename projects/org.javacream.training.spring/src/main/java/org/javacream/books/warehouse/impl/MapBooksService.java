@@ -10,6 +10,7 @@ import javax.annotation.PreDestroy;
 
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.impl.CounterIsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MapBooksService implements BooksService {
 
-	@Autowired private IsbnGenerator isbnGenerator;
+	@Autowired private CounterIsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
 	@Autowired private StoreService storeService;
 	
@@ -39,13 +40,6 @@ public class MapBooksService implements BooksService {
 		
 	}
 	
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
-	}
-
-	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
-		this.isbnGenerator = isbnGenerator;
-	}
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
