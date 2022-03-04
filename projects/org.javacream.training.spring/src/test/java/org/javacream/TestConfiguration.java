@@ -19,12 +19,14 @@ public class TestConfiguration {
 	//@Scope("prototype") @Qualifier("booksMap") 
 	public Map<String, Book> booksMap(){
 		HashMap<String, Book> data = new HashMap<>();
+		//TODO: add test data
 		return data;
 	}
 	@Bean @Qualifier("ordersMap")  
 	//@Scope("prototype") @Qualifier("booksMap") 
 	public Map<Long, Order> ordersMap(){
 		HashMap<Long, Order> data = new HashMap<>();
+		//TODO: add test data
 		return data;
 	}
 	
