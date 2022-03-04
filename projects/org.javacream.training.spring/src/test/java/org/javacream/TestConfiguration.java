@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("prod")
-public class ApplicationConfiguration {
+@Profile("test")
+public class TestConfiguration {
 
 	
 	@Bean @Qualifier("booksMap")  
