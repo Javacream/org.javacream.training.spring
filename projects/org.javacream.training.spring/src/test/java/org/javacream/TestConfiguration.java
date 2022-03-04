@@ -5,9 +5,12 @@ import java.util.Map;
 
 import org.javacream.books.order.api.Order;
 import org.javacream.books.warehouse.api.Book;
+import org.javacream.store.api.StoreService;
+import org.javacream.store.impl.decorators.AuditingStoreService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
@@ -29,5 +32,11 @@ public class TestConfiguration {
 		//TODO: add test data
 		return data;
 	}
+	
+	@Bean @Primary public StoreService createStoreService() {
+		AuditingStoreService auditingStoreService = new AuditingStoreService();
+		return auditingStoreService;
+	}//Auflösen des @Autowired, @Value, @PostConstruct
+	
 	
 }
