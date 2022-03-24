@@ -1,9 +1,9 @@
 package org.javacream.util;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AuditService {
 
-	@Autowired private EntityManager entityManager;
+	@PersistenceContext private EntityManager entityManager;
 	public void log(String category, String message) {
 		Query query = entityManager.createNativeQuery("insert into AUDIT (category, message) values (:category, :message)");
 		query.setParameter("category", category);
