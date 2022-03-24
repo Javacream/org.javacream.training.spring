@@ -1,11 +1,11 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
@@ -15,46 +15,31 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class MapBooksService implements BooksService {
+@Transactional
+public class DatabaseBooksService implements BooksService {
 
+	@PersistenceContext private EntityManager entityManager;
+	
 	@Autowired
 	@SequenceStrategy
 	private IsbnGenerator isbnGenerator;
 	@Autowired
-	private Map<String, Book> books;
-	@Autowired
 	private StoreService storeService;
-
-	{
-		// books = new HashMap<String, Book>();
-		System.out.println("###################################### constructing " + this);
-	}
-
-	@PostConstruct
-	public void initMbs() {
-		System.out.println("###################################### postconstructing " + this);
-
-	}
-
-	@PreDestroy
-	public void destroyMbs() {
-		System.out.println("###################################### predestroying " + this);
-
-	}
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		entityManager.persist(book);
 		return isbn;
 	}
 
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
+		Book result = entityManager.find(Book.class, isbn);
 		if (result == null) {
 			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
@@ -64,18 +49,26 @@ public class MapBooksService implements BooksService {
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), bookValue);
-		return bookValue;
+		return entityManager.merge(bookValue);
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
+		// 1) entityManager.remove(isbn);verführerisch, aber falsch
+		// 2) entityManager.remove(entityManager.find(Book.class, isbn)); funktioniert, ist aber ziemlicher unfug
+		// 3) entityManager.remove(entityManager.getReference(Book.class, isbn));//OK
+//		4) Query query = entityManager.createQuery("delete b from BookEntity as b where b.isbn = :isbn");
+//		4) query.setParameter("isbn", isbn);
+//		4) query.executeUpdate();
+		Query query = entityManager.createNativeQuery("delete from BOOKS where isbn = :isbn");
+		query.setParameter("isbn", isbn);
+		int affectedRows = query.executeUpdate();
+		if (affectedRows != 1) {
 			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
 		}
 	}
 
 	public Collection<Book> findAllBooks() {
-		return new ArrayList<Book>(books.values());
+		TypedQuery<Book> query = entityManager.createQuery("select b from BookEntity as b", Book.class);
+		return query.getResultList();
 	}
 }
