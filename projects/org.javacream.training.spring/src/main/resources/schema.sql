@@ -1,0 +1,1 @@
+create table MESSAGES (message varchar(20))
