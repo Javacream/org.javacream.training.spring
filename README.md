@@ -16,6 +16,7 @@
 * Seminarzeiten
   * 16 Unterrichtseinheiten mit jeweils 90 Minuten
   * jeweils 9:00 - 16:15
+  * **Freitag, 25.3.2022: 8:30 - 15:00 mit 30Minuten Mittagspause und keiner Nachmittagspause**
   * Mittagspause 45’ (12:15-13:00)
   * Kaffeepausen 10:30 - 10:45 und 14:30 - 14:45
    
