@@ -1,1 +1,1 @@
-create table MESSAGES (message varchar(20))
+create table STORE (category varchar(20), item varchar(20), stock integer, primary key (category, item))

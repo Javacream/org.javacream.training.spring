@@ -1,2 +1,5 @@
-insert into messages values('Hello')
-insert into messages values('World')
+insert into STORE (category, item, stock) values ('books', 'ISBN1', 42)
+insert into STORE (category, item, stock) values ('books', 'ISBN2', 2)
+insert into STORE (category, item, stock) values ('books', 'ISBN3', 4)
+insert into STORE (category, item, stock) values ('books', 'ISBN4', 22)
+insert into STORE (category, item, stock) values ('books', 'ISBN5', 44)
