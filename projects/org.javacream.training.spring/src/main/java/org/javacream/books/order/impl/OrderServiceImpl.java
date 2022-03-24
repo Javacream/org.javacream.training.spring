@@ -1,23 +1,24 @@
 package org.javacream.books.order.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.javacream.books.order.api.Order;
-import org.javacream.books.order.api.OrderService;
 import org.javacream.books.order.api.Order.OrderStatus;
+import org.javacream.books.order.api.OrderService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.SequenceIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
 	@Autowired
@@ -27,8 +28,8 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	SequenceIdGenerator idGenerator;
 	@Autowired
-	@Qualifier("ordersMap")
-	private Map<Long, Order> orders;
+	
+	@PersistenceContext private EntityManager entityManager;
 
 	@Override
 	public Order order(String isbn, int number) {
@@ -46,14 +47,13 @@ public class OrderServiceImpl implements OrderService {
 			orderStatus = OrderStatus.UNKNOWN;
 		}
 		Order newOrder = new Order(idGenerator.next(), isbn, number, totalPrice, orderStatus);
-		orders.put(newOrder.getOrderId(), newOrder);
+		entityManager.persist(newOrder);
 		return newOrder;
 	}
 
 	@Override
 	public List<Order> allOrders() {
-		Collection<Order> values = orders.values();
-		return new ArrayList<Order>(values);
+		return entityManager.createQuery("select o from OrderEntity as o", Order.class).getResultList();
 	}
 
 }
