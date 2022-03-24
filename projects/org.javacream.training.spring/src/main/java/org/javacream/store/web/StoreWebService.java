@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StoreWebService {
 	@Autowired private StoreService storeService;
 
-	@GetMapping(path = "api/store/{category}(/{item}")
+	@GetMapping(path = "api/store/{category}/{item}")
 	public int getStock(@PathVariable("category") String category, @PathVariable("item")String item) {
 		return storeService.getStock(category, item);
 	}
