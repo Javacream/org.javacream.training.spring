@@ -11,18 +11,21 @@ import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
+import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Transactional
+@Transactional(rollbackFor = BookException.class)
 public class DatabaseBooksService implements BooksService {
 
-	@PersistenceContext private EntityManager entityManager;
-	
+	@PersistenceContext
+	private EntityManager entityManager;
+
 	@Autowired
 	@SequenceStrategy
 	private IsbnGenerator isbnGenerator;
@@ -34,10 +37,15 @@ public class DatabaseBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		entityManager.persist(book);
+		try {
+			entityManager.persist(book);
+		} catch (RuntimeException e) {
+			throw new BookException(BookExceptionType.NOT_CREATED, e.getMessage());
+		}
 		return isbn;
 	}
 
+	@Transactional(rollbackFor = BookException.class, propagation = Propagation.REQUIRES_NEW)
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = entityManager.find(Book.class, isbn);
 		if (result == null) {
@@ -49,12 +57,17 @@ public class DatabaseBooksService implements BooksService {
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		return entityManager.merge(bookValue);
+		if (entityManager.contains(bookValue)) {
+			return entityManager.merge(bookValue);
+		}else {
+			throw new BookException(BookExceptionType.NOT_FOUND, "isbn not found: " + bookValue.getIsbn());
+		}
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		// 1) entityManager.remove(isbn);verführerisch, aber falsch
-		// 2) entityManager.remove(entityManager.find(Book.class, isbn)); funktioniert, ist aber ziemlicher unfug
+		// 2) entityManager.remove(entityManager.find(Book.class, isbn)); funktioniert,
+		// ist aber ziemlicher unfug
 		// 3) entityManager.remove(entityManager.getReference(Book.class, isbn));//OK
 //		4) Query query = entityManager.createQuery("delete b from BookEntity as b where b.isbn = :isbn");
 //		4) query.setParameter("isbn", isbn);
