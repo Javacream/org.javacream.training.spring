@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
@@ -28,16 +26,16 @@ public class MapBooksService implements BooksService {
 	
 	{
 		books = new HashMap<String, Book>();
-		System.out.println("constructing " + this + ", isbngenerator=" + this.isbnGenerator + ", storeService=" + this.storeService );
-	}
-
-	@PostConstruct public void init(){
-		books = new HashMap<String, Book>();
-		System.out.println("initializing " + this + ", isbngenerator=" + this.isbnGenerator + ", storeService=" + this.storeService );
-	}
-	
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
+		Book b1 = new Book();
+		b1.setIsbn("ISBN1");
+		b1.setTitle("Title1");
+		b1.setPrice(9.99);
+		Book b2 = new Book();
+		b2.setIsbn("ISBN2");
+		b2.setTitle("Title2");
+		b2.setPrice(19.99);
+		books.put(b1.getIsbn(), b1);
+		books.put(b1.getIsbn(), b2);
 	}
 
 	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
@@ -86,6 +84,11 @@ public class MapBooksService implements BooksService {
 	}
 	public void setBooks(Map<String, Book> books) {
 		this.books = books;
+	}
+
+	public void setStoreService(StoreService storeService) {
+		this.storeService = storeService;
+		
 	}
 	
 }
