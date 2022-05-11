@@ -5,25 +5,34 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
-
+@Component
 public class MapBooksService implements BooksService {
 
-	private IsbnGenerator isbnGenerator;
+	@Autowired private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
-	private StoreService storeService;
+	@Autowired private StoreService storeService;
 	
 	{
 		books = new HashMap<String, Book>();
+		System.out.println("constructing " + this + ", isbngenerator=" + this.isbnGenerator + ", storeService=" + this.storeService );
 	}
 
+	@PostConstruct public void init(){
+		books = new HashMap<String, Book>();
+		System.out.println("initializing " + this + ", isbngenerator=" + this.isbnGenerator + ", storeService=" + this.storeService );
+	}
 	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
