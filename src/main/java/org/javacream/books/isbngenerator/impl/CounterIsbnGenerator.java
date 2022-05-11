@@ -4,9 +4,13 @@ import javax.annotation.PostConstruct;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service("isbnGenerator2")
+//@Primary
+//@Profile("prod")
+//@Qualifier("sequenceStrategy")
+@SequenceStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	{
