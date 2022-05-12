@@ -1,5 +1,6 @@
 package org.javacream.books.order.test;
 
+import org.javacream.JavacreamTest;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.Order.OrderStatus;
 import org.javacream.books.order.api.OrderService;
@@ -7,8 +8,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
+@JavacreamTest
 public class OrderServiceTest {
 
 	@Autowired

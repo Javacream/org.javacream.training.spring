@@ -1,0 +1,31 @@
+package org.javacream.books;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.javacream.books.warehouse.api.Book;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Configuration
+@Profile("test")
+public class BooksTestConfiguration {
+
+	@Bean @Qualifier("booksData") 
+	public Map<String, Book> booksData() {
+		HashMap<String, Book> data = new HashMap<>();
+		Book b1 = new Book();
+		b1.setIsbn("ISBN1");
+		b1.setTitle("Title1");
+		b1.setPrice(9.99);
+		Book b2 = new Book();
+		b2.setIsbn("ISBN2");
+		b2.setTitle("Title2");
+		b2.setPrice(19.99);
+		data.put(b1.getIsbn(), b1);
+		data.put(b1.getIsbn(), b2);
+		return data;
+	}
+}

@@ -2,7 +2,6 @@ package org.javacream.books.warehouse.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.SerializationUtils;
@@ -13,6 +12,7 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 
@@ -20,22 +20,8 @@ import org.springframework.stereotype.Repository;
 public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator;
-	private Map<String, Book> books;
+	@Autowired @Qualifier("booksData") private Map<String, Book> books;
 	@Autowired private StoreService storeService;
-	
-	{
-		books = new HashMap<String, Book>();
-		Book b1 = new Book();
-		b1.setIsbn("ISBN1");
-		b1.setTitle("Title1");
-		b1.setPrice(9.99);
-		Book b2 = new Book();
-		b2.setIsbn("ISBN2");
-		b2.setTitle("Title2");
-		b2.setPrice(19.99);
-		books.put(b1.getIsbn(), b1);
-		books.put(b1.getIsbn(), b2);
-	}
 
 	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
 		this.isbnGenerator = isbnGenerator;
