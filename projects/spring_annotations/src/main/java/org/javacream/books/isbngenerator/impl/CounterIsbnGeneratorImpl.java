@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 //@Service
 //@SequenceStrategy
-public class CounterIsbnGenerator implements IsbnGenerator {
+public class CounterIsbnGeneratorImpl implements IsbnGenerator {
 	@Autowired 
 	private SequenceGenerator sequenceGenerator;
 	public void setSequenceGenerator(SequenceGenerator sequenceGenerator) {

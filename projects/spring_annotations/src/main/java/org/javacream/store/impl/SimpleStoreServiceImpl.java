@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Plain
-public class SimpleStoreService implements StoreService {
+public class SimpleStoreServiceImpl implements StoreService {
 	
 	
 	@Value("${storeService.stock}")

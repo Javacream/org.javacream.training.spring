@@ -6,13 +6,13 @@ import java.util.Map;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.RandomStrategy;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
-import org.javacream.books.isbngenerator.impl.CounterIsbnGenerator;
-import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
+import org.javacream.books.isbngenerator.impl.CounterIsbnGeneratorImpl;
+import org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorImpl;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.api.StoreService.Audited;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.SimpleStoreServiceImpl;
 import org.javacream.store.impl.decorator.AuditingStoreService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,19 +25,19 @@ public class BooksApplication {
 	@Bean
 	@SequenceStrategy
 	public IsbnGenerator sequenceIsbnGenerator() {
-		CounterIsbnGenerator counterIsbnGenerator = new CounterIsbnGenerator();
+		CounterIsbnGeneratorImpl counterIsbnGenerator = new CounterIsbnGeneratorImpl();
 		return counterIsbnGenerator;
 	}
 
 	@Bean
 	@RandomStrategy
-	public IsbnGenerator randomStrategyIsbnGenerator(RandomIsbnGenerator rg) {
+	public IsbnGenerator randomStrategyIsbnGenerator(RandomIsbnGeneratorImpl rg) {
 		return rg;
 	}
 
 	@Bean
 	@Audited
-	public StoreService storeService(SimpleStoreService simpleStoreService) {
+	public StoreService storeService(SimpleStoreServiceImpl simpleStoreService) {
 		AuditingStoreService auditingStoreService = new AuditingStoreService();
 		auditingStoreService.setDelegate(simpleStoreService);
 		return auditingStoreService;

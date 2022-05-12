@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 //@Profile("test")
 //@Qualifier("randomStrategy")
 //@RandomStrategy
-public class RandomIsbnGenerator implements IsbnGenerator {
+public class RandomIsbnGeneratorImpl implements IsbnGenerator {
 
 	private String prefix;
 	private String countryCode;
