@@ -1,10 +1,12 @@
 package org.javacream.util.aspects;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.reflect.MethodSignature;
 
 public class TracingAspect {
 
+	@Around("execution(int org.javacream.store.impl.SimpleStoreService.getStock(String, String))")
 	public Object trace(ProceedingJoinPoint pjp) throws Throwable {
 		MethodSignature signature = (MethodSignature)pjp.getSignature();
 		String methodName = signature.getMethod().getName();
