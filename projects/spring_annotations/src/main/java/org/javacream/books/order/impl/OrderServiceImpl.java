@@ -10,6 +10,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.javacream.store.api.StoreService.Plain;
 import org.javacream.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
-	@Autowired private StoreService storeService;
+	@Autowired @Plain private StoreService storeService;
 	@Autowired private BooksService booksService;
 	@Autowired private SequenceGenerator sequenceGenerator;
 	@Autowired @Qualifier("orderData") private Map<Long, Order> orders;

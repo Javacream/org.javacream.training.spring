@@ -11,6 +11,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.javacream.store.api.StoreService.Audited;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -21,7 +22,7 @@ public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator;
 	@Autowired @Qualifier("booksData") private Map<String, Book> books;
-	@Autowired private StoreService storeService;
+	@Autowired @Audited private StoreService storeService;
 
 	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
 		this.isbnGenerator = isbnGenerator;
