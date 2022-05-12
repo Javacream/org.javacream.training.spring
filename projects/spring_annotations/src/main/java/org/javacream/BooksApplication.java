@@ -15,6 +15,7 @@ import org.javacream.store.api.StoreService.Audited;
 import org.javacream.store.impl.SimpleStoreServiceImpl;
 import org.javacream.store.impl.decorator.AuditingStoreService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
@@ -22,6 +23,13 @@ import org.springframework.context.annotation.Profile;
 @SpringBootApplication
 public class BooksApplication {
 
+	public static void main(String[] args) {
+		SpringApplication app = new SpringApplication(BooksApplication.class);
+		app.setAdditionalProfiles("prod");
+		app.run(args);
+		System.out.println("Books application is running!");
+	}
+	
 	@Bean
 	@SequenceStrategy
 	public IsbnGenerator sequenceIsbnGenerator() {
