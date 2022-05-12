@@ -1,15 +1,14 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.books.warehouse.api.BooksService.InMemory;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.api.StoreService.Audited;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
+@InMemory
 public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator;
@@ -48,11 +48,11 @@ public class MapBooksService implements BooksService {
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
 		
-		return SerializationUtils.clone(result);
+		return result;
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue)); 
+		books.put(bookValue.getIsbn(), bookValue); 
 		return bookValue;
 	}
 
@@ -66,7 +66,7 @@ public class MapBooksService implements BooksService {
 
 
 	public Collection<Book> findAllBooks() {
-		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
+		return books.values();
 	}
 	public void setBooks(Map<String, Book> books) {
 		this.books = books;

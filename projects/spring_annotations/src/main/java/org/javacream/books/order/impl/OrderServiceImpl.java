@@ -9,6 +9,7 @@ import org.javacream.books.order.api.OrderService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.books.warehouse.api.BooksService.InMemory;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.api.StoreService.Plain;
 import org.javacream.util.SequenceGenerator;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
 	@Autowired @Plain private StoreService storeService;
-	@Autowired private BooksService booksService;
+	@Autowired @InMemory private BooksService booksService;
 	@Autowired private SequenceGenerator sequenceGenerator;
 	@Autowired @Qualifier("orderData") private Map<Long, Order> orders;
 	@Override
