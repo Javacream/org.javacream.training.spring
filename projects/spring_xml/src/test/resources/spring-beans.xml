@@ -19,10 +19,12 @@
 		<property name="countryCode" value="-is" />
 		<property name="sequenceGenerator" ref="idGenerator" />
 	</bean>
+	<!-- 
 	<bean id="storeService"
-		class="org.javacream.store.impl.SimpleStoreService">
+		class="org.javacream.store.impl.SimpleStoreService" init-method="init">
 		<property name="stock" value="42" />
 	</bean>
+	 -->
 	<bean id="booksService"
 		class="org.javacream.books.warehouse.impl.MapBooksService">
 		<property name="isbnGenerator" ref="randomIsbnGenerator" />
