@@ -6,8 +6,8 @@ import org.javacream.store.api.StoreService;
 import org.javacream.store.api.StoreService.Audited;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-@Component
-@Audited
+//@Component
+//@Audited
 public class AuditingStoreService implements StoreService{
 
 	@Autowired @Plain private StoreService delegate;
