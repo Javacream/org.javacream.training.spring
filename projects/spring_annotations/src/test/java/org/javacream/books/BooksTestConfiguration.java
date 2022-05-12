@@ -3,6 +3,8 @@ package org.javacream.books;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.javacream.books.order.api.Order;
+import org.javacream.books.order.api.Order.OrderStatus;
 import org.javacream.books.warehouse.api.Book;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -28,4 +30,17 @@ public class BooksTestConfiguration {
 		data.put(b1.getIsbn(), b2);
 		return data;
 	}
+	@Bean @Qualifier("orderData") 
+	public Map<Long, Order> orderData() {
+		HashMap<Long, Order> data = new HashMap<>();
+		Order orderOk = new Order(1l, "ISBN1", 100, 199.00, OrderStatus.OK);
+		Order orderPending = new Order(2l, "ISBN2", 100, 199.00, OrderStatus.PENDING);
+		Order orderUnavailable = new Order(3l, "ISBN3", 100, 199.00, OrderStatus.UNAVAILABLE);
+		data.put(orderOk.getOrderId(), orderOk);
+		data.put(orderPending.getOrderId(), orderPending);
+		data.put(orderUnavailable.getOrderId(), orderUnavailable);
+		return data;
+		
+	}
+
 }

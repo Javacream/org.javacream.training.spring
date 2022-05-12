@@ -7,8 +7,6 @@ import org.javacream.books.order.api.OrderService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 @JavacreamTest
 public class OrderServiceTest {
@@ -31,4 +29,26 @@ public class OrderServiceTest {
 		Order order = orderService.order("asdfghjk", 50);
 		Assertions.assertEquals(OrderStatus.UNAVAILABLE, order.getStatus());
 	}
+
+	@Test
+	public void findOrderBy1FindsOKOrder() {
+		Order order = orderService.findOrderById(1l);
+		Assertions.assertEquals(OrderStatus.OK, order.getStatus());
+	}
+	@Test
+	public void findOrderBy2FindsPendingOrder() {
+		Order order = orderService.findOrderById(2l);
+		Assertions.assertEquals(OrderStatus.PENDING, order.getStatus());
+	}
+	@Test
+	public void findOrderBy3FindsUnavailableOrder() {
+		Order order = orderService.findOrderById(3l);
+		Assertions.assertEquals(OrderStatus.UNAVAILABLE, order.getStatus());
+	}
+	@Test
+	public void findOrderBy42FindsNoOrder() {
+		Order order = orderService.findOrderById(42l);
+		Assertions.assertNull(order);
+	}
+
 }
