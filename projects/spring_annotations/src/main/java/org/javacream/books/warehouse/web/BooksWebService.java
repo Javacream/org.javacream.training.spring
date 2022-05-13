@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-public class BooksWebService {
+public class BooksWebService{
 
 	@Autowired
 	@Cloning
@@ -43,12 +44,21 @@ public class BooksWebService {
 		}
 	}
 
-	// Hinweis zum ToDo: Hier konsumiert die Operation applicaion.json, und der
-	// Parameter book wird im RequestBody gefunden
-	@PutMapping(path = "api/books", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Book updateBook(@RequestBody Book book) {
+	@PutMapping(path = "api/books/{isbn}")
+	public void updateBookPrice(@PathVariable("isbn") String isbn, @RequestHeader("price") double price) {
 		try {
-			return booksService.updateBook(book);
+			Book book = booksService.findBookByIsbn(isbn);
+			book.setPrice(price);
+			booksService.updateBook(book);
+		} catch (BookException e) {
+			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+		}
+	}
+
+	@PutMapping(path = "api/books", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void updateBook(@RequestBody Book book) {
+		try {
+			booksService.updateBook(book);
 		} catch (BookException e) {
 			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
 		}
@@ -64,8 +74,8 @@ public class BooksWebService {
 	}
 
 	@GetMapping(path = "api/books", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Collection<Book> findAllBooks() {
-		return booksService.findAllBooks();
+	public Collection<String> findAllIsbns() {
+		return booksService.findAllBooks().stream().map((book) -> book.getIsbn()).toList();
 	}
 
 }
