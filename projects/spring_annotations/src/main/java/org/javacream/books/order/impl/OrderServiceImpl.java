@@ -1,7 +1,5 @@
 package org.javacream.books.order.impl;
 
-import java.io.ObjectStreamConstants;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -20,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
+public class OrderServiceImpl implements OrderService{
 	@Autowired @org.javacream.store.api.StoreService.Database private StoreService storeService;
 	@Autowired @InMemory private BooksService booksService;
 	@Autowired private SequenceGenerator sequenceGenerator;
