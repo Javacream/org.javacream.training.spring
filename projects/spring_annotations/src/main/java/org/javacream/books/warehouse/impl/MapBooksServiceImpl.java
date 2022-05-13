@@ -8,6 +8,7 @@ import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService.InMemory;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.api.StoreService.Audited;
@@ -29,6 +30,9 @@ public class MapBooksServiceImpl implements BooksService {
 	}
 
 	public String newBook(String title) throws BookException {
+		if (title == null || title.length() < 2) {
+			throw new BookException(BookExceptionType.NOT_CREATED, "invalid title: " + title);
+		}
 		String isbn = isbnGenerator.next();
 		Book book = new Book();
 		book.setIsbn(isbn);
