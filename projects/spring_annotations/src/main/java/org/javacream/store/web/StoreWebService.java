@@ -1,7 +1,7 @@
 package org.javacream.store.web;
 
 import org.javacream.store.api.StoreService;
-import org.javacream.store.api.StoreService.Audited;
+import org.javacream.store.api.StoreService.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,5 +15,5 @@ public class StoreWebService {
 		return "Stock: " + storeService.getStock(category, item);
 	}
 
-	@Autowired @Audited private StoreService storeService;
+	@Autowired @Database private StoreService storeService;
 }
