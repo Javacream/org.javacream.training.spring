@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
-import org.javacream.books.warehouse.api.BooksService.Cloning;
+import org.javacream.books.warehouse.api.BooksService.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class BooksWebService{
 
 	@Autowired
-	@Cloning
+	@Database
 	private BooksService booksService;
 
 	@PostMapping(path = "api/books/{title}", produces = MediaType.TEXT_PLAIN_VALUE)
@@ -69,7 +69,7 @@ public class BooksWebService{
 	public void deleteBookByIsbn(@PathVariable("isbn") String isbn) {
 		try {
 			booksService.deleteBookByIsbn(isbn);
-		} catch (BookException e) {
+		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 	}
