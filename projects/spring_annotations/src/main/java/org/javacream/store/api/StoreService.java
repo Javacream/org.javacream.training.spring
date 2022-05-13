@@ -27,4 +27,12 @@ public interface StoreService {
 	public @interface Audited{
 
 	}
+	@Retention(RUNTIME)
+	@Target({ TYPE, FIELD, METHOD, PARAMETER })
+	@Qualifier
+	public @interface Database{
+
+	}
+
+
 }
