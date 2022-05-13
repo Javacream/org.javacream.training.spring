@@ -1,6 +1,7 @@
 package org.javacream.books.warehouse.web;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
@@ -75,7 +76,7 @@ public class BooksWebService{
 
 	@GetMapping(path = "api/books", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Collection<String> findAllIsbns() {
-		return booksService.findAllBooks().stream().map((book) -> book.getIsbn()).toList();
+		return booksService.findAllBooks().stream().map((book) -> book.getIsbn()).collect(Collectors.toList());
 	}
 
 }
