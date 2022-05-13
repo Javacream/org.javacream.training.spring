@@ -30,7 +30,14 @@ public interface BooksService{
 	public @interface InMemory {
 
 	}
+	@Retention(RUNTIME)
+	@Target({ TYPE, FIELD, METHOD, PARAMETER })
+	@Qualifier
+	public @interface Database {
 
+	}
+
+	
 	@Retention(RUNTIME)
 	@Target({ TYPE, FIELD, METHOD, PARAMETER })
 	@Qualifier
