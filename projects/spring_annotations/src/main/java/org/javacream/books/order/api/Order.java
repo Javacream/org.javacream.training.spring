@@ -2,9 +2,15 @@ package org.javacream.books.order.api;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity(name="OrderEntity")
 public class Order {
 
+	@Id
 	private long orderId;
+	
+	public Order() {}
 	private String isbn;
 	public long getOrderId() {
 		return orderId;

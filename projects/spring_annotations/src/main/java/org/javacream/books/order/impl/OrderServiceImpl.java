@@ -1,7 +1,9 @@
 package org.javacream.books.order.impl;
 
 import java.io.ObjectStreamConstants;
-import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.Order.OrderStatus;
@@ -11,18 +13,19 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.books.warehouse.api.BooksService.InMemory;
 import org.javacream.store.api.StoreService;
-import org.javacream.store.api.StoreService.Plain;
 import org.javacream.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
-	@Autowired @Plain private StoreService storeService;
+	@Autowired @org.javacream.store.api.StoreService.Database private StoreService storeService;
 	@Autowired @InMemory private BooksService booksService;
 	@Autowired private SequenceGenerator sequenceGenerator;
-	@Autowired @Qualifier("orderData") private Map<Long, Order> orders;
+	@PersistenceContext private EntityManager entityManager;
+
 	@Override
 	public Order order(String isbn, int amount) {
 		
@@ -42,12 +45,12 @@ public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
 			status = OrderStatus.UNAVAILABLE;
 		}
 		Order order = new Order(id, isbn, amount, totalPrice, status);
-		orders.put(id, order);
+		entityManager.persist(order);
 		return order;
 	}
 	@Override
 	public Order findOrderById(long id) {
-		return orders.get(id);
+		return entityManager.find(Order.class, id);
 	}
 
 }

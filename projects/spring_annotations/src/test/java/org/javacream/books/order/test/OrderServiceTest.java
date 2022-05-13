@@ -31,18 +31,18 @@ public class OrderServiceTest {
 	}
 
 	@Test
-	public void findOrderBy1FindsOKOrder() {
-		Order order = orderService.findOrderById(1l);
+	public void findOrderBy1000FindsOKOrder() {
+		Order order = orderService.findOrderById(1000l);
 		Assertions.assertEquals(OrderStatus.OK, order.getStatus());
 	}
 	@Test
-	public void findOrderBy2FindsPendingOrder() {
-		Order order = orderService.findOrderById(2l);
+	public void findOrderBy1001FindsPendingOrder() {
+		Order order = orderService.findOrderById(1001l);
 		Assertions.assertEquals(OrderStatus.PENDING, order.getStatus());
 	}
 	@Test
-	public void findOrderBy3FindsUnavailableOrder() {
-		Order order = orderService.findOrderById(3l);
+	public void findOrderBy1002FindsUnavailableOrder() {
+		Order order = orderService.findOrderById(1002l);
 		Assertions.assertEquals(OrderStatus.UNAVAILABLE, order.getStatus());
 	}
 	@Test
