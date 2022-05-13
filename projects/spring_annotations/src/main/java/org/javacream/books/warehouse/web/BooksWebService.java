@@ -8,9 +8,12 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.books.warehouse.api.BooksService.Cloning;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -29,14 +32,17 @@ public class BooksWebService {
 		return booksService.findBookByIsbn(isbn);
 	}
 	//Hinweis zum ToDo: Hier konsumiert die Operation applicaion.json, und der Parameter book wird im RequestBody gefunden
-	public Book updateBook(Book book) throws BookException {
+	@PutMapping(path="api/books", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Book updateBook(@RequestBody Book book) throws BookException {
 		return booksService.updateBook(book);
 	}
 
-	public void deleteBookByIsbn(String isbn) throws BookException {
+	@DeleteMapping(path="api/books/{isbn}")
+	public void deleteBookByIsbn(@PathVariable("isbn") String isbn) throws BookException {
 		booksService.deleteBookByIsbn(isbn);
 	}
 
+	@GetMapping(path="api/books", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Collection<Book> findAllBooks() {
 		return booksService.findAllBooks();
 	}
