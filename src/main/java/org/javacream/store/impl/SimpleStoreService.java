@@ -2,9 +2,9 @@ package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class SimpleStoreService implements StoreService {
 	
 	{
