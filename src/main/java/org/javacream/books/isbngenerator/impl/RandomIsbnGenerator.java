@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.javacream.books.isbngenerator.api.IsbnGenerator.RandomStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
