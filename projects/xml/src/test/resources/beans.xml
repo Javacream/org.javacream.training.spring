@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="idGenerator"
+		class="org.javacream.util.SequenceGenerator" scope="prototype">
+	</bean>
+
+	<bean id="randomIsbnGenerator"
+		class="org.javacream.books.isbngenerator.impl.RandomIsbnGenerator">
+		<property name="prefix" value="ISBN:" />
+		<property name="countryCode" value="-is" />
+	</bean>
+	<bean id="sequenceIsbnGenerator"
+		class="org.javacream.books.isbngenerator.impl.CounterIsbnGenerator">
+		<property name="prefix" value="ISBN:" />
+		<property name="countryCode" value="-is" />
+		<property name="sequenceGenerator" ref="idGenerator" />
+	</bean>
+	<bean id="storeService"
+		class="org.javacream.store.impl.SimpleStoreService" init-method="initialize">
+		<property name="stock" value="42" />
+	</bean>
+	<bean id="booksService"
+		class="org.javacream.books.warehouse.impl.MapBooksService">
+		<property name="isbnGenerator" ref="randomIsbnGenerator" />
+		<property name="storeService" ref="storeService" />
+	</bean>
+	<bean id="orderService"
+		class="org.javacream.books.order.impl.SimpleOrderService">
+		<property name="booksService" ref="booksService" />
+		<property name="storeService" ref="storeService" />
+		<property name="sequenceGenerator" ref="idGenerator" />
+	</bean>
+
+</beans>
