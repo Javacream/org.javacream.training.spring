@@ -26,6 +26,16 @@ public class MapBooksService implements BooksService {
 	
 	{
 		books = new HashMap<String, Book>();
+		Book b1 = new Book();
+		b1.setIsbn("ISBN1");
+		b1.setTitle("Title1");
+		b1.setPrice(9.99);
+		books.put(b1.getIsbn(), b1);
+		Book b2 = new Book();
+		b2.setIsbn("ISBN2");
+		b2.setTitle("Title2");
+		b2.setPrice(19.99);
+		books.put(b1.getIsbn(), b1);
 	}
 
 	
