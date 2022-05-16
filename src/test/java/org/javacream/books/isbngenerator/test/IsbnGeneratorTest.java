@@ -1,16 +1,17 @@
 package org.javacream.books.isbngenerator.test;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.impl.RandomStrategy;
+import org.javacream.books.isbngenerator.impl.SequenceStrategy;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 //@ActiveProfiles("dev")
 public class IsbnGeneratorTest {
-	@Autowired @Qualifier("randomStrategy") private IsbnGenerator isbnGenerator1;
-	@Autowired @Qualifier("sequenceStrategy") private IsbnGenerator isbnGenerator2;
+	@Autowired @RandomStrategy private IsbnGenerator isbnGenerator1;
+	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator2;
 	
 	
 	@Test public void testGenerators() {
