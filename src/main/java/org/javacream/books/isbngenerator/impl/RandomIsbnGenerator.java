@@ -12,8 +12,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
-@Scope("singleton")
-//@Profile("dev")
 @Qualifier("randomStrategy")
 public class RandomIsbnGenerator implements IsbnGenerator {
 	//@Value("${isbngenerator.prefix}")
