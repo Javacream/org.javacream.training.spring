@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Qualifier("randomStrategy")
 public class RandomIsbnGenerator implements IsbnGenerator {
-	//@Value("${isbngenerator.prefix}")
+	@Value("${isbngenerator.prefix}")
 	private String prefix;
-	//@Value("${isbngenerator.countryCode}")
+	@Value("${isbngenerator.countryCode}")
 	private String countryCode;
 	
 	{
