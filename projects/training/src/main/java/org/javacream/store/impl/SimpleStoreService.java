@@ -1,24 +1,19 @@
 package org.javacream.store.impl;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
-@Service
 public class SimpleStoreService implements StoreService {
 	
 	{
 		System.out.println("constructing " + this);
 	}
 	
-	@PostConstruct public void initialize() {
+	public void initialize() {
 		System.out.println("initializing " + this);
 		
 	}
-	@PreDestroy public  void remove() {
+	public  void remove() {
 		System.out.println("destroying " + this);
 		
 	}
