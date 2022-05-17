@@ -6,13 +6,13 @@ import java.util.Map;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.Order.OrderStatus;
 import org.javacream.books.warehouse.api.Book;
-import org.javacream.util.profile.Develeopment;
+import org.javacream.util.profile.Development;
 import org.javacream.util.profile.TestAndQs;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Develeopment @TestAndQs
+@Development @TestAndQs
 @Configuration
 public class BooksTestConfiguration {
 	
