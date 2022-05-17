@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class MapOrderService implements OrderService {
 
 	@Autowired @Qualifier("ordersData") private Map<Long, Order> orders;
-	@Autowired
+	@Autowired @Qualifier("undecorated")
 	private BooksService booksService;
 	@Autowired @Plain
 	private StoreService storeService;
