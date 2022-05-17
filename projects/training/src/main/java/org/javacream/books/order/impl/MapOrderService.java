@@ -9,6 +9,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.javacream.store.api.StoreService.Plain;
 import org.javacream.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,7 +21,7 @@ public class MapOrderService implements OrderService {
 	@Autowired @Qualifier("ordersData") private Map<Long, Order> orders;
 	@Autowired
 	private BooksService booksService;
-	@Autowired
+	@Autowired @Plain
 	private StoreService storeService;
 	@Autowired
 	private SequenceGenerator sequenceGenerator;

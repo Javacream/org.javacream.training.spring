@@ -1,11 +1,15 @@
 package org.javacream.store.impl.decorators;
 
 import org.javacream.store.api.StoreService;
+import org.javacream.store.api.StoreService.Audit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-
+@Component
+@Audit
 public class AuditingStoreService implements StoreService{
 	
-	private StoreService delegate;
+	@Autowired @Plain private StoreService delegate;
 
 	public void setDelegate(StoreService delegate) {
 		this.delegate = delegate;

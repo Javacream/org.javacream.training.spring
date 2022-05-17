@@ -11,23 +11,24 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.javacream.store.api.StoreService.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 public class MapBooksService implements BooksService {
 
-	@Autowired @RandomStrategy
-	//@Resource(name = "randomIsbnGenerator")
+	@Autowired
+	@RandomStrategy
 	private IsbnGenerator isbnGenerator;
-	@Autowired @Qualifier("booksData") private Map<String, Book> books;
-	@Autowired 
-	//@Resource(name = "simpleStoreService") 
+	@Autowired
+	@Qualifier("booksData")
+	private Map<String, Book> books;
+	@Autowired
+	@Audit
 	private StoreService storeService;
-	
-	
+
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -48,36 +49,35 @@ public class MapBooksService implements BooksService {
 	public IsbnGenerator getIsbnGenerator() {
 		return isbnGenerator;
 	}
+
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = (Book) books.get(isbn);
 		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
-					isbn);
+			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
-		
+
 		return SerializationUtils.clone(result);
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue)); 
+		books.put(bookValue.getIsbn(), SerializationUtils.clone(bookValue));
 		return bookValue;
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		Object result = books.remove(isbn);
 		if (result == null) {
-			throw new BookException(
-					BookException.BookExceptionType.NOT_DELETED, isbn);
+			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
 		}
 	}
-
 
 	public Collection<Book> findAllBooks() {
 		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
 	}
+
 	public void setBooks(Map<String, Book> books) {
 		this.books = books;
 	}
-	
+
 }
