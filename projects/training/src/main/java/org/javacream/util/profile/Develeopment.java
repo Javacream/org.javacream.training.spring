@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Profile;
 
 @Retention(RUNTIME)
 @Target({ TYPE, METHOD })
-@Profile("prod")
-public @interface Prod {
+@Profile("dev")
+public @interface Develeopment {
 
 }

@@ -6,9 +6,10 @@ import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-//@ActiveProfiles("dev")
+@ActiveProfiles("dev")
 public class IsbnGeneratorTest {
 	@Autowired @RandomStrategy private IsbnGenerator isbnGenerator1;
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator2;

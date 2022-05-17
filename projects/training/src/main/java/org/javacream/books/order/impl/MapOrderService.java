@@ -1,5 +1,7 @@
 package org.javacream.books.order.impl;
 
+import java.util.Map;
+
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.Order.OrderStatus;
 import org.javacream.books.order.api.OrderService;
@@ -9,11 +11,13 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SimpleOrderService implements OrderService {
+public class MapOrderService implements OrderService {
 
+	@Autowired @Qualifier("ordersData") private Map<Long, Order> orders;
 	@Autowired
 	private BooksService booksService;
 	@Autowired
@@ -39,7 +43,14 @@ public class SimpleOrderService implements OrderService {
 		catch (BookException e) {
 			status = OrderStatus.UNAVAILABLE;
 		}
-		return new Order(orderId, isbn, number, totalPrice, status);
+		Order order = new Order(orderId, isbn, number, totalPrice, status);
+		orders.put(order.getOrderId(), order);
+		return order;
+	}
+
+	@Override
+	public Order findOrderById(long id) {
+		return orders.get(id);
 	}
 
 }
