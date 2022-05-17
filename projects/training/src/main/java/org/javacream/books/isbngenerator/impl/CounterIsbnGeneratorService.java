@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 @SequenceStrategy
-public class CounterIsbnGenerator implements IsbnGenerator {
+public class CounterIsbnGeneratorService implements IsbnGenerator {
 
 	@Autowired private SequenceGenerator sequenceGenerator;
 	private String prefix;

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RandomStrategy
-public class RandomIsbnGenerator implements IsbnGenerator {
+public class RandomIsbnGeneratorService implements IsbnGenerator {
 	@Value("${isbngenerator.prefix}")
 	private String prefix;
 	@Value("${isbngenerator.countryCode}")
@@ -22,7 +22,7 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 		System.out.println("constructing " + this + ", prefix=" + prefix);
 	}
 	
-	public RandomIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode) {
+	public RandomIsbnGeneratorService(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode) {
 		this.prefix = prefix;
 		this.countryCode = countryCode;
 		System.out.println("constructing 2 " + this + ", prefix=" + prefix);
