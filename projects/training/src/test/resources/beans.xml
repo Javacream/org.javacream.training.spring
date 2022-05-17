@@ -7,7 +7,7 @@
 	<bean id="idGenerator"
 		class="org.javacream.util.SequenceGenerator" scope="prototype">
 	</bean>
-
+<!-- 
 	<bean id="simpleStoreService" 
 		class="org.javacream.store.impl.SimpleStoreService" init-method="initialize">
 		<property name="stock" value="42" />
@@ -16,7 +16,7 @@
 		class="org.javacream.store.impl.decorators.AuditingStoreService">
 		<property name="delegate" ref="simpleStoreService" />
 	</bean>
-
+ -->
 <!-- 
 	<bean id="randomIsbnGenerator"
 		class="org.javacream.books.isbngenerator.impl.RandomIsbnGenerator">
