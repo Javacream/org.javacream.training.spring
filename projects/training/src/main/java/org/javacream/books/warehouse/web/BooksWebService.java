@@ -53,7 +53,7 @@ public class BooksWebService {
 			throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, Double.toString(price));
 		}
 	}
-	@PutMapping(path = "api/books")
+	@PutMapping(path = "api/books", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void updateBook(@RequestBody Book book){
 		try {
 			booksService.updateBook(book);
