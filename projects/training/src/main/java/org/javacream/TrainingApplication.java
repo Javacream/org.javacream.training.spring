@@ -1,5 +1,6 @@
 package org.javacream;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
@@ -8,4 +9,9 @@ import org.springframework.context.annotation.ImportResource;
 public class TrainingApplication {
 	
 
+	public static void main(String[] args) {
+		SpringApplication app = new SpringApplication(TrainingApplication.class);
+		app.setAdditionalProfiles("prod");
+		app.run(args);
+	}
 }
