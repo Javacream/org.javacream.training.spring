@@ -6,7 +6,7 @@ import java.util.Map;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BooksService;
-import org.javacream.books.warehouse.impl.MapBooksService;
+import org.javacream.books.warehouse.impl.RepositoryBooksService;
 import org.javacream.books.warehouse.impl.decorators.CloningBooksService;
 import org.javacream.books.warehouse.impl.decorators.ValidatingBooksService;
 import org.javacream.util.profile.Production;
@@ -27,7 +27,7 @@ public class BooksConfiguration {
 		return orders;
 	}
 	
-	@Bean @Qualifier("decorated") public BooksService booksService(MapBooksService mapBooksService) {
+	@Bean @Qualifier("decorated") public BooksService booksService(RepositoryBooksService mapBooksService) {
 		CloningBooksService cloningBooksService = new CloningBooksService();
 		ValidatingBooksService validatingBooksService = new ValidatingBooksService();
 		validatingBooksService.setDelegate(mapBooksService);

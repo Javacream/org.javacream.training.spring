@@ -1,33 +1,32 @@
 package org.javacream.books.warehouse.impl;
 
 import java.util.Collection;
-import java.util.Map;
+import java.util.Optional;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.RandomStrategy;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
+import org.javacream.books.warehouse.api.BooksRepository;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.api.StoreService.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 @Qualifier("undecorated")
-public class MapBooksService implements BooksService {
+public class RepositoryBooksService implements BooksService {
 
 	@Autowired
 	@RandomStrategy
 	private IsbnGenerator isbnGenerator;
 	@Autowired
-	@Qualifier("booksData")
-	private Map<String, Book> books;
-	@Autowired
 	@Audit
 	private StoreService storeService;
 
+	@Autowired private BooksRepository booksRepository;
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -41,7 +40,7 @@ public class MapBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		booksRepository.save(book);
 		return isbn;
 	}
 
@@ -50,33 +49,33 @@ public class MapBooksService implements BooksService {
 	}
 
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
-		if (result == null) {
+		Optional<Book> result = booksRepository.findById(isbn);
+		if (result.isEmpty()) {
 			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
-		result.setAvailable(storeService.getStock("books", isbn) > 0);
+		Book book = result.get();
+		book.setAvailable(storeService.getStock("books", isbn) > 0);
 
-		return result;
+		return book;
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), bookValue);
+		booksRepository.save(bookValue);
 		return bookValue;
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
+		try {
+		booksRepository.deleteById(isbn);
+		}
+		catch(RuntimeException e) {
 			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
 		}
 	}
 
 	public Collection<Book> findAllBooks() {
-		return books.values();
+		return booksRepository.findAll();
 	}
 
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
 
 }
