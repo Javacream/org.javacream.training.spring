@@ -7,11 +7,12 @@ import javax.persistence.Query;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.api.StoreService.Plain;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Plain
-@Transactional
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class DatabaseStoreService implements StoreService {
 
 	@PersistenceContext
@@ -53,6 +54,8 @@ public class DatabaseStoreService implements StoreService {
 			insertQuery.executeUpdate();
 
 		}
+		throw new RuntimeException("TEST_ROLLBACK");
+
 	}
 
 }
