@@ -14,13 +14,15 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		location="classpath:application.properties" />
 	<context:component-scan
 		base-package="org.javacream"></context:component-scan>
-
+	<import resource="web-beans.xml"/>
+	<import resource="jpa-beans.xml"/>
 	<aop:config>
 		<aop:pointcut id="allServiceMethods"
 			expression="execution(* org.javacream..impl.*Service.*(..))"></aop:pointcut>
 		<aop:aspect ref="tracingAspect"></aop:aspect>
 		<aop:aspect ref="performanceAspect"></aop:aspect>
 	</aop:config>
+
 	<bean id="tracingAspect"
 		class="org.javacream.util.aspects.TracingAspect">
 	</bean>
@@ -66,7 +68,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
 	<bean id="decoratedBooksService" class="org.javacream.books.warehouse.impl.decorators.CloningBooksService">
 		<property name="delegate">
-			<bean class="org.javacream.books.warehouse.impl.decorators.CloningBooksService">
+			<bean class="org.javacream.books.warehouse.impl.decorators.VerifyingBooksService">
 				<property name="delegate" ref="mapBooksService"></property>
 			</bean>
 		</property>

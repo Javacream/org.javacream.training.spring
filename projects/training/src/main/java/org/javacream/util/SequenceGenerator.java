@@ -1,16 +1,20 @@
 package org.javacream.util;
 
-import javax.annotation.PostConstruct;
+import java.math.BigInteger;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 public class SequenceGenerator {
-	private long counter;
+	@PersistenceContext private EntityManager entityManager;
 	
-	public long nextInSequence() {
-		return counter++;
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 
-	@PostConstruct public void startUp() {
-		System.out.println("starting up " + this);
+	public long nextInSequence() {
+		return ((BigInteger)entityManager.createNativeQuery("values next value for sequencegenerator").getSingleResult()).longValue();
 	}
+
 	
 }
