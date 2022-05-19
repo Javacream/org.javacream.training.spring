@@ -2,7 +2,14 @@ package org.javacream.books.order.api;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ORDERS")
 public class Order {
+	@Id
 	private Long orderId;
 	private String isbn;
 	private int number;
@@ -27,6 +34,10 @@ public class Order {
 
 	public OrderStatus getStatus() {
 		return status;
+	}
+	
+	public Order() {
+		
 	}
 
 	public Order(Long orderId, String isbn, int number, double totalPrice, OrderStatus status) {

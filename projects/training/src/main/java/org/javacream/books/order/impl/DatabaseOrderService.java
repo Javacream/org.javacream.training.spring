@@ -1,6 +1,6 @@
 package org.javacream.books.order.impl;
 
-import java.util.Map;
+import javax.persistence.EntityManager;
 
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.Order.OrderStatus;
@@ -14,11 +14,13 @@ import org.javacream.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class MapOrderService implements OrderService {
+@Transactional
+public class DatabaseOrderService implements OrderService {
 
-	@Autowired @Qualifier("ordersData") private Map<Long, Order> orders;
+	@Autowired private EntityManager entityManager;
 	@Autowired @Qualifier("undecorated")
 	private BooksService booksService;
 	@Autowired @Plain
@@ -45,13 +47,13 @@ public class MapOrderService implements OrderService {
 			status = OrderStatus.UNAVAILABLE;
 		}
 		Order order = new Order(orderId, isbn, number, totalPrice, status);
-		orders.put(order.getOrderId(), order);
+		entityManager.persist(order);
 		return order;
 	}
 
 	@Override
 	public Order findOrderById(long id) {
-		return orders.get(id);
+		return entityManager.find(Order.class, id);
 	}
 
 }
