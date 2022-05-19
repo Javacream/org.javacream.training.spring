@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,17 +19,9 @@ public class StoreWebService{ // implements StoreService{ -> FALSCH, das REST-AP
 		return "Stock" + storeService.getStock(category, item);
 	}
 
-	@GetMapping(path = "api/store/header", produces=MediaType.TEXT_PLAIN_VALUE)
-	public String getStockWithHeaders(@RequestHeader("cat") String category, @RequestHeader("item") String item) {
-		return "Stock" + storeService.getStock(category, item);
-	}
-	@GetMapping(path = "api/store/query", produces=MediaType.TEXT_PLAIN_VALUE)
-	public String getStockWithQuery(@RequestParam("cat") String category, @RequestParam("item") String item) {
-		return "Stock" + storeService.getStock(category, item);
-	}
-	@GetMapping(path = "api/store", produces=MediaType.TEXT_PLAIN_VALUE)
-	public String getStockCombi(@RequestParam("cat") String category, @RequestHeader("item") String item) {
-		return "Stock" + storeService.getStock(category, item);
+	@PostMapping(path = "api/store/{cat}/{item}/{stock}")
+	public void getStock(@PathVariable("cat") String category, @PathVariable("item") String item, @PathVariable("stock") int stock) {
+		storeService.saveOrUpdateStock(category, item, stock);
 	}
 
 }
