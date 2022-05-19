@@ -20,6 +20,11 @@ public class AuditingStoreService implements StoreService{
 		return delegate.getStock(category, item);
 	}
 
+	@Override
+	public void saveOrUpdateStock(String category, String item, int stock) {
+		delegate.saveOrUpdateStock(category, item, stock);
+	}
+
 	
 	
 

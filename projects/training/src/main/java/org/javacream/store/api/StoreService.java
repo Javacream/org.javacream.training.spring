@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public interface StoreService {
 	int getStock(String category, String item);
-	
+	void saveOrUpdateStock(String category, String item, int stock);
 	@Retention(RUNTIME)
 	@Target({ TYPE, FIELD, METHOD, PARAMETER })
 	@Qualifier

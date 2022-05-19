@@ -22,4 +22,22 @@ public class StoreTest {
 		Assertions.assertEquals(42, storeService.getStock("books", "ISBN1"));
 		
 	}
+	@Test public void updateStock() {
+		final int STOCK = 4711;
+		final String CATEGORY = "books";
+		final String ITEM = "ISBN2";
+		Assertions.assertEquals(2, storeService.getStock(CATEGORY, ITEM));
+		storeService.saveOrUpdateStock(CATEGORY, ITEM, STOCK);
+		Assertions.assertEquals(STOCK, storeService.getStock(CATEGORY, ITEM));
+		
+	}
+	@Test public void saveStock() {
+		final int STOCK = 4711;
+		final String CATEGORY = "books";
+		final String ITEM = "TEST-ISBN";
+		Assertions.assertEquals(0, storeService.getStock(CATEGORY, ITEM));
+		storeService.saveOrUpdateStock(CATEGORY, ITEM, STOCK);
+		Assertions.assertEquals(STOCK, storeService.getStock(CATEGORY, ITEM));
+		
+	}
 }
