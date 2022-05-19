@@ -12,7 +12,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<bean id="idGenerator"
-		class="org.javacream.util.SequenceGenerator" scope="prototype" autowire="default">
+		class="org.javacream.util.SequenceGenerator" scope="prototype" autowire="byType">
 	</bean>
 	<!-- <bean id="simpleStoreService" class="org.javacream.store.impl.SimpleStoreService" 
 		init-method="initialize"> <property name="stock" value="42" /> </bean> <bean 
