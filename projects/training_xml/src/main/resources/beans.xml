@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xsi:schemaLocation="
+ 	 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<context:property-placeholder
+		location="classpath:application.properties" />
+	<context:component-scan
+		base-package="org.javacream"></context:component-scan>
+
+	<aop:config>
+		<aop:pointcut id="allServiceMethods"
+			expression="execution(* org.javacream..impl.*Service.*(..))"></aop:pointcut>
+		<aop:aspect ref="tracingAspect"></aop:aspect>
+		<aop:aspect ref="performanceAspect"></aop:aspect>
+	</aop:config>
+	<bean id="tracingAspect"
+		class="org.javacream.util.aspects.TracingAspect">
+	</bean>
+	<bean id="performanceAspect"
+		class="org.javacream.util.aspects.PerformanceAspect">
+	</bean>
+	<bean id="idGenerator"
+		class="org.javacream.util.SequenceGenerator" scope="prototype">
+	</bean>
+	<bean id="simpleStoreService"
+		class="org.javacream.store.impl.SimpleStoreService"
+		init-method="initialize">
+		<qualifier type="org.javacream.store.api.StoreService$Plain"></qualifier>
+		<property name="stock" value="${storeservice.defaultStock}" />
+	</bean>
+	<bean id="auditingStoreService" name="storeService"
+		class="org.javacream.store.impl.decorators.AuditingStoreService">
+		<qualifier type="org.javacream.store.api.StoreService$Audit"></qualifier>
+		<property name="delegate" ref="simpleStoreService" />
+	</bean>
+	<bean id="randomIsbnGenerator"
+		class="org.javacream.books.isbngenerator.impl.RandomIsbnGeneratorService">
+		<constructor-arg value="${isbngenerator.prefix}" />
+		<constructor-arg value="${isbngenerator.countryCode}" />
+		<qualifier
+			type="org.javacream.books.isbngenerator.api.IsbnGenerator$RandomStrategy"></qualifier>
+
+	</bean>
+	<bean id="sequenceIsbnGenerator"
+		class="org.javacream.books.isbngenerator.impl.CounterIsbnGeneratorService">
+		<qualifier
+			type="org.javacream.books.isbngenerator.api.IsbnGenerator$SequenceStrategy"></qualifier>
+		<property name="prefix" value="${isbngenerator.prefix}" />
+		<property name="countryCode"
+			value="${isbngenerator.countryCode}" />
+		<property name="sequenceGenerator" ref="idGenerator" />
+	</bean>
+	<bean id="mapBooksService" name="booksService"
+		class="org.javacream.books.warehouse.impl.MapBooksService">
+		<property name="isbnGenerator" ref="randomIsbnGenerator" />
+		<property name="storeService" ref="storeService" />
+	</bean>
+
+	<bean id="decoratedBooksService" class="org.javacream.books.warehouse.impl.decorators.CloningBooksService">
+		<property name="delegate">
+			<bean class="org.javacream.books.warehouse.impl.decorators.CloningBooksService">
+				<property name="delegate" ref="mapBooksService"></property>
+			</bean>
+		</property>
+		
+	</bean> 
+	<bean id="orderService"
+		class="org.javacream.books.order.impl.MapOrderService">
+		<property name="booksService" ref="booksService" />
+		<property name="storeService" ref="storeService" />
+		<property name="sequenceGenerator" ref="idGenerator" />
+	</bean>
+</beans>
