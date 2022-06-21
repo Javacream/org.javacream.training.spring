@@ -9,18 +9,22 @@
 
 * Beispiele
   * https://github.com/Javacream/org.javacream.training.spring
-    *  Branch Coba_27.10.2021
+    *  Branch commerzbank_advanced_27.6.2022
 * Digitales Flipchart
-  * https://docs.google.com/presentation/d/1vDI33rK4jUYUQ506t20lo34A4DaPKxXZ8_3c3cwZi6Y/edit?usp=sharing 
+  * [zum Flipchart](https://docs.google.com/presentation/d/1vo2vaTKsOvi3dF8W4EbnZOgOlJ59eg4RQR7WMhmKgOY/edit?usp=sharing)
 
-## Zeitplan
+## Zeitplan (leider etwas kompliziert...)
 
+* Montag
+  * 9:00 - 16:30 
+  * Mittagspause 12:15 - 13:00
+  * Vormittagspause 10:30 - 10:45, Nachmittag 14:45 - 15:00
+* Dienstag
+  * **8:00** - 16:30
+  * Mittagspause 12:15 - 13:00
+  * Vormittagspause 10:30 - 10:45, Nachmittag 14:45 - 15:00
 * Mittwoch
-  * 12:30 - 17:00
-  * 2 kurze Pausen, jeweils etwa 10 Minuten
-* Donnerstag (5 Einheiten)
-  * 8:30 - 17:00
-  * 2 kurze Pausen Vormittag / Nchmittag, Mittagspause von 12:15-13:00
-* Freitag
-  * 10:00 - 15:00
-  * Mittagspause von 12:15-13:00
+  * 8:00 - **13:00**
+  * Vormittagspause 1 9:30 - 9:45
+  * Vormittagspause 2 11:15 - 11:30
+  
