@@ -14,11 +14,6 @@ import org.springframework.stereotype.Component;
 @Order(10)
 public class TracingAspect {
 
-	// @Around("execution(sichtbarkeit rückgabetyp komplette signatur inklusive
-	// packages, parameter)")
-	// @Around("execution(public int
-	// org.javacream.store.impl.MapStoreService.getStock(String, String))")
-	//@Around("execution(* org.javacream..impl.*.*(..))")
 	@Around("@annotation(org.javacream.util.aspects.Traced)")
 	public Object trace(ProceedingJoinPoint pjp) throws Throwable {
 		MethodSignature ms = (MethodSignature) pjp.getSignature();
