@@ -18,7 +18,8 @@ public class TracingAspect {
 	// packages, parameter)")
 	// @Around("execution(public int
 	// org.javacream.store.impl.MapStoreService.getStock(String, String))")
-	@Around("execution(* org.javacream..impl.*.*(..))")
+	//@Around("execution(* org.javacream..impl.*.*(..))")
+	@Around("@annotation(org.javacream.util.aspects.Traced)")
 	public Object trace(ProceedingJoinPoint pjp) throws Throwable {
 		MethodSignature ms = (MethodSignature) pjp.getSignature();
 		String methodName = ms.getMethod().getName();
