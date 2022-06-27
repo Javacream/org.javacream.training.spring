@@ -17,6 +17,19 @@ public class Book implements Serializable {
 		return isbn;
 	}
 
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(String isbn, String title, double price, boolean available) {
+		super();
+		this.isbn = isbn;
+		this.title = title;
+		this.price = price;
+		this.available = available;
+	}
+
 	public String getTitle() {
 		return title;
 	}

@@ -1,27 +1,19 @@
 package org.javacream.store.impl;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.annotation.PostConstruct;
-
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MapStoreService implements StoreService{
 
 
-	private Map<StoreKey, Integer> store;
+	@Autowired @Qualifier("stock") private Map<StoreKey, Integer> store;
 	
-	@PostConstruct public void init() {
-		store = new HashMap<>();
-		store.put(new StoreKey("books", "ISBN1"), 42); 
-		store.put(new StoreKey("books", "ISBN2"), 4); 
-		store.put(new StoreKey("books", "ISBN3"), 2); 
-		store.put(new StoreKey("books", "ISBN4"), 2); 
-	}
 	@Override
 	public int getStock(String category, String item) {
 		Integer stock = store.get(new StoreKey(category, item));
@@ -32,7 +24,7 @@ public class MapStoreService implements StoreService{
 		}
 	}
 
-private static class StoreKey{
+public static class StoreKey{
 	public StoreKey(String category, String item) {
 		super();
 		this.category = category;
