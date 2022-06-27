@@ -3,19 +3,15 @@ package org.javacream.books.warehouse.test;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.store.impl.MapStoreService.StoreKey;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@ComponentScan(basePackages = "org.javacream")
-@PropertySource("classpath:application.properties")
+//@ComponentScan(basePackages = "org.javacream")
+//@PropertySource("classpath:application.properties")
 public class TestConfiguration {
 
 	@Bean

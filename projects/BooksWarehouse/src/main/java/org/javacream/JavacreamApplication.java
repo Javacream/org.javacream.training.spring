@@ -1,0 +1,14 @@
+package org.javacream;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication //ComponentScan "alles darunter", Laden der application.properties
+public class JavacreamApplication {
+
+	public static void main(String[] args) {
+		SpringApplication app = new SpringApplication();
+		app.run(args);
+	}
+
+}
