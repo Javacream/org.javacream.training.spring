@@ -4,14 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.javacream.books.warehouse.api.Book;
+import org.javacream.store.api.StoreService;
+import org.javacream.store.impl.MapStoreService;
 import org.javacream.store.impl.MapStoreService.StoreKey;
+import org.javacream.store.impl.decorators.AuditingDecorator;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 //@ComponentScan(basePackages = "org.javacream")
 //@PropertySource("classpath:application.properties")
+@Profile("test")
 public class TestConfiguration {
 
 	@Bean
@@ -36,5 +42,13 @@ public class TestConfiguration {
 		store.put(new StoreKey("books", "ISBN4"), 2);
 		return store;
 
+	}
+	
+	@Bean @Primary public StoreService storeService(MapStoreService mapStoreService) {
+		Map<String, Book> books = books();
+		Map<String, Book> books2 = books();
+		AuditingDecorator auditingDecorator = new AuditingDecorator();
+		auditingDecorator.setStoreService(mapStoreService);
+		return auditingDecorator;
 	}
 }

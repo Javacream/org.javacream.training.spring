@@ -8,8 +8,10 @@ import org.javacream.store.impl.MapStoreService.StoreKey;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
+@Profile("prod")
 public class ProdConfiguration {
 
 	@Bean
@@ -27,4 +29,7 @@ public class ProdConfiguration {
 		return store;
 
 	}
+	
+	
+	
 }

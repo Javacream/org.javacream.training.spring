@@ -8,6 +8,7 @@ public class JavacreamApplication {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(JavacreamApplication.class);
+		app.setAdditionalProfiles("prod");
 		app.run(args);
 	}
 
