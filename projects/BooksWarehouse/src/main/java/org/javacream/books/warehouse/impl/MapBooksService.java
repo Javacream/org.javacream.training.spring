@@ -21,7 +21,7 @@ public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
-	@Autowired private StoreService storeService;
+	@Autowired private StoreService mapStoreService;
 	
 	{
 		books = new HashMap<String, Book>();
@@ -29,7 +29,7 @@ public class MapBooksService implements BooksService {
 
 	
 	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
+		this.mapStoreService = storeService;
 	}
 
 	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
@@ -54,7 +54,7 @@ public class MapBooksService implements BooksService {
 			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
 					isbn);
 		}
-		result.setAvailable(storeService.getStock("books", isbn) > 0);
+		result.setAvailable(mapStoreService.getStock("books", isbn) > 0);
 		
 		return SerializationUtils.clone(result);
 	}
