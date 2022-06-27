@@ -46,9 +46,6 @@ public class TestConfiguration {
 	}
 	
 	@Bean @Primary public StoreService storeService(MapStoreService mapStoreService) {
-		Map<String, Book> books1 = books();
-		Map<String, Book> books2 = books();
-		System.out.println("############# " + (books1 == books2));
 		AuditingDecorator auditingDecorator = new AuditingDecorator();
 		auditingDecorator.setStoreService(mapStoreService);
 		return auditingDecorator;
