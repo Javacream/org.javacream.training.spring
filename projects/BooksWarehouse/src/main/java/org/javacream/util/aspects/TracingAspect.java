@@ -9,16 +9,18 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class TracingAspect {
 
-	//@Around("execution(sichtbarkeit rückgabetyp komplette signatur inklusive packages, parameter)")
-	@Around("execution(public int org.javacream.store.impl.MapStoreService.getStock(String, String))")
-	public Object trace(ProceedingJoinPoint pjp) throws Throwable{
-		//vor der aspektierten Logik:
+	// @Around("execution(sichtbarkeit rückgabetyp komplette signatur inklusive
+	// packages, parameter)")
+	// @Around("execution(public int
+	// org.javacream.store.impl.MapStoreService.getStock(String, String))")
+	@Around("execution(* org.javacream..impl.*.*(..))")	public Object trace(ProceedingJoinPoint pjp) throws Throwable {
+		// vor der aspektierten Logik:
 		System.out.println("before method invocation");
-		//Aufruf der aspektierten Logik:
+		// Aufruf der aspektierten Logik:
 		Object result = pjp.proceed();
-		//nach der aspektierten Logik:
+		// nach der aspektierten Logik:
 		System.out.println("after method invocation");
 		return result;
-		
+
 	}
 }
