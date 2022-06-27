@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JavacreamApplication {
 
 	public static void main(String[] args) {
-		SpringApplication app = new SpringApplication();
+		SpringApplication app = new SpringApplication(JavacreamApplication.class);
 		app.run(args);
 	}
 
