@@ -21,8 +21,9 @@ import org.springframework.context.annotation.Profile;
 public class TestConfiguration {
 
 	@Bean
-	@Qualifier("books")
+	@Qualifier("books") //@Scope("prototype")
 	public Map<String, Book> books() {
+		System.out.println("########################### calling books");
 		HashMap<String, Book> books = new HashMap<>();
 		books.put("ISBN1", new Book("ISBN1", "Title1", 19.99, false));
 		books.put("ISBN2", new Book("ISBN2", "Title2", 1.99, false));
@@ -45,8 +46,9 @@ public class TestConfiguration {
 	}
 	
 	@Bean @Primary public StoreService storeService(MapStoreService mapStoreService) {
-		Map<String, Book> books = books();
+		Map<String, Book> books1 = books();
 		Map<String, Book> books2 = books();
+		System.out.println("############# " + (books1 == books2));
 		AuditingDecorator auditingDecorator = new AuditingDecorator();
 		auditingDecorator.setStoreService(mapStoreService);
 		return auditingDecorator;
