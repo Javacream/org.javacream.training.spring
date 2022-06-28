@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
-@Transactional()
 public class DatabaseBooksServiceImpl implements BooksService {
 
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator;
@@ -30,21 +29,28 @@ public class DatabaseBooksServiceImpl implements BooksService {
 		this.isbnGenerator = isbnGenerator;
 	}
 
+	@Transactional(rollbackFor = BookException.class)
 	public String newBook(String title) throws BookException {
-		if (title == null || title.length() < 2) {
-			throw new BookException(BookExceptionType.NOT_CREATED, "invalid title: " + title);
-		}
+//		if (title == null || title.length() < 2) {
+//			throw new BookException(BookExceptionType.NOT_CREATED, "invalid title: " + title);
+//		}
 		String isbn = isbnGenerator.next();
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
 		entityManager.persist(book);
+		//Hier unsinnig, soll aber das funktionierende Rollback-Verhalten zeigen
+		if (title == null || title.length() < 2) {
+			throw new BookException(BookExceptionType.NOT_CREATED, "invalid title: " + title);
+		}
+
 		return isbn;
 	}
 
 	public IsbnGenerator getIsbnGenerator() {
 		return isbnGenerator;
 	}
+	@Transactional
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = entityManager.find(Book.class, isbn);
 		if (result == null) {
@@ -60,11 +66,13 @@ public class DatabaseBooksServiceImpl implements BooksService {
 		return book;
 		
 	}
+	@Transactional
 	public Book updateBook(Book bookValue) throws BookException {
 		entityManager.merge(bookValue); 
 		return bookValue;
 	}
 
+	@Transactional
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		Book toDeleteProxy = entityManager.getReference(Book.class, isbn);
 		try{
@@ -78,6 +86,7 @@ public class DatabaseBooksServiceImpl implements BooksService {
 	}
 
 
+	@Transactional
 	public Collection<Book> findAllBooks() {
 		return entityManager.createQuery("select b from Book as b", Book.class).getResultList().stream().map(this::setAvailability).collect(Collectors.toList());
 	}
