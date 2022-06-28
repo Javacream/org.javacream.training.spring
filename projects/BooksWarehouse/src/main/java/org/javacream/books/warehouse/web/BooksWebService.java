@@ -1,7 +1,6 @@
 package org.javacream.books.warehouse.web;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;

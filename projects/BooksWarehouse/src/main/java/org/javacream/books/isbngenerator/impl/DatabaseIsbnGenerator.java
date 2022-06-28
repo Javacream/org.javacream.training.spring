@@ -1,7 +1,5 @@
 package org.javacream.books.isbngenerator.impl;
 
-import java.math.BigInteger;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
