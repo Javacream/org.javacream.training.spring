@@ -5,9 +5,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class AuditingDecorator implements StoreService{
 	
 	private StoreService storeService;

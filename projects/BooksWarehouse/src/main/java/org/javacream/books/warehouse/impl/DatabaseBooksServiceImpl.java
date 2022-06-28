@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
-@Transactional
+@Transactional()
 public class DatabaseBooksServiceImpl implements BooksService {
 
 	@Autowired @SequenceStrategy private IsbnGenerator isbnGenerator;
