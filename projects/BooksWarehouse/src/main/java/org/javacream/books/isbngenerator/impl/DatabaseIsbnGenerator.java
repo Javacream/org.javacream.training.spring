@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service 
 @SequenceStrategy
 @Transactional
-public class DatabaseSequenceIsbnGenerator implements IsbnGenerator {
+public class DatabaseIsbnGenerator implements IsbnGenerator {
 	@PersistenceContext private EntityManager entityManager;
 	@Value("${isbngenerator.prefix}")
 	private String prefix;
@@ -41,6 +42,11 @@ public class DatabaseSequenceIsbnGenerator implements IsbnGenerator {
 	}
 
 	private int getNextValue() {
-		return ((BigInteger)entityManager.createNativeQuery("select nextval('isbn')").getSingleResult()).intValue();
+		int isbn = (int) entityManager.createNativeQuery("select isbn from isbns").getResultList().get(0);
+		isbn++;
+		Query query = entityManager.createNativeQuery("update isbns set isbn = :isbn");
+		query.setParameter("isbn", isbn);
+		query.executeUpdate();
+		return isbn;
 	}
 }
