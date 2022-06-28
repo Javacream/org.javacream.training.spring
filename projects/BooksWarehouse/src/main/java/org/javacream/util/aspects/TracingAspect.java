@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Order(10)
 public class TracingAspect {
 
-	@Around("@annotation(org.javacream.util.aspects.Traced)")
+	@Around("@annotation(org.javacream.util.aspects.Trace)")
 	public Object trace(ProceedingJoinPoint pjp) throws Throwable {
 		MethodSignature ms = (MethodSignature) pjp.getSignature();
 		String methodName = ms.getMethod().getName();
