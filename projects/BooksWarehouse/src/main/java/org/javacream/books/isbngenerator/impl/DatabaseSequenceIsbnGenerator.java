@@ -1,5 +1,10 @@
 package org.javacream.books.isbngenerator.impl;
 
+import java.math.BigInteger;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +12,8 @@ import org.springframework.stereotype.Service;
 
 @Service 
 @SequenceStrategy
-public class CounterIsbnGenerator implements IsbnGenerator {
+public class DatabaseSequenceIsbnGenerator implements IsbnGenerator {
+	@PersistenceContext private EntityManager entityManager;
 	@Value("${isbngenerator.prefix}")
 	private String prefix;
 	@Value("${isbngenerator.countryCode}")
@@ -19,9 +25,8 @@ public class CounterIsbnGenerator implements IsbnGenerator {
 	public void setCountryCode(String suffix) {
 		this.countryCode = suffix;
 	}
-	private int counter;
 	public String next(){
-		return prefix + counter++ + countryCode;
+		return prefix + getNextValue() + countryCode;
 	}
 
 	public String getPrefix(){
@@ -29,5 +34,9 @@ public class CounterIsbnGenerator implements IsbnGenerator {
 	}
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
+	}
+
+	private int getNextValue() {
+		return ((BigInteger)entityManager.createNativeQuery("select nextval('isbn')").getSingleResult()).intValue();
 	}
 }

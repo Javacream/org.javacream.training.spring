@@ -22,7 +22,7 @@ public class WebIsbnGenerator {
 	@PostMapping(path = "api/isbn", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String next(@RequestParam(name = "strategy", required = false) String strategy) {
 		if ("sequence".equals(strategy)) {
-			return sequenceIsbnGenerator.next() + " " + this;
+			return sequenceIsbnGenerator.next();
 		}else if ("random".equals(strategy)) {
 			return randomIsbnGenerator.next();
 		}else {
