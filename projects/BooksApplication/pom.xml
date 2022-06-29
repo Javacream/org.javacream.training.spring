@@ -59,6 +59,11 @@
 			<artifactId>org.javacream.training.spring.store</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>org.javacream.training</groupId>
+			<artifactId>org.javacream.training.spring.content</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
