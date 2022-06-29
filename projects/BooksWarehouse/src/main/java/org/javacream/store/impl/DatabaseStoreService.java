@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.sql.DataSource;
@@ -32,7 +33,11 @@ public class DatabaseStoreService implements StoreService {
 		Query query = entityManager.createNativeQuery("select stock from store where category=:cat and item = :item");
 		query.setParameter("cat", category);
 		query.setParameter("item", item);
-		return (int) query.getSingleResult();
+		try {
+			return (int) query.getSingleResult();
+		} catch (NoResultException e) {
+			return 0;
+		}
 	}
 
 	@Override

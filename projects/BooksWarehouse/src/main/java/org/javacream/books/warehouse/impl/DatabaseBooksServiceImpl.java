@@ -38,8 +38,13 @@ public class DatabaseBooksServiceImpl implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		entityManager.persist(book);
-		//Hier unsinnig, soll aber das funktionierende Rollback-Verhalten zeigen
+		try {
+			entityManager.persist(book);
+		}
+		catch(RuntimeException e) {
+			throw new BookException(BookExceptionType.NOT_CREATED, e.getMessage());
+		}
+		//Hier unsinnig, sollte oben stehen. Damit kann aber das funktionierende Rollback-Verhalten gezeigt werden
 		if (title == null || title.length() < 2) {
 			throw new BookException(BookExceptionType.NOT_CREATED, "invalid title: " + title);
 		}
@@ -72,7 +77,7 @@ public class DatabaseBooksServiceImpl implements BooksService {
 		return bookValue;
 	}
 
-	@Transactional
+	@Transactional(rollbackFor = BookException.class)
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		Book toDeleteProxy = entityManager.getReference(Book.class, isbn);
 		try{
