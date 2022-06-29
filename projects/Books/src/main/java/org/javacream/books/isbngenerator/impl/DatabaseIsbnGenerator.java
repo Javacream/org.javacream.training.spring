@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
-import org.javacream.util.aspects.Audit;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +26,6 @@ public class DatabaseIsbnGenerator implements IsbnGenerator {
 	public void setCountryCode(String suffix) {
 		this.countryCode = suffix;
 	}
-	@Audit
 	public String next(){
 		return prefix + getNextValue() + countryCode;
 	}

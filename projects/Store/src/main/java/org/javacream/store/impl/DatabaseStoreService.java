@@ -11,7 +11,6 @@ import javax.persistence.Query;
 import javax.sql.DataSource;
 
 import org.javacream.store.api.StoreService;
-import org.javacream.util.aspects.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -28,7 +27,6 @@ public class DatabaseStoreService implements StoreService {
 	private DataSource dataSource;
 
 	@Override
-	@Audit
 	public int getStock(String category, String item) {
 		Query query = entityManager.createNativeQuery("select stock from store where category=:cat and item = :item");
 		query.setParameter("cat", category);
@@ -41,7 +39,6 @@ public class DatabaseStoreService implements StoreService {
 	}
 
 	@Override
-	@Audit
 	public void setStock(String category, String item, int stock) {
 		try {
 			Connection con = dataSource.getConnection();
