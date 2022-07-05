@@ -2,9 +2,11 @@ package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-@Service("cig") //Standard: Klassenname ohne Paket, erster Buchtstabe klein
+@Service
+//@Primary
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")
