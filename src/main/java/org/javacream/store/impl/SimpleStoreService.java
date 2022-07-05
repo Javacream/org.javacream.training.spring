@@ -1,8 +1,12 @@
 package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SimpleStoreService implements StoreService {
+	@Value("${storeService.defaultStock}")
 	private int stock;
 	
 	@Override
