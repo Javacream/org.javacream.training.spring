@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("random")
-
+@RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	private String prefix;
