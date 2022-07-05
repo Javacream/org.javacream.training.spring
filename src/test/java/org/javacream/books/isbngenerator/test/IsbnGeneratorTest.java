@@ -5,13 +5,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
+
 @SpringBootTest
 public class IsbnGeneratorTest {
-    @Autowired private IsbnGenerator cig;
-    @Autowired private IsbnGenerator randomIsbnGenerator;
+    @Resource(name = "cig")
+    private IsbnGenerator counterIsbnGenerator;
+    @Resource(name = "randomIsbnGenerator")
+    private IsbnGenerator randomIsbnGenerator;
 
     @Test public void testIsbnGenerator(){
-        System.out.println(cig.next());
+        System.out.println(counterIsbnGenerator.next());
         System.out.println(randomIsbnGenerator.next());
     }
 }
