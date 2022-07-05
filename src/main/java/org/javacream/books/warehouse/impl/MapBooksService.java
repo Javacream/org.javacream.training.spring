@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.impl.CounterIsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Repository;
 public class MapBooksService implements BooksService {
 
 	@Autowired
-	private IsbnGenerator isbnGenerator;
+	private CounterIsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
