@@ -7,13 +7,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class BooksServiceTest {
-    //@Autowired private BooksService booksService;
+    @Autowired private BooksService booksService;
     @Test public void contextLoads(){
         //
     }
 
-    //@Test
+    @Test
     public void testBooksService(){
-    //    TestActor.doTest(booksService);
+        TestActor.doTest(booksService);
     }
 }
