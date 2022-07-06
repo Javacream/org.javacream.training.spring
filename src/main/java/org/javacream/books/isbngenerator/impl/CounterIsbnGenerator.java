@@ -1,7 +1,8 @@
 package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,9 @@ import org.springframework.stereotype.Service;
 @IsbnGenerator.SequenceStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 
-	@Value("${isbngenerator.prefix}")
+	@Autowired @Qualifier("prefix")
 	private String prefix;
-	@Value("${isbngenerator.countryCode}")
+	@Autowired @Qualifier("countryCode")
 	private String countryCode;
 	public String getCountryCode() {
 		return countryCode;
