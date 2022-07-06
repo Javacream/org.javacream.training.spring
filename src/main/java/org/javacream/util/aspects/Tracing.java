@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class Tracing  {
-    @Around("execution(public int org.javacream.store.impl.SimpleStoreService.getStock(String, String))")
+    //@Around("execution(public int org.javacream.store.impl.SimpleStoreService.getStock(String, String))")
+    @Around("execution(* org.javacream..impl.*.*(..))")
     public Object trace(ProceedingJoinPoint pjp) throws Throwable{
         MethodSignature signature = (MethodSignature)pjp.getSignature();
         String methodName = signature.getMethod().getName();
