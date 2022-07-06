@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
-        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
-<beans>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="org.javacream.store.impl.SimpleStoreService" id="storeService">
+
+    <bean class="org.javacream.store.impl.SimpleStoreService" id="simpleStoreService">
         <property name="stock" value="${storeService.defaultStock}"></property>
     </bean>
+    <bean class="org.javacream.store.impl.decorator.Auditing" id="storeService" primary="true">
+        <property name="delegate" ref="simpleStoreService"></property>
 
+    </bean>
 </beans>
