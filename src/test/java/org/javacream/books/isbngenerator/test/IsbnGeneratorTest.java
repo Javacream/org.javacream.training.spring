@@ -1,13 +1,13 @@
 package org.javacream.books.isbngenerator.test;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.util.SpringTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
-@ActiveProfiles("test")
+@SpringTest
 public class IsbnGeneratorTest {
     @Autowired @IsbnGenerator.RandomStrategy
     private IsbnGenerator isbnGenerator1;

@@ -1,6 +1,7 @@
 package org.javacream.books.warehouse;
 
 import org.javacream.books.warehouse.api.Book;
+import org.javacream.util.stage.ProdConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -8,8 +9,7 @@ import org.springframework.context.annotation.Profile;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
-@Profile("prod")
+@ProdConfiguration
 public class BooksServiceConfiguration {
     @Bean
     public Map<String, Book> books(){
