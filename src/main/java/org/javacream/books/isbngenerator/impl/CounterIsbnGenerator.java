@@ -1,6 +1,7 @@
 package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -22,9 +23,8 @@ public class CounterIsbnGenerator implements IsbnGenerator {
 	public void setCountryCode(String suffix) {
 		this.countryCode = suffix;
 	}
-	private int counter;
 	public String next(){
-		return prefix + counter++ + countryCode;
+		return prefix + sequenceGenerator.nextSequence() + countryCode;
 	}
 
 	public String getPrefix(){
@@ -33,4 +33,7 @@ public class CounterIsbnGenerator implements IsbnGenerator {
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
+
+	@Autowired
+	private SequenceGenerator sequenceGenerator;
 }
