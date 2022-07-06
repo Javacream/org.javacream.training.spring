@@ -12,22 +12,22 @@ import java.util.Arrays;
 
 @Component
 @Aspect
-@Order(200)
-public class Tracing  {
-    //@Around("execution(public int org.javacream.store.impl.SimpleStoreService.getStock(String, String))")
+@Order(100)
+public class TimeMeasure {
     @Around("execution(* org.javacream..impl.*.*(..))")
-    public Object trace(ProceedingJoinPoint pjp) throws Throwable{
+    public Object measure(ProceedingJoinPoint pjp) throws Throwable{
+        long start = System.currentTimeMillis();
         MethodSignature signature = (MethodSignature)pjp.getSignature();
         String methodName = signature.getMethod().getName();
-        System.out.println("entering " + methodName + ", params: " + Arrays.asList(pjp.getArgs()));
         try {
             Object result = pjp.proceed();
-            System.out.println("returning from " + methodName + ", result=" + result);
             return result;
         }
         catch(Throwable t){
-            System.out.println("throwing from " + methodName + ", throwable=" + t);
             throw t;
+        }
+        finally{
+            System.out.println("calling " + methodName + " took " + (System.currentTimeMillis() - start) + "msec");
         }
 
     }

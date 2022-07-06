@@ -30,6 +30,6 @@ public class BooksServiceTest {
     }
     @Test
     public void searchForUnknownIsbnThrowsBookException() throws BookException {
-        Assertions.assertThrows(BookException.class, () -> booksService.findBookByIsbn("Unknown"));
+        Assertions.assertThrows(BookException.class, () -> booksService.findBookByIsbn("UnknownIsbn"));
     }
 }
