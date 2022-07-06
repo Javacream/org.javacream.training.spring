@@ -18,8 +18,8 @@ public class Order {
 	}
 
 
-	public int getAmount() {
-		return amount;
+	public int getNumber() {
+		return number;
 	}
 
 
@@ -33,10 +33,10 @@ public class Order {
 	}
 
 
-	private int amount;
+	private int number;
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, isbn, orderId, status, totalPrice);
+		return Objects.hash(number, isbn, orderId, status, totalPrice);
 	}
 
 
@@ -49,7 +49,7 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		return amount == other.amount && Objects.equals(isbn, other.isbn) && orderId == other.orderId
+		return number == other.number && Objects.equals(isbn, other.isbn) && orderId == other.orderId
 				&& status == other.status
 				&& Double.doubleToLongBits(totalPrice) == Double.doubleToLongBits(other.totalPrice);
 	}
@@ -57,16 +57,16 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", isbn=" + isbn + ", amount=" + amount + ", totalPrice=" + totalPrice
+		return "Order [orderId=" + orderId + ", isbn=" + isbn + ", amount=" + number + ", totalPrice=" + totalPrice
 				+ ", status=" + status + "]";
 	}
 
 
-	public Order(long orderId, String isbn, int amount, double totalPrice, OrderStatus status) {
+	public Order(long orderId, String isbn, int number, double totalPrice, OrderStatus status) {
 		super();
 		this.orderId = orderId;
 		this.isbn = isbn;
-		this.amount = amount;
+		this.number = number;
 		this.totalPrice = totalPrice;
 		this.status = status;
 	}
@@ -77,6 +77,6 @@ public class Order {
 
 	
 	public enum OrderStatus{
-		OK, PENDING, UNAVAILABLE;
+		OK, PENDING, UNAVAILABLE
 	}
 }

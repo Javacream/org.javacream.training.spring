@@ -1,4 +1,4 @@
-package org.javacream.books.warehouse.test;
+package org.javacream.books;
 
 import org.javacream.books.order.api.Order;
 import org.javacream.books.warehouse.api.Book;
@@ -28,9 +28,9 @@ public class BookServiceTestConfiguration {
     @Bean @Qualifier("orderData")
     public Map<Long, Order> orderData() {
         HashMap<Long, Order> data = new HashMap<>();
-        Order orderOk = new Order(1l, "ISBN1", 100, 199.00, Order.OrderStatus.OK);
-        Order orderPending = new Order(2l, "ISBN2", 100, 199.00, Order.OrderStatus.PENDING);
-        Order orderUnavailable = new Order(3l, "ISBN3", 100, 199.00, Order.OrderStatus.UNAVAILABLE);
+        Order orderOk = new Order(1L, "ISBN1", 100, 199.00, Order.OrderStatus.OK);
+        Order orderPending = new Order(2L, "ISBN2", 100, 199.00, Order.OrderStatus.PENDING);
+        Order orderUnavailable = new Order(3L, "ISBN3", 100, 199.00, Order.OrderStatus.UNAVAILABLE);
         data.put(orderOk.getOrderId(), orderOk);
         data.put(orderPending.getOrderId(), orderPending);
         data.put(orderUnavailable.getOrderId(), orderUnavailable);

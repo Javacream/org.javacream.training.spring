@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
-@Scope("prototype")
+@Scope("singleton")
 @IsbnGenerator.SequenceStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 
