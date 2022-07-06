@@ -3,14 +3,8 @@
         "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
 
-    <bean class="Klassenaname" id="id1">
-        <property name="Name des Attributs" ref="id1"></property> <!-- @Resource -->
-    </bean>
-
-    <bean class="Klassenaname" id="id2" autowired="true">
-    </bean>
-
-    <bean class="Klassenaname" id="id3" scope="singleton">
+    <bean class="org.javacream.store.impl.SimpleStoreService" id="storeService">
+        <property name="stock" value="${storeService.defaultStock}"></property>
     </bean>
 
 </beans>
