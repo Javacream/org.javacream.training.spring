@@ -4,7 +4,7 @@
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+<!--
     <bean class="org.javacream.store.impl.SimpleStoreService" id="simpleStoreService">
         <property name="stock" value="${storeService.defaultStock}"></property>
     </bean>
@@ -12,4 +12,5 @@
         <property name="delegate" ref="simpleStoreService"></property>
 
     </bean>
+-->
 </beans>

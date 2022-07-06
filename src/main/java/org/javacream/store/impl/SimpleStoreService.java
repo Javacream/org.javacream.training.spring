@@ -1,9 +1,10 @@
 package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-
+@Service
 public class SimpleStoreService implements StoreService {
 	private int stock;
 	
