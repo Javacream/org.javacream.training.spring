@@ -20,14 +20,12 @@ public class MapBooksService implements BooksService {
 
 	@Autowired @IsbnGenerator.SequenceStrategy
 	private IsbnGenerator isbnGenerator;
+	@Autowired
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
 
 	public MapBooksService(){}
-	{
-		books = new HashMap<String, Book>();
-	}
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
 		Book book = new Book();
@@ -37,9 +35,6 @@ public class MapBooksService implements BooksService {
 		return isbn;
 	}
 
-	public IsbnGenerator getIsbnGenerator() {
-		return isbnGenerator;
-	}
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = (Book) books.get(isbn);
 		if (result == null) {
@@ -68,8 +63,5 @@ public class MapBooksService implements BooksService {
 	public Collection<Book> findAllBooks() {
 		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
 	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
-	
+
 }
