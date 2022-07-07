@@ -2,6 +2,7 @@ package org.javacream.books.order.impl;
 
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.Order.OrderStatus;
+import org.javacream.books.order.api.OrderRepository;
 import org.javacream.books.order.api.OrderService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
@@ -9,11 +10,10 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.ObjectStreamConstants;
-import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
@@ -24,8 +24,7 @@ public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
     @Autowired
     private SequenceGenerator sequenceGenerator;
     @Autowired
-    @Qualifier("orderData")
-    private Map<Long, Order> orders;
+    private OrderRepository orderRepository;
 
     @Override
     public Order order(String isbn, int amount) {
@@ -45,13 +44,18 @@ public class OrderServiceImpl implements OrderService, ObjectStreamConstants {
             status = OrderStatus.UNAVAILABLE;
         }
         Order order = new Order(id, isbn, amount, totalPrice, status);
-        orders.put(id, order);
+        orderRepository.save(order);
         return order;
     }
 
     @Override
     public Order findOrderById(long id) {
-        return orders.get(id);
+        Optional<Order> result = orderRepository.findById(id);
+        if (result.isPresent()){
+            return result.get();
+        }else{
+            throw new RuntimeException("no order forund for id" + id);
+        }
     }
 
 }

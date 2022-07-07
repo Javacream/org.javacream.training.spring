@@ -3,8 +3,10 @@ package org.javacream.books.order.web;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class OrderWebService{
@@ -18,7 +20,13 @@ public class OrderWebService{
 
     @GetMapping(path="api/orders/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Order findOrderById(@PathVariable("id") long id) {
-        return orderService.findOrderById(id);
+
+        try {
+            return orderService.findOrderById(id);
+        }
+        catch(RuntimeException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND );
+        }
     }
 
 
