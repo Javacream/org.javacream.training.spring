@@ -5,18 +5,17 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.util.stage.TestConfiguration;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @TestConfiguration
 public class BookServiceTestConfiguration {
-    @Bean @Qualifier("booksData")
-    public Map<String, Book> books(){
+    @Bean
+    @Qualifier("booksData")
+    public Map<String, Book> books() {
         HashMap<String, Book> books = new HashMap<>();
-        for (int i = 1; i <= 5; i++){
+        for (int i = 1; i <= 5; i++) {
             Book b = new Book();
             b.setIsbn("Isbn" + i);
             b.setTitle("Title" + i);
@@ -25,7 +24,9 @@ public class BookServiceTestConfiguration {
         }
         return books;
     }
-    @Bean @Qualifier("orderData")
+
+    @Bean
+    @Qualifier("orderData")
     public Map<Long, Order> orderData() {
         HashMap<Long, Order> data = new HashMap<>();
         Order orderOk = new Order(1L, "ISBN1", 100, 199.00, Order.OrderStatus.OK);

@@ -9,16 +9,17 @@ import java.lang.annotation.Target;
 
 public interface IsbnGenerator {
 
-	public abstract String next();
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
-	@Qualifier
-	public @interface RandomStrategy {
-	}
+    String next();
 
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
-	@Qualifier
-	public @interface SequenceStrategy {
-	}
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+    @Qualifier
+    @interface RandomStrategy {
+    }
+
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+    @Qualifier
+    @interface SequenceStrategy {
+    }
 }

@@ -12,21 +12,21 @@ import java.util.Random;
 @IsbnGenerator.RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
-	private String prefix;
-	private String countryCode;
-	private Random random;
-	
-	{
-		random = new Random(this.hashCode() + System.currentTimeMillis());
-	}
+    private final String prefix;
+    private final String countryCode;
+    private final Random random;
 
-	public RandomIsbnGenerator(	@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode){
-		this.prefix = prefix;
-		this.countryCode = countryCode;
-	}
+    {
+        random = new Random(this.hashCode() + System.currentTimeMillis());
+    }
 
-	public String next(){
-		return prefix + random.nextInt() + countryCode;
-	}
+    public RandomIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode) {
+        this.prefix = prefix;
+        this.countryCode = countryCode;
+    }
+
+    public String next() {
+        return prefix + random.nextInt() + countryCode;
+    }
 
 }

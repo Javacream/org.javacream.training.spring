@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class StoreServiceTest {
     @Autowired
     StoreService storeService;
-    @Test public void testStoreService(){
+
+    @Test
+    public void testStoreService() {
 
         Assertions.assertNotNull(storeService.getStock("this", "that"));
     }
