@@ -11,11 +11,6 @@ import java.util.Map;
 
 @ProdConfiguration
 public class BooksConfiguration {
-    @Bean
-    @Qualifier("booksData")
-    public Map<String, Book> booksData() {
-        return new HashMap<>();
-    }
 
     @Bean
     @Qualifier("orderData")

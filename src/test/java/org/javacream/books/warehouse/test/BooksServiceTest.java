@@ -23,8 +23,8 @@ public class BooksServiceTest {
     }
 
     @Test
-    public void booksServiceHas5InitialBooks() {
-        Assertions.assertEquals(5, booksService.findAllBooks().size());
+    public void booksServiceHas3InitialBooks() {
+        Assertions.assertEquals(3, booksService.findAllBooks().size());
     }
 
     @Test
