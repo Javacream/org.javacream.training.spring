@@ -2,9 +2,10 @@ package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
+//@Scope("prototype")
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")
