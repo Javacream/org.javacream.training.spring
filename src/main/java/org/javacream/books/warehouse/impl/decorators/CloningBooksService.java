@@ -7,8 +7,6 @@ import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 public class CloningBooksService implements BooksService {
 
