@@ -8,8 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class BooksServiceSpringTest {
 	@Autowired private BooksService booksService;
+	@Autowired String message;
 	@Test
 	public void testBusinessObjects() {
+		System.out.println("############ " + message);
 		TestActor.doTest(booksService);
 		
 	
