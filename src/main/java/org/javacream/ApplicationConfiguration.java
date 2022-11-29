@@ -3,11 +3,7 @@ package org.javacream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
-import org.javacream.books.isbngenerator.api.IsbnGenerator.RandomStrategy;
-import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -21,12 +17,5 @@ public class ApplicationConfiguration {
 		return books;
 	}
 
-	
-	@Bean @RandomStrategy public IsbnGenerator random(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode) {
-		RandomIsbnGenerator rig = new RandomIsbnGenerator();
-		rig.setPrefix(prefix);
-		rig.setCountryCode(countryCode);
-		return rig;
-	}
 	
 }

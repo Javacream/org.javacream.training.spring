@@ -5,10 +5,7 @@ import org.javacream.books.isbngenerator.api.IsbnGenerator.SequenceStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-@Service //Name of Object in Context= counterIsbnGenerator
-//@Service("hugo")
-//@Scope("prototype")          
-//@Qualifier("sequence")
+@Service
 @SequenceStrategy                                        
 public class CounterIsbnGenerator implements IsbnGenerator {
 
