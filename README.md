@@ -14,7 +14,8 @@
 * Seminarzeiten
   * 12 Unterrichtseinheiten mit jeweils etwa 90 Minuten, 6h netto Seminarzeit
   * Montag 10:00 - 16:30
-  * Dienstag / Mittwoch 9:30 - 16:30
+  * Dienstag 9:30 - 16:30
+  * Mittwoch 8.30 - 16:00
   * Mittagspause 45’ (12:15-13:00)
   * Kurze Kaffeepausen Vor- und Nachmittag
    
