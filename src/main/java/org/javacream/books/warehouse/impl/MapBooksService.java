@@ -23,16 +23,11 @@ public class MapBooksService implements BooksService {
 
 	@Autowired @SequenceStrategy
 	private IsbnGenerator isbnGenerator;
+	@Autowired
 	private Map<String, Book> books;
+
 	@Autowired
 	private StoreService storeService;
-	
-	@PostConstruct public void init(){
-		books = new HashMap<String, Book>();
-		String isbn = isbnGenerator.next();
-		System.out.println("################# " + isbn);
-	}
-
 	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
