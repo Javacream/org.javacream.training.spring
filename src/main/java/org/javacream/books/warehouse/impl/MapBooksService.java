@@ -2,10 +2,7 @@ package org.javacream.books.warehouse.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
-
-import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;

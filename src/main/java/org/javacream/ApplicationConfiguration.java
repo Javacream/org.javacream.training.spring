@@ -10,11 +10,12 @@ import org.javacream.books.warehouse.api.Book;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class ApplicationConfiguration {
 
-	@Bean public Map<String, Book> books(){
+	@Bean @Profile("test") public Map<String, Book> booksTest(){
 		HashMap<String, Book> books =  new HashMap<>();
 		Book b1 = new Book();
 		b1.setIsbn("ISBN-1001");
@@ -30,6 +31,12 @@ public class ApplicationConfiguration {
 
 		return books;
 	}
+	@Bean @Profile("prod") public Map<String, Book> booksProd(){
+		HashMap<String, Book> books =  new HashMap<>();
+		return books;
+	}
+
+	
 	@Bean @RandomStrategy public IsbnGenerator random(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode) {
 		RandomIsbnGenerator rig = new RandomIsbnGenerator();
 		rig.setPrefix(prefix);
