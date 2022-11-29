@@ -2,12 +2,17 @@ package org.javacream.books.isbngenerator.impl;
 
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
+
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 
 //@Component
 //@RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
+	@PostConstruct public void initqwerftghjklkjhgfd() {
+		System.out.println("################ INIT ###############");
+	}
 	private String prefix;
 	private String countryCode;
 	public String getCountryCode() {
