@@ -1,26 +1,25 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
+import org.javacream.books.warehouse.api.BookException.BookExceptionType;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MapBooksService implements BooksService {
+public class DatabaseBooksService implements BooksService {
 
 	@Autowired
 	private IsbnGenerator isbnGenerator;
+
 	@Autowired
-	private Map<String, Book> books;
+	private BooksRepository booksRepository;
 
 	@Autowired
 	private StoreService storeService;
@@ -38,7 +37,7 @@ public class MapBooksService implements BooksService {
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
-		books.put(isbn, book);
+		booksRepository.save(book);
 		return isbn;
 	}
 
@@ -47,38 +46,36 @@ public class MapBooksService implements BooksService {
 	}
 
 	public Book findBookByIsbn(String isbn) throws BookException {
-		Book result = (Book) books.get(isbn);
-		if (result == null) {
+
+		Optional<Book> result = booksRepository.findById(isbn);
+		if (result.isEmpty()) {
 			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
-		result.setAvailable(storeService.getStock("books", isbn) > 0);
+		Book book = result.get();
+		book.setAvailable(storeService.getStock("books", isbn) > 0);
 
-		return result;
+		return book;
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), bookValue);
-		return bookValue;
+		try {
+			booksRepository.save(bookValue);
+			return bookValue;
+		} catch (RuntimeException e) {
+			throw new BookException(BookExceptionType.CONSTRAINT, e.getMessage());
+		}
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		Object result = books.remove(isbn);
-		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
+		try {
+			booksRepository.deleteById(isbn);
+		} catch (RuntimeException e) {
+			throw new BookException(BookExceptionType.NOT_DELETED, e.getMessage());
 		}
 	}
 
 	public Collection<Book> findAllBooks() {
-	 List<Book> list = new ArrayList<Book>(books.values());
-	 return    list.stream().map((Book book) -> {
-		 int stock = storeService.getStock("books", book.getIsbn());
-		 book.setAvailable(stock > 0); 
-		 return book;}
-	 ).collect(Collectors.toList());
-	}
-
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
+		return booksRepository.findAll();
 	}
 
 }
