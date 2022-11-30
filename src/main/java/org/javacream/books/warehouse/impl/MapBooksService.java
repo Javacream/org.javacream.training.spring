@@ -2,7 +2,9 @@ package org.javacream.books.warehouse.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
@@ -11,7 +13,6 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 
 @Repository
 public class MapBooksService implements BooksService {
@@ -23,7 +24,7 @@ public class MapBooksService implements BooksService {
 
 	@Autowired
 	private StoreService storeService;
-	
+
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
@@ -44,36 +45,40 @@ public class MapBooksService implements BooksService {
 	public IsbnGenerator getIsbnGenerator() {
 		return isbnGenerator;
 	}
+
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = (Book) books.get(isbn);
 		if (result == null) {
-			throw new BookException(BookException.BookExceptionType.NOT_FOUND,
-					isbn);
+			throw new BookException(BookException.BookExceptionType.NOT_FOUND, isbn);
 		}
 		result.setAvailable(storeService.getStock("books", isbn) > 0);
-		
+
 		return result;
 	}
 
 	public Book updateBook(Book bookValue) throws BookException {
-		books.put(bookValue.getIsbn(), bookValue); 
+		books.put(bookValue.getIsbn(), bookValue);
 		return bookValue;
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		Object result = books.remove(isbn);
 		if (result == null) {
-			throw new BookException(
-					BookException.BookExceptionType.NOT_DELETED, isbn);
+			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
 		}
 	}
 
-
 	public Collection<Book> findAllBooks() {
-		return new ArrayList<Book>(books.values());
+	 List<Book> list = new ArrayList<Book>(books.values());
+	 return    list.stream().map((Book book) -> {
+		 int stock = storeService.getStock("books", book.getIsbn());
+		 book.setAvailable(stock > 0); 
+		 return book;}
+	 ).collect(Collectors.toList());
 	}
+
 	public void setBooks(Map<String, Book> books) {
 		this.books = books;
 	}
-	
+
 }
