@@ -1,0 +1,1 @@
+insert into LOGS (message) values('Hello World!')
