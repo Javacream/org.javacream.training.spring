@@ -66,7 +66,7 @@ public class BooksWebService {
 	}
 
 	@DeleteMapping(path = "api/book/{isbn}")
-	public void deleteBookByIsbn(String isbn){
+	public void deleteBookByIsbn(@PathVariable("isbn") String isbn){
 		try {
 			booksService.deleteBookByIsbn(isbn);
 		} catch (BookException e) {
