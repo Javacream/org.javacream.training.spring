@@ -32,13 +32,7 @@ public class IsbnGeneratorUnitTest {
 	}
 	@Test
 	public void testIsbnGenerator() {
-		Assertions.assertThat(isbnGenerator.next()).isNotNull();
-	}
-	//@Test
-	public void testGeneratedIsbnsAreUnique() {
-		String isbn1 = isbnGenerator.next();
-		String isbn2 = isbnGenerator.next();
-		Assertions.assertThat(isbn1).isNotEqualTo(isbn2);
+		Assertions.assertThat(isbnGenerator.next()).isEqualTo("ISBN:42-is");
 	}
 	@Configuration
 	@ComponentScan(basePackages = {"org.javacream.books.isbngenerator"})
