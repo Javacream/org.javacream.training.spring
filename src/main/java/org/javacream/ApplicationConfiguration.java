@@ -4,7 +4,7 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.books.warehouse.impl.MapBooksService;
 import org.javacream.books.warehouse.impl.decorators.CloningBooksService;
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.javacream.store.impl.decorators.AuditingStoreService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ public class ApplicationConfiguration {
 		return cbs;
 	}
 
-	@Bean public StoreService storeService(SimpleStoreService storeService) {
+	@Bean public StoreService storeService(DatabaseStoreService storeService) {
 		AuditingStoreService ass = new AuditingStoreService();
 		ass.setDelegate(storeService);
 		return ass;
