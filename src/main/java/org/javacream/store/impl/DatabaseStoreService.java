@@ -16,7 +16,6 @@ public class DatabaseStoreService implements StoreService {
 	@Override
 	@Transactional()
 	public int getStock(String category, String item) {
-		System.out.println("############ " + this.entityManager);
 		try {
 			Query query = entityManager
 					.createNativeQuery("select stock from store where category = :cat and item = :item");
