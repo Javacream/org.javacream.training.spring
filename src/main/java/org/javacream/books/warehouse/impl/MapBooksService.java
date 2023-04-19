@@ -34,7 +34,11 @@ public class MapBooksService implements BooksService {
 	@PostConstruct
 	public void initIt(){
 		System.out.println("initializing " + this + ", isbngenerator=" + this.isbnGenerator);
-
+		Book book = new Book();
+		book.setIsbn("Isbn1");
+		book.setTitle("Title1");
+		book.setPrice(19.99);
+		books.put("Isbn1", book);
 	}
 
 	@PreDestroy
