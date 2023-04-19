@@ -13,13 +13,6 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 	private String prefix;
 	@Value("${isbngenerator.countryCode}")
 	private String countryCode;
-	public String getCountryCode() {
-		return countryCode;
-	}
-
-	public void setCountryCode(String suffix) {
-		this.countryCode = suffix;
-	}
 	private Random random;
 	
 	{
@@ -30,10 +23,4 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 		return prefix + random.nextInt() + countryCode;
 	}
 
-	public String getPrefix(){
-		return prefix;
-	}
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
 }

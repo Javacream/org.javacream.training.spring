@@ -14,6 +14,9 @@ import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 
 @Repository
 public class MapBooksService implements BooksService {
@@ -28,13 +31,16 @@ public class MapBooksService implements BooksService {
 		books = new HashMap<String, Book>();
 	}
 
-	
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
+	@PostConstruct
+	public void initIt(){
+		System.out.println("initializing " + this + ", isbngenerator=" + this.isbnGenerator);
+
 	}
 
-	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
-		this.isbnGenerator = isbnGenerator;
+	@PreDestroy
+	public void cleanUp(){
+		System.out.println("destroying " + this + ", isbngenerator=" + this.isbnGenerator);
+
 	}
 
 	public String newBook(String title) throws BookException {
@@ -46,9 +52,6 @@ public class MapBooksService implements BooksService {
 		return isbn;
 	}
 
-	public IsbnGenerator getIsbnGenerator() {
-		return isbnGenerator;
-	}
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = (Book) books.get(isbn);
 		if (result == null) {
@@ -77,8 +80,4 @@ public class MapBooksService implements BooksService {
 	public Collection<Book> findAllBooks() {
 		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
 	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
-	
 }

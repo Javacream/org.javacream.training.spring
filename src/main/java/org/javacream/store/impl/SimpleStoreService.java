@@ -15,8 +15,4 @@ public class SimpleStoreService implements StoreService {
 		return stock;
 	}
 
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
-
 }
