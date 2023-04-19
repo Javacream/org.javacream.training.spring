@@ -1,7 +1,9 @@
 package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	private String prefix;
