@@ -11,13 +11,17 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
-
+@Repository
 public class MapBooksService implements BooksService {
 
-	private IsbnGenerator isbnGenerator;
+	@Autowired
+	private IsbnGenerator isbnGenerator; //TODO: Ist das auch eine Spring Dependency? -> später
 	private Map<String, Book> books;
+	@Autowired
 	private StoreService storeService;
 	
 	{
