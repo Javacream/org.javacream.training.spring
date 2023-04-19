@@ -1,11 +1,11 @@
 package org.javacream.books.isbngenerator.impl;
 
-import java.util.Random;
-
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+
+import java.util.Random;
 
 @Service
 @Scope("singleton")

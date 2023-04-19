@@ -1,10 +1,5 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
@@ -16,6 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Repository
