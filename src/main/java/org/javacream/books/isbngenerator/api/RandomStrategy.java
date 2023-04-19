@@ -1,4 +1,4 @@
-package org.javacream.books.isbngenerator.impl;
+package org.javacream.books.isbngenerator.api;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -8,5 +8,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Documented
 @Qualifier
-public @interface SequenceStrategy {
+public @interface RandomStrategy {
 }
