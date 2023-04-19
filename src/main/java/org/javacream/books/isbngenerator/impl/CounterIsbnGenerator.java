@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("sequenceStrategy")
-
+@SequenceStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	private String prefix;

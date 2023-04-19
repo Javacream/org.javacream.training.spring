@@ -1,6 +1,8 @@
 package org.javacream.books.warehouse.test;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.impl.RandomStrategy;
+import org.javacream.books.isbngenerator.impl.SequenceStrategy;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,11 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class IsbnGeneratorTest {
     @Autowired
-    @Qualifier("randomStrategy")
+    @SequenceStrategy
     IsbnGenerator ig1;
 
     @Autowired
-    @Qualifier("sequenceStrategy")
+    @RandomStrategy
     IsbnGenerator ig2;
 
     @Test public void testGenerators(){

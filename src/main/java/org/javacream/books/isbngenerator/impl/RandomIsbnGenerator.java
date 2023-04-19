@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Scope("singleton")
-@Qualifier("randomStrategy")
+@RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")
