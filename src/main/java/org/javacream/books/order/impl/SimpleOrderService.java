@@ -18,7 +18,7 @@ public class SimpleOrderService implements OrderService {
     @Autowired private BooksService booksService;
     @Autowired private StoreService storeService;
     private Long orderId = 0l;
-
+    @Autowired Map<Long, Order> ordersMap;
     @Override
     public Order order(String isbn, int number) {
         Order.OrderStatus orderStatus;
@@ -37,7 +37,13 @@ public class SimpleOrderService implements OrderService {
             orderStatus = Order.OrderStatus.UNAVAILABLE;
         }
         Order order = new Order(orderId++, isbn, number, totalPrice, orderStatus);
+        ordersMap.put(order.getOrderId(), order);
         return order;
+    }
+
+    @Override
+    public Order findOrderById(long orderId) {
+        return ordersMap.get(orderId);
     }
 
 }

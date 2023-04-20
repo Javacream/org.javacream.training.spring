@@ -24,32 +24,9 @@ public class MapBooksService implements BooksService {
 	@Autowired
 	@IsbnGenerator.SequenceStrategy
 	private IsbnGenerator isbnGenerator;
-	private Map<String, Book> books; //TODO: Ist das auch eine Spring Dependency? -> später
+	@Autowired @Qualifier("books") private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
-
-	@Autowired @Qualifier("greeting")
-	String who;
-	
-	{
-		books = new HashMap<String, Book>();
-	}
-
-	@PostConstruct
-	public void initIt(){
-		System.out.println("initializing " + this + ", isbngenerator=" + this.isbnGenerator + ", m=" + this.who);
-		Book book = new Book();
-		book.setIsbn("Isbn1");
-		book.setTitle("Title1");
-		book.setPrice(19.99);
-		books.put("Isbn1", book);
-	}
-
-	@PreDestroy
-	public void cleanUp(){
-		System.out.println("destroying " + this + ", isbngenerator=" + this.isbnGenerator);
-
-	}
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
