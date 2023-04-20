@@ -11,8 +11,8 @@ import javax.annotation.PostConstruct;
 @Configuration
 public class JavacreamConfiguration {
 
-    @Value("${storeservice.defaultStock}") int defaultStock;
-    public @Bean StoreService storeService(){
+
+    public @Bean StoreService storeService(@Value("${storeservice.defaultStock}") int defaultStock){
         SimpleStoreService storeService = new SimpleStoreService();
         storeService.setStock(defaultStock);
         return storeService;
