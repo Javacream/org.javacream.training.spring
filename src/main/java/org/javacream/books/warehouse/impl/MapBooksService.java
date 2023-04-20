@@ -7,6 +7,7 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -26,6 +27,9 @@ public class MapBooksService implements BooksService {
 	private Map<String, Book> books; //TODO: Ist das auch eine Spring Dependency? -> später
 	@Autowired
 	private StoreService storeService;
+
+	@Autowired @Qualifier("greeting")
+	String who;
 	
 	{
 		books = new HashMap<String, Book>();
@@ -33,7 +37,7 @@ public class MapBooksService implements BooksService {
 
 	@PostConstruct
 	public void initIt(){
-		System.out.println("initializing " + this + ", isbngenerator=" + this.isbnGenerator);
+		System.out.println("initializing " + this + ", isbngenerator=" + this.isbnGenerator + ", m=" + this.who);
 		Book book = new Book();
 		book.setIsbn("Isbn1");
 		book.setTitle("Title1");

@@ -1,6 +1,9 @@
 package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.annotation.PostConstruct;
 
 //@Service
 public class SimpleStoreService implements StoreService {
@@ -9,7 +12,10 @@ public class SimpleStoreService implements StoreService {
 		this.stock = stock;
 	}
 
-	//@Value("${storeservice.defaultStock}")
+	@PostConstruct public void init(){
+		System.out.println("initializing " + this);
+	}
+	@Value("${storeservice.defaultStock}")
 	private int stock;
 	
 	@Override
