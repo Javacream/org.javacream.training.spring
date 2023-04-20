@@ -1,16 +1,19 @@
 package org.javacream;
 
 import org.javacream.store.api.StoreService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.javacream.store.impl.SimpleStoreService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
 @Configuration
 public class JavacreamConfiguration {
-    @Autowired
-    StoreService storeService;
-    @PostConstruct public void init(){
-        System.out.println("################################## " +  storeService);
+
+    public @Bean StoreService storeService(){
+        SimpleStoreService storeService = new SimpleStoreService();
+        storeService.setStock(4711);
+        return storeService;
     }
+
 }
