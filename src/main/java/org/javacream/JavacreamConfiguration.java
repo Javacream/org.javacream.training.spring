@@ -15,14 +15,21 @@ public class JavacreamConfiguration {
 
     public @Bean StoreService storeService(){
         SimpleStoreService storeService = new SimpleStoreService();
+        System.out.println("**************** CALLING storeService");
         return storeService;
     }
 
 
     public @Bean @Qualifier("greeting")  String greeting(){
+        this.storeService();
+        this.storeService();
+        this.storeService();
+        this.storeService();
+        System.out.println(this.storeService());
       return "Hello";
     }
     public @Bean @Qualifier("who") String who(){
+        System.out.println(this.storeService());
         return "World";
     }
 
