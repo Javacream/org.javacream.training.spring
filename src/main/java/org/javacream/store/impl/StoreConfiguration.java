@@ -1,6 +1,7 @@
 package org.javacream.store.impl;
 
 import org.javacream.store.api.StoreService;
+import org.javacream.store.impl.decorators.AuditingStoreService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 public class StoreConfiguration {
 
 
-    public @Bean StoreService storeService(){
-        SimpleStoreService storeService = new SimpleStoreService();
-        return storeService;
+    public @Bean StoreService storeService(AuditingStoreService auditingStoreService, SimpleStoreService simpleStoreService){
+        auditingStoreService.setDelegate(simpleStoreService);
+        return auditingStoreService;
     }
 
 }
