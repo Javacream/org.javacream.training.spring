@@ -7,12 +7,14 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
 @Component
 @Aspect
+@Profile("aop")
 public class TracingAspect{
 
     @Around("execution(* org.javacream..impl.*Service.*(..))")
