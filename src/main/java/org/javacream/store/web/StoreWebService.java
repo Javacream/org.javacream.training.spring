@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class StoreWebService {
 
     @GetMapping(path="api/store/{category}")
-    public int getStock(@PathVariable("category") String category, @RequestHeader("item") String item) {
-        return storeService.getStock(category, item);
+    public String getStock(@PathVariable("category") String category, @RequestHeader("item") String item) {
+        return "Stock: " + storeService.getStock(category, item);
     }
 
     @Autowired private StoreService storeService;
