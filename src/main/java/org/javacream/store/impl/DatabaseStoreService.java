@@ -30,4 +30,19 @@ public class DatabaseStoreService implements StoreService {
 		}
 	}
 
-}
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void setStock(String category, String item, int stock) {
+		Query query = entityManager.createNativeQuery("delete from store where category=:cat and item=:item");
+		query.setParameter("cat", category);
+		query.setParameter("item", item);
+		query.executeUpdate();
+		query = entityManager.createNativeQuery("insert into store (category, item, stock) values(:cat, :item, :stock)");
+		query.setParameter("cat", category);
+		query.setParameter("item", item);
+		query.setParameter("stock", stock);
+		query.executeUpdate();
+		}
+	}
+
+
