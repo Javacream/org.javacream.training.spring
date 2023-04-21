@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class BooksServiceConfiguration {
 
     public @Bean
-    BooksService booksService(MapBooksService mapBooksService, CloningBooksService cloningBooksService){
+    BooksService booksService(JpaBooksService mapBooksService, CloningBooksService cloningBooksService){
         cloningBooksService.setDelegate(mapBooksService);
         return cloningBooksService;
     }
