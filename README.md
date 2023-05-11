@@ -13,4 +13,12 @@
   * Donnerstag / Freitag 8:30 - 15:45
   * Mittagspause 12:00-12:45
   * Kaffeepausen 10:15 - 10:30 und 14:15 - 14:30
-   
+
+
+* Seminarzeiten Part 2 Docker
+
+  * 8 Unterrichtseinheiten mit jeweils etwa 90 Minuten, 6h netto Seminarzeit
+  * Donnerstag / Freitag 8:30 - 15:45
+  * Mittagspause 12:00-12:45
+  * Kaffeepausen 10:15 - 10:30 und 14:15 - 14:30
+
