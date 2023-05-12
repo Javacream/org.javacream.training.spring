@@ -1,0 +1,9 @@
+{
+    "insecure-registries": [
+      "h2908727.stratoserver.net:8082", 
+      "h2908727.stratoserver.net:8083", 
+      "h2908727.stratoserver.net:8084",
+      "javacream.eu:8082", 
+      "javacream.eu:8083", 
+      "javacream.eu:8084"]
+}
