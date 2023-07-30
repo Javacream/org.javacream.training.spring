@@ -1,10 +1,10 @@
 # org.javacream.training.spring
 
 * Rainer Sawitzki
-* eMail: training@rainer-sawitzki.de
+* eMail: rainer.sawitzki@gmail.com
 * [Javacream](http://javacream.org)
 
-* [Digitales Flipchart](https://docs.google.com/presentation/d/1V3CzUgcAinR6FqokRKKI6NPQOB7Iuc_018gohOHZWnk/edit?usp=sharing)
+* [Digitales Flipchart](https://docs.google.com/presentation/d/1YBrmXFNbOoAQuHPnVagU4BcGmKyU_hMAqjazo9f0nt0/edit?usp=sharing)
   
 * Seminarzeiten
 
