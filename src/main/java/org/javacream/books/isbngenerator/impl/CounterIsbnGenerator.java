@@ -14,16 +14,20 @@ import javax.annotation.PreDestroy;
 @IsbnGenerator.SequenceStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 
-	@Value("${isbngenerator.prefix}")
 	private String prefix;
 	@Value("${isbngenerator.countryCode}")
 	private String countryCode;
-	//Konstruktor-Aufruf erfolgt VOR der Dependency Injection
-	{
+	//Constructor Injection, Sawitzki: Mag ich nicht... (jetzt kommt es nämlich zu Problemen bei zirkularen Dependencies)
+	public CounterIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}")String countryCode){
 		System.out.println("**************** prefix in Constructor: " + prefix);
+		System.out.println("**************** countryCode in Constructor: " + countryCode);
+		this.prefix = prefix;
+		this.countryCode = countryCode;
+
 	}
 	@PostConstruct public void initTheObject() {
 		System.out.println("**************** prefix in @PostConstruct: " + prefix);
+		System.out.println("**************** countryCode in @PostConstruct: " + countryCode);
 	}
 
 	@PreDestroy public void destroyIt(){
