@@ -21,18 +21,11 @@ public class MapBooksService implements BooksService {
 
 	@Autowired
 	private RandomIsbnGenerator isbnGenerator;
+	@Autowired
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
-	
-	{
-		books = new HashMap<String, Book>();
-		Book book = new Book();
-		book.setIsbn("Isbn1");
-		book.setTitle("Title1");
-		book.setPrice(19.99);
-		books.put("Isbn1", book);
-	}
+
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
