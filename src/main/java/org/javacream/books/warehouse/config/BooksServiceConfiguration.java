@@ -1,5 +1,6 @@
 package org.javacream.books.warehouse.config;
 
+import org.javacream.books.order.api.Order;
 import org.javacream.books.warehouse.api.Book;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,4 +21,10 @@ public class BooksServiceConfiguration {
         books.put("Isbn1", book);
         return books; //Dependency Outjection ("Sawitzki")
     }
+
+    @Bean Map<Long, Order> ordersMap(){
+        return new HashMap<>();
+    }
+
+
 }

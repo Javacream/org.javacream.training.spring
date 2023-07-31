@@ -19,7 +19,7 @@ public class SimpleOrderService implements OrderService {
     @Autowired private BooksService booksService;
     @Autowired private StoreService storeService;
     private Long orderId = 0l;
-    Map<Long, Order> ordersMap = new HashMap<>();
+    @Autowired Map<Long, Order> ordersMap;
     @Override
     public Order order(String isbn, int number) {
         Order.OrderStatus orderStatus;
