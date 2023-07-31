@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class IsbnGeneratorTest {
     @Autowired @IsbnGenerator.RandomStrategy
     private IsbnGenerator random;
-    @Autowired @IsbnGenerator.CounterStrategy
+    @Autowired @IsbnGenerator.SequenceStrategy
     private IsbnGenerator counter;
 
     @Test

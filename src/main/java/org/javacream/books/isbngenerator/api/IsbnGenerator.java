@@ -11,7 +11,7 @@ public interface IsbnGenerator {
 	@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 	@Documented
 	@Qualifier
-	public @interface CounterStrategy {
+	public @interface SequenceStrategy {
 	}
 
 	@Retention(RetentionPolicy.RUNTIME)
