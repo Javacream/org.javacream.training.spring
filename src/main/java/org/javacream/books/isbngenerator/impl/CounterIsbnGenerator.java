@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 //@Service("counterIsbnGenerator")
 @Service
-@CounterStrategy
+@IsbnGenerator.CounterStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 
 	private String prefix;
