@@ -27,6 +27,11 @@ public class MapBooksService implements BooksService {
 	
 	{
 		books = new HashMap<String, Book>();
+		Book book = new Book();
+		book.setIsbn("Isbn1");
+		book.setTitle("Title1");
+		book.setPrice(19.99);
+		books.put("Isbn1", book);
 	}
 
 	public String newBook(String title) throws BookException {
