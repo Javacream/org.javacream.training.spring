@@ -15,4 +15,7 @@ public class StoreServiceTest {
     @Test public void simple(){
         System.out.println(storeService);
     }
+    @Test public void getStockRetrievesStock(){
+        storeService.getStock("books", "ISBN1");
+    }
 }
