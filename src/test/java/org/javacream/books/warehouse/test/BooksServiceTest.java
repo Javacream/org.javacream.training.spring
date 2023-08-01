@@ -18,6 +18,7 @@ public class BooksServiceTest {
 	BooksService booksService;
 	@Test
 	public void testBusinessObjects() {
+		System.out.println(booksService.getClass().getName());
 		TestActor.doTest(booksService);
 		
 	
