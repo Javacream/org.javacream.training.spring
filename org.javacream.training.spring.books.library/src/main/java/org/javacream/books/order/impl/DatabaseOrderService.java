@@ -20,6 +20,7 @@ public class DatabaseOrderService implements OrderService {
     @Autowired private StoreService storeService;
     @Autowired
     OrdersRepository ordersRepository;
+    private long counter = 0;
     @Override
     public Order order(String isbn, int number) {
         Order.OrderStatus orderStatus;
@@ -37,7 +38,7 @@ public class DatabaseOrderService implements OrderService {
         catch(BookException e){
             orderStatus = Order.OrderStatus.UNAVAILABLE;
         }
-        Order order = new Order(null, isbn, number, totalPrice, orderStatus);
+        Order order = new Order(counter++, isbn, number, totalPrice, orderStatus);
         ordersRepository.save(order);
         return order;
     }

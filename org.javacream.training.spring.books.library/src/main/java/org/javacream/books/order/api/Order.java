@@ -6,7 +6,6 @@ import java.util.Objects;
 @Table(name="ORDERS")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
     private String isbn;
     private Integer number;
