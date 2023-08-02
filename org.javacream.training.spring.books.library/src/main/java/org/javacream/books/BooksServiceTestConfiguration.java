@@ -19,10 +19,10 @@ public class BooksServiceTestConfiguration {
     public Map<String, Book> booksMap(){
         Map<String, Book> books = new HashMap<>();
         Book book = new Book();
-        book.setIsbn("Isbn1");
+        book.setIsbn("ISBN1");
         book.setTitle("Title1");
         book.setPrice(19.99);
-        books.put("Isbn1", book);
+        books.put("ISBN1", book);
         return books; //Dependency Outjection ("Sawitzki")
     }
 
