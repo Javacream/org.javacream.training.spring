@@ -3,21 +3,20 @@ package org.javacream.books.order.impl;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.OrderService;
 import org.javacream.books.order.api.OrdersRepository;
+import org.javacream.books.store.StoreRequestor;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
-import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class DatabaseOrderService implements OrderService {
 
     @Autowired private BooksService booksService;
-    @Autowired private StoreService storeService;
+    @Autowired private StoreRequestor storeRequestor;
     @Autowired
     OrdersRepository ordersRepository;
     private long counter = 0;
@@ -29,7 +28,7 @@ public class DatabaseOrderService implements OrderService {
         try{
             Book book = booksService.findBookByIsbn(isbn);
             totalPrice = number * book.getPrice();
-            if (storeService.getStock("books", isbn) >= number){
+            if (storeRequestor.getStock("books", isbn) >= number){
                 orderStatus = Order.OrderStatus.OK;
             }else{
                 orderStatus = Order.OrderStatus.PENDING;

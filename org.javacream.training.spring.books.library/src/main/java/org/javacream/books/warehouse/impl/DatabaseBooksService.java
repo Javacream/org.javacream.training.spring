@@ -1,17 +1,14 @@
 package org.javacream.books.warehouse.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 import java.util.Optional;
 
-import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.impl.RandomIsbnGenerator;
+import org.javacream.books.store.StoreRequestor;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksRepository;
 import org.javacream.books.warehouse.api.BooksService;
-import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +23,7 @@ public class DatabaseBooksService implements BooksService {
 	@Autowired
 	private BooksRepository booksRepository;
 	@Autowired
-	private StoreService storeService;
+	private StoreRequestor storeRequestor;
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
@@ -44,7 +41,7 @@ public class DatabaseBooksService implements BooksService {
 					isbn);
 		}
 		Book resultBook = result.get();
-		resultBook.setAvailable(storeService.getStock("books", isbn) > 0);
+		resultBook.setAvailable(storeRequestor.getStock("books", isbn) > 0);
 		
 		return resultBook;
 	}
