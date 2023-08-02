@@ -23,7 +23,8 @@ public class DatabaseStoreService implements StoreService {
             return (int) query.getSingleResult();
         }
         catch(RuntimeException e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("***** no data!");
             return 0;
         }
     }

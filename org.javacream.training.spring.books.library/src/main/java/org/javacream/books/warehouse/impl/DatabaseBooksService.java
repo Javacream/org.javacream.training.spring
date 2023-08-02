@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
-@Transactional
+@Transactional(rollbackFor = {BookException.class})
 public class DatabaseBooksService implements BooksService {
 
 	@Autowired
@@ -61,7 +61,7 @@ public class DatabaseBooksService implements BooksService {
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		try {
-		booksRepository.deleteById(isbn);
+			booksRepository.deleteById(isbn);
 		}
 		catch(RuntimeException e){
 			throw new BookException(

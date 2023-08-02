@@ -1,1 +1,1 @@
-insert into BOOK (isbn, title, price) values ('ISBN1', 'Spring in Action', 29.99)
+insert into BOOKS (isbn, title, price) values ('ISBN1', 'Spring in Action', 29.99)
