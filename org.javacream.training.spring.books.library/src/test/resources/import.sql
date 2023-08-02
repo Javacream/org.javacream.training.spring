@@ -1,0 +1,1 @@
+insert into BOOK (isbn, title, price) values ('ISBN1', 'Spring in Action', 29.99)
