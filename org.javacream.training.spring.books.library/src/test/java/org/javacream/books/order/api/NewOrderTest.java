@@ -13,11 +13,11 @@ public class NewOrderTest {
     @Autowired private OrderService orderService;
 
     @Test public void order40Isbn1CreatesOkOrder(){
-        Order order = orderService.order("Isbn1", 40);
+        Order order = orderService.order("ISBN1", 40);
         Assertions.assertEquals(Order.OrderStatus.OK, order.getStatus());
     }
     @Test public void order50Isbn1CreatesPendingOrder(){
-        Order order = orderService.order("Isbn1", 50);
+        Order order = orderService.order("ISBN1", 50);
         Assertions.assertEquals(Order.OrderStatus.PENDING, order.getStatus());
     }
     @Test public void order50UnknownIsbnCreatesUnavailableOrder(){
