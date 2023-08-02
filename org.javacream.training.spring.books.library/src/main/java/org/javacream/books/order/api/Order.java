@@ -1,7 +1,12 @@
 package org.javacream.books.order.api;
 
+import javax.persistence.*;
 import java.util.Objects;
+@Entity
+@Table(name="ORDERS")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
     private String isbn;
     private Integer number;
