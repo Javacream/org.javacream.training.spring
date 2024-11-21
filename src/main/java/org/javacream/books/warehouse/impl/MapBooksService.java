@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.impl.CounterIsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
@@ -27,6 +28,8 @@ public class MapBooksService implements BooksService {
 	
 	{
 		books = new HashMap<String, Book>();
+		CounterIsbnGenerator ig = new CounterIsbnGenerator();
+		System.out.println(ig.next());
 	}
 
 	public String newBook(String title) throws BookException {
