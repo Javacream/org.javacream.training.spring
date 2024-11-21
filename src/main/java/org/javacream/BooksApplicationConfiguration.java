@@ -19,8 +19,6 @@ public class BooksApplicationConfiguration {
     @PostConstruct public void init(){
         System.out.println("************** " + this);
     }
-    @Autowired  private BooksService booksService;
-
     @Bean @IsbnGenerator.SequenceStrategy public IsbnGenerator countersbnGenerator(){
         return new CounterIsbnGenerator();
     }
