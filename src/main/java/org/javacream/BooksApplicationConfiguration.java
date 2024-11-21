@@ -12,13 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import javax.annotation.PostConstruct;
-
 @Configuration
 public class BooksApplicationConfiguration {
-    @PostConstruct public void init(){
-        System.out.println("************** " + this);
-    }
+
     @Bean @IsbnGenerator.SequenceStrategy public IsbnGenerator countersbnGenerator(){
         return new CounterIsbnGenerator();
     }

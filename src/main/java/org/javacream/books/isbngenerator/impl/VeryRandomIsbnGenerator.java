@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.Random;
 
 @Service @IsbnGenerator.RandomStrategy @Profile("customerB")
@@ -26,15 +24,6 @@ public class VeryRandomIsbnGenerator implements IsbnGenerator {
 	
 	{
 		random = new Random(this.hashCode() + System.currentTimeMillis());
-	}
-
-	@PostConstruct
-	public void init() {
-		System.out.println("************************* initializing " + this);
-	}
-	@PreDestroy
-	public void remove() {
-		System.out.println("removing " + this);
 	}
 
 	public String next(){
