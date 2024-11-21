@@ -4,12 +4,13 @@ import java.util.Random;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Service @IsbnGenerator.RandomStrategy
+@Service @IsbnGenerator.RandomStrategy @Profile("customerA")
 public class RandomIsbnGenerator implements IsbnGenerator {
 @Value("${isbngenerator.prefix}")
 	private String prefix;
