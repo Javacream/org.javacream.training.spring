@@ -1,10 +1,16 @@
 package org.javacream.books.isbngenerator.impl;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
+@IsbnGenerator.SequenceStrategy
 public class CounterIsbnGenerator implements IsbnGenerator {
 
+	@Autowired
 	private String prefix;
+	@Autowired
 	private String countryCode;
 	public String getCountryCode() {
 		return countryCode;
