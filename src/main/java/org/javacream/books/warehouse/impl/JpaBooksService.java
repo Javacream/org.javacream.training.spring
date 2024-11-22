@@ -11,6 +11,8 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
@@ -55,6 +57,7 @@ public class JpaBooksService implements BooksService {
 		return bookValue;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void deleteBookByIsbn(String isbn) throws BookException {
 		Optional<Book> result = booksRepository.findById(isbn);
 		result.orElseThrow(() -> new BookException(BookException.BookExceptionType.NOT_DELETED, isbn));
