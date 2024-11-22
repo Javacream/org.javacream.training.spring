@@ -10,7 +10,7 @@ public class EchoWebService {
     @Autowired private KafkaTemplate kafkaTemplate;
     @GetMapping(path = "api/demo/ping", produces = MediaType.TEXT_PLAIN_VALUE)
     public String ping(){
-        kafkaTemplate.send("topic1", "Hello Spring!");
+        kafkaTemplate.send("javacream", "Hello Spring!");
         return "pong";
     }
     //http://localhost:9090/api/demo/echo/Hugo
