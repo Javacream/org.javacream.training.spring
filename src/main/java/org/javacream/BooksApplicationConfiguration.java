@@ -1,5 +1,6 @@
 package org.javacream;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.isbngenerator.impl.CounterIsbnGenerator;
 import org.javacream.books.warehouse.api.BookException;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
 public class BooksApplicationConfiguration {
@@ -35,5 +37,10 @@ public class BooksApplicationConfiguration {
         }
         return mapBooksService;
 
+    }
+    
+    @Bean
+    NewTopic javacream(){
+        return TopicBuilder.name("javacream").partitions(10).replicas(2).build();
     }
 }
