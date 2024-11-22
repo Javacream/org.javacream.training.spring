@@ -56,12 +56,9 @@ public class JpaBooksService implements BooksService {
 	}
 
 	public void deleteBookByIsbn(String isbn) throws BookException {
-		try {
-			booksRepository.deleteById(isbn);
-		}
-		catch(RuntimeException e){
-			throw new BookException(BookException.BookExceptionType.NOT_DELETED, isbn);
-		}
+		Optional<Book> result = booksRepository.findById(isbn);
+		result.orElseThrow(() -> new BookException(BookException.BookExceptionType.NOT_DELETED, isbn));
+		booksRepository.deleteById(isbn);
 	}
 
 
