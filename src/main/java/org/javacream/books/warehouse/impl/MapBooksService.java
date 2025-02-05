@@ -26,12 +26,12 @@ public class MapBooksService implements BooksService {
 	
 	{
 		books = new HashMap<String, Book>();
+		String isbn = "TEST-ISBN";
+		books.put(isbn, new Book(isbn, "Title", 19.99, 200, true));
 	}
 	public String newBook(String title) throws BookException {
 		String isbn = isbngenerator.next();
-		Book book = new Book();
-		book.setIsbn(isbn);
-		book.setTitle(title);
+		Book book = new Book(isbn, title);
 		books.put(isbn, book);
 		return isbn;
 	}
