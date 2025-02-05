@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class RandomIsbnGenerator implements IsbnGenerator {
 
-	public RandomIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode){
-		this.prefix = prefix;
-		this.countryCode = countryCode;
-	}
-	private String prefix;
-	private String countryCode;
+
+	@Value("${isbngenerator.prefix}") private String prefix;
+	@Value("${isbngenerator.countryCode}") private String countryCode;
 	private Random random;
 	
 	{
