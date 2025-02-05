@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 public class MapBooksService implements BooksService {
 
 	@Autowired
-	private @IsbnGenerator.RandomStrategy IsbnGenerator isbngenerator;
+	private @IsbnGenerator.SequenceStrategy IsbnGenerator isbngenerator;
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
