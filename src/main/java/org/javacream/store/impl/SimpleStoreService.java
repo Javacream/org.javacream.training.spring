@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 //@Service
 public class SimpleStoreService implements StoreService {
-	//@Value("${storeService.defaultStock}")
+	@Value("${storeService.defaultStock}")
 	private int stock;
 
 	public void setStock(int stock) {
