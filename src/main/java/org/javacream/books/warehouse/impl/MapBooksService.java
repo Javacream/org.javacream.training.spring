@@ -18,25 +18,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MapBooksService implements BooksService {
 
-	@Autowired
+	public MapBooksService(IsbnGenerator isbnGenerator, StoreService storeService){
+		this.isbnGenerator = isbnGenerator;
+		this.storeService = storeService;
+	}
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
-	@Autowired
 	private StoreService storeService;
 	
 	{
 		books = new HashMap<String, Book>();
 	}
-
-	
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
-	}
-
-	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
-		this.isbnGenerator = isbnGenerator;
-	}
-
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
 		Book book = new Book();
@@ -44,10 +36,6 @@ public class MapBooksService implements BooksService {
 		book.setTitle(title);
 		books.put(isbn, book);
 		return isbn;
-	}
-
-	public IsbnGenerator getIsbnGenerator() {
-		return isbnGenerator;
 	}
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = (Book) books.get(isbn);

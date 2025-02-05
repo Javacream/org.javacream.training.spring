@@ -9,17 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RandomIsbnGenerator implements IsbnGenerator {
 
-	@Value("${isbngenerator.prefix}")
+	public RandomIsbnGenerator(@Value("${isbngenerator.prefix}") String prefix, @Value("${isbngenerator.countryCode}") String countryCode){
+		this.prefix = prefix;
+		this.countryCode = countryCode;
+	}
 	private String prefix;
-	@Value("${isbngenerator.countryCode}")
 	private String countryCode;
-	public String getCountryCode() {
-		return countryCode;
-	}
-
-	public void setCountryCode(String suffix) {
-		this.countryCode = suffix;
-	}
 	private Random random;
 	
 	{
@@ -30,10 +25,4 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 		return prefix + random.nextInt() + countryCode;
 	}
 
-	public String getPrefix(){
-		return prefix;
-	}
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
 }
