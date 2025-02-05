@@ -19,14 +19,14 @@ import org.springframework.stereotype.Repository;
 public class MapBooksService implements BooksService {
 
 	@Autowired
-	private @IsbnGenerator.SequenceStrategy IsbnGenerator isbngenerator;
+	@IsbnGenerator.RandomStrategy private IsbnGenerator isbngenerator;
 	private Map<String, Book> books;
 	@Autowired
 	private StoreService storeService;
 	
 	{
 		books = new HashMap<String, Book>();
-		String isbn = "TEST-ISBN";
+		String isbn = "ISBN1";
 		books.put(isbn, new Book(isbn, "Title", 19.99, 200, true));
 	}
 	public String newBook(String title) throws BookException {
