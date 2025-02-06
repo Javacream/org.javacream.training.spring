@@ -2,6 +2,7 @@ package org.javacream.books.isbngenerator.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -21,8 +22,11 @@ public class DatabaseIsbnGenerator implements IsbnGenerator {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public String next(){
-		int isbn = em.createNativeQuery("select * from ISBNS").getFirstResult();
-		//TODO Korrektes Auslesen sowie Hochzählen und zurückschreiben der ISBN
+		int isbn = (int) em.createNativeQuery("select * from ISBNS").getSingleResult();
+		int newIsbn = ++isbn;
+		Query query = em.createNativeQuery("update ISBNS set isbn = :isbn");
+		query.setParameter("isbn", newIsbn);
+		query.executeUpdate();
 		return "DATA-BASE: " + isbn;
 	}
 
