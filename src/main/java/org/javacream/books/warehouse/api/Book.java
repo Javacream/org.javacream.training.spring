@@ -9,6 +9,9 @@ import java.util.Objects;
 
 @Entity
 public class Book implements Serializable {
+	Book(){
+
+	}
 	@Id
 	private String isbn;
 	private String title;

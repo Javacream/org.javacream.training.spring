@@ -1,6 +1,7 @@
 package org.javacream.store.config;
 
 import org.javacream.store.api.StoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.javacream.store.impl.decorators.AuditStoreService;
 import org.javacream.store.impl.decorators.LogStoreService;
 import org.springframework.context.annotation.Bean;
