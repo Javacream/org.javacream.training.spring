@@ -3,6 +3,7 @@ package org.javacream.store.config;
 import org.javacream.store.api.StoreService;
 import org.javacream.store.impl.SimpleStoreService;
 import org.javacream.store.impl.decorators.AuditStoreService;
+import org.javacream.store.impl.decorators.LogStoreService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +16,10 @@ public class StoreConfig {
 @Bean @Primary
 public StoreService storeService(SimpleStoreService simpleStoreService){
     AuditStoreService auditStoreService = new AuditStoreService();
+    LogStoreService logStoreService = new LogStoreService();
     auditStoreService.setDelegate(simpleStoreService);
-    return auditStoreService;
+    logStoreService.setDelegate(auditStoreService);
+    return logStoreService;
         }
 
 
