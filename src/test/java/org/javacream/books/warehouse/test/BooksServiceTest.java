@@ -6,8 +6,9 @@ import org.javacream.books.warehouse.impl.MapBooksService;
 import org.javacream.store.impl.SimpleStoreService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-
+@SpringBootTest
 public class BooksServiceTest {
 
 	@Autowired private BooksService booksService;
