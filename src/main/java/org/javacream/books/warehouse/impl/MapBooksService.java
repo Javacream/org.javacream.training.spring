@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MapBooksService implements BooksService {
 	@Autowired
-	private IsbnGenerator rig;
+	private IsbnGenerator randomIsbnGenerator;
 	private Map<String, Book> books;
 
 	@Autowired private StoreService storeService;
@@ -28,7 +28,7 @@ public class MapBooksService implements BooksService {
 	}
 
 	public String newBook(String title) throws BookException {
-		String isbn = rig.next();
+		String isbn = randomIsbnGenerator.next();
 		Book book = new Book();
 		book.setIsbn(isbn);
 		book.setTitle(title);
