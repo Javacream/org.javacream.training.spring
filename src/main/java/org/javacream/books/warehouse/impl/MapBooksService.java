@@ -17,18 +17,14 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MapBooksService implements BooksService {
+	@Autowired
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
 
-	private StoreService storeService;
+	@Autowired private StoreService storeService;
 	
 	{
 		books = new HashMap<String, Book>();
-	}
-
-	public MapBooksService(IsbnGenerator isbnGenerator, StoreService storeService) {
-		this.isbnGenerator = isbnGenerator;
-		this.storeService = storeService;
 	}
 
 	public String newBook(String title) throws BookException {
