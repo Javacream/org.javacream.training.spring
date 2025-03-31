@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
@@ -17,25 +18,28 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MapBooksService implements BooksService {
-	@Autowired @IsbnGenerator.SequenceStrategy
-	private IsbnGenerator isbnGenerator;
-	private Map<String, Book> books;
 
-	@Autowired private StoreService storeService;
-	
+	@Autowired
+	@IsbnGenerator.SequenceStrategy private IsbnGenerator isbngenerator;
+	private Map<String, Book> books;
+	@Autowired
+	private StoreService storeService;
+
+	@PostConstruct
+	public void init(){
+		String isbn = "ISBN1";
+		books.put(isbn, new Book(isbn, "Title", 19.99, 200, true));
+
+	}
 	{
 		books = new HashMap<String, Book>();
 	}
-
 	public String newBook(String title) throws BookException {
-		String isbn = isbnGenerator.next();
-		Book book = new Book();
-		book.setIsbn(isbn);
-		book.setTitle(title);
+		String isbn = isbngenerator.next();
+		Book book = new Book(isbn, title);
 		books.put(isbn, book);
 		return isbn;
 	}
-
 	public Book findBookByIsbn(String isbn) throws BookException {
 		Book result = (Book) books.get(isbn);
 		if (result == null) {
@@ -64,5 +68,8 @@ public class MapBooksService implements BooksService {
 	public Collection<Book> findAllBooks() {
 		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
 	}
-
+	public void setBooks(Map<String, Book> books) {
+		this.books = books;
+	}
+	
 }
