@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("randomStrategy")
+@RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}") private String prefix;
