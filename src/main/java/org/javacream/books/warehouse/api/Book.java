@@ -1,13 +1,22 @@
 package org.javacream.books.warehouse.api;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "BOOKS")
 public class Book implements Serializable {
+	@Id
 	private String isbn;
 	private String title;
 	private int pages;
 	private double price;
+	@Transient
 	private boolean available;
 
 	@Override
