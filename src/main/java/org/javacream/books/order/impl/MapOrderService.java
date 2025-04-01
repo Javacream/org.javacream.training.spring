@@ -26,7 +26,7 @@ public class MapOrderService implements OrderService {
     }
 
     @Override
-    public long order(String isbn, int amount) {
+    public Long order(String isbn, int amount) {
         long id = idGenerator.next();
         try{
             Book book = booksService.findBookByIsbn(isbn);
