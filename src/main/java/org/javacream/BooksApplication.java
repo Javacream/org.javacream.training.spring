@@ -6,6 +6,7 @@ import org.javacream.store.impl.decorators.AuditDecorator;
 import org.javacream.store.impl.decorators.LoggingDecorator;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -26,5 +27,11 @@ public class BooksApplication {
         LoggingDecorator loggingDecorator = new LoggingDecorator();
         loggingDecorator.setDelegate(auditDecorator);
         return loggingDecorator;
+    }
+
+    public static void main(String[] args) {
+        var app = new SpringApplication(BooksApplication.class);
+        app.setAdditionalProfiles("prod");
+        app.run(args);
     }
 }
