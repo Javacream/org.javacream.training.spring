@@ -9,7 +9,13 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class TracingAspect {
     public Object trace(ProceedingJoinPoint pjp) throws Throwable{
-        return null;
+        try {
+            Object result = pjp.proceed(); // Aufruf das Delegationsobjekt
+            return result;
+        }
+        catch(Throwable t){
+            throw t;
+        }
     }
 
 
