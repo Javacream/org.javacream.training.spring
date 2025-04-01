@@ -13,7 +13,7 @@ public class PingWebService {
         return "pong";
     }
    @GetMapping(path = "/api/echo/{name}", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String echo(@RequestPPathVariable("name") String name){
+    public String echo(@PathVariable("name") String name){
     return "Hello, " + name;
     }
 }
