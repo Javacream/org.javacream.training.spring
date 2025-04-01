@@ -1,7 +1,7 @@
 package org.javacream;
 
 import org.javacream.store.api.StoreService;
-import org.javacream.store.impl.SimpleStoreService;
+import org.javacream.store.impl.DatabaseStoreService;
 import org.javacream.store.impl.decorators.AuditDecorator;
 import org.javacream.store.impl.decorators.LoggingDecorator;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,13 +14,13 @@ import org.springframework.context.annotation.Primary;
 public class BooksConfiguration {
 
     @Bean @Primary @Qualifier("order")
-    public StoreService storeServiceForOrder(SimpleStoreService storeService){
+    public StoreService storeServiceForOrder(DatabaseStoreService storeService){
         AuditDecorator auditDecorator = new AuditDecorator();
         auditDecorator.setDelegate(storeService);
         return auditDecorator;
     }
     @Bean @Primary @Qualifier("books")
-    public StoreService storeServiceForBook(SimpleStoreService storeService){
+    public StoreService storeServiceForBook(DatabaseStoreService storeService){
         AuditDecorator auditDecorator = new AuditDecorator();
         auditDecorator.setDelegate(storeService);
         LoggingDecorator loggingDecorator = new LoggingDecorator();
