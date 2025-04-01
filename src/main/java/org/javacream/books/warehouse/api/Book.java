@@ -84,4 +84,5 @@ public class Book implements Serializable {
 	public Book(String isbn, String title){
 		this(isbn, title, 0, 0, false);
 	}
+	public Book(){}
 }
