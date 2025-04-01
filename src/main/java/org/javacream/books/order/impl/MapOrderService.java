@@ -1,7 +1,7 @@
 package org.javacream.books.order.impl;
 
-import org.javacream.books.order.Order;
-import org.javacream.books.order.OrderService;
+import org.javacream.books.order.api.Order;
+import org.javacream.books.order.api.OrderService;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;

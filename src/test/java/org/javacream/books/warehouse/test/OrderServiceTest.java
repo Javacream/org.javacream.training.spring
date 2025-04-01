@@ -1,7 +1,7 @@
 package org.javacream.books.warehouse.test;
 
-import org.javacream.books.order.Order;
-import org.javacream.books.order.OrderService;
+import org.javacream.books.order.api.Order;
+import org.javacream.books.order.api.OrderService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package org.javacream.books.order;
+package org.javacream.books.order.api;
 
 public record Order(Long orderId, String isbn, int amount, Double totalPrice, OrderStatus status) {
 

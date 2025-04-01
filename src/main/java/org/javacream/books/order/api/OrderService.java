@@ -1,4 +1,4 @@
-package org.javacream.books.order;
+package org.javacream.books.order.api;
 
 public interface OrderService {
     long order(String isbn, int amount);
