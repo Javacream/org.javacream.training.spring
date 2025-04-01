@@ -4,10 +4,11 @@ import org.javacream.store.api.StoreService;
 
 import java.util.Date;
 
-public class AuditDecorator implements StoreService{
+public class LoggingDecorator implements StoreService{
     public int getStock(String category, String item) {
-        System.out.println("calling getStock at " + new Date());
-        return delegate.getStock(category, item);
+        int stock = delegate.getStock(category, item);
+        System.out.println("calling getStock with category=" + category + ", item=" + item + ", stock=" + stock);
+        return stock;
     }
 
     public void setDelegate(StoreService delegate) {

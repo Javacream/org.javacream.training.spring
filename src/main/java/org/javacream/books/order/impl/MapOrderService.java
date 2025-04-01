@@ -8,6 +8,7 @@ import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ import java.util.Map;
 @Repository
 public class MapOrderService implements OrderService {
     @Autowired private BooksService booksService;
-    @Autowired private StoreService storeService;
+    @Autowired @Qualifier("order") private StoreService storeService;
     @Autowired private IdGenerator idGenerator;
     private Map<Long, Order> orders;
 
