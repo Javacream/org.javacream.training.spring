@@ -6,13 +6,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="org.javacream.training.spring" />
+        <module name="org.javacream.training.application" />
+        <module name="org.javacream.training.store.api" />
+        <module name="org.javacream.training.store.application" />
+        <module name="org.javacream.training.store.impl" />
+        <module name="org.javacream.training.util" />
+        <module name="org.javacream.training.books.api" />
+        <module name="org.javacream.training.books.impl" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="org.javacream.training.spring" options="-parameters" />
+      <module name="org.javacream.training.application" options="-parameters" />
+      <module name="org.javacream.training.books.api" options="-parameters" />
+      <module name="org.javacream.training.books.impl" options="-parameters" />
+      <module name="org.javacream.training.spring" options="" />
+      <module name="org.javacream.training.store.api" options="-parameters" />
+      <module name="org.javacream.training.store.application" options="-parameters" />
+      <module name="org.javacream.training.store.impl" options="-parameters" />
+      <module name="org.javacream.training.util" options="-parameters" />
     </option>
   </component>
 </project>
