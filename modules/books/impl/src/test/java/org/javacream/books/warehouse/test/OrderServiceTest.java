@@ -16,17 +16,17 @@ public class OrderServiceTest {
     @Test public void order40Isbn1CreatesOkOrder(){
         Long id = orderService.order("ISBN1", 40);
         Order order = orderService.findById(id);
-        Assertions.assertEquals(Order.OrderStatus.OK, order.status());
+        Assertions.assertEquals(Order.OrderStatus.OK, order.getStatus());
     }
     @Test public void order50Isbn1CreatesPendingOrder(){
         Long id = orderService.order("ISBN1", 50);
         Order order = orderService.findById(id);
-        Assertions.assertEquals(Order.OrderStatus.PENDING, order.status());
+        Assertions.assertEquals(Order.OrderStatus.PENDING, order.getStatus());
     }
     @Test public void order50UnknownIsbnCreatesUnavailableOrder(){
         Long id = orderService.order("XYZ", 50);
         Order order = orderService.findById(id);
-        Assertions.assertEquals(Order.OrderStatus.UNAVAILABLE, order.status());
+        Assertions.assertEquals(Order.OrderStatus.UNAVAILABLE, order.getStatus());
     }
 
 }
