@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 @Repository
-@Transactional(propagation = Propagation.REQUIRED, rollbackFor = BookException.class)
+@Transactional(propagation = Propagation.REQUIRED)
 public class DatabaseBooksService implements BooksService {
 
 	@Autowired
@@ -30,9 +30,7 @@ public class DatabaseBooksService implements BooksService {
 		String isbn = isbnGenerator.next();
 		Book book = new Book(isbn, title, 19.99, 200, false);
 		booksRepository.save(book);
-		throw new BookException(BookException.BookExceptionType.TECHNICAL, "TEST");
-		//throw new RuntimeException("TEST");
-		//return isbn;
+		return isbn;
 	}
 
 	public Book findBookByIsbn(String isbn) throws BookException {

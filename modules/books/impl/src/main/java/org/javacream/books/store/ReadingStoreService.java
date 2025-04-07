@@ -11,7 +11,8 @@ public class ReadingStoreService {
     @Autowired
     private RestTemplate restTemplate;
     public int getStock(String isbn) {
-        return Integer.parseInt(restTemplate.getForObject("http://localhost:9090/api/store/books/" + isbn, String.class));
-
+        String stockString = restTemplate.getForObject("http://localhost:9090/api/store/books/" + isbn, String.class);
+        int stock = Integer.parseInt(stockString.substring(7));
+        return stock;
     }
 }
