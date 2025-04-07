@@ -8,6 +8,7 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED)
 
 public class DatabaseOrderService implements OrderService {
+    @Autowired private KafkaTemplate kafkaTemplate;
     @Autowired
     OrderRepository orderRepository;
     @Autowired private BooksService booksService;
@@ -41,6 +43,7 @@ public class DatabaseOrderService implements OrderService {
         }
         Order order = new Order(orderId++, isbn, number, totalPrice, orderStatus);
         orderRepository.save(order);
+        kafkaTemplate.send("orders", "Created Order " + order.getOrderId());
         return order.getOrderId();
     }
 
