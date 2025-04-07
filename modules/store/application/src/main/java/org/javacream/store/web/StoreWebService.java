@@ -13,8 +13,9 @@ public class StoreWebService {
 
     @Autowired @Qualifier("books") private StoreService storeService;
 
-    @GetMapping(path = "api/store/{cat}")
-    public String getStock(@PathVariable("cat") String category, @RequestHeader("item") String item) {
+    @GetMapping(path = "api/store/{cat}/{item}")
+    public String getStock(@PathVariable("cat") String category, @PathVariable
+            ("item") String item) {
         return "Stock: " + storeService.getStock(category, item);
     }
 }

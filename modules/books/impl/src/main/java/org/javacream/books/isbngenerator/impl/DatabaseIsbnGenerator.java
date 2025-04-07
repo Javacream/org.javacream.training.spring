@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @IsbnGenerator.SequenceStrategy
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 @Profile({"dev","test", "prod"})
 public class DatabaseIsbnGenerator implements IsbnGenerator {
 	@PersistenceContext private EntityManager entityManager;
